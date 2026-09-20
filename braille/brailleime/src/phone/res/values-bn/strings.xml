@@ -203,7 +203,7 @@
   <string name="custom_gesture_conflict_try_another">এই জেসচার \"%1$s\"-এর জন্য ব্যবহার করা হয় এবং এটি পরিবর্তন করা যাবে না। অন্য জেসচার ব্যবহার করে দেখুন। %2$s</string>
   <string name="custom_gesture_cannot_used">এই জেসচার ব্যবহার করা যাবে না</string>
   <string name="custom_gesture_no_gesture">কোনও জেসচার পারফর্ম করা হয়নি</string>
-  <string name="custom_gesture_try_another">অন্য জেসচার ব্যবহার করে দেখুন। উপলভ্য সব জেসচারের তালিকা দেখতে, TalkBack ব্রেইল কীবোর্ড সহায়তা কেন্দ্র দেখুন। %s</string>
+  <string name="custom_gesture_try_another">অন্য জেসচার ব্যবহার করে দেখুন। উপলভ্য সব জেসচারের তালিকা দেখতে, MS Screen Reader ব্রেইল কীবোর্ড সহায়তা কেন্দ্র দেখুন। %s</string>
   <string name="custom_gesture_no_match">জেসচার ম্যাচ করেনি</string>
   <string name="custom_gesture_perform_again">আপনি যে জেসচার আবার ব্যবহার করতে চান সেটি পারফর্ম করুন। %s</string>
 </resources>

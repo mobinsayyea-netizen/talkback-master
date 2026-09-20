@@ -1,9 +1,12 @@
-name: Build TalkBack APK
+name: Build MS Screen Reader APK
 
 on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -27,8 +30,19 @@ jobs:
           yes | sdkmanager --licenses > /dev/null || true
           sdkmanager "platforms;android-36" "build-tools;36.0.0" || true
 
-      - name: Build phone debug APK
+      - name: Prepare signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+        run: |
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          echo "KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Build phone APK
         shell: bash
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           set +e
           gradle assemblePhoneDebug --no-daemon 2>&1 | tee build_output.log
@@ -40,8 +54,8 @@ jobs:
           keep=[]
           for i,l in enumerate(log):
               if 'What went wrong' in l:
-                  keep.extend(x.strip() for x in log[i:i+5])
-              elif re.search(r'^e: |error:|Execution failed|Could not|Unresolved|cannot find symbol|FAILURE', l, re.I):
+                  keep.extend(x.strip() for x in log[i:i+6])
+              elif re.search(r'^e: |error:|Execution failed|Could not|Unresolved|cannot find symbol|FAILURE|AAPT|resource', l, re.I):
                   keep.append(l.strip())
           seen=set(); out=[]
           for l in keep:
@@ -54,8 +68,24 @@ jobs:
             exit 1
           fi
 
+      - name: Name the APK
+        run: |
+          APK=$(find . -path "*outputs/apk/phone/debug/*.apk" | head -1)
+          if [ -z "$APK" ]; then APK=$(find . -path "*outputs/apk*" -name "*.apk" ! -name "*wear*" | head -1); fi
+          echo "Found: $APK"
+          cp "$APK" MSScreenReader.apk
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: talkback-debug-apk
-          path: "**/build/outputs/apk/**/*.apk"
+          name: ms-screen-reader-apk
+          path: MSScreenReader.apk
+
+      - name: Publish release (direct APK download link)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "build-${{ github.run_number }}" MSScreenReader.apk \
+            --title "MS Screen Reader build ${{ github.run_number }}" \
+            --notes "Automatic build from commit ${{ github.sha }}" \
+            --latest

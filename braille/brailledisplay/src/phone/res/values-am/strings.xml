@@ -26,7 +26,7 @@
   <string name="overlay_pan_right_button">ወደ ቀኝ አንፏቅ</string>
   <string name="bd_preferences_title">የብሬይል ማሳያ</string>
   <string name="bd_preferences_banner_talkback_off_subtitle">የብሬይል ማሳያን ለመጠቀም መጀመሪያ TalkBackን ያብሩ</string>
-  <string name="bd_preferences_banner_talkback_off_button">ወደ TalkBack ይሂዱ</string>
+  <string name="bd_preferences_banner_talkback_off_button">ወደ MS Screen Reader ይሂዱ</string>
   <string name="bd_preferences_banner_bluetooth_off_subtitle">የብሬይል ማሳያን ለመጠቀም መጀመሪያ ብሉቱዝን ያብሩ</string>
   <string name="bd_preferences_banner_bluetooth_off_button">ብሉቱዝን አብራ</string>
   <string name="bd_preferences_banner_nearby_devices_permission_not_granted_subtitle">የብሬይል ማሳያን ለመጠቀም %s በአቅራቢያ ያሉ መሣሪያዎችን መድረስ ይኖርበታል</string>
@@ -220,7 +220,7 @@
   <string name="bd_cmd_toggle_screen_search">የማያ ገፅ ፍለጋን ክፈት</string>
   <string name="bd_cmd_edit_custom_label">ብጁ መለያን አርትዕ አድርግ</string>
   <string name="bd_cmd_open_talkback_menu">የTalkBack ምናሌን ክፈት</string>
-  <string name="bd_cmd_toggle_voice_feedback">TalkBack ንግግርን አብራ ወይም አጥፋ</string>
+  <string name="bd_cmd_toggle_voice_feedback">MS Screen Reader ንግግርን አብራ ወይም አጥፋ</string>
   <string name="bd_cmd_read_stop">ማንበብ አቁም</string>
   <string name="bd_cmd_talkback_settings">የTalkBack ቅንብሮችን ክፈት</string>
   <string name="bd_cmd_switch_to_next_input_language">ወደ ቀጣዩ የትየባ ቋንቋ ቀይር</string>
@@ -303,7 +303,7 @@
   <string name="bd_caption_tutorial_dialog_message">ለዚህ ቪድዮ መግለጫ ጽሑፎችን ለማሳየት ወይም ለመደበቅ ክፍተት እና ነጥቦች 1፣ 4፣ 7፣ 8 ላይ ይጫኑ።\n\nለሚደገፍ ሚዲያ መግለጫ ጽሑፎችን በራስ-ሰር ለማሳየት በቅንብሮች ውስጥ የብሬይል ማሳያ ላይ መግለጫ ጽሑፎችን አሳይ የሚለውን ያብሩ።</string>
   <string name="bd_caption_tutorial_dialog_checkbox">መግለጫ ጽሑፎች በሚገኙበት ጊዜ ይህን መልዕክት ሁልጊዜ ያሳዩ</string>
   <string name="bd_usb_connect_dialog_title">የብሬል ማሳያ ከዩኤስቢ ጋር ተገናኝቷል</string>
-  <string name="bd_usb_connect_dialog_message">የእርስዎ የ%s ባትሪ የብሬል ማሳያዎን ኃይል በመሙላት ላይ ነው።\n\nወደ ብሉቱዝ መቀየር ካስፈለገዎ የእርስዎን ዩኤስቢ ወይም የዩኤስቢ መገናኛ ግንኙነት ያቋርጡ እና ወደ TalkBack ቅንብሮች &gt; የብሬል ማሳያ ይሂዱ።</string>
+  <string name="bd_usb_connect_dialog_message">የእርስዎ የ%s ባትሪ የብሬል ማሳያዎን ኃይል በመሙላት ላይ ነው።\n\nወደ ብሉቱዝ መቀየር ካስፈለገዎ የእርስዎን ዩኤስቢ ወይም የዩኤስቢ መገናኛ ግንኙነት ያቋርጡ እና ወደ MS Screen Reader ቅንብሮች &gt; የብሬል ማሳያ ይሂዱ።</string>
   <string name="bd_device">ስልክ</string>
   <string name="bd_battery_low_dialog_title">%s ባትሪ ዝቅተኛ ነው</string>
   <string name="bd_battery_low_dialog_message">የእርስዎ %s ባትሪ የብሬይል ማሳያዎን ኃይል እየሞላ ነው።\n\nባትሪን ለመቆጠብ፦\n\n

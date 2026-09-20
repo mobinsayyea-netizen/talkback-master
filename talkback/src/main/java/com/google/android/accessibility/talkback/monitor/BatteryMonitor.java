@@ -27,6 +27,7 @@ import androidx.annotation.VisibleForTesting;
 import com.google.android.accessibility.talkback.Interpretation;
 import com.google.android.accessibility.talkback.Pipeline;
 import com.google.android.accessibility.talkback.Pipeline.InterpretationReceiver;
+import com.google.android.accessibility.talkback.ExtraSounds;
 import com.google.android.accessibility.talkback.R;
 import com.google.android.accessibility.utils.broadcast.SameThreadBroadcastReceiver;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -41,6 +42,7 @@ public class BatteryMonitor extends SameThreadBroadcastReceiver {
   private int batteryLevel = UNKNOWN_LEVEL;
   private boolean powerConnected;
   private boolean powerSaveMode;
+  private boolean fullSoundPlayed;
 
   public BatteryMonitor(Context context) {
     this.context = context;
@@ -78,9 +80,18 @@ public class BatteryMonitor extends SameThreadBroadcastReceiver {
         int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
         int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 100);
         batteryLevel = getBatteryLevel(scale, level);
+        boolean full =
+            intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1) == BatteryManager.BATTERY_STATUS_FULL;
+        if (full && !fullSoundPlayed) {
+          fullSoundPlayed = true;
+          ExtraSounds.play(context, R.raw.power_full);
+        } else if (!full) {
+          fullSoundPlayed = false;
+        }
       }
       case Intent.ACTION_POWER_DISCONNECTED -> {
         powerConnected = false;
+        fullSoundPlayed = false;
         pipeline.input(
             EVENT_ID_UNTRACKED,
             new Interpretation.Power(
@@ -88,6 +99,7 @@ public class BatteryMonitor extends SameThreadBroadcastReceiver {
       }
       case Intent.ACTION_POWER_CONNECTED -> {
         powerConnected = true;
+        ExtraSounds.play(context, R.raw.power_connected);
         pipeline.input(
             EVENT_ID_UNTRACKED,
             new Interpretation.Power(

@@ -7,6 +7,7 @@ apply from: 'shared.gradle'
 apply from: 'version.gradle'
 
 final BUILD_TIMESTAMP = new Date().format('yyyy_MM_dd_HHmm')
+def runNumber = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInteger()
 
 dependencies {
     implementation project(':talkback')
@@ -43,11 +44,35 @@ android {
     namespace "com.android.talkback"
     defaultConfig {
         applicationId talkbackApplicationId
+        versionCode runNumber
         versionName talkbackVersionName + "-" + BUILD_TIMESTAMP
         minSdkVersion 26
         targetSdkVersion 30
         testInstrumentationRunner 'android.test.InstrumentationTestRunner'
         multiDexEnabled true
+    }
+    signingConfigs {
+        stable {
+            def ksPath = System.getenv("KEYSTORE_PATH")
+            if (ksPath) {
+                storeFile file(ksPath)
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            if (System.getenv("KEYSTORE_PATH")) {
+                signingConfig signingConfigs.stable
+            }
+        }
+        release {
+            if (System.getenv("KEYSTORE_PATH")) {
+                signingConfig signingConfigs.stable
+            }
+        }
     }
     packagingOptions {
         exclude 'LICENSE'

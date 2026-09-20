@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="braille_ime_service_name">‏מקלדת הברייל של TalkBack</string>
+  <string name="braille_ime_service_name">‏מקלדת הברייל של MS Screen Reader</string>
   <string name="braille_ime_bd_mode_name">קלט מתוך צג הברייל</string>
   <string name="switch_to_tabletop_announcement">מצב \'על משטח, מסך למעלה\'. יש להציב את המכשיר כך שיציאת הטעינה משמאל.</string>
   <string name="calibration_tip_announcement">כדי לעדכן את מיקום הנקודות, עליך ללחוץ לחיצה ארוכה עם %d אצבעות.</string>
@@ -101,12 +101,12 @@
   <string name="bk_pref_category_title_keyboard">מקלדת</string>
   <string name="not_enough_touch_points_dialog_title">המכשיר שברשותך לא תומך במקלדת ברייל</string>
   <string name="not_enough_touch_points_dialog_message">המכשיר שברשותך לא תומך במספיק נקודות נגיעה. לקבלת מידע נוסף, יש לפנות ליצרן המכשיר.</string>
-  <string name="talkback_off_dialog_title">‏יש להפעיל את TalkBack כדי להשתמש במקלדת ברייל</string>
+  <string name="talkback_off_dialog_title">‏יש להפעיל את MS Screen Reader כדי להשתמש במקלדת ברייל</string>
   <string name="talkback_off_dialog_positive_button">הפעלה בהגדרות הנגישות</string>
   <string name="talkback_suspend_dialog_title">‏חזרה ל-TalkBack כדי להשתמש במקלדת ברייל</string>
-  <string name="talkback_off_or_suspend_dialog_message">‏כשהתכונה TalkBack מופעלת, ניתן להזין סמלי ברייל בלחיצה על המסך.</string>
-  <string name="talkback_off_custom_gestures_dialog_title">‏כדי לשנות תנועה, צריך להפעיל את TalkBack</string>
-  <string name="talkback_off_custom_gestures_dialog_message">‏התכונה TalkBack מושבתת. צריך להפעיל אותה כדי לשנות תנועות במקלדת הברייל.</string>
+  <string name="talkback_off_or_suspend_dialog_message">‏כשהתכונה MS Screen Reader מופעלת, ניתן להזין סמלי ברייל בלחיצה על המסך.</string>
+  <string name="talkback_off_custom_gestures_dialog_title">‏כדי לשנות תנועה, צריך להפעיל את MS Screen Reader</string>
+  <string name="talkback_off_custom_gestures_dialog_message">‏התכונה MS Screen Reader מושבתת. צריך להפעיל אותה כדי לשנות תנועות במקלדת הברייל.</string>
   <string name="talkback_off_custom_gestures_dialog_positive_button">להגדרות</string>
   <string name="reset_gestures_dialog_title">לאפס את כל התנועות?</string>
   <string name="reset_gestures_dialog_message">כל התנועות במקלדת הברייל יאופסו לברירת המחדל</string>
@@ -133,11 +133,11 @@
   <string name="mirrored_gesture_dialog_conflict_negative_button">לא להשתמש</string>
   <string name="next_keyboard">המקלדת הבאה</string>
   <string name="braille_tutorial_title">מדריך למקלדת ברייל</string>
-  <string name="tutorial_intro_description">‏באמצעות מקלדת הברייל אפשר ללחוץ על המסך כדי להזין ברייל של 6 נקודות.\n\nבמכשיר שלך נעשה שימוש במקלדת אנגלית אחידה לברייל. כדי להחליף שפת הקלדה, יש לעבור להגדרות TalkBack.‏\n\nכדי להקליד בברייל, יש להחזיק את הטלפון ולהשתמש בו בצורה שונה.</string>
+  <string name="tutorial_intro_description">‏באמצעות מקלדת הברייל אפשר ללחוץ על המסך כדי להזין ברייל של 6 נקודות.\n\nבמכשיר שלך נעשה שימוש במקלדת אנגלית אחידה לברייל. כדי להחליף שפת הקלדה, יש לעבור להגדרות MS Screen Reader.‏\n\nכדי להקליד בברייל, יש להחזיק את הטלפון ולהשתמש בו בצורה שונה.</string>
   <string name="next_step">הבא</string>
   <string name="leave_keyboard">יציאה ממקלדת הברייל</string>
-  <string name="hold_six_fingers_description">‏אם משתמשים במקלדת ברייל, אין אפשרות להשתמש בתנועות רגילות של TalkBack‏.\n\nכדי להתחיל, עליך להגדיר את המיקום של 6 נקודות הברייל להקלדה.</string>
-  <string name="rotate_orientation_description_1">‏החל מעכשיו, לא ניתן יהיה להשתמש בתנועות הרגילות של TalkBack. תכונת TalkBack לא זמינה כשמשתמשים במקלדת הברייל.</string>
+  <string name="hold_six_fingers_description">‏אם משתמשים במקלדת ברייל, אין אפשרות להשתמש בתנועות רגילות של MS Screen Reader‏.\n\nכדי להתחיל, עליך להגדיר את המיקום של 6 נקודות הברייל להקלדה.</string>
+  <string name="rotate_orientation_description_1">‏החל מעכשיו, לא ניתן יהיה להשתמש בתנועות הרגילות של MS Screen Reader. תכונת MS Screen Reader לא זמינה כשמשתמשים במקלדת הברייל.</string>
   <string name="rotate_orientation_description_2">כדי להתחיל, יש להחזיק את הטלפון כך, כשהמסך יפנה כלפי חוץ.</string>
   <string name="tap_to_continue">יש ללחוץ פעמיים במקום כלשהו כדי להמשיך</string>
   <string name="instruction_type_letter_a">‏לוחצים על נקודה 1 עם האצבע המורה השמאלית כדי להקליד את האות \"A\"</string>
@@ -155,7 +155,7 @@
   <string name="result_swipe_down">הסמן הוזז קדימה</string>
   <string name="result_swipe_down_2_fingers">הסתרת מקלדת</string>
   <string name="result_swipe_down_3_fingers">המקלדת הבאה</string>
-  <string name="rotate_orientation_announcement">‏החל מעכשיו, לא ניתן יהיה להשתמש בתנועות הרגילות של TalkBack. תכונת TalkBack לא זמינה כשמשתמשים במקלדת הברייל.\n\n%1$s</string>
+  <string name="rotate_orientation_announcement">‏החל מעכשיו, לא ניתן יהיה להשתמש בתנועות הרגילות של MS Screen Reader. תכונת MS Screen Reader לא זמינה כשמשתמשים במקלדת הברייל.\n\n%1$s</string>
   <string name="rotate_orientation_inactive_announcement">‏ראשית, מסובבים את הטלפון כך שהמסך יפנה כלפי חוץ.\n\nלאחר מכן, מסובבים את הטלפון למצב רוחבי (הקצוות הארוכים מקבילים לרצפה). יש להחזיק את הטלפון בידיים בקצוות הקצרים. על יד ימין להחזיק בקצה עם יציאת ה-USB. מניחים את 3 האצבעות האמצעיות על המסך, ומשתמשים בזרת ובאגודל כדי להחזיק את הטלפון.\n\nכשמוכנים, לוחצים פעמיים על המסך כדי להמשיך.\n\nליציאה ממקלדת הברייל, מחליקים למטה לכיוון הקרקע באמצעות 3 אצבעות. תנועה זו מחליפה בחזרה למקלדת המקורית.</string>
   <string name="rotate_orientation_continue_announcement">הטלפון ממוקם אנכית. כדי להמשיך, יש לסובב את הטלפון למצב רוחבי (הקצוות הארוכים מקבילים לרצפה). לאחר מכן, מסובבים את הטלפון כך שהמסך יפנה כלפי חוץ. כשמוכנים, לוחצים פעמיים על המסך כדי להמשיך.</string>
   <string name="type_letter_a_announcement">‏שומרים שהמסך יפנה כלפי חוץ. מחזיקים את הטלפון בשתי הידיים, בקצוות הקצרים של הטלפון, כך ששלוש האצבעות האמצעיות של כל יד יוכלו לגעת במסך.\n\nהאצבע המורה השמאלית צריכה להיות על נקודה 1. עכשיו, לוחצים על נקודה 1 כדי להקליד את האות “A”.</string>
@@ -171,7 +171,7 @@
   <string name="swipe_down_3_fingers_announcement">כדי להחליף למקלדת השנייה, מחליקים למטה באמצעות 3 אצבעות. כדאי לנסות עכשיו.</string>
   <string name="swipe_down_3_fingers_completed_announcement">המקלדת הבאה. בדרך כלל, תנועה זו תחליף למקלדת הבאה. הפעם, העבודה במקלדת הברייל תימשך מפני שהמדריך עדיין לא הסתיים.</string>
   <string name="swipe_up_3_fingers_announcement">אפשר גם להקליד במצב \'על פני שולחן\' על ידי הנחת הטלפון במצב שטוח על שולחן. כדי לסיים את המדריך, עליך להחליק כלפי מעלה באמצעות 3 אצבעות כדי למצוא את האפשרות \'סיום המדריך‘</string>
-  <string name="open_context_menu_announcement">‏תפריט האפשרויות פתוח. יש להפוך את הטלפון כך שהמסך יפנה אליך ולהחזיק אותו באופן רגיל. עכשיו ניתן להשתמש בתנועות TalkBack רגילות כדי לנווט. יש להחליק ימינה כדי לראות אפשרויות נוספות.</string>
+  <string name="open_context_menu_announcement">‏תפריט האפשרויות פתוח. יש להפוך את הטלפון כך שהמסך יפנה אליך ולהחזיק אותו באופן רגיל. עכשיו ניתן להשתמש בתנועות MS Screen Reader רגילות כדי לנווט. יש להחליק ימינה כדי לראות אפשרויות נוספות.</string>
   <string name="hold_six_fingers_announcement">‏%s\nעליך להניח את המכשיר במצב שטוח על שולחן. לאחר מכן, יש ללחוץ לחיצה ארוכה על המסך באמצעות 3 האצבעות האמצעיות של כל יד במיקום שיהיה לך נוח להקליד בו.</string>
   <string name="hold_six_fingers_inactive_announcement">עליך להניח את המכשיר במצב שטוח על שולחן. לאחר מכן, יש ללחוץ לחיצה ארוכה על המסך באמצעות 3 האצבעות האמצעיות של כל יד במיקום שיהיה לך נוח להקליד בו.</string>
   <string name="finish_tutorial_announcement">מקלדת הברייל מוצגת. מסובבים את הטלפון כך שהמסך יפנה כלפי חוץ. מסובבים את הטלפון למצב רוחבי. לאחר מכן מתחילים להקליד.</string>
@@ -203,7 +203,7 @@
   <string name="custom_gesture_conflict_try_another">התנועה הזו כבר משויכת לפעולה \"%1$s\" ואי אפשר לשנות את השיוך שלה. אפשר לנסות תנועה אחרת. %2$s</string>
   <string name="custom_gesture_cannot_used">לא ניתן להשתמש בתנועה הזו</string>
   <string name="custom_gesture_no_gesture">לא בוצעה תנועה</string>
-  <string name="custom_gesture_try_another">‏אפשר לנסות תנועה אחרת. כדי לקבל רשימה של כל התנועות הזמינות, אפשר להיכנס למרכז העזרה למקלדת הברייל של TalkBack. %s</string>
+  <string name="custom_gesture_try_another">‏אפשר לנסות תנועה אחרת. כדי לקבל רשימה של כל התנועות הזמינות, אפשר להיכנס למרכז העזרה למקלדת הברייל של MS Screen Reader. %s</string>
   <string name="custom_gesture_no_match">התנועות לא תואמות</string>
   <string name="custom_gesture_perform_again">צריך לבצע שוב את התנועה הרצויה. %s</string>
 </resources>

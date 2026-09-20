@@ -166,7 +166,7 @@
   <string name="keycombo_new_keymap_notification_dialog_message_for_classic_keymap">আপনি এখন টকব্যাকের ডিফল্ট কী-ম্যাপ ব্যবহার করছেন। নতুন উন্নত আরও একটি কী-ম্যাপও আছে যার মধ্যে রয়েছে অনেক নতুন কমান্ড। সহায়তা কেন্দ্র থেকে আরও জানুন অথবা \'সেটিংস\' থেকে নতুন কী-ম্যাপে পাল্টে নিন।</string>
   <string name="keycombo_new_keymap_notification_dialog_title_for_default_keymap">নতুন কী-ম্যাপ উপলভ্য আছে</string>
   <string name="keycombo_new_keymap_notification_dialog_message_for_default_keymap">নতুন উন্নত টকব্যাক কী-ম্যাপে অনেক নতুন কমান্ড যোগ করা হয়েছে। সহায়তা কেন্দ্র থেকে আরও জানুন অথবা \'সেটিংস\' থেকে নতুন কী-ম্যাপে পাল্টে নিন।</string>
-  <string name="keycombo_update_modifier_key_warning_title">আপনার TalkBack পরিবর্তক কী আপডেট করুন</string>
+  <string name="keycombo_update_modifier_key_warning_title">আপনার MS Screen Reader পরিবর্তক কী আপডেট করুন</string>
   <string name="keycombo_update_modifier_keys_warning_negative_button">এখন নয়</string>
   <string name="keycombo_warning_content_description">আপনার পরিবর্তক কী সম্পর্কিত আরও তথ্য</string>
   <string name="keycombo_warning_dialog_title">আপনার পরিবর্তক \'কী\' আপডেট করুন</string>
@@ -240,7 +240,7 @@
   <string name="keycombo_menu_other_language_options">ইনস্টল করা ভাষাগুলি দেখুন</string>
   <string name="keycombo_menu_other_copy_last_spoken_phrase">আপনার বলা শেষ কথাটি কপি করুন</string>
   <string name="keycombo_menu_other_open_tts_settings">\'টেক্সট-টু-স্পিচ\' সেটিংস খুলুন</string>
-  <string name="keycombo_menu_other_open_talkback_settings">TalkBack সেটিংস খুলুন</string>
+  <string name="keycombo_menu_other_open_talkback_settings">MS Screen Reader সেটিংস খুলুন</string>
   <string name="keycombo_menu_other_report_issue">মতামত জানান</string>
   <string name="keycombo_menu_other_cycle_typing_echo">সাইকেল টাইপিং ইকো</string>
   <string name="keycombo_menu_other_show_keyboard_shortcuts_dialog">কীবোর্ড শর্টকাট তালিকা দেখুন</string>
@@ -426,7 +426,7 @@
   <string name="summary_pref_gemini_support_disabled">Gemini বন্ধ করা আছে</string>
   <string name="screen_dimmed">স্ক্রিন লুকানো হয়েছে</string>
   <string name="screen_brightness_restored">স্ক্রিন দেখানো হচ্ছে</string>
-  <string name="screen_dimming_exit_instruction_line1">TalkBack অ্যাক্সেসযোগ্যতা পরিষেবা চালু আছে বলে স্ক্রিন লুকানো হয়েছে</string>
+  <string name="screen_dimming_exit_instruction_line1">MS Screen Reader অ্যাক্সেসযোগ্যতা পরিষেবা চালু আছে বলে স্ক্রিন লুকানো হয়েছে</string>
   <string name="screen_dimming_exit_instruction_line2">এটি পরিবর্তন করতে, \'টকব্যাক\' মেনু খুলতে %1$s, \"%2$s\" বেছে নিন, তারপর ডবল ট্যাপ করুন।</string>
   <string name="shortcut_title_basic_navigation">প্রাথমিক নেভিগেশন</string>
   <string name="shortcut_title_system_actions">সিস্টেম সংক্রান্ত অ্যাকশন</string>
@@ -746,7 +746,7 @@
   <string name="pref_time_feedback_format_entries_default">ডিভাইসের সময়ের ফর্ম্যাট ব্যবহার করুন</string>
   <string name="pref_time_feedback_format_entries_12_hour">১২ ঘণ্টা</string>
   <string name="pref_time_feedback_format_entries_24_hour">২৪ ঘণ্টা</string>
-  <string name="notification_title_talkback_gestures_changed">TalkBack ইঙ্গিতগুলি পরিবর্তন করা হয়েছে</string>
+  <string name="notification_title_talkback_gestures_changed">MS Screen Reader ইঙ্গিতগুলি পরিবর্তন করা হয়েছে</string>
   <string name="notification_message_talkback_gestures_changed">অ্যাক্সেসযোগ্যতার অঙ্গভঙ্গিগুলিতে হওয়া পরিবর্তনগুলি পর্যালোচনা করতে আলতো চাপুন</string>
   <string name="always_show_warning_checkbox">সবসময় এই সতর্কবার্তা দেখান</string>
   <string name="label_dialog_title_add">লেবেল যোগ করুন</string>
@@ -756,7 +756,7 @@
   <string name="label_dialog_text">এই এলিমেন্টের লেবেল হিসেবে ব্যবহারের জন্য কিছু লিখুন\nঅভ্যন্তরীণ দৃশ্যের নাম: %1$s</string>
   <string name="label_dialog_edit_hint">লেবেলের পাঠ্য</string>
   <string name="label_import">কাস্টম লেবেলগুলি আমদানি করুন</string>
-  <string name="label_import_dialog_title">TalkBack এ কাস্টম লেবেলগুলি আমদানি করুন</string>
+  <string name="label_import_dialog_title">MS Screen Reader এ কাস্টম লেবেলগুলি আমদানি করুন</string>
   <string name="label_import_dialog_message">কোনো দ্বন্দ্বের ক্ষেত্রে আপনি বিদ্যমান লেবেলগুলি ওভাররাইড করতে বা এড়িয়ে যেতে চান কি না নির্দিষ্ট করুন</string>
   <string name="label_import_dialog_skip">এড়িয়ে যান</string>
   <string name="label_import_dialog_override">ওভাররাইড করুন</string>
@@ -768,14 +768,14 @@
   <string name="no_apps_to_export_labels">লেবেলগুলি রপ্তানি করার মত কোনো অ্যাপ্লিকেশান খুঁজে পাওয়া যায় নি।</string>
   <string name="label_choose_app_to_import">লেবেলগুলি আমদানি করার জন্য অ্যাপ্লিকেশান বেছে নিন:</string>
   <string name="label_choose_app_to_export">লেবেলগুলি রপ্তানি করতে অ্যাপ্লিকেশান চয়্ন করুন:</string>
-  <string name="talkback_gesture_change_details">TalkBack এর এই সংস্করণে ডিফল্ট অ্যাক্সেসযোগ্যতা অঙ্গভঙ্গিগুলিতে করা পরিবর্তনগুলি রয়েছে৷ এইসব অঙ্গভঙ্গির সঙ্গে থাকা ক্রিয়াগুলি TalkBack সেটিংসে কাস্টমাইজ করা যেতে পারে৷ যখন স্পর্শের মাধ্যমে অন্বেষণ সক্ষমিত তখন আপনি কিছু ক্রিয়ার কার্য সম্পাদন করতে আপনি নিম্নলিখিত অঙ্গভঙ্গিগুলি ব্যবহার করতে পারেন৷\n\n%1$s</string>
+  <string name="talkback_gesture_change_details">MS Screen Reader এর এই সংস্করণে ডিফল্ট অ্যাক্সেসযোগ্যতা অঙ্গভঙ্গিগুলিতে করা পরিবর্তনগুলি রয়েছে৷ এইসব অঙ্গভঙ্গির সঙ্গে থাকা ক্রিয়াগুলি MS Screen Reader সেটিংসে কাস্টমাইজ করা যেতে পারে৷ যখন স্পর্শের মাধ্যমে অন্বেষণ সক্ষমিত তখন আপনি কিছু ক্রিয়ার কার্য সম্পাদন করতে আপনি নিম্নলিখিত অঙ্গভঙ্গিগুলি ব্যবহার করতে পারেন৷\n\n%1$s</string>
   <string name="dialog_title_dim_screen">স্ক্রিন লুকাবেন?</string>
   <string name="dialog_message_dim_screen">গোপনীয়তা উন্নত করতে এটি ডিসপ্লে বন্ধ করে দেয়। কিছু কন্টেন্ট এখনও দেখা যেতে পারে, যেমন ডিসপ্লে আবার চালু করার মেসেজ অথবা টকব্যাকের মতো অ্যাক্সেসিবিলিটি ফিচারের মেনু।</string>
   <string name="talkback_built_in_gesture_change_details">\'টকব্যাক\' ফিচারের এই ভার্সনে ডিফল্ট অ্যাক্সেসিবিলিটি জেসচারে করা পরিবর্তনগুলি অন্তর্ভুক্ত রয়েছে।\n\nউপরে-তারপর-নিচে যাওয়ার জেসচার আপনাকে স্ক্রিনের প্রথম আইটেমে যেতে দেবে এবং নিচে-তারপর-উপরে যাওয়ার জেসচারের মাধ্যমে আপনি শেষ আইটেমে যেতে পারবেন।\n\nএকটি আইটেমে ফোকাস করে ও তারপরে টকব্যাক কন্টেক্সট মেনু থেকে গ্র্যানুলারিটি বেছে নিয়ে রিডিং গ্র্যানুলারিটি এখন পরিবর্তন করা যেতে পারে।\n\nআপনি \'টকব্যাক\' সেটিংসে এইসব জেসচারের মাধ্যমে করা অ্যাকশনগুলি পরিবর্তন করতে পারেন।</string>
   <string name="default_action_changed_details">মিডিয়া প্লে ও পজ করতে, আপনি এখন দুই আঙুলের মাধ্যমে ডবল ট্যাপ করে ধরে রাখতে পারবেন।\n\nঅন্য জেসচারও পরিবর্তন করা হয়েছে।</string>
   <string name="talkback_built_in_gesture_open_url">আরও জানতে ফোনে ওয়েবসাইট খুলুন</string>
-  <string name="talkback_built_in_gesture_change_details_45">TalkBack এর এই ভার্সনটিতে ডিফল্ট অ্যাক্সেসযোগ্যতার ইঙ্গিততে পরিবর্তনগুলি অন্তর্ভুক্ত আছে। \n\nউপরের ইঙ্গিতটি এখন পূর্ববর্তী নেভিগেশন সেটিং এ সরানো হয়েছে এবং নীচের ইঙ্গিত এখন পরবর্তী নেভিগেশন সেটিং এ সরানো হয়েছে।</string>
-  <string name="side_tap_shortcuts_removed_details">নির্ভরযোগ্যতা সংক্রান্ত সমস্যার জন্য, TalkBack থেকে এই সেটিংস সরিয়ে দেওয়া হয়েছে:\n• ডিভাইস জেসচারের পাশে ট্যাপ করুন\n• ক্রমাগত পড়া চালিয়ে যাওয়ার জন্য ডিভাইসটি ঝাঁকান</string>
+  <string name="talkback_built_in_gesture_change_details_45">MS Screen Reader এর এই ভার্সনটিতে ডিফল্ট অ্যাক্সেসযোগ্যতার ইঙ্গিততে পরিবর্তনগুলি অন্তর্ভুক্ত আছে। \n\nউপরের ইঙ্গিতটি এখন পূর্ববর্তী নেভিগেশন সেটিং এ সরানো হয়েছে এবং নীচের ইঙ্গিত এখন পরবর্তী নেভিগেশন সেটিং এ সরানো হয়েছে।</string>
+  <string name="side_tap_shortcuts_removed_details">নির্ভরযোগ্যতা সংক্রান্ত সমস্যার জন্য, MS Screen Reader থেকে এই সেটিংস সরিয়ে দেওয়া হয়েছে:\n• ডিভাইস জেসচারের পাশে ট্যাপ করুন\n• ক্রমাগত পড়া চালিয়ে যাওয়ার জন্য ডিভাইসটি ঝাঁকান</string>
   <string name="button_accept_changed_gesture_mappings">অঙ্গভঙ্গিগুলি স্বীকার করুন</string>
   <string name="button_customize_gesture_mappings">অঙ্গভঙ্গিগুলি কাস্টমাইজ করুন</string>
   <string name="button_disable_all_events">সবগুলি অক্ষম করুন</string>
@@ -900,7 +900,7 @@
   <string name="screen_search_hint_type_search_controls">কন্ট্রোল সার্চ করুন</string>
   <string name="screen_search_hint_type_search_tables">টেবিল সার্চ করুন</string>
   <string name="talkback_notification_channel_name">@string/talkback_label</string>
-  <string name="talkback_notification_channel_description">TalkBack-এর বিজ্ঞপ্তি চ্যানেল</string>
+  <string name="talkback_notification_channel_description">MS Screen Reader-এর বিজ্ঞপ্তি চ্যানেল</string>
   <string name="pref_selector_summary">সেটিং বেছে নিতে %1$s। তারপরে সেটিং অ্যাডজাস্ট করতে %2$s।</string>
   <string name="speech_rate_change">স্পিচ রেট %1$d%%</string>
   <string name="speech_pitch_maximum">স্পিচের সবচেয়ে বেশি পিচ</string>
@@ -1026,7 +1026,7 @@
   <string name="split_tap_everywhere_title">সব জায়গায় স্প্লিট-ট্যাপ</string>
   <string name="split_tap_everywhere_text">আপনি এখন আইটেম চালু করতে সব জায়গায়, এমনকি কীবোর্ডের বাইরেও স্প্লিট-ট্যাপ ব্যবহার করতে পারবেন। এটি ব্যবহার করতে, এক আঙুল দিয়ে স্ক্রিন এক্সপ্লোর করুন, তারপর প্রথম আঙুলটি না সরিয়ে, বর্তমানে ফোকাস করা আইটেমটি অ্যাক্টিভেট করতে অন্য আঙুল দিয়ে স্ক্রিনে ট্যাপ করুন।</string>
   <string name="keyboard_enhanced_keymap_title">কীবোর্ড: উন্নত কী-ম্যাপ</string>
-  <string name="keyboard_enhanced_keymap_text">ফিজিক্যাল কীবোর্ডের জন্য টকব্যাকে এখন \"উন্নত কী-ম্যাপ\" রয়েছে যেখানে বিভিন্ন ধরনের নতুন কমান্ড ও শর্টকাট আছে। এই উন্নতিতে আরও দক্ষ ওয়েব নেভিগেশনের জন্য \"ব্রাউজ মোড\" অন্তর্ভুক্ত রয়েছে, যা ফিজিক্যাল কীবোর্ডের উপর নির্ভরশীল TalkBack ব্যবহারকারীদের জন্য নেভিগেশন ও ইন্টার‍্যাকশন স্ট্রিমলাইন করে। আপনি %1$s-এ \"উন্নত কী-ম্যাপ\" পরিবর্তন করতে পারবেন।\n\nআপনি ব্রেইল ডিসপ্লে ব্যবহার করলে, ব্রাউজ মোডের নতুন শর্টকাট ব্যবহার করে সরাসরি ব্রেইল ডিসপ্লে থেকে কন্টেন্টে নেভিগেট করতে পারবেন। এই পরিবর্তনের সাথে মানানসই করার জন্য কিছু ব্রেইল ডিসপ্লে শর্টকাট পরিবর্তন করা হয়েছে। আপনি %2$s-এ সব ব্রেইল ডিসপ্লে শর্টকাটের তালিকা দেখতে পাবেন।</string>
+  <string name="keyboard_enhanced_keymap_text">ফিজিক্যাল কীবোর্ডের জন্য টকব্যাকে এখন \"উন্নত কী-ম্যাপ\" রয়েছে যেখানে বিভিন্ন ধরনের নতুন কমান্ড ও শর্টকাট আছে। এই উন্নতিতে আরও দক্ষ ওয়েব নেভিগেশনের জন্য \"ব্রাউজ মোড\" অন্তর্ভুক্ত রয়েছে, যা ফিজিক্যাল কীবোর্ডের উপর নির্ভরশীল MS Screen Reader ব্যবহারকারীদের জন্য নেভিগেশন ও ইন্টার‍্যাকশন স্ট্রিমলাইন করে। আপনি %1$s-এ \"উন্নত কী-ম্যাপ\" পরিবর্তন করতে পারবেন।\n\nআপনি ব্রেইল ডিসপ্লে ব্যবহার করলে, ব্রাউজ মোডের নতুন শর্টকাট ব্যবহার করে সরাসরি ব্রেইল ডিসপ্লে থেকে কন্টেন্টে নেভিগেট করতে পারবেন। এই পরিবর্তনের সাথে মানানসই করার জন্য কিছু ব্রেইল ডিসপ্লে শর্টকাট পরিবর্তন করা হয়েছে। আপনি %2$s-এ সব ব্রেইল ডিসপ্লে শর্টকাটের তালিকা দেখতে পাবেন।</string>
   <string name="keyboard_shortcuts_link">টকব্যাক সেটিংস &gt; কীবোর্ড শর্টকাট</string>
   <string name="keyboard_shortcuts_link_tts">টকব্যাক সেটিংস, তারপরে কীবোর্ড শর্টকাট</string>
   <string name="braille_display_settings_link">ব্রেইল ডিসপ্লে সেটিংস</string>
@@ -1044,7 +1044,7 @@
   <string name="talkback_turn_off_description">টকব্যাক আপনার ডিভাইসে স্ক্রিনের কন্টেন্ট জোরে পড়ে। এছাড়াও, এই ফিচারটি আপনার ডিভাইসটিকে সম্পূর্ণ নতুন উপায়ে নেভিগেট করতে দেয়। এটি বন্ধ করতে, “টকব্যাক বন্ধ করুন” বোতামে ২ বার ট্যাপ করুন।</string>
   <string name="turn_off_talkback">টকব্যাক বন্ধ করুন</string>
   <string name="tap_again_to_turn_off">বন্ধ করতে আবার ট্যাপ করুন</string>
-  <string name="talkback_turn_off_description_pointer_and_touch">TalkBack আপনার ডিভাইসে স্ক্রিনের কন্টেন্ট জোরে পড়ে। এছাড়াও, এই ফিচারটি আপনার ডিভাইসটিকে সম্পূর্ণ নতুন উপায়ে নেভিগেট করতে দেয়। এটি বন্ধ করতে, \"টকব্যাক বন্ধ করুন\" বিকল্প বেছে নিন অথবা এটিতে ২ বার ট্যাপ করুন।</string>
+  <string name="talkback_turn_off_description_pointer_and_touch">MS Screen Reader আপনার ডিভাইসে স্ক্রিনের কন্টেন্ট জোরে পড়ে। এছাড়াও, এই ফিচারটি আপনার ডিভাইসটিকে সম্পূর্ণ নতুন উপায়ে নেভিগেট করতে দেয়। এটি বন্ধ করতে, \"টকব্যাক বন্ধ করুন\" বিকল্প বেছে নিন অথবা এটিতে ২ বার ট্যাপ করুন।</string>
   <string name="welcome_to_talkback_text">\'টকব্যাক\' ফিচার পড়ে শোনানোর সুবিধা দেয় যাতে ডিভাইসের স্ক্রিন না দেখেই আপনি ডিভাইস ব্যবহার করতে পারেন। যাদের স্ক্রিন দেখতে অসুবিধা হয় তাদের জন্য \'টকব্যাক\' ফিচার সহায়ক হতে পারে। \n\n\'ভলিউম\' কী ব্যবহার করে আপনি ঝটপট \'টকব্যাক\' ফিচার চালু বা বন্ধ করতে চাইলে, \'টকব্যাক সেটিংস &gt; টকব্যাক শর্টকাট\' বিকল্প থেকে শর্টকাট সেট-আপ করতে পারবেন।\n\n\'টকব্যাক\' ফিচার চালু করা থাকলে, স্ক্রিনের ফোকাস করা আইটেমটি জোরে পড়ে শোনানো হয়।\n\nডানদিকে সোয়াইপ করলে পরবর্তী আইটেমে যাবে এবং বাঁদিকে সোয়াইপ করলে আগের আইটেমে যাবে।\n\nএখনই ডানদিকে সোয়াইপ করে পরবর্তী বোতামটি খুঁজুন।</string>
   <string name="welcome_to_talkback_text_tts">\'টকব্যাক\' ফিচার পড়ে শোনানোর সুবিধা দেয় যাতে ডিভাইসের স্ক্রিন না দেখেই আপনি ডিভাইস ব্যবহার করতে পারেন। যাদের স্ক্রিন দেখতে অসুবিধা হয় তাদের জন্য \'টকব্যাক\' ফিচার সহায়ক হতে পারে। \n\n\'ভলিউম কী\' ব্যবহার করে আপনি ঝটপট \'টকব্যাক\' ফিচার চালু বা বন্ধ করতে চাইলে, \'টকব্যাক\' সেটিংস থেকে \'টকব্যাক\' শর্টকাট বিকল্পে গিয়ে শর্টকাট সেট-আপ করতে পারবেন।\n\n\'টকব্যাক\' ফিচার চালু করা থাকলে, স্ক্রিনের ফোকাস করা আইটেমটি জোরে পড়ে শোনানো হয়।\n\nডানদিকে সোয়াইপ করলে পরবর্তী আইটেমে যাবে এবং বাঁদিকে সোয়াইপ করলে আগের আইটেমে যাবে।\n\nএখনই ডানদিকে সোয়াইপ করে পরবর্তী বোতামটি খুঁজুন।</string>
   <string name="welcome_to_talkback_page_idle_announcement">এখনই ডানদিকে সোয়াইপ করে পরবর্তী বোতামটি খুঁজুন</string>
@@ -1381,7 +1381,7 @@
   <string name="delete_icon_description_hint">আইকনের অটোমেটিক বিবরণ মুছে ফেলা হয়েছে</string>
   <string name="delete_image_description_hint">ছবির অটোমেটিক বিবরণ মুছে ফেলা হয়েছে</string>
   <string name="delete_all_image_captioning_hint">ছবি ও আইকনের অটোমেটিক বিবরণ মুছে ফেলা হয়েছে</string>
-  <string name="gemini_enable_dialog_title">TalkBack-এ Gemini ব্যবহার করুন</string>
+  <string name="gemini_enable_dialog_title">MS Screen Reader-এ Gemini ব্যবহার করুন</string>
   <string name="gemini_disable_dialog_message">Gemini-এর মাধ্যমে স্ক্রিনে থাকা কন্টেন্ট বোঝা</string>
   <string name="disable_gemini_dialog_subtext">Gemini-এর মাধ্যমে স্ক্রিনে থাকা কন্টেন্ট বোঝার সুবিধা পেতে চালু করুন</string>
   <string name="ai_services_update_dialog_title">ছবি সম্পর্কে বিবরণ দিতে %1$s অ্যাপ আপডেট করুন</string>
@@ -1461,5 +1461,5 @@
   <string name="talkback_speech_bubble_label">@string/talkback_label</string>
   <string name="close_string">বন্ধ করুন</string>
   <string name="talkback_label">টকব্যাক</string>
-  <string name="notifictions_in_lock_screen_notification_content">স্ক্রিন বন্ধ থাকার সময় বিজ্ঞপ্তি শুনতে, TalkBack ভার্বোসিটি সেটিংসে \"স্ক্রিন বন্ধ থাকাকালীন বিজ্ঞপ্তি বলুন\" চালু করুন</string>
+  <string name="notifictions_in_lock_screen_notification_content">স্ক্রিন বন্ধ থাকার সময় বিজ্ঞপ্তি শুনতে, MS Screen Reader ভার্বোসিটি সেটিংসে \"স্ক্রিন বন্ধ থাকাকালীন বিজ্ঞপ্তি বলুন\" চালু করুন</string>
 </resources>

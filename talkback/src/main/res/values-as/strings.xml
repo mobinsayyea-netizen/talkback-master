@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="talkback_service_description">TalkBack অন হৈ থাকিলে ই কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। এইটো দৃষ্টিশক্তিহীন অথবা কম দৃষ্টিশক্তি থকা লোকৰ বাবে সহায়ক হ’ব পাৰে।\n\nTalkBack ব্যৱহাৰ কৰি নেভিগে’ট কৰিবলৈ:\n•  বস্তুবোৰৰ মাজত ইফাল সিফাল কৰিবলৈ সোঁফালে অথবা বাওঁফালে ছোৱাইপ কৰক\n•  কোনো বস্তু সক্ৰিয় কৰিবলৈ দুবাৰ টিপক\n•  স্ক্ৰ’ল কৰিবলৈ দুটা আঙুলিৰে টানি আনি এৰক\n\nTalkBack অফ কৰিবলৈ:\n•  ছুইচটোত টিপক। আপুনি এডাল সীমাৰেখা দেখা পাব। ছুইচটোত দুবাৰ টিপক।\n•  নিশ্চিতকৰণ বাৰ্তাটোত ঠিক আছেত টিপক। তাৰ পাছত ঠিক আছেত দুবাৰ টিপক।</string>
-  <string name="talkback_service_html_description">TalkBack অন হৈ থাকিলে ই কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। স্ক্ৰীনখন দেখা পোৱাত অসুবিধা হোৱা অৱস্থা অথবা লোকৰ বাবে Talkback প্ৰস্তুত কৰা হৈছে।&lt;br&gt;&lt;br&gt;&lt;b&gt;Talkback কেনেকৈ ব্যৱহাৰ কৰিব লাগে&lt;/b&gt;&lt;br&gt;• বস্তুবোৰৰ মাজত ইফাল সিফাল কৰিবলৈ বাওঁফালে অথবা সোঁফালে ছোৱাইপ কৰক&lt;br&gt;• কোনো বস্তু সক্ৰিয় কৰিবলৈ দুবাৰ টিপক&lt;br&gt;• স্ক্ৰ’ল কৰিবলৈ ২ টা আঙুলিৰে টানি আনি এৰক&lt;br&gt;&lt;b&gt;Talkback কেনেকৈ অফ কৰিব লাগে&lt;/b&gt;&lt;br&gt;১) ছেটিঙত, &lt;b&gt;TalkBack ব্যৱহাৰ কৰক&lt;/b&gt;ত টিপক। তাত এডাল সীমাৰেখা থাকিব। সেইডালত দুবাৰ টিপক।&lt;br&gt;২) নিশ্চিতকৰণ বাৰ্তাটোত, &lt;b&gt;বন্ধ কৰক&lt;/b&gt;ত টিপক। তাত এডাল সীমাৰেখা থাকিব। সেইডালত দুবাৰ টিপক।</string>
+  <string name="talkback_service_description">MS Screen Reader অন হৈ থাকিলে ই কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। এইটো দৃষ্টিশক্তিহীন অথবা কম দৃষ্টিশক্তি থকা লোকৰ বাবে সহায়ক হ’ব পাৰে।\n\nTalkBack ব্যৱহাৰ কৰি নেভিগে’ট কৰিবলৈ:\n•  বস্তুবোৰৰ মাজত ইফাল সিফাল কৰিবলৈ সোঁফালে অথবা বাওঁফালে ছোৱাইপ কৰক\n•  কোনো বস্তু সক্ৰিয় কৰিবলৈ দুবাৰ টিপক\n•  স্ক্ৰ’ল কৰিবলৈ দুটা আঙুলিৰে টানি আনি এৰক\n\nTalkBack অফ কৰিবলৈ:\n•  ছুইচটোত টিপক। আপুনি এডাল সীমাৰেখা দেখা পাব। ছুইচটোত দুবাৰ টিপক।\n•  নিশ্চিতকৰণ বাৰ্তাটোত ঠিক আছেত টিপক। তাৰ পাছত ঠিক আছেত দুবাৰ টিপক।</string>
+  <string name="talkback_service_html_description">MS Screen Reader অন হৈ থাকিলে ই কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। স্ক্ৰীনখন দেখা পোৱাত অসুবিধা হোৱা অৱস্থা অথবা লোকৰ বাবে MS Screen Reader প্ৰস্তুত কৰা হৈছে।&lt;br&gt;&lt;br&gt;&lt;b&gt;MS Screen Reader কেনেকৈ ব্যৱহাৰ কৰিব লাগে&lt;/b&gt;&lt;br&gt;• বস্তুবোৰৰ মাজত ইফাল সিফাল কৰিবলৈ বাওঁফালে অথবা সোঁফালে ছোৱাইপ কৰক&lt;br&gt;• কোনো বস্তু সক্ৰিয় কৰিবলৈ দুবাৰ টিপক&lt;br&gt;• স্ক্ৰ’ল কৰিবলৈ ২ টা আঙুলিৰে টানি আনি এৰক&lt;br&gt;&lt;b&gt;MS Screen Reader কেনেকৈ অফ কৰিব লাগে&lt;/b&gt;&lt;br&gt;১) ছেটিঙত, &lt;b&gt;MS Screen Reader ব্যৱহাৰ কৰক&lt;/b&gt;ত টিপক। তাত এডাল সীমাৰেখা থাকিব। সেইডালত দুবাৰ টিপক।&lt;br&gt;২) নিশ্চিতকৰণ বাৰ্তাটোত, &lt;b&gt;বন্ধ কৰক&lt;/b&gt;ত টিপক। তাত এডাল সীমাৰেখা থাকিব। সেইডালত দুবাৰ টিপক।</string>
   <string name="talkback_service_summary">বস্তুবোৰ ডাঙৰকৈ পঢ়ি দিয়াটো শুনিবলৈ এটা স্ক্ৰীন ৰীডাৰ ব্যৱহাৰ কৰক</string>
   <string name="talkback_preferences_title">TalkBackৰ ছেটিং</string>
   <string name="talkback_settings_screen_title_breadcrumb">ছেটিং</string>
@@ -95,7 +95,7 @@
   <string name="title_pref_category_advanced">উচ্চখাপৰ</string>
   <string name="title_pref_category_others">অন্য</string>
   <string name="title_pref_category_tutorial_and_help">টিউট’ৰিয়েল আৰু সহায়</string>
-  <string name="title_pref_category_reduce_latency_summary">এই ছেটিংসমূহে TalkBack ঘোষণাৰ পূৰ্বে বিলম্ব হ্ৰাস কৰিব পাৰে</string>
+  <string name="title_pref_category_reduce_latency_summary">এই ছেটিংসমূহে MS Screen Reader ঘোষণাৰ পূৰ্বে বিলম্ব হ্ৰাস কৰিব পাৰে</string>
   <string name="reset_latency_settings_title">বিলম্বতাৰ আটাইবোৰ ছেটিং ৰিছেট কৰক</string>
   <string name="title_pref_single_tap">সক্ৰিয় কৰিবলৈ এবাৰ টিপক</string>
   <string name="summary_pref_single_tap">সক্ৰিয় কৰিবৰ বাবে ফ’কাছত থকা এটা বস্তুত এবাৰ টিপক। দুবাৰ টিপাতকৈ দ্ৰুত নেভিগেশ্বন।</string>
@@ -109,18 +109,18 @@
   <string name="title_pref_category_selector_menu">পঢ়াৰ নিয়ন্ত্ৰণ কাষ্টমাইজ কৰক</string>
   <string name="title_pref_category_navigation_menu">নেভিগেশ্বনৰ বিকল্পসমূহ সম্পাদনা কৰক</string>
   <string name="pref_category_context_menu_summary">TalkBackৰ মেনুখন ব্যৱহাৰ কৰিবলৈ ৩ টা আঙুলিৰে স্ক্ৰীনখনত টিপক। আপুনি ওপৰলৈ ছোৱাইপ কৰি সোঁফালে অথবা তললৈ ছোৱাইপ কৰি সোঁফালে ছোৱাইপ কৰিবও পাৰে।</string>
-  <string name="pref_category_context_menu_summary_xr">TalkBack মেনুখন ব্যৱহাৰ কৰিবলৈ, আপোনাৰ গৌণ হাতৰ তলুৱা ভিতৰলৈ ঘূৰাই তাত পিঞ্চ কৰক।</string>
-  <string name="pref_category_context_menu_summary_single_finger">TalkBack মেনুখন ব্যৱহাৰ কৰিবলৈ তললৈ আৰু তাৰ পাছত সোঁফাললৈ ছোৱাইপ কৰক।</string>
+  <string name="pref_category_context_menu_summary_xr">MS Screen Reader মেনুখন ব্যৱহাৰ কৰিবলৈ, আপোনাৰ গৌণ হাতৰ তলুৱা ভিতৰলৈ ঘূৰাই তাত পিঞ্চ কৰক।</string>
+  <string name="pref_category_context_menu_summary_single_finger">MS Screen Reader মেনুখন ব্যৱহাৰ কৰিবলৈ তললৈ আৰু তাৰ পাছত সোঁফাললৈ ছোৱাইপ কৰক।</string>
   <string name="pref_category_selector_menu_summary">পঢ়াৰ নিয়ন্ত্ৰণ ব্যৱহাৰ কৰিবলৈ, ৩ টা আঙুলিৰে বাওঁফালে অথবা সোঁফালে ছোৱাইপ কৰক। আপুনি ৩ টা আঙুলিৰে ওপৰলৈ অথবা তললৈ ছোৱাইপ কৰিবও পাৰে।</string>
   <string name="pref_category_selector_menu_summary_xr">পঢ়াৰ নিয়ন্ত্ৰণৰ মাজত সলনি কৰিবলৈ, আপোনাৰ গৌণ হাতৰ তলুৱা ভিতৰলৈ ঘূৰাওক, তাত পিঞ্চ কৰি ধৰি ৰাখক, সোঁ বা বাওঁফালে লৰচৰ কৰি মুকলি কৰি দিয়ক।</string>
   <string name="pref_category_selector_menu_summary_single_finger">পঢ়াৰ নিয়ন্ত্ৰণ ব্যৱহাৰ কৰিবলৈ ওপৰলৈ আৰু তাৰ পাছত তললৈ ছোৱাইপ কৰক।</string>
   <string name="title_pref_manage_keyboard_shortcuts">কীব\'ৰ্ডৰ শ্বৰ্টকাটসমূহ</string>
   <string name="title_pref_export_custom_labels">উপযোগিতা অনুসৰি বনোৱা লেবেল ৰপ্তানি কৰক</string>
-  <string name="title_pref_play_store">Play Storeত TalkBack খোলক</string>
+  <string name="title_pref_play_store">Play Storeত MS Screen Reader খোলক</string>
   <string name="summary_pref_play_store">বর্তমানৰ TalkBackৰ সংস্কৰণ: %1$s</string>
   <string name="title_pref_help_and_feedback">সহায় আৰু প্ৰতিক্ৰিয়া</string>
   <string name="title_pref_gup">বিশেষভাৱে সক্ষম লোকৰ বাবে Googleৰ সহায় দলৰ সৈতে যোগাযোগ কৰক</string>
-  <string name="subtitle_pref_gup">TalkBack ব্যৱহাৰ কৰি সহায় লাভ কৰক বা সমস্যাসমূহৰ অভিযোগ দিয়ক</string>
+  <string name="subtitle_pref_gup">MS Screen Reader ব্যৱহাৰ কৰি সহায় লাভ কৰক বা সমস্যাসমূহৰ অভিযোগ দিয়ক</string>
   <string name="pref_item_licenses">মুক্ত উত্‍সৰ অনুজ্ঞাপত্ৰসমূহ</string>
   <string name="title_pref_tutorial">টিউট’ৰিয়েল</string>
   <string name="title_pref_help">সহায়</string>
@@ -131,10 +131,10 @@
   <string name="title_pref_category_help_no_tutorial">সহায়</string>
   <string name="title_pref_category_typing">টাইপ কৰি আছে</string>
   <string name="title_pref_advanced_settings">উচ্চখাপৰ ছেটিং</string>
-  <string name="title_pref_show_exit_watermark">TalkBack অফ কৰাৰ নিৰ্দেশনা দেখুৱাওক</string>
-  <string name="summary_pref_show_exit_watermark">TalkBack অন কৰা হ’লে এটা বাৰ্তাই সেইটো দেখুৱায়, যাতে আপোনাক সেইটো ক্ষিপ্ৰতাৰে অফ কৰাত সহায় কৰিব পাৰি</string>
-  <string name="talkback_exit_watermark_text">TalkBack অন হৈ আছে। অফ কৰিবলৈ স্ক্ৰীনত ২ টা আঙুলিৰে ৫ ছেকেণ্ডৰ বাবে হেঁচি ৰাখক। এই বাৰ্তাটো দেখুওৱা বন্ধ কৰিবলৈ, TalkBackৰ মেনুখন খুলিবলৈ ৩ টা আঙুলিৰে টিপক।</string>
-  <string name="talkback_exit_watermark_hint_text">TalkBack অন থকাটো সূচাই বেনাৰ প্ৰদৰ্শন কৰি থকা হৈছে। TalkBack অফ কৰিবলৈ, ২ টা আঙুলিৰে স্ক্ৰীনখনত ৫ ছেকেণ্ড ধৰি ৰাখক। এই বেনাৰখন আঁতৰাবলৈ, TalkBackৰ ছেটিঙলৈ যাওক।</string>
+  <string name="title_pref_show_exit_watermark">MS Screen Reader অফ কৰাৰ নিৰ্দেশনা দেখুৱাওক</string>
+  <string name="summary_pref_show_exit_watermark">MS Screen Reader অন কৰা হ’লে এটা বাৰ্তাই সেইটো দেখুৱায়, যাতে আপোনাক সেইটো ক্ষিপ্ৰতাৰে অফ কৰাত সহায় কৰিব পাৰি</string>
+  <string name="talkback_exit_watermark_text">MS Screen Reader অন হৈ আছে। অফ কৰিবলৈ স্ক্ৰীনত ২ টা আঙুলিৰে ৫ ছেকেণ্ডৰ বাবে হেঁচি ৰাখক। এই বাৰ্তাটো দেখুওৱা বন্ধ কৰিবলৈ, TalkBackৰ মেনুখন খুলিবলৈ ৩ টা আঙুলিৰে টিপক।</string>
+  <string name="talkback_exit_watermark_hint_text">MS Screen Reader অন থকাটো সূচাই বেনাৰ প্ৰদৰ্শন কৰি থকা হৈছে। MS Screen Reader অফ কৰিবলৈ, ২ টা আঙুলিৰে স্ক্ৰীনখনত ৫ ছেকেণ্ড ধৰি ৰাখক। এই বেনাৰখন আঁতৰাবলৈ, TalkBackৰ ছেটিঙলৈ যাওক।</string>
   <string name="reset_gesture_settings_title">নিৰ্দেশৰ ছেটিং ৰিছেট কৰক</string>
   <string name="one_finger_gestures_title">১ টা আঙুলি</string>
   <string name="one_finger_back_forth_gestures_title">১ টা আঙুলি আগলৈ আৰু পিছলৈ কৰি কৰা নিৰ্দেশ</string>
@@ -150,7 +150,7 @@
   <string name="pref_verbosity_preset_change">%1$s শব্দৰ বাহুল্যতা সক্ৰিয় হৈ আছে</string>
   <string name="pref_gesture_set_entry_0">০</string>
   <string name="pref_gesture_set_entry_1">১</string>
-  <string name="keycombo_keymap_changes_instruction_title">আপোনাৰ TalkBack কীমেপ আপডে’ট কৰক</string>
+  <string name="keycombo_keymap_changes_instruction_title">আপোনাৰ MS Screen Reader কীমেপ আপডে’ট কৰক</string>
   <string name="keycombo_keymap_changes_activity_content">কীব’ৰ্ড শ্বৰ্টকাটসমূহ ব্যৱহাৰ কৰি থাকিবলৈ, ছেটিঙলৈ যাওক আৰু ক্লাছিক কীমেপৰ পৰা ডিফ’ল্ট কীমেপলৈ সলনি কৰক।
       &lt;br&gt;&lt;br&gt;&lt;b&gt;ডিফ’ল্ট কীমেপৰ ক্ষেত্ৰত কি বেলেগ?&lt;/b&gt;
       &lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;ইয়াত অধিক নেভিগেশ্বন আৰু ৱেব নেভিগেশ্বনৰ কার্য আছে।&lt;/li&gt;
@@ -163,7 +163,7 @@
   <string name="keycombo_new_keymap_notification_dialog_negative_button">ছেটিং</string>
   <string name="keycombo_new_keymap_notification_dialog_neutral_button">অধিক জানক</string>
   <string name="keycombo_new_keymap_notification_dialog_title_for_classic_keymap">ক্লাছিক কীমেপ আৰু সমৰ্থিত নহয়</string>
-  <string name="keycombo_new_keymap_notification_dialog_message_for_classic_keymap">আপুনি এতিয়া TalkBack ডিফ’ল্ট কীমেপ ব্যৱহাৰ কৰি আছে। ইয়াৰ উপৰিও এটা নতুন অধিক উন্নত কীমেপ আছে য’ত বহুতো নতুন কামাণ্ড আছে। সহায় কেন্দ্ৰত অধিক জানক বা ছেটিঙত নতুন কীমেপলৈ সলনি কৰক।</string>
+  <string name="keycombo_new_keymap_notification_dialog_message_for_classic_keymap">আপুনি এতিয়া MS Screen Reader ডিফ’ল্ট কীমেপ ব্যৱহাৰ কৰি আছে। ইয়াৰ উপৰিও এটা নতুন অধিক উন্নত কীমেপ আছে য’ত বহুতো নতুন কামাণ্ড আছে। সহায় কেন্দ্ৰত অধিক জানক বা ছেটিঙত নতুন কীমেপলৈ সলনি কৰক।</string>
   <string name="keycombo_new_keymap_notification_dialog_title_for_default_keymap">নতুন কীমেপ উপলব্ধ</string>
   <string name="keycombo_new_keymap_notification_dialog_message_for_default_keymap">TalkBackৰ নতুন অধিক উন্নত কীমেপে বহুতো নতুন কামাণ্ড যোগ দিয়ে। সহায় কেন্দ্ৰত অধিক জানক বা ছেটিঙত নতুন কীমেপলৈ সলনি কৰক।</string>
   <string name="keycombo_update_modifier_key_warning_title">আপোনাৰ TalkBackৰ সংশোধক কী আপডে’ট কৰক</string>
@@ -341,7 +341,7 @@
   <string name="pref_node_desc_order_title">উপাদানৰ বিৱৰণীৰ ক্ৰম</string>
   <string name="pref_time_feedback_format_title">সময়ৰ ফৰ্মেট</string>
   <string name="title_pref_latency_reduction">বিলম্বতা হ্ৰাস কৰক</string>
-  <string name="talkback_latency_reduction_summary">TalkBack ঘোষণাৰ পূৰ্বে বিলম্ব হ্ৰাস কৰাৰ ছেটিংসমূহ</string>
+  <string name="talkback_latency_reduction_summary">MS Screen Reader ঘোষণাৰ পূৰ্বে বিলম্ব হ্ৰাস কৰাৰ ছেটিংসমূহ</string>
   <string name="summary_pref_intonation">মচা বৰ্ণসমূহ অধিক উচ্চ ভইচত কওক</string>
   <string name="title_pref_brailledisplay">ব্ৰেইল ডিছপ্লে’</string>
   <string name="title_pref_brailleime">ব্ৰেইল কীব\'র্ড</string>
@@ -367,14 +367,14 @@
   <string name="title_pref_typing_confirmation">টাইপিঙৰ অগ্ৰাধিকাৰ</string>
   <string name="title_pref_typing_long_tap_duration">টাইপ কৰোঁতে দেৰিলৈকে স্পৰ্শ কৰি ধৰি ৰাখক</string>
   <string name="title_pref_touch_explore_timeout">টাইপিং ফ’কাছ বিলম্ব</string>
-  <string name="message_pref_touch_explore_latency">চুটি টাইপিং ফ’কাছ বিলম্বৰ অৰ্থ হৈছে কীব’ৰ্ডখন স্পৰ্শ কৰাৰ পাছত TalkBack ঘোষণা দ্ৰুত কৰা।\n\nএটা বিলম্ব বাছনি কৰক</string>
+  <string name="message_pref_touch_explore_latency">চুটি টাইপিং ফ’কাছ বিলম্বৰ অৰ্থ হৈছে কীব’ৰ্ডখন স্পৰ্শ কৰাৰ পাছত MS Screen Reader ঘোষণা দ্ৰুত কৰা।\n\nএটা বিলম্ব বাছনি কৰক</string>
   <string name="title_pref_touch_focus_timeout">ফ’কাছ বিলম্ব</string>
   <string name="summary_pref_touch_focus_time">
-ফ’কাছ স্থানান্তৰ কৰাৰ পাছত TalkBackএ কিমান দ্ৰুততাৰে কথা কয় সেইটো নিয়ন্ত্ৰণ কৰে। এটা চুটি বিলম্বৰ ফলত TalkBack দ্ৰুত যেন অনুভৱ হয়, কিন্তু ই দুবাৰ আৰু তিনিবাৰ টিপাটো কঠিন কৰি তুলিব পাৰে।\n\n
+ফ’কাছ স্থানান্তৰ কৰাৰ পাছত TalkBackএ কিমান দ্ৰুততাৰে কথা কয় সেইটো নিয়ন্ত্ৰণ কৰে। এটা চুটি বিলম্বৰ ফলত MS Screen Reader দ্ৰুত যেন অনুভৱ হয়, কিন্তু ই দুবাৰ আৰু তিনিবাৰ টিপাটো কঠিন কৰি তুলিব পাৰে।\n\n
 ০.৩ ছেকেণ্ডতকৈ কম বিলম্বই সক্ৰিয় কৰিবলৈ দুবাৰ টিপাটোক সক্ৰিয় কৰিবলৈ দুটা আঙুলিৰে টিপালৈ সলনি কৰিব।
       </string>
   <string name="title_pref_talkback_gesture_detection">TalkBackত নিৰ্দেশনাসমূহ নিয়ন্ত্ৰণ কৰক</string>
-  <string name="toast_pref_talkback_gesture_detection">ছেটিংটো সক্ৰিয় কৰিবলৈ প্ৰথমে TalkBack অফ কৰক আৰু তাৰ পাছত অন কৰক।</string>
+  <string name="toast_pref_talkback_gesture_detection">ছেটিংটো সক্ৰিয় কৰিবলৈ প্ৰথমে MS Screen Reader অফ কৰক আৰু তাৰ পাছত অন কৰক।</string>
   <string name="title_pref_auto_image_captioning">স্বয়ংক্ৰিয় বিৱৰণ</string>
   <string name="title_pref_gemini_settings">Geminiৰ ছেটিং</string>
   <string name="title_pref_gemini_enabled">Geminiক কণ্ঠস্বৰৰ জৰিয়তে দিয়া নিৰ্দেশ</string>
@@ -385,7 +385,7 @@
   <string name="dialog_title_turn_on_image_description">ছেটিঙত প্ৰতিচ্ছবিৰ বিৱৰণ অন কৰক</string>
   <string name="dialog_message_turn_on_image_description">আপুনি স্বয়ংক্ৰিয় বা প্ৰতিচ্ছবিৰ সবিশেষ বিৱৰণসমূহ যিকোনো এটা অন কৰি পুনৰ চেষ্টা কৰিব পাৰে</string>
   <string name="title_pref_detailed_image_description">সবিশেষপূৰ্ণ প্ৰতিচ্ছবিৰ বিৱৰণ</string>
-  <string name="summary_pref_ai_description">আপুনি TalkBack মেনুৰ পৰা \"%1$s\" বাছনি কৰিলে দীঘলীয়া বিৱৰণ শুনিবলৈ পাব</string>
+  <string name="summary_pref_ai_description">আপুনি MS Screen Reader মেনুৰ পৰা \"%1$s\" বাছনি কৰিলে দীঘলীয়া বিৱৰণ শুনিবলৈ পাব</string>
   <string name="dialog_message_detailed_ai_description">এই সুবিধাটো ব্যৱহাৰ কৰাৰ সময়ত বাছনি কৰা প্ৰতিচ্ছবিসমূহ প্ৰক্ৰিয়াকৰণৰ বাবে Googleলৈ পঠিওৱা হ’ব আৰু তাৰ পাছত সেয়া মচি পেলোৱা হ’ব।\n\nGenerative AI হৈছে পৰীক্ষামূলক, সেয়ে ই ভুল কৰিব। অব্যাহত ৰাখি, আপুনি %1$sত সন্মতি দিয়ে।</string>
   <string name="dialog_message_on_device_ai_description">আপুনি সমৰ্থিত এপ্‌সমূহত কোনো প্ৰতিচ্ছবিত ফ’কাছ কৰিলে এটা চমু বিৱৰণ শুনিব।\n\nপ্ৰতিচ্ছবিবোৰ আপোনাৰ ডিভাইচত প্ৰক্ৰিয়াকৰণ কৰা হয় আৰু সেয়া কেতিয়াও Googleলৈ পঠিওৱা নহয়। \n\nGenerative AI হৈছে পৰীক্ষামূলক, সেয়ে ই ভুল কৰিব পাৰে। অব্যাহত ৰাখি আপুনি <a href="https://policies.google.com/terms/generative-ai">Googleৰ সেৱাৰ চৰ্তাৱলী</a>ত সন্মতি দিয়ে।</string>
   <string name="enable_gemini">অন কৰক</string>
@@ -577,7 +577,7 @@
   <string name="summary_spell_last_spoken_phrase">TalkBackএ কোৱা অন্তিম বাক্যাংশৰ প্ৰতিটো বৰ্ণ এটা এটাকৈ কওক</string>
   <string name="summary_repeat_last_spoken_phrase">TalkBackএ কোৱা অন্তিম বাক্যাংশ পুনৰ শুনক</string>
   <string name="summary_perform_screen_search">স্ক্ৰীনখনত সেই পাঠটো বিচাৰিবলৈ সন্ধান কৰা বস্তুটো দিয়ক</string>
-  <string name="summary_voice_commands">আপোনাৰ কণ্ঠস্বৰৰ জৰিয়তে TalkBack নিয়ন্ত্ৰণ কৰক</string>
+  <string name="summary_voice_commands">আপোনাৰ কণ্ঠস্বৰৰ জৰিয়তে MS Screen Reader নিয়ন্ত্ৰণ কৰক</string>
   <string name="summary_show_hide_screen">ৰাজহুৱা স্থানত আপোনাৰ স্ক্ৰীনখন অন্য লোকে দেখা নাপাবলৈ ডিছপ্লে’ লুকুৱাওক। আপোনাৰ স্ক্ৰীনখন লুকুওৱাৰ পাছত ইয়াক সাধাৰণ অৱস্থালৈ আনক।</string>
   <string name="summary_control_speak_time">আপুনি স্ক্ৰীনখন অন কৰাৰ সময়ত সময়টো ডাঙৰকৈ কোৱা হয় নে নহয় সেইটো সলনি কৰক</string>
   <string name="summary_show_keyboard_shortcuts_preferences">কীব’ৰ্ডৰ শ্বৰ্টকাটৰ সূচী খোলক</string>
@@ -639,7 +639,7 @@
   <string name="summary_image_caption">এখন বাছনি কৰা প্ৰতিচ্ছবিৰ ভিতৰত থকা পাঠ আৰু চিহ্নসমূহ কওক</string>
   <string name="summary_summarize_view">ভিউৰ সাৰাংশ কওক</string>
   <string name="summary_typo_suggestions">কাৰ্ছৰডাল টাইপ কৰাৰ সময়ত হোৱা ভুল শব্দ এটাত থাকিলে দেখুৱায়</string>
-  <string name="summary_cache_keyboard_keys">আপুনি লিখাৰ সময়ত পলম হোৱাটো হ্ৰাস কৰিবলৈ TalkBack সুবিধাই ঘোষণাসমূহ আগৰেপৰা ল’ড কৰে</string>
+  <string name="summary_cache_keyboard_keys">আপুনি লিখাৰ সময়ত পলম হোৱাটো হ্ৰাস কৰিবলৈ MS Screen Reader সুবিধাই ঘোষণাসমূহ আগৰেপৰা ল’ড কৰে</string>
   <string name="summary_cache_keyboard_keys_disabled">এই সুবিধাটো ব্যৱহাৰ কৰিবলৈ Googleৰ পাঠৰ পৰা কথন ব্যৱহাৰ কৰক</string>
   <string name="value_direction_down">তললৈ ছোৱাইপ কৰক</string>
   <string name="value_direction_down_and_right">প্ৰথমে তললৈ তাৰ পাছত সোঁফালে ছোৱাইপ কৰক</string>
@@ -771,7 +771,7 @@
   <string name="talkback_gesture_change_details">TalkBackৰ এইটো সংস্কৰণত ডিফ\'ল্ট সাধ্য সুবিধাসমূহত কৰা সলনিসমূহ অন্তৰ্ভুক্ত আছে। এই আঙুলিৰ স্পৰ্শৰে নিৰ্দেশসমূহৰ সৈতে জড়িত কার্যসমূহক TalkBackৰ ছেটিঙত নিজৰ উপযোগিতা অনুসৰি কৰিব পাৰি। যেতিয়া স্পৰ্শৰ দ্বাৰা অন্বেষণ কৰা সুবিধা সক্ষম কৰা হয় তেতিয়া আপুনি কিছুমান কাম কৰিবলৈ তলত উল্লেখ কৰা সুবিধাসমূহ ব্যৱহাৰ কৰিব পাৰিব।\n\n%1$s</string>
   <string name="dialog_title_dim_screen">স্ক্ৰীনখন লুকুৱাব নেকি?</string>
   <string name="dialog_message_dim_screen">গোপনীয়তা উন্নত কৰিবলৈ এইটোৱে ডিছপ্লে’ অফ কৰে। কিছুমান সমল তথাপি দেখুওৱা হ’ব পাৰে, যেনে- ডিছপ্লে’খন পুনৰ অন কৰিবলৈ দিয়া বাৰ্তা বা TalkBackৰ দৰে দিব্যাংগসকলৰ বাবে থকা সুবিধাসমূহৰ মেনু।</string>
-  <string name="talkback_built_in_gesture_change_details">এই সংস্কৰণৰ TalkBackত ডিফ’ল্ট সাধ্য সুবিধাৰ নিৰ্দেশসমূহত কৰা সালসলনিসমূহ অন্তৰ্ভুক্ত হয়।\n\nপ্ৰথমে ওপৰলৈ আৰু তাৰ পাছত তললৈ কৰা নিৰ্দেশে আপোনাক স্ক্ৰীনৰ প্ৰথম বস্তুলৈ আৰু তাৰ পাছত প্ৰথমে তললৈ আৰু পাছত ওপৰলৈ কৰা নিৰ্দেশে শেষৰ বস্তুলৈ যাবলৈ দিয়ে।\n\nকোনো বস্তুত ফ’কাছ কৰি তাৰ পাছত TalkBackৰ প্ৰসংগ মেনুৰ পৰা বিবৰণীৰ স্তৰ বাছনি কৰি পঢ়াৰ বিবৰণীৰ স্তৰ সলনি কৰিব পাৰি।\n\nআপুনি TalkBack ছেটিঙত এই নিৰ্দেশসমূহে কৰা কাৰ্যসমূহ সলনি কৰিব পাৰে।</string>
+  <string name="talkback_built_in_gesture_change_details">এই সংস্কৰণৰ TalkBackত ডিফ’ল্ট সাধ্য সুবিধাৰ নিৰ্দেশসমূহত কৰা সালসলনিসমূহ অন্তৰ্ভুক্ত হয়।\n\nপ্ৰথমে ওপৰলৈ আৰু তাৰ পাছত তললৈ কৰা নিৰ্দেশে আপোনাক স্ক্ৰীনৰ প্ৰথম বস্তুলৈ আৰু তাৰ পাছত প্ৰথমে তললৈ আৰু পাছত ওপৰলৈ কৰা নিৰ্দেশে শেষৰ বস্তুলৈ যাবলৈ দিয়ে।\n\nকোনো বস্তুত ফ’কাছ কৰি তাৰ পাছত TalkBackৰ প্ৰসংগ মেনুৰ পৰা বিবৰণীৰ স্তৰ বাছনি কৰি পঢ়াৰ বিবৰণীৰ স্তৰ সলনি কৰিব পাৰি।\n\nআপুনি MS Screen Reader ছেটিঙত এই নিৰ্দেশসমূহে কৰা কাৰ্যসমূহ সলনি কৰিব পাৰে।</string>
   <string name="default_action_changed_details">মিডিয়া পজ আৰু প্লে’ কৰিবলৈ, আপুনি এতিয়া দুটা আঙুলিৰে দুবাৰ টিপি হেঁচি ধৰি ৰাখিব পাৰে।\n\nআঙুলিৰ স্পৰ্শেৰে কৰা আন নিৰ্দেশসমূহো সলনি হৈছে।</string>
   <string name="talkback_built_in_gesture_open_url">অধিক জানিবলৈ ফ’নত খোলক</string>
   <string name="talkback_built_in_gesture_change_details_45">TalkBackৰ এই সংস্কৰণত দিব্যাংগসকলে ব্যৱহাৰ কৰিব পৰাকৈ আঙুলিৰ স্পৰ্শৰে নিৰ্দেশ কৰিব পৰা ডিফ\'ল্ট ব্যৱস্থালৈ পৰিৱৰ্তন কৰিব পৰা সুবিধা আছে। \n\n আঙুলিৰে ওপৰলৈ নিৰ্দেশ কৰিলে পূ্বৰ্ৱৰ্তী নেভিগেশ্বন ছেটিং আৰু আঙুলিৰে তললৈ নিৰ্দেশ কৰিলে পৰৱৰ্তী নেভিগেশ্বন ছেটিঙলৈ লৈ যায়।</string>
@@ -851,7 +851,7 @@
   <string name="title_pref_a11y_volume">সাধ্য সুবিধাৰ ভলিউম</string>
   <string name="title_pref_touch_explore_latency">টাইপিং ফ’কাছ বিলম্ব</string>
   <string name="title_pref_touch_focus_latency">ফ’কাছ বিলম্ব</string>
-  <string name="message_pref_touch_focus_latency">চুটি ফ’কাছ বিলম্বৰ অৰ্থ হৈছে স্ক্ৰীনখন স্পৰ্শ কৰাৰ পাছত TalkBack ঘোষণা দ্ৰুত কৰা</string>
+  <string name="message_pref_touch_focus_latency">চুটি ফ’কাছ বিলম্বৰ অৰ্থ হৈছে স্ক্ৰীনখন স্পৰ্শ কৰাৰ পাছত MS Screen Reader ঘোষণা দ্ৰুত কৰা</string>
   <string name="message_pref_typing_method_prefix">টাইপ কৰোঁতে আটাইতকৈ কম বিলম্ব হ’বলৈ, \"কোনো কী বাছনি কৰাৰ বাবে আঙুলিৰে ধৰি ৰাখক, তাৰ পাছত এৰি দিয়ক\"</string>
   <string name="message_pref_typing_method_postfix">আপুনি যিকোনো সময়তে টাইপ কৰিবলৈ ক্ষিপ্ৰ টাইপিং সুবিধাও ব্যৱহাৰ কৰিব পাৰে। এয়া কৰিবলৈ, কোনো কী বাছনি কৰাৰ বাবে এটা আঙুলিৰে ধৰি ৰাখক আৰু স্ক্ৰীনত টিপিবলৈ অন্য এটা আঙুলি ব্যৱহাৰ কৰক।</string>
   <string name="title_pref_talkback_speech_rate">TalkBackৰ কথনৰ হাৰ</string>
@@ -883,7 +883,7 @@
   <string name="dialog_title_continuous_reading_mode">একেৰাহে পঢ়িব পৰা ম\'ডে কেনেকৈ কাম কৰে</string>
   <string name="dialog_message_continuous_reading_mode">\"একেবাৰে ওপৰৰ পৰা পঢ়ক\" অথবা \"ফ’কাছ কৰা বস্তুটোৰ পৰা পঢ়ক\" বাছনি কৰাৰ পাছত, পাঠখিনি পঢ়ি থকা অৱস্থাতো আপুনি পূৰ্বৱৰ্তী অথবা পৰৱৰ্তী বস্তুটোলৈ নেভিগে’ট কৰিব পাৰে। এইটোৱে আপোনাক উভতি যাবলৈ অথবা এৰি সহজে আগবাঢ়িবলৈ দিয়ে।\n\nTalkBackএ কথা কৈ থকাৰ সময়ত ভলিউম মিলাবলৈ ভলিউম বঢ়োৱা অথবা কমোৱা কীটো টিপক।</string>
   <string name="always_show_this_message_label">এই বাৰ্তাটো সদায় দেখুৱাওক</string>
-  <string name="dialog_title_voice_commands">TalkBack নিয়ন্ত্ৰণ কৰিবলৈ কণ্ঠস্বৰৰ নিৰ্দেশ ব্যৱহাৰ কৰক</string>
+  <string name="dialog_title_voice_commands">MS Screen Reader নিয়ন্ত্ৰণ কৰিবলৈ কণ্ঠস্বৰৰ নিৰ্দেশ ব্যৱহাৰ কৰক</string>
   <string name="dialog_message_voice_commands">আপুনি এয়া কৈ চাব পাৰে:\n\n• প্ৰতিলিপি কৰক\n• ফ’কাছ কৰা বস্তুটোৰ পৰা পঢ়ক\n• [ছেভ] বিচাৰক\n• [ক্ষিপ্ৰতাৰে] কওক\n• TalkBackৰ ছেটিং\n\nআটাইবোৰ কণ্ঠস্বৰৰ নিৰ্দেশৰ এখন সূচী পাবলৈ \"%1$s\" বুলি কওক</string>
   <string name="start_voice_command">কণ্ঠস্বৰৰ নিৰ্দেশ ব্যৱহাৰ কৰক</string>
   <string name="dialog_title_pass_through_mode">ছিষ্টেমৰ নিৰ্দেশসমূহ ব্যৱহাৰ কৰিবলৈ TalkBackৰ নিৰ্দেশসমূহ এৰি যাওক</string>
@@ -940,11 +940,11 @@
   <string name="training_navigate_up">ওপৰলৈ যাওক</string>
   <string name="training_tip">কিটিপ</string>
   <string name="tv_training_overview_step_title">TalkBackএ কেনেকৈ কাম কৰে</string>
-  <string name="tv_training_overview_step_summary">TalkBack হৈছে Googleৰ স্ক্ৰীন ৰীডাৰ। ই স্ক্ৰীনত থকা পাঠটো ডাঙৰকৈ পঢ়ে আৰু আপোনাক কথিত মতামত দিয়ে, যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈয়ে আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে।\n\nTalkBack অন থাকিলে, স্ক্ৰীনখনত বাছনি কৰা এটা বস্তু ডাঙৰকৈ পঢ়ি দিয়া হয়, কেতিয়াবা অতিৰিক্ত তথ্য অথবা প্ৰসংগ যোগ কৰি পঢ়ি দিয়া হয়।\n\nঅব্যাহত ৰাখিবলৈ, বাছনি কৰক টিপক। বাছনি কৰক বুটামটো দিশ সূচোৱা পেডখনৰ সোঁমাজত থাকে, যিটো হৈছে আপোনাৰ ৰিম’টৰ একেবাৰে ওপৰত থকা ডাঙৰ, ঘূৰণীয়া বুটাম।</string>
+  <string name="tv_training_overview_step_summary">MS Screen Reader হৈছে Googleৰ স্ক্ৰীন ৰীডাৰ। ই স্ক্ৰীনত থকা পাঠটো ডাঙৰকৈ পঢ়ে আৰু আপোনাক কথিত মতামত দিয়ে, যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈয়ে আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে।\n\nTalkBack অন থাকিলে, স্ক্ৰীনখনত বাছনি কৰা এটা বস্তু ডাঙৰকৈ পঢ়ি দিয়া হয়, কেতিয়াবা অতিৰিক্ত তথ্য অথবা প্ৰসংগ যোগ কৰি পঢ়ি দিয়া হয়।\n\nঅব্যাহত ৰাখিবলৈ, বাছনি কৰক টিপক। বাছনি কৰক বুটামটো দিশ সূচোৱা পেডখনৰ সোঁমাজত থাকে, যিটো হৈছে আপোনাৰ ৰিম’টৰ একেবাৰে ওপৰত থকা ডাঙৰ, ঘূৰণীয়া বুটাম।</string>
   <string name="tv_training_remote_step_title">আপোনাৰ ৰিম’টটো ব্যৱহাৰ কৰি</string>
   <string name="tv_training_remote_step_summary">আপোনাৰ ৰিম’টটোৰ একেবাৰে ওপৰৰ অংশত থকা বৃত্ত আকৃতিৰ দিশ সূচোৱা বুটামটো ব্যৱহাৰ কৰি স্ক্ৰীনত ইফাল-সিফাল কৰক। বাছনি কৰিবলৈ, আপোনাৰ ৰিম’টটোৰ একেবাৰে ওপৰৰ অংশত থকা দিশ সূচোৱা বুটামটোৰ মাজভাগত টিপক।\n\nবাঁওফালৰ দ্বিতীয় শাৰীটোত উভতি যাওক বুটামটো আছে। সোঁফালে Voice Assistant বুটামটো আছে।\n\nবাঁওফালে তৃতীয় শাৰীটোত, গৃহপৃষ্ঠা বুটামটো আছে। সোঁফালে মিউট কৰক বুটামটো আছে।\n\nবাঁওফালৰ চতুৰ্থ শাৰীটোত YouTubeৰ শ্বৰ্টকাটটো আছে। সোঁফালে Netflixৰ শ্বৰ্টকাটটো আছে।\n\nএকেবাৰে তলৰ শাৰীটোত দুটা সৰু বুটাম আছে। বাঁওফালে থকা বুটামটো হৈছে পাৱাৰ বুটাম। সোঁফালৰটোৱে আপোনাৰ টিভিৰ ইনপুট মেনুখন খুলিব।\n\nভলিউমৰ বুটামকেইটা ৰিম’টটোৰ সোঁফালে আছে।\n\nঅব্যাহত ৰাখিবলৈ বাছনি কৰকত টিপক।</string>
   <string name="tv_training_shortcut_step_title">TalkBackৰ শ্বৰ্টকাট</string>
-  <string name="tv_training_shortcut_step_summary">TalkBackৰ শ্বৰ্টকাট এক্সেছ কৰিবলৈ, তলমুৱা আৰু উভতি যোৱাৰ বুটাম দুটা একে সময়তে ৩ ছেকেণ্ড টিপি ধৰি ৰাখক। এইটোৱে TalkBack হয় অন অথবা অফ কৰিব।\n\nআপুনি আপোনাৰ টিভিৰ ছেটিঙৰ ভিতৰতো এই শ্বৰ্টকাটটো এক্সেছ কৰিব পাৰে।\n\nঅব্যাহত ৰাখিবলৈ বাছনি কৰকত টিপক।</string>
+  <string name="tv_training_shortcut_step_summary">TalkBackৰ শ্বৰ্টকাট এক্সেছ কৰিবলৈ, তলমুৱা আৰু উভতি যোৱাৰ বুটাম দুটা একে সময়তে ৩ ছেকেণ্ড টিপি ধৰি ৰাখক। এইটোৱে MS Screen Reader হয় অন অথবা অফ কৰিব।\n\nআপুনি আপোনাৰ টিভিৰ ছেটিঙৰ ভিতৰতো এই শ্বৰ্টকাটটো এক্সেছ কৰিব পাৰে।\n\nঅব্যাহত ৰাখিবলৈ বাছনি কৰকত টিপক।</string>
   <string name="new_feature_in_talkback_title">TalkBackত থকা নতুন সুবিধা</string>
   <string name="exit_tutorial_title">পৰ্যালোচনা সমাপ্ত হৈছেনে?</string>
   <string name="exit_tutorial_content">আপুনি TalkBackৰ ছেটিঙত যিকোনো সময়তে টিউট’ৰিয়েললৈ উভতি আহিব পাৰে।</string>
@@ -972,7 +972,7 @@
   <string name="welcome_to_android11">Android 11 ত TalkBackলৈ স্বাগতম</string>
   <string name="welcome_to_android11_text">TalkBackক ক্ষিপ্ৰতাৰে আৰু সহজে ব্যৱহাৰ কৰিব পৰা কৰি তুলিবলৈ নতুন নিৰ্দেশসমূহ যোগ দিয়া হৈছে।\n\nএই স্ক্ৰীনখনত আপুনি নতুন নিৰ্দেশসমূহ ব্যৱহাৰ কৰি চাব পাৰে। আপুনি যিকোনো সময়তে TalkBackৰ ছেটিঙত এই তথ্যৰ পৰ্যালোচনা কৰিব পাৰে।</string>
   <string name="new_gesture_notification_title">TalkBackত নতুন নিৰ্দেশসমূহ</string>
-  <string name="new_gesture_notification_content">নতুন নিৰ্দেশসমূহৰ সৈতে TalkBack কেনেকৈ দ্ৰুততাৰে ব্যৱহাৰ কৰিব পাৰি জানিবলৈ টিপক।</string>
+  <string name="new_gesture_notification_content">নতুন নিৰ্দেশসমূহৰ সৈতে MS Screen Reader কেনেকৈ দ্ৰুততাৰে ব্যৱহাৰ কৰিব পাৰি জানিবলৈ টিপক।</string>
   <string name="dump_node_tree_description">লগত ন’ড ট্ৰী প্ৰিণ্ট কৰা হৈছে।</string>
   <string name="report_gesture_description">শেহতীয়াকৈ এইসমূহ নিৰ্দেশ ব্যৱহাৰ কৰা হৈছে, অনুগ্ৰহ কৰি কোনটো নিৰ্দেশ ভুল সেই বিষয়ে অভিযোগ দিয়ক আৰু সঠিক নিৰ্দেশ কি হোৱা উচিত সেয়া আমাক জনাওক।</string>
   <string name="update_welcome_text_content">আপুনি এতিয়া HIDৰ জৰিয়তে ব্ৰেইল ডিছপ্লে’ৰ সৈতে সংযোগ কৰিব পাৰে, ব্লুটুথ ডিভাইচসমূহৰ সৈতে সংযোগ কৰাৰ এটা উপায়। আপোনাৰ ওচৰত আপোনাৰ নিৰ্মাতাৰ শেহতীয়া ফাৰ্মৱেৰ ড্ৰাইভাৰ থকাটো নিশ্চিত কৰক, তাৰ পাছত আপোনাৰ ব্ৰেইল ডিছপ্লে’ত ব্লুটুথ অন কৰক। TalkBackৰ ছেটিং &gt; ব্ৰেইল ডিছপ্লে’লৈ যাওক আৰু \"ব্ৰেইল ডিছপ্লে’ ব্যৱহাৰ কৰক\" অন কৰক। ডিভাইচৰ সূচীত আপোনাৰ ডিভাইচ বিচাৰি উলিয়াওক আৰু সেইটোৰ সৈতে সংযোগ কৰক।</string>
@@ -988,8 +988,8 @@
 &lt;br&gt;আপোনাৰ ওচৰত &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin\"&gt;Google Playৰ পৰা ডাউনল’ড কৰা Gboard&lt;/a&gt;ৰ শেহতীয়া সংস্কৰণটো থকাটো নিশ্চিত কৰক।</string>
   <string name="shortcut_for_dictation_content_without_google_play">Gboard স্ক্ৰীনখনত ওলাই থাকিলে, আপুনি এতিয়া ভইচেৰে দিয়া শ্ৰুতলিপি আৰম্ভ কৰিবলৈ দুটা আঙুলিৰে দুবাৰ টিপা আৰু তাৰ পাছত সেয়া বন্ধ কৰিবলৈ দুটা আঙুলিৰে দুবাৰ টিপাৰ সুবিধা ব্যৱহাৰ কৰিব পাৰে।</string>
   <string name="keyboard_title">কীব’ৰ্ড</string>
-  <string name="keyboard_content">TalkBackৰ এতিয়া ইয়াৰ কীব’ৰ্ডৰ বাবে এক \"বৰ্ধিত কীমেপ\" আছে, য’ত বিভিন্ন ধৰণৰ নতুন কামাণ্ড আৰু শ্বৰ্টকাট আছে। ৱেবত আগতকৈ ভালকৈ নেভিগে’ট কৰিবলৈ \"ব্ৰাউজ ম’ড\"ৰ সুবিধা আগবঢ়োৱা এই উন্নীতকৰণটোৱে কায়িক কীব’ৰ্ডৰ ওপৰত নিৰ্ভৰশীল TalkBack ব্যৱহাৰকাৰীৰ বাবে নেভিগেশ্বন আৰু ভাব-বিনিময় সুব্যৱস্থিত কৰে। আপুনি TalkBackৰ ছেটিং &gt; উচ্চখাপৰ ছেটিং &gt; কীব’ৰ্ডৰ শ্বৰ্টকাটত \"বৰ্ধিত কীমেপ\"লৈ সলনি কৰিব পাৰে।</string>
-  <string name="keyboard_content_tts">TalkBackৰ এতিয়া ইয়াৰ কীব’ৰ্ডৰ বাবে এক \"বৰ্ধিত কীমেপ\" আছে, য’ত বিভিন্ন ধৰণৰ নতুন কামাণ্ড আৰু শ্বৰ্টকাট আছে। ৱেবত আগতকৈ ভালকৈ নেভিগে’ট কৰিবলৈ \"ব্ৰাউজ ম’ড\"ৰ সুবিধা আগবঢ়োৱা এই উন্নীতকৰণটোৱে কায়িক কীব’ৰ্ডৰ ওপৰত নিৰ্ভৰশীল TalkBack ব্যৱহাৰকাৰীৰ বাবে নেভিগেশ্বন আৰু ভাব-বিনিময় সুব্যৱস্থিত কৰে। আপুনি TalkBackৰ ছেটিং আৰু তাৰ পাছত উচ্চখাপৰ ছেটিং আৰু তাৰ পাছত কীব’ৰ্ডৰ শ্বৰ্টকাটলৈ গৈ \"বৰ্ধিত কীমেপ\"লৈ সলনি কৰিব পাৰে।</string>
+  <string name="keyboard_content">TalkBackৰ এতিয়া ইয়াৰ কীব’ৰ্ডৰ বাবে এক \"বৰ্ধিত কীমেপ\" আছে, য’ত বিভিন্ন ধৰণৰ নতুন কামাণ্ড আৰু শ্বৰ্টকাট আছে। ৱেবত আগতকৈ ভালকৈ নেভিগে’ট কৰিবলৈ \"ব্ৰাউজ ম’ড\"ৰ সুবিধা আগবঢ়োৱা এই উন্নীতকৰণটোৱে কায়িক কীব’ৰ্ডৰ ওপৰত নিৰ্ভৰশীল MS Screen Reader ব্যৱহাৰকাৰীৰ বাবে নেভিগেশ্বন আৰু ভাব-বিনিময় সুব্যৱস্থিত কৰে। আপুনি TalkBackৰ ছেটিং &gt; উচ্চখাপৰ ছেটিং &gt; কীব’ৰ্ডৰ শ্বৰ্টকাটত \"বৰ্ধিত কীমেপ\"লৈ সলনি কৰিব পাৰে।</string>
+  <string name="keyboard_content_tts">TalkBackৰ এতিয়া ইয়াৰ কীব’ৰ্ডৰ বাবে এক \"বৰ্ধিত কীমেপ\" আছে, য’ত বিভিন্ন ধৰণৰ নতুন কামাণ্ড আৰু শ্বৰ্টকাট আছে। ৱেবত আগতকৈ ভালকৈ নেভিগে’ট কৰিবলৈ \"ব্ৰাউজ ম’ড\"ৰ সুবিধা আগবঢ়োৱা এই উন্নীতকৰণটোৱে কায়িক কীব’ৰ্ডৰ ওপৰত নিৰ্ভৰশীল MS Screen Reader ব্যৱহাৰকাৰীৰ বাবে নেভিগেশ্বন আৰু ভাব-বিনিময় সুব্যৱস্থিত কৰে। আপুনি TalkBackৰ ছেটিং আৰু তাৰ পাছত উচ্চখাপৰ ছেটিং আৰু তাৰ পাছত কীব’ৰ্ডৰ শ্বৰ্টকাটলৈ গৈ \"বৰ্ধিত কীমেপ\"লৈ সলনি কৰিব পাৰে।</string>
   <string name="reduce_delay_title">বিলম্বতা হ্ৰাস কৰক</string>
   <string name="reduce_delay_content">আপুনি এতিয়া স্পৰ্শৰ অন্বেষণ আৰু টাইপিঙৰ বাবে TalkBackৰ ঘোষণা হ্ৰাস কৰিব পাৰে। এই ছেটিংসমূহ চাবলৈ TalkBackৰ ছেটিং &gt; উচ্চখাপৰ ছেটিং &gt; বিলম্বতা হ্ৰাস কৰকলৈ যাওক।</string>
   <string name="reduce_delay_content_tts">আপুনি এতিয়া স্পৰ্শৰ অন্বেষণ আৰু টাইপিঙৰ বাবে TalkBackৰ ঘোষণা হ্ৰাস কৰিব পাৰে। এই ছেটিংসমূহ চাবলৈ TalkBackৰ ছেটিং আৰু তাৰ পাছত উচ্চখাপৰ ছেটিং আৰু তাৰ পাছত বিলম্বতা হ্ৰাস কৰকলৈ যাওক।</string>
@@ -998,12 +998,12 @@
   <string name="customize_braille_keyboard_improvements_content_tts">এতিয়া ভাৰ্চুৱেল অন-স্ক্ৰীন ব্ৰেইল কীব’ৰ্ডৰ বাবে নিৰ্দেশ কাষ্টমাইজ কৰাটো সম্ভৱ। কাষ্টমাইজ কৰিবলৈ TalkBackৰ ছেটিং আৰু তাৰ পাছত ব্ৰেইল কীব’ৰ্ড আৰু তাৰ পাছত নিৰ্দেশলৈ যাওক।</string>
   <string name="learn_more_about_braille_keyboard">ব্ৰেইল কীব’ৰ্ডৰ বিষয়ে অধিক জানক</string>
   <string name="other_changes_title">আন সালসলনি</string>
-  <string name="other_changes_content">TalkBack যদি দুৰ্ঘটনাক্ৰমে অন হয়, এটা অন-স্ক্ৰীন বাৰ্তাই এতিয়া সেয়া দ্ৰুতভাৱে অফ কৰাত আপোনাক সহায় কৰে। আপুনি সেইটো TalkBackৰ ছেটিং &gt; TalkBack অফ কৰাৰ নিৰ্দেশনা দেখুৱাওকত অফ কৰিব পাৰে।</string>
-  <string name="other_changes_content_tts">TalkBack যদি দুৰ্ঘটনাক্ৰমে অন হয়, এটা অন-স্ক্ৰীন বাৰ্তাই এতিয়া সেয়া দ্ৰুতভাৱে অফ কৰাত আপোনাক সহায় কৰে। আপুনি সেইটো TalkBackৰ ছেটিং আৰু তাৰ পাছত TalkBack অফ কৰাৰ নিৰ্দেশনা দেখুৱাওকত অফ কৰিব পাৰে।</string>
+  <string name="other_changes_content">MS Screen Reader যদি দুৰ্ঘটনাক্ৰমে অন হয়, এটা অন-স্ক্ৰীন বাৰ্তাই এতিয়া সেয়া দ্ৰুতভাৱে অফ কৰাত আপোনাক সহায় কৰে। আপুনি সেইটো TalkBackৰ ছেটিং &gt; MS Screen Reader অফ কৰাৰ নিৰ্দেশনা দেখুৱাওকত অফ কৰিব পাৰে।</string>
+  <string name="other_changes_content_tts">MS Screen Reader যদি দুৰ্ঘটনাক্ৰমে অন হয়, এটা অন-স্ক্ৰীন বাৰ্তাই এতিয়া সেয়া দ্ৰুতভাৱে অফ কৰাত আপোনাক সহায় কৰে। আপুনি সেইটো TalkBackৰ ছেটিং আৰু তাৰ পাছত MS Screen Reader অফ কৰাৰ নিৰ্দেশনা দেখুৱাওকত অফ কৰিব পাৰে।</string>
   <string name="keymap_changes_content">ক্লাছিক কীমেপ ডিফ’ল্ট কীমেপলৈ সলনি কৰা হৈছে, য’ত অধিক শ্বৰ্টকাট অন্তৰ্ভুক্ত।</string>
   <string name="announcing_text_formatting_title">পাঠৰ ফৰ্মেটিং ঘোষণা কৰা</string>
   <string name="announcing_text_formatting_header">TalkBackএ এতিয়া ব’ল্ড, ইটালিক আৰু পাঠৰ ৰঙৰ দৰে পাঠৰ ফৰ্মেটিঙৰ ক্ষেত্ৰত কৰা সালসলনি ঘোষণা কৰিব পাৰে। আৰম্ভ কৰিবলৈ:</string>
-  <string name="announcing_text_formatting_option1">ফৰ্মেটিং থকা বস্তুটোত ফ’কাছ কৰক, TalkBack মেনুখন খোলক আৰু \"পাঠৰ ফৰ্মেটিং বৰ্ণনা কৰক\" বাছনি কৰক বা</string>
+  <string name="announcing_text_formatting_option1">ফৰ্মেটিং থকা বস্তুটোত ফ’কাছ কৰক, MS Screen Reader মেনুখন খোলক আৰু \"পাঠৰ ফৰ্মেটিং বৰ্ণনা কৰক\" বাছনি কৰক বা</string>
   <string name="announcing_text_formatting_option2">পাঠৰ ফৰ্মেটিঙৰ বাবে এটা পঢ়াৰ নিয়ন্ত্ৰণ যোগ দিয়ক যিয়ে ফৰ্মেটিঙৰ ক্ষেত্ৰত কৰা সালসলনিৰ ঘোষণা অন বা অফ কৰিব।</string>
   <string name="announcing_text_formatting_middle">আপুনি এইটো ব্যৱহাৰ কৰি চাবলৈ সাজু হ’লে, এয়া হৈছে ফৰ্মেট কৰা পাঠৰ এটা উদাহৰণ:</string>
   <string name="announcing_text_formatting_tail">যদি আপুনি ফৰ্মেট কৰা পাঠ কেনেকৈ ঘোষণা কৰা হয় সেয়া সলনি কৰিব বিচাৰে, আপুনি %1$sলৈ যাব পাৰে।</string>
@@ -1019,14 +1019,14 @@
 &lt;br&gt;
 &lt;br&gt;ৰঙে স্প্লেশ্ব কৰিব পাৰে, এক সজীৱ ডিছপ্লে’,
 &lt;br&gt;&lt;font color=\"#db372d\"&gt;উজ্জ্বল ৰঙা&lt;/font&gt;ৰ পৰা &lt;font color=\"#128937\"&gt;সতেজ সেউজীয়া&lt;/font&gt;লৈ এক মৃদু দোলনশীল গতি।</string>
-  <string name="update_welcome_talkback_16.2">TalkBackৰ এই আপডে’টটোৱে TalkBack ব্যৱহাৰ কৰাটো সহজ কৰি তুলিবলৈ কৰা অন্য উন্নীতকৰণসমূহৰ লগতে কায়িক কীব’ৰ্ডৰ বাবে এটা নতুন \"বৰ্ধিত কীমেপ\", পাঠৰ ফৰ্মেটিং সম্পৰ্কীয় ঘোষণাৰ সমৰ্থন আৰু এটা নতুনকৈ ডিজাইন কৰা ছেটিঙৰ লে’আউট আগবঢ়ায়।\n\nআপুনি পৰৱৰ্তী কেইখনমান স্ক্ৰীনত এই সালসলনিসমূহৰ বিষয়ে অধিক জানিব।\n\nআপুনি এই তথ্যখিনি পাছত TalkBackৰ ছেটিং &gt; TalkBackৰ নতুন সুবিধাসমূহত পৰ্যালোচনা কৰিব পাৰে।</string>
-  <string name="update_welcome_talkback_16.2_tts">TalkBackৰ এই আপডে’টটোৱে TalkBack ব্যৱহাৰ কৰাটো সহজ কৰি তুলিবলৈ কৰা অন্য উন্নীতকৰণসমূহৰ লগতে কায়িক কীব’ৰ্ডৰ বাবে এটা নতুন \"বৰ্ধিত কীমেপ\", পাঠৰ ফৰ্মেটিং সম্পৰ্কীয় ঘোষণাৰ সমৰ্থন আৰু এটা নতুনকৈ ডিজাইন কৰা ছেটিঙৰ লে’আউট আগবঢ়ায়।\n\nআপুনি পৰৱৰ্তী কেইখনমান স্ক্ৰীনত এই সালসলনিসমূহৰ বিষয়ে অধিক জানিব।\n\nআপুনি এই তথ্যখিনি পাছত TalkBackৰ ছেটিং, তাৰ পাছত TalkBackৰ নতুন সুবিধাসমূহত পৰ্যালোচনা কৰিব পাৰে।</string>
+  <string name="update_welcome_talkback_16.2">TalkBackৰ এই আপডে’টটোৱে MS Screen Reader ব্যৱহাৰ কৰাটো সহজ কৰি তুলিবলৈ কৰা অন্য উন্নীতকৰণসমূহৰ লগতে কায়িক কীব’ৰ্ডৰ বাবে এটা নতুন \"বৰ্ধিত কীমেপ\", পাঠৰ ফৰ্মেটিং সম্পৰ্কীয় ঘোষণাৰ সমৰ্থন আৰু এটা নতুনকৈ ডিজাইন কৰা ছেটিঙৰ লে’আউট আগবঢ়ায়।\n\nআপুনি পৰৱৰ্তী কেইখনমান স্ক্ৰীনত এই সালসলনিসমূহৰ বিষয়ে অধিক জানিব।\n\nআপুনি এই তথ্যখিনি পাছত TalkBackৰ ছেটিং &gt; TalkBackৰ নতুন সুবিধাসমূহত পৰ্যালোচনা কৰিব পাৰে।</string>
+  <string name="update_welcome_talkback_16.2_tts">TalkBackৰ এই আপডে’টটোৱে MS Screen Reader ব্যৱহাৰ কৰাটো সহজ কৰি তুলিবলৈ কৰা অন্য উন্নীতকৰণসমূহৰ লগতে কায়িক কীব’ৰ্ডৰ বাবে এটা নতুন \"বৰ্ধিত কীমেপ\", পাঠৰ ফৰ্মেটিং সম্পৰ্কীয় ঘোষণাৰ সমৰ্থন আৰু এটা নতুনকৈ ডিজাইন কৰা ছেটিঙৰ লে’আউট আগবঢ়ায়।\n\nআপুনি পৰৱৰ্তী কেইখনমান স্ক্ৰীনত এই সালসলনিসমূহৰ বিষয়ে অধিক জানিব।\n\nআপুনি এই তথ্যখিনি পাছত TalkBackৰ ছেটিং, তাৰ পাছত TalkBackৰ নতুন সুবিধাসমূহত পৰ্যালোচনা কৰিব পাৰে।</string>
   <string name="new_settings_layout_title">নতুন ছেটিঙৰ লে’আউট</string>
   <string name="new_settings_layout_text">সুবিধাসমূহ বিচাৰি পোৱাটো সহজ কৰি তুলিবলৈ ছেটিঙৰ গোটসমূহ আপডে’ট কৰা হৈছে। কীব’ৰ্ডৰ ছেটিঙৰ দৰে নতুন ছেটিঙৰ শিতানসমূহো উপলব্ধ।</string>
   <string name="split_tap_everywhere_title">আটাইবোৰ ঠাইতে ক্ষিপ্ৰ টাইপিং</string>
   <string name="split_tap_everywhere_text">আপুনি এতিয়া বস্তুসমূহ সক্ৰিয় কৰিবলৈ কীব’ৰ্ডৰ বাহিৰতো যিকোনো ঠাইতে ক্ষিপ্ৰ টাইপিঙৰ সুবিধা ব্যৱহাৰ কৰিব পাৰে। এইটো ব্যৱহাৰ কৰিবলৈ, এটা আঙুলিৰে স্ক্ৰীনখন অন্বেষণ কৰক, তাৰ পাছত প্ৰথম আঙুলিটোৰে হেঁচি ধৰি ৰাখিয়েই, বৰ্তমান ফ’কাছ কৰা বস্তুটো সক্ৰিয় কৰিবলৈ আন এটা আঙুলিৰে স্ক্ৰীনখনত টিপক।</string>
   <string name="keyboard_enhanced_keymap_title">কীব’ৰ্ড: বৰ্ধিত কীমেপ</string>
-  <string name="keyboard_enhanced_keymap_text">TalkBackৰ এতিয়া কায়িক কীব’ৰ্ডৰ বাবে এক \"বৰ্ধিত কীমেপ\" আছে, য’ত বিভিন্ন ধৰণৰ নতুন কামাণ্ড আৰু শ্বৰ্টকাটৰ সুবিধা আছে। এই উন্নীতকৰণটোত ৱেবত আগতকৈ ভালকৈ নেভিগে’ট কৰিবলৈ এটা \"ব্ৰাউজ ম’ড\"ৰ সুবিধা, কায়িক কীব’ৰ্ডৰ ওপৰত নিৰ্ভৰশীল TalkBack ব্যৱহাৰকাৰীৰ বাবে নেভিগেশ্বন আৰু ভাব-বিনিময় সুশৃংখলিত কৰা আদি অন্তৰ্ভুক্ত। আপুনি %1$sত \"বৰ্ধিত কীমেপ\"লৈ সলনি কৰিব পাৰে।\n\nযদি আপুনি কোনো ব্ৰেইল ডিছপ্লে’ ব্যৱহাৰ কৰে, আপুনি নিজৰ ব্ৰেইল ডিছপ্লে’ৰ পৰা পোনপটীয়াকৈ সমল লাভ কৰিবলৈ নতুন ব্ৰাউজ ম’ডৰ শ্বৰ্টকাটসমূহো ব্যৱহাৰ কৰিব পাৰে। এই সালসলনিটোৰ সৈতে খাপ খুৱাবলৈ কিছুমান ব্ৰেইল ডিছপ্লে’ৰ শ্বৰ্টকাট সলনি কৰা হৈছে। আপুনি %2$sত ব্ৰেইল ডিছপ্লে’ৰ আটাইবোৰ শ্বৰ্টকাটৰ এখন সূচী চাব পাৰে।</string>
+  <string name="keyboard_enhanced_keymap_text">TalkBackৰ এতিয়া কায়িক কীব’ৰ্ডৰ বাবে এক \"বৰ্ধিত কীমেপ\" আছে, য’ত বিভিন্ন ধৰণৰ নতুন কামাণ্ড আৰু শ্বৰ্টকাটৰ সুবিধা আছে। এই উন্নীতকৰণটোত ৱেবত আগতকৈ ভালকৈ নেভিগে’ট কৰিবলৈ এটা \"ব্ৰাউজ ম’ড\"ৰ সুবিধা, কায়িক কীব’ৰ্ডৰ ওপৰত নিৰ্ভৰশীল MS Screen Reader ব্যৱহাৰকাৰীৰ বাবে নেভিগেশ্বন আৰু ভাব-বিনিময় সুশৃংখলিত কৰা আদি অন্তৰ্ভুক্ত। আপুনি %1$sত \"বৰ্ধিত কীমেপ\"লৈ সলনি কৰিব পাৰে।\n\nযদি আপুনি কোনো ব্ৰেইল ডিছপ্লে’ ব্যৱহাৰ কৰে, আপুনি নিজৰ ব্ৰেইল ডিছপ্লে’ৰ পৰা পোনপটীয়াকৈ সমল লাভ কৰিবলৈ নতুন ব্ৰাউজ ম’ডৰ শ্বৰ্টকাটসমূহো ব্যৱহাৰ কৰিব পাৰে। এই সালসলনিটোৰ সৈতে খাপ খুৱাবলৈ কিছুমান ব্ৰেইল ডিছপ্লে’ৰ শ্বৰ্টকাট সলনি কৰা হৈছে। আপুনি %2$sত ব্ৰেইল ডিছপ্লে’ৰ আটাইবোৰ শ্বৰ্টকাটৰ এখন সূচী চাব পাৰে।</string>
   <string name="keyboard_shortcuts_link">TalkBackৰ ছেটিং &gt; কীব’ৰ্ডৰ শ্বৰ্টকাট</string>
   <string name="keyboard_shortcuts_link_tts">TalkBackৰ ছেটিং, তাৰ পাছত কীব’ৰ্ডৰ শ্বৰ্টকাট</string>
   <string name="braille_display_settings_link">ব্ৰেইলি ডিছপ্লে’ৰ ছেটিং</string>
@@ -1040,13 +1040,13 @@
   <string name="tutorial_link_tts">TalkBackৰ ছেটিং, তাৰ পাছত TalkBackৰ টিউট’ৰিয়েল</string>
   <string name="tutorial_entry_point_title">টিউট’ৰিয়েল</string>
   <string name="welcome_to_talkback_title">TalkBackলৈ স্বাগতম</string>
-  <string name="talkback_is_on">TalkBack অন আছে</string>
-  <string name="talkback_turn_off_description">TalkBackএ আপোনাৰ স্ক্ৰীনত থকা সমল ডাঙৰকৈ পঢ়ি দিয়ে আৰু আপোনাৰ ডিভাইচত নেভিগেশ্বনে কিদৰে কাম কৰে সেয়া সলনি কৰে। এইটো অফ কৰিবলৈ, “TalkBack অফ কৰক”ত ২ বাৰ টিপক।</string>
-  <string name="turn_off_talkback">TalkBack অফ কৰক</string>
+  <string name="talkback_is_on">MS Screen Reader অন আছে</string>
+  <string name="talkback_turn_off_description">TalkBackএ আপোনাৰ স্ক্ৰীনত থকা সমল ডাঙৰকৈ পঢ়ি দিয়ে আৰু আপোনাৰ ডিভাইচত নেভিগেশ্বনে কিদৰে কাম কৰে সেয়া সলনি কৰে। এইটো অফ কৰিবলৈ, “MS Screen Reader অফ কৰক”ত ২ বাৰ টিপক।</string>
+  <string name="turn_off_talkback">MS Screen Reader অফ কৰক</string>
   <string name="tap_again_to_turn_off">অফ কৰিব কৰিবলৈ পুনৰ টিপক</string>
-  <string name="talkback_turn_off_description_pointer_and_touch">TalkBackএ আপোনাৰ স্ক্ৰীনত থকা সমল ডাঙৰকৈ পঢ়ি দিয়ে আৰু আপোনাৰ ডিভাইচত নেভিগেশ্বনে কিদৰে কাম কৰে সেয়া সলনি কৰে। এইটো অফ কৰিবলৈ, \"TalkBack অফ কৰক\" বাছনি কৰক বা সেইটোত ২ বাৰ টিপক।</string>
-  <string name="welcome_to_talkback_text">TalkBackএ কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। স্ক্ৰীনখন দেখা পোৱাত অসুবিধা পোৱা লোকৰ বাবে TalkBack সহায়ক হ’ব পাৰে। \n\nযদি আপুনি আপোনাৰ ভলিউম কীসমূহ ব্যৱহাৰ কৰি TalkBack ক্ষিপ্ৰতাৰে অন বা অফ কৰিব বিচাৰে, তেন্তে আপুনি TalkBackৰ ছেটিং &gt; TalkBackৰ শ্বৰ্টকাটত এটা শ্বৰ্টকাট ছেট আপ কৰিব পাৰে।\n\nTalkBack অন কৰা থাকিলে, স্ক্ৰীনত ফ’কাছ কৰা বস্তুটো ডাঙৰকৈ পঢ়ি দিয়া হয়।\n\nসোঁফালে ছোৱাইপ কৰিলে পৰৱৰ্তী বস্তুটোলৈ আৰু বাওঁফালে ছোৱাইপ কৰিলে পূৰ্বৱৰ্তী বস্তুটোলৈ স্থানান্তৰ হ’ব।\n\nপৰৱৰ্তী বুটামটো বিচাৰিবলৈ এতিয়া সোঁফালে ছোৱাইপ কৰক।</string>
-  <string name="welcome_to_talkback_text_tts">TalkBackএ কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। স্ক্ৰীনখন দেখা পোৱাত অসুবিধা পোৱা লোকৰ বাবে TalkBack সহায়ক হ’ব পাৰে। \n\nযদি আপুনি আপোনাৰ ভলিউম কীসমূহ ব্যৱহাৰ কৰি TalkBack ক্ষিপ্ৰতাৰে অন বা অফ কৰিব বিচাৰে, তেন্তে আপুনি প্ৰথমে TalkBackৰ ছেটিং তাৰ পাছত TalkBackৰ শ্বৰ্টকাটত এটা শ্বৰ্টকাট ছেট আপ কৰিব পাৰে।\n\nTalkBack অন কৰা থাকিলে, স্ক্ৰীনত ফ’কাছ কৰা বস্তুটো ডাঙৰকৈ পঢ়ি দিয়া হয়।\n\nসোঁফালে ছোৱাইপ কৰিলে পৰৱৰ্তী বস্তুটোলৈ আৰু বাওঁফালে ছোৱাইপ কৰিলে পূৰ্বৱৰ্তী বস্তুটোলৈ স্থানান্তৰ হ’ব।\n\nপৰৱৰ্তী বুটামটো বিচাৰিবলৈ এতিয়া সোঁফালে ছোৱাইপ কৰক।</string>
+  <string name="talkback_turn_off_description_pointer_and_touch">TalkBackএ আপোনাৰ স্ক্ৰীনত থকা সমল ডাঙৰকৈ পঢ়ি দিয়ে আৰু আপোনাৰ ডিভাইচত নেভিগেশ্বনে কিদৰে কাম কৰে সেয়া সলনি কৰে। এইটো অফ কৰিবলৈ, \"MS Screen Reader অফ কৰক\" বাছনি কৰক বা সেইটোত ২ বাৰ টিপক।</string>
+  <string name="welcome_to_talkback_text">TalkBackএ কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। স্ক্ৰীনখন দেখা পোৱাত অসুবিধা পোৱা লোকৰ বাবে MS Screen Reader সহায়ক হ’ব পাৰে। \n\nযদি আপুনি আপোনাৰ ভলিউম কীসমূহ ব্যৱহাৰ কৰি MS Screen Reader ক্ষিপ্ৰতাৰে অন বা অফ কৰিব বিচাৰে, তেন্তে আপুনি TalkBackৰ ছেটিং &gt; TalkBackৰ শ্বৰ্টকাটত এটা শ্বৰ্টকাট ছেট আপ কৰিব পাৰে।\n\nTalkBack অন কৰা থাকিলে, স্ক্ৰীনত ফ’কাছ কৰা বস্তুটো ডাঙৰকৈ পঢ়ি দিয়া হয়।\n\nসোঁফালে ছোৱাইপ কৰিলে পৰৱৰ্তী বস্তুটোলৈ আৰু বাওঁফালে ছোৱাইপ কৰিলে পূৰ্বৱৰ্তী বস্তুটোলৈ স্থানান্তৰ হ’ব।\n\nপৰৱৰ্তী বুটামটো বিচাৰিবলৈ এতিয়া সোঁফালে ছোৱাইপ কৰক।</string>
+  <string name="welcome_to_talkback_text_tts">TalkBackএ কথিত সঁহাৰি প্ৰদান কৰে যাতে আপুনি স্ক্ৰীনখনলৈ নোচোৱাকৈ আপোনাৰ ডিভাইচটো ব্যৱহাৰ কৰিব পাৰে। স্ক্ৰীনখন দেখা পোৱাত অসুবিধা পোৱা লোকৰ বাবে MS Screen Reader সহায়ক হ’ব পাৰে। \n\nযদি আপুনি আপোনাৰ ভলিউম কীসমূহ ব্যৱহাৰ কৰি MS Screen Reader ক্ষিপ্ৰতাৰে অন বা অফ কৰিব বিচাৰে, তেন্তে আপুনি প্ৰথমে TalkBackৰ ছেটিং তাৰ পাছত TalkBackৰ শ্বৰ্টকাটত এটা শ্বৰ্টকাট ছেট আপ কৰিব পাৰে।\n\nTalkBack অন কৰা থাকিলে, স্ক্ৰীনত ফ’কাছ কৰা বস্তুটো ডাঙৰকৈ পঢ়ি দিয়া হয়।\n\nসোঁফালে ছোৱাইপ কৰিলে পৰৱৰ্তী বস্তুটোলৈ আৰু বাওঁফালে ছোৱাইপ কৰিলে পূৰ্বৱৰ্তী বস্তুটোলৈ স্থানান্তৰ হ’ব।\n\nপৰৱৰ্তী বুটামটো বিচাৰিবলৈ এতিয়া সোঁফালে ছোৱাইপ কৰক।</string>
   <string name="welcome_to_talkback_page_idle_announcement">পৰৱৰ্তী বুটামটো বিচাৰিবলৈ এতিয়া সোঁফালে ছোৱাইপ কৰক</string>
   <string name="explore_by_touch_title">অন্বেষণ কৰিবলৈ আপোনাৰ আঙুলিটো টানি আনি এৰক</string>
   <string name="explore_by_touch_text">আপুনি স্ক্ৰীনখনৰ ওপৰেৰে নিজৰ আঙুলি টানি আনি এৰি দি কোনো বস্তুৰ ওপৰত ফ’কাছ কৰিবও পাৰে।\n\nএতিয়া স্ক্ৰীনখন স্পৰ্শ কৰি আৰু আপুনি পৰৱৰ্তী বুটামটো বিচাৰি নোপোৱা পৰ্যন্ত একেবাৰে তলৰ বাওঁ কোণলৈ টানি আনি এইটো ব্যৱহাৰ কৰি চাওক।</string>
@@ -1055,7 +1055,7 @@
   <string name="scrolling_item_text">২ টা আঙুলিৰে ওপৰলৈ অথবা তললৈ ছোৱাইপ কৰি স্ক্ৰ’ল কৰি চাওক</string>
   <string name="scrolling_text_completed">বঢ়িয়া! আপুনি স্ক্ৰ’ল কৰি স্ক্ৰীনখনৰ একেবাৰে তল পাইছেহি।\n\nপৰৱৰ্তী বুটামটো বিচাৰি পাবলৈ সোঁফালে ছোৱাইপ কৰক।</string>
   <string name="system_gestures_title">ছিষ্টেম নিৰ্দেশসমূহত ১ টা আঙুলি যোগ দিয়ক</string>
-  <string name="system_gestures_text">ইয়াৰ অৰ্থ হৈছে আপুনি TalkBack ব্যৱহাৰ কৰাৰ সময়ত, তলৰ পৰা ওপৰলৈ ১ টা আঙুলিৰ সলনি ২ টা আঙুলিৰে ছোৱাইপ কৰি গৃহ স্ক্ৰীনখনলৈ যাব পাৰে।\n\nএতিয়া এই নিৰ্দেশসমূহ ব্যৱহাৰ কৰি চোৱাটোৱে টিউট’ৰিয়েলটো বন্ধ কৰিব। আপুনি টিউট’ৰিয়েলটো সম্পূৰ্ণ কৰালৈ অপেক্ষা কৰিবলৈ বিচাৰিব পাৰে।</string>
+  <string name="system_gestures_text">ইয়াৰ অৰ্থ হৈছে আপুনি MS Screen Reader ব্যৱহাৰ কৰাৰ সময়ত, তলৰ পৰা ওপৰলৈ ১ টা আঙুলিৰ সলনি ২ টা আঙুলিৰে ছোৱাইপ কৰি গৃহ স্ক্ৰীনখনলৈ যাব পাৰে।\n\nএতিয়া এই নিৰ্দেশসমূহ ব্যৱহাৰ কৰি চোৱাটোৱে টিউট’ৰিয়েলটো বন্ধ কৰিব। আপুনি টিউট’ৰিয়েলটো সম্পূৰ্ণ কৰালৈ অপেক্ষা কৰিবলৈ বিচাৰিব পাৰে।</string>
   <string name="system_gestures_home_text">আপোনাৰ গৃহ স্ক্ৰীনলৈ যাবলৈ, আপোনাৰ স্ক্ৰীনখনৰ একেবাৰে তলৰ পৰা ওপৰলৈ ২ টা আঙুলিৰে ছোৱাইপ কৰক।</string>
   <string name="system_gestures_overview_screen_text">আপোনাৰ শেহতীয়া এপ্‌সমূহলৈ যাবলৈ নিজৰ স্ক্ৰীনৰ তলৰ অংশৰ পৰা ২ টা আঙুলিৰে ওপৰলৈ ছোৱাইপ কৰক আৰু ধৰি ৰাখক। তাৰ পাছত এৰি দিয়ক। এই কাৰ্যই আপোনাক ৰূপৰেখা স্ক্ৰীনখনলৈ লৈ যায়।</string>
   <string name="system_gestures_back_text">উভতি যাবলৈ বাওঁ অথবা সোঁ কাষৰ পৰা আৰম্ভ কৰক আৰু ২ টা আঙুলিৰে আপোনাৰ স্ক্ৰীনৰ মাজলৈ ছোৱাইপ কৰক।</string>
@@ -1070,11 +1070,11 @@
   <string name="menus_title">মেনু আৰু নিয়ন্ত্ৰণসমূহ ব্যৱহাৰ কৰক</string>
   <string name="menus_talkback_menu_text">TalkBackৰ মেনুখনত আপোনাক প্ৰায়েই প্ৰয়োজন হ’ব পৰা ছেটিং আৰু নিয়ন্ত্ৰণসমূহ থাকে।\n\nএতিয়া ৩ টা আঙুলিৰে স্ক্ৰীনখন টিপি TalkBackৰ মেনুখন খোলক।</string>
   <string name="menus_talkback_menu_text_pre_r">TalkBackৰ মেনুখনত আপোনাক প্ৰায়েই প্ৰয়োজন হ’ব পৰা ছেটিং আৰু নিয়ন্ত্ৰণসমূহ থাকে।\n\nএতিয়া প্ৰথমে তললৈ আৰু তাৰ পাছত সোঁফালে ছোৱাইপ কৰি TalkBackৰ মেনুখন খোলক।</string>
-  <string name="menus_selector_text">এই শ্বৰ্টকাটসমূহে আপোনাক ক্ষিপ্ৰতাৰে ছেটিং সলনি কৰাত সহায় কৰিব পাৰে, যেনে আপোনাৰ নেভিগেশ্বন বৰ্ণৰ পৰা শব্দলৈ সলনি কৰা অথবা TalkBack কথনৰ হাৰ সলনি কৰা।\n\nআপোনাৰ পঢ়াৰ নিয়ন্ত্ৰণ ক্ষিপ্ৰতাৰে সলনি কৰিবলৈ ৩ টা আঙুলিৰে বাওঁফালে অথবা সোঁফালে ছোৱাইপ কৰক।\n\nআপুনি পাছত TalkBackৰ ছেটিঙত TalkBackৰ মেনুখন আৰু আপোনাৰ পঢ়াৰ নিয়ন্ত্ৰণসমূহ কাষ্টমাইজ কৰিব পাৰে।</string>
+  <string name="menus_selector_text">এই শ্বৰ্টকাটসমূহে আপোনাক ক্ষিপ্ৰতাৰে ছেটিং সলনি কৰাত সহায় কৰিব পাৰে, যেনে আপোনাৰ নেভিগেশ্বন বৰ্ণৰ পৰা শব্দলৈ সলনি কৰা অথবা MS Screen Reader কথনৰ হাৰ সলনি কৰা।\n\nআপোনাৰ পঢ়াৰ নিয়ন্ত্ৰণ ক্ষিপ্ৰতাৰে সলনি কৰিবলৈ ৩ টা আঙুলিৰে বাওঁফালে অথবা সোঁফালে ছোৱাইপ কৰক।\n\nআপুনি পাছত TalkBackৰ ছেটিঙত TalkBackৰ মেনুখন আৰু আপোনাৰ পঢ়াৰ নিয়ন্ত্ৰণসমূহ কাষ্টমাইজ কৰিব পাৰে।</string>
   <string name="menus_selector_text_pre_r">এই শ্বৰ্টকাটসমূহে আপোনাক ক্ষিপ্ৰতাৰে ছেটিং সলনি কৰাত সহায় কৰিব পাৰে, যেনে আপোনাৰ নেভিগেশ্বন বৰ্ণৰ পৰা শব্দলৈ সলনি কৰা অথবা TalkBackৰ কথনৰ হাৰ সলনি কৰা।\n\nআপোনাৰ পঢ়াৰ নিয়ন্ত্ৰণ ক্ষিপ্ৰতাৰে সলনি কৰিবলৈ প্ৰথমে তললৈ তাৰ পাছত পুনৰ ওপৰলৈ ছোৱাইপ কৰক।\n\nআপুনি পাছত TalkBackৰ ছেটিঙত TalkBackৰ মেনুখন আৰু আপোনাৰ পঢ়াৰ নিয়ন্ত্ৰণসমূহ কাষ্টমাইজ কৰিব পাৰে।</string>
   <string name="all_set_title">সকলো সাজু!</string>
-  <string name="all_set_text">আপুনি TalkBack ব্যৱহাৰ কৰিবলৈ সাজু।\n\nএতিয়া অন্য বিষয়বস্তুবোৰৰ বিষয়ে জানি থাকক অথবা এই তথ্যখিনি যিকোনো সময়তে TalkBackৰ ছেটিঙত পৰ্যালোচনা কৰক।</string>
-  <string name="talkback_tutorial_text">কোনো বিষয়বস্তু বাছনি কৰিবলৈ সোঁফাললৈ ছোৱাইপ কৰক। শ্ৰেষ্ঠ অভিজ্ঞতা পাবলৈ আৰম্ভ কৰাৰ পূৰ্বে TalkBack অন কৰক।</string>
+  <string name="all_set_text">আপুনি MS Screen Reader ব্যৱহাৰ কৰিবলৈ সাজু।\n\nএতিয়া অন্য বিষয়বস্তুবোৰৰ বিষয়ে জানি থাকক অথবা এই তথ্যখিনি যিকোনো সময়তে TalkBackৰ ছেটিঙত পৰ্যালোচনা কৰক।</string>
+  <string name="talkback_tutorial_text">কোনো বিষয়বস্তু বাছনি কৰিবলৈ সোঁফাললৈ ছোৱাইপ কৰক। শ্ৰেষ্ঠ অভিজ্ঞতা পাবলৈ আৰম্ভ কৰাৰ পূৰ্বে MS Screen Reader অন কৰক।</string>
   <string name="basic_navigation_link_text">প্ৰাথমিক নেভিগেশ্বন</string>
   <string name="basic_navigation_link_subtext">বস্তুবোৰৰ মাজত ইফাল সিফাল কৰক, স্ক্ৰ’ল কৰক, মেনু ব্যৱহাৰ কৰক আৰু বহুতো কৰক</string>
   <string name="text_editing_link_text">পাঠ সম্পাদনা</string>
@@ -1084,7 +1084,7 @@
   <string name="image_description_link_text">প্ৰতিচ্ছবিৰ বিৱৰণ</string>
   <string name="image_description_link_subtext">প্ৰতিচ্ছবিৰ বিৱৰণ পাবলৈ চেষ্টা কৰক</string>
   <string name="voice_commands_link_text">ভইচ কামাণ্ড</string>
-  <string name="voice_commands_link_subtext">আপোনাৰ কণ্ঠস্বৰৰ জৰিয়তে TalkBack নিয়ন্ত্ৰণ কৰক</string>
+  <string name="voice_commands_link_subtext">আপোনাৰ কণ্ঠস্বৰৰ জৰিয়তে MS Screen Reader নিয়ন্ত্ৰণ কৰক</string>
   <string name="screen_search_link_text">স্ক্ৰীনত বিচাৰক</string>
   <string name="screen_search_link_subtext">স্ক্ৰীনত নির্দিষ্ট বস্তু বিচাৰক</string>
   <string name="additional_tips_link_text">প্ৰতিদিনৰ কাৰ্য</string>
@@ -1161,7 +1161,7 @@
   <string name="container_item_subtext_pre_r">পৰৱৰ্তী কণ্টেইনাৰটোলৈ যাবলৈ তললৈ ছোৱাইপ কৰক</string>
   <string name="container_item_exit_subtext_pre_r">এই কণ্টেইনাৰটোৰ পৰা বাহিৰ হ’বলৈ, তললৈ ছোৱাইপ কৰক</string>
   <string name="voice_commands_title">ভইচ কামাণ্ড</string>
-  <string name="voice_commands_text">আপুনি TalkBack ক্ষিপ্ৰতাৰে নিয়ন্ত্ৰণ কৰিবলৈ আপোনাৰ কণ্ঠস্বৰ ব্যৱহাৰ কৰিব পাৰে।n\nউদাহৰণস্বৰূপে, নেভিগেশ্বন সলনি কৰিবলৈ এটা নিৰ্দেশ দিয়ক, পৰৱৰ্তী শিৰোনামটোলৈ সলনি কৰক, পাঠ প্ৰতিলিপি আৰু বহুতো কাৰ্য কৰক।\n\nএতিয়াই সেয়া কৰি চাবলৈ সোঁফাললৈ আৰু তাৰ পাছত ওপৰলৈ ছোৱাইপ কৰক।</string>
+  <string name="voice_commands_text">আপুনি MS Screen Reader ক্ষিপ্ৰতাৰে নিয়ন্ত্ৰণ কৰিবলৈ আপোনাৰ কণ্ঠস্বৰ ব্যৱহাৰ কৰিব পাৰে।n\nউদাহৰণস্বৰূপে, নেভিগেশ্বন সলনি কৰিবলৈ এটা নিৰ্দেশ দিয়ক, পৰৱৰ্তী শিৰোনামটোলৈ সলনি কৰক, পাঠ প্ৰতিলিপি আৰু বহুতো কাৰ্য কৰক।\n\nএতিয়াই সেয়া কৰি চাবলৈ সোঁফাললৈ আৰু তাৰ পাছত ওপৰলৈ ছোৱাইপ কৰক।</string>
   <string name="using_screen_search_title">স্ক্ৰীনত সন্ধান কৰাৰ সুবিধাটো ব্যৱহাৰ কৰি</string>
   <string name="using_screen_search_text">স্ক্ৰীনত সন্ধান কৰাৰ সুবিধাটোৱে আপোনাক স্ক্ৰীনত নির্দিষ্ট সমল বিচাৰিবলৈ দিয়ে।\n\nএইটো ব্যৱহাৰ কৰি চাবলৈ, ৩ টা আঙুলিৰে টিপি TalkBackৰ মেনুখন খোলক আৰু মেনুখনত “স্ক্ৰীনত সন্ধান কৰক” বিচাৰক। স্ক্ৰীনখনত এটা শব্দৰ সৈতে জড়িত বস্তু বিচাৰিবলৈ এটা কীৱৰ্ড টাইপ কৰক, যেনে, “পৰৱতী”।\n\nপৰৱর্তী বুটামটো বিচাৰিবলৈ এতিয়া “পৰৱর্তী” বিচাৰি চাওক।</string>
   <string name="screen_search_navigation_title">স্ক্ৰীনত সন্ধান কৰাৰ সুবিধাটোৰ জৰিয়তে নেভিগে’ট কৰক</string>
@@ -1200,24 +1200,24 @@
   <string name="pref_gesture_set_key_title">নিৰ্দেশৰ ছেট</string>
   <string name="practice_gestures_text">TalkBackৰ যিকোনো এটা নিৰ্দেশে কি কৰে সেয়া শুনিবলৈ এই স্ক্ৰীনখনত সেইটো ব্যৱহাৰ কৰি চাওক।\n\n২ টা আঙুলিৰে স্ক্ৰীনখনত টিপক। ২, ৩ অথবা ৪ টা আঙুলিৰে এবাৰ, দুবাৰ অথবা তিনিবাৰ টিপি অভ্যাস কৰি থাকক।\n\nআপুনি ২, ৩ অথবা ৪ টা আঙুলিৰে দুবাৰ টিপিব আৰু ধৰি ৰাখিবও পাৰে।</string>
   <string name="practice_gestures_text_pre_r">TalkBackৰ যিকোনো এটা নিৰ্দেশে কি কৰে সেয়া শুনিবলৈ এই স্ক্ৰীনখনত সেইটো ব্যৱহাৰ কৰি চাওক।\n\nদুটা ছোৱাইপে এটা সমকোণ গঠন কৰা ঠাইত যিকোনো নিৰ্দেশ ব্যৱহাৰ কৰি চাওক। উদাহৰণস্বৰূপে, আপোনাৰ আঙুলিটো মাজতে নুঠোৱাকৈ তললৈ আৰু তাৰ পাছত সোঁফাললৈ ছোৱাইপ কৰক।</string>
-  <string name="practice_keyboard_gestures_text">এইটোৱে কি কৰে সেয়া শুনিবলৈ এটা ভৌতিক কীব‘ৰ্ডৰ কী বা কীৰ সংমিশ্ৰণত টিপক। বাহিৰ হ‘বলৈ Ctrl + W বা এস্কে’প টিপক।\n\nআপুনি লগতে TalkBack নিৰ্দেশসমূহ ইয়াত অনুশীলন কৰিব পাৰে।</string>
+  <string name="practice_keyboard_gestures_text">এইটোৱে কি কৰে সেয়া শুনিবলৈ এটা ভৌতিক কীব‘ৰ্ডৰ কী বা কীৰ সংমিশ্ৰণত টিপক। বাহিৰ হ‘বলৈ Ctrl + W বা এস্কে’প টিপক।\n\nআপুনি লগতে MS Screen Reader নিৰ্দেশসমূহ ইয়াত অনুশীলন কৰিব পাৰে।</string>
   <string name="button_1">বুটাম ১</string>
   <string name="button_2">বুটাম ২</string>
   <string name="button_3">বুটাম ৩</string>
   <string name="button_4">বুটাম ৪</string>
   <string name="activated_view">%1$s সক্ৰিয় কৰা হ’ল</string>
-  <string name="talkback_inactive_title">TalkBack অফ কৰা আছে</string>
-  <string name="talkback_inactive_warning_message">TalkBack অন থকাৰ অৱস্থাত এই টিউট’ৰিয়েলটোৱে আটাইতকৈ ভালকৈ কাম কৰে। আপুনি ছেটিঙত এই সালসলনিখিনি কৰিব পাৰে।\n\nযদি আপুনি TalkBack অফ থকা অৱস্থাত অব্যাহত ৰাখে, কিছুমান টিউট’ৰিয়েলে আশা কৰা ধৰণে কাম নকৰিব পাৰে।</string>
+  <string name="talkback_inactive_title">MS Screen Reader অফ কৰা আছে</string>
+  <string name="talkback_inactive_warning_message">MS Screen Reader অন থকাৰ অৱস্থাত এই টিউট’ৰিয়েলটোৱে আটাইতকৈ ভালকৈ কাম কৰে। আপুনি ছেটিঙত এই সালসলনিখিনি কৰিব পাৰে।\n\nযদি আপুনি MS Screen Reader অফ থকা অৱস্থাত অব্যাহত ৰাখে, কিছুমান টিউট’ৰিয়েলে আশা কৰা ধৰণে কাম নকৰিব পাৰে।</string>
   <string name="do_not_show_again_check_box">এইটো পুনৰ নেদেখুৱাব</string>
   <string name="talkback_inactive_warning_positive_button">তথাপি অব্যাহত ৰাখক</string>
   <string name="talkback_inactive_go_to_settings_button">ছেটিঙলৈ যাওক</string>
   <string name="talkback_inactive_stay_in_tutorial_button">টিউট’ৰিয়েলত থাকক</string>
   <string name="talkback_inactive_exit_tutorial_button">টিউট’ৰিয়েলৰ পৰা বাহিৰ হওক</string>
   <string name="talkback_inactive_not_now_button">এতিয়া নহয়</string>
-  <string name="talkback_inactive_message_practice_gestures">আঙুলিৰ স্পৰ্শৰে নিৰ্দেশসমূহ ব্যৱহাৰ কৰি চাবলৈ, প্ৰথমে TalkBack অন কৰক</string>
-  <string name="talkback_inactive_message_image_description">প্ৰতিচ্ছবিৰ বিৱৰণ পাবলৈ চেষ্টা কৰাটো আৰম্ভ কৰিবলৈ, প্ৰথমে TalkBack অন কৰক</string>
+  <string name="talkback_inactive_message_practice_gestures">আঙুলিৰ স্পৰ্শৰে নিৰ্দেশসমূহ ব্যৱহাৰ কৰি চাবলৈ, প্ৰথমে MS Screen Reader অন কৰক</string>
+  <string name="talkback_inactive_message_image_description">প্ৰতিচ্ছবিৰ বিৱৰণ পাবলৈ চেষ্টা কৰাটো আৰম্ভ কৰিবলৈ, প্ৰথমে MS Screen Reader অন কৰক</string>
   <string name="talkback_inactive_close_tutorial_button">টিউট’ৰিয়েল বন্ধ কৰক</string>
-  <string name="wear_training_welcome_paragraph">Talkback অন হৈ থাকিলে, স্ক্ৰীনত ফ’কাছ কৰা বস্তুটো ডাঙৰকৈ কোৱা হয়।\n\nসোঁফালে ছোৱাইপ কৰিলে পৰৱৰ্তী বস্তুটোলৈ যায়। বাওঁফালে ছোৱাইপ কৰিলে পূৰ্বৱৰ্তী বস্তুটোলৈ যায়।\n\nপৰৱৰ্তী বুটামটো বিচাৰি নোপোৱা পৰ্যন্ত এতিয়াই সোঁফালে ছোৱাইপ কৰক।</string>
+  <string name="wear_training_welcome_paragraph">MS Screen Reader অন হৈ থাকিলে, স্ক্ৰীনত ফ’কাছ কৰা বস্তুটো ডাঙৰকৈ কোৱা হয়।\n\nসোঁফালে ছোৱাইপ কৰিলে পৰৱৰ্তী বস্তুটোলৈ যায়। বাওঁফালে ছোৱাইপ কৰিলে পূৰ্বৱৰ্তী বস্তুটোলৈ যায়।\n\nপৰৱৰ্তী বুটামটো বিচাৰি নোপোৱা পৰ্যন্ত এতিয়াই সোঁফালে ছোৱাইপ কৰক।</string>
   <string name="wear_training_scroll_text" tools:ignore="PluralsCandidate">%1$d টা আঙুলিৰে ওপৰলৈ বা তললৈ ছোৱাইপ কৰক।</string>
   <string name="wear_training_go_back_title">উভতি যাওক</string>
   <string name="wear_training_go_back_text" tools:ignore="PluralsCandidate">আপুনি উভতি যাব বিচাৰিলে স্ক্ৰীনখনৰ কাষৰ পৰা সোঁফালে ছোৱাইপ কৰিবলৈ %1$d টা আঙুলি ব্যৱহাৰ কৰক।</string>
@@ -1236,8 +1236,8 @@
   <string name="wear_training_typing_text4">কীব’ৰ্ডখন বন্ধ কৰিবলৈ আৰু টাইপিং বাতিল কৰিবলৈ, ২ টা আঙুলিৰে আপোনাৰ স্ক্ৰীনখনৰ বাওঁফালৰ পৰা সোঁফাললৈ ছোৱাইপ কৰক।</string>
   <string name="wear_training_typing_text5">এইটো তলত কৰি চাওক।</string>
   <string name="wear_training_typing_practice_button_content_description">কীব’ৰ্ডৰ জৰিয়তে টাইপ কৰা</string>
-  <string name="wear_training_end_tutorial_title">আপুনি TalkBack ব্যৱহাৰ কৰা আৰম্ভ কৰিবলৈ সাজু</string>
-  <string name="talkback_updated_notification_title">TalkBack আপডে’ট কৰা হ’ল</string>
+  <string name="wear_training_end_tutorial_title">আপুনি MS Screen Reader ব্যৱহাৰ কৰা আৰম্ভ কৰিবলৈ সাজু</string>
+  <string name="talkback_updated_notification_title">MS Screen Reader আপডে’ট কৰা হ’ল</string>
   <string name="talkback_updated_notification_content">অধিক জানিবৰ বাবে টিপক</string>
   <string name="wear_new_feature_page_title">আপডে’ট কৰা TalkBackলৈ স্বাগতম</string>
   <string name="wear_new_feature_page_content">আপুনি কিছুমান বাগ সমাধান আৰু ফ’কাছ কেনেকৈ গতি কৰে সেই বিষয়ে সালসলনি দেখা পাব</string>
@@ -1368,13 +1368,13 @@
   <string name="switch_text_recognition_dialog_title">স্বয়ংক্ৰিয়ভাৱে প্ৰতিচ্ছবিত থকা পাঠৰ বৰ্ণনা দিয়ক</string>
   <string name="switch_text_recognition_dialog_message">আপুনি কোনো পাঠযুক্ত প্ৰতিচ্ছবিত ফ’কাছ কৰিলে স্বয়ংক্ৰিয়ভাৱে বৰ্ণনা শুনিবলৈ পাব</string>
   <string name="switch_auto_image_caption_dialog_subtitle">ডাউনল’ড কৰা</string>
-  <string name="disable_auto_image_caption_dialog_subtext">আপুনি তথাপি TalkBack মেনুৰ পৰা বাছনি কৰা কোনো প্ৰতিচ্ছবিৰ বাবে বৰ্ণনা লাভ কৰিব পাৰে</string>
+  <string name="disable_auto_image_caption_dialog_subtext">আপুনি তথাপি MS Screen Reader মেনুৰ পৰা বাছনি কৰা কোনো প্ৰতিচ্ছবিৰ বাবে বৰ্ণনা লাভ কৰিব পাৰে</string>
   <string name="switch_auto_image_caption_dialog_positive_button_text">ঠিক আছে</string>
   <string name="switch_auto_image_caption_dialog_negative_button_text">ডাউনল’ড কৰা সমল মচক</string>
   <string name="delete_icon_detection_dialog_title">চিহ্নৰ স্বয়ংক্ৰিয় বিৱৰণ মচিবনে?</string>
   <string name="delete_image_description_dialog_title">প্ৰতিচ্ছবিৰ স্বয়ংক্ৰিয় বিৱৰণ মচিবনে?</string>
   <string name="delete_all_image_captioning_dialog_title">প্ৰতিচ্ছবি আৰু চিহ্নৰ স্বয়ংক্ৰিয় বিৱৰণ মচিবনে?</string>
-  <string name="delete_dialog_message">বৰ্ণনা পাছত পুনৰ লাভ কৰিবলৈ, আপুনি TalkBack ছেটিঙৰ পৰা এই সুবিধাটো ডাউনল’ড কৰিব পাৰে</string>
+  <string name="delete_dialog_message">বৰ্ণনা পাছত পুনৰ লাভ কৰিবলৈ, আপুনি MS Screen Reader ছেটিঙৰ পৰা এই সুবিধাটো ডাউনল’ড কৰিব পাৰে</string>
   <string name="delete_all_dialog_message">এইটোৱে চিহ্ন আৰু প্ৰতিচ্ছবি দুয়োটাৰ বাবেই স্বয়ংক্ৰিয় বিৱৰণ মচে।\n\nপাছত পুনৰ বিৱৰণ পাবলৈ, আপুনি TalkBackৰ ছেটিঙৰ পৰা এই সুবিধাসমূহ ডাউনল’ড কৰিব পাৰে।</string>
   <string name="delete_dialog_positive_button_text">মচক</string>
   <string name="delete_dialog_negative_button_text">বাতিল কৰক</string>
@@ -1453,13 +1453,13 @@
   <string name="browse_mode_off_hint">ব্ৰাউজ ম’ড অফ আছে</string>
   <string name="browse_mode_double_trigger_modifier">%1$s %1$s</string>
   <string name="title_smart_browse_mode">স্মাৰ্ট ব্ৰাউজ ম’ড</string>
-  <string name="summary_smart_browse_mode">আপুনি থকা বস্তুটোৰ আধাৰত স্বয়ংক্ৰিয়ভাৱে ব্ৰাউজ ম’ড অন বা অফ কৰে। এইটোৱে ইনপুট ফ’কাছক TalkBack ফ’কাছৰ সৈতে ছিংক কৰে।</string>
+  <string name="summary_smart_browse_mode">আপুনি থকা বস্তুটোৰ আধাৰত স্বয়ংক্ৰিয়ভাৱে ব্ৰাউজ ম’ড অন বা অফ কৰে। এইটোৱে ইনপুট ফ’কাছক MS Screen Reader ফ’কাছৰ সৈতে ছিংক কৰে।</string>
   <string name="typing_echo_change_visual_feedback">কায়িক কীব’ৰ্ড প্ৰতিধ্বনি: %1$s</string>
-  <string name="talkback_turn_off_title">TalkBack অফ কৰক</string>
+  <string name="talkback_turn_off_title">MS Screen Reader অফ কৰক</string>
   <string name="talkback_turn_off_button">অফ কৰক</string>
   <string name="talkback_keep_on_button">অন ৰাখক</string>
   <string name="talkback_speech_bubble_label">@string/talkback_label</string>
   <string name="close_string">বন্ধ কৰক</string>
-  <string name="talkback_label">TalkBack</string>
+  <string name="talkback_label">MS Screen Reader</string>
   <string name="notifictions_in_lock_screen_notification_content">আপোনাৰ স্ক্ৰীনখন অফ হৈ থকাৰ সময়ত জাননী শুনিবলৈ, TalkBackৰ শব্দৰ বাহুল্যতাৰ ছেটিঙত \"স্ক্ৰীনখন অফ হৈ থকাৰ সময়ত জাননী পঢ়ক\" সুবিধাটো অন কৰক</string>
 </resources>

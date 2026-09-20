@@ -43,6 +43,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import com.google.android.accessibility.talkback.Feedback;
 import com.google.android.accessibility.talkback.Pipeline.FeedbackReturner;
+import com.google.android.accessibility.talkback.ExtraSounds;
 import com.google.android.accessibility.talkback.R;
 import com.google.android.accessibility.talkback.actor.DirectionNavigationActor.StateReader;
 import com.google.android.accessibility.talkback.compositor.CompositorUtils;
@@ -413,7 +414,14 @@ public class TextEditActor implements VoiceDictationDelegate {
           PerformActionUtils.performAction(node, AccessibilityNodeInfoCompat.ACTION_COPY, eventId);
     } else if (!TextUtils.isEmpty(nodeText)) {
       copyData = nodeText;
-      return copyToClipboard(clipboard, copyData);
+      boolean copiedNodeText = copyToClipboard(clipboard, copyData);
+      if (copiedNodeText) {
+        ExtraSounds.play(service, R.raw.clipboard);
+      }
+      return copiedNodeText;
+    }
+    if (result) {
+      ExtraSounds.play(service, R.raw.clipboard);
     }
     turnOffSelectionMode(node, eventId, /* clearSelection= */ true);
     CharSequence copiedText = CompositorUtils.refineInputText(service, copyData);
@@ -517,6 +525,9 @@ public class TextEditActor implements VoiceDictationDelegate {
         PerformActionUtils.performAction(node, AccessibilityNodeInfoCompat.ACTION_PASTE, eventId);
     turnOffSelectionMode(node, eventId, /* clearSelection= */ true);
     editTextActionHistory.afterPaste();
+    if (result) {
+      ExtraSounds.play(service, R.raw.clipboard);
+    }
 
     if (!result) {
       pipeline.returnFeedback(

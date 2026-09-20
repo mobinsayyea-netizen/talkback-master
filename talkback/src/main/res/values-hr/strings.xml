@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="talkback_service_description">Kada je uključen, TalkBack vam daje govorne povratne informacije tako da možete upotrebljavati uređaj bez gledanja u zaslon. To može biti korisno slijepim ili slabovidnim osobama.\n\nZa kretanje uređajem pomoću TalkBacka:\n• Prelazite prstom udesno ili ulijevo da biste se pomicali među stavkama.\n• Dvaput dodirnite stavku da biste je aktivirali.\n• Povlačite dvama prstima da biste se pomicali.\n\nZa isključivanje TalkBacka:\n• Dodirnite prekidač. Prikazat će se obrub. Dvaput dodirnite prekidač.\n• U poruci za potvrdu dodirnite U redu. Zatim dvaput dodirnite U redu.</string>
-  <string name="talkback_service_html_description">Kad je uključen, TalkBack pruža govorne povratne informacije kako biste mogli upotrebljavati uređaj bez gledanja u zaslon. TalkBack je namijenjen za situacije u kojima je zaslon slabo vidljiv ili za osobe koje imaju poteškoća s vidom.&lt;br&gt;&lt;br&gt;&lt;b&gt;Kako se koristi TalkBack&lt;/b&gt;&lt;br&gt;• Pomičite se s jedne stavke na drugu prelaskom prsta udesno ili ulijevo.&lt;br&gt;• Aktivirajte stavku tako da je dvaput dodirnete.&lt;br&gt;• Pomičite se po zaslonu povlačenjem dva prsta.&lt;br&gt;&lt;b&gt;Kako se isključuje TalkBack&lt;/b&gt;&lt;br&gt;1. U Postavkama dodirnite &lt;b&gt;Upotreba TalkBacka&lt;/b&gt;. Prikazat će se obris. Dodirnite ga dvaput.&lt;br&gt;2. U poruci za potvrdu dodirnite &lt;b&gt;Zaustavi&lt;/b&gt;. Prikazat će se obris. Dodirnite ga dvaput.</string>
+  <string name="talkback_service_description">Kada je uključen, MS Screen Reader vam daje govorne povratne informacije tako da možete upotrebljavati uređaj bez gledanja u zaslon. To može biti korisno slijepim ili slabovidnim osobama.\n\nZa kretanje uređajem pomoću TalkBacka:\n• Prelazite prstom udesno ili ulijevo da biste se pomicali među stavkama.\n• Dvaput dodirnite stavku da biste je aktivirali.\n• Povlačite dvama prstima da biste se pomicali.\n\nZa isključivanje TalkBacka:\n• Dodirnite prekidač. Prikazat će se obrub. Dvaput dodirnite prekidač.\n• U poruci za potvrdu dodirnite U redu. Zatim dvaput dodirnite U redu.</string>
+  <string name="talkback_service_html_description">Kad je uključen, MS Screen Reader pruža govorne povratne informacije kako biste mogli upotrebljavati uređaj bez gledanja u zaslon. MS Screen Reader je namijenjen za situacije u kojima je zaslon slabo vidljiv ili za osobe koje imaju poteškoća s vidom.&lt;br&gt;&lt;br&gt;&lt;b&gt;Kako se koristi MS Screen Reader&lt;/b&gt;&lt;br&gt;• Pomičite se s jedne stavke na drugu prelaskom prsta udesno ili ulijevo.&lt;br&gt;• Aktivirajte stavku tako da je dvaput dodirnete.&lt;br&gt;• Pomičite se po zaslonu povlačenjem dva prsta.&lt;br&gt;&lt;b&gt;Kako se isključuje MS Screen Reader&lt;/b&gt;&lt;br&gt;1. U Postavkama dodirnite &lt;b&gt;Upotreba TalkBacka&lt;/b&gt;. Prikazat će se obris. Dodirnite ga dvaput.&lt;br&gt;2. U poruci za potvrdu dodirnite &lt;b&gt;Zaustavi&lt;/b&gt;. Prikazat će se obris. Dodirnite ga dvaput.</string>
   <string name="talkback_service_summary">Upotrijebite čitač zaslona da bi vam se stavke pročitale naglas</string>
   <string name="talkback_preferences_title">Postavke TalkBacka</string>
   <string name="talkback_settings_screen_title_breadcrumb">Postavke</string>
@@ -116,7 +116,7 @@
   <string name="pref_category_selector_menu_summary_single_finger">Da biste koristili kontrole za čitanje, prijeđite prstom prema gore pa dolje.</string>
   <string name="title_pref_manage_keyboard_shortcuts">Tipkovni prečaci</string>
   <string name="title_pref_export_custom_labels">Izvezi prilagođene oznake</string>
-  <string name="title_pref_play_store">Otvori TalkBack u Trgovini Google Play</string>
+  <string name="title_pref_play_store">Otvori MS Screen Reader u Trgovini Google Play</string>
   <string name="summary_pref_play_store">Trenutačna verzija TalkBacka: %1$s</string>
   <string name="title_pref_help_and_feedback">Pomoć i povratne informacije</string>
   <string name="title_pref_gup">Obratite se Googleovoj podršci za asistivne tehnologije</string>
@@ -127,14 +127,14 @@
   <string name="title_pref_show_tos">Uvjeti pružanja usluge</string>
   <string name="title_pref_show_privacy_policy">Pravila o privatnosti</string>
   <string name="title_pref_category_fingerprint_touch_shortcuts">Pokreti za otisak prsta</string>
-  <string name="title_pref_category_tutorial">Vodič kroz TalkBack</string>
+  <string name="title_pref_category_tutorial">Vodič kroz MS Screen Reader</string>
   <string name="title_pref_category_help_no_tutorial">Pomoć</string>
   <string name="title_pref_category_typing">Unos teksta</string>
   <string name="title_pref_advanced_settings">Napredne postavke</string>
   <string name="title_pref_show_exit_watermark">Prikaži upute za isključivanje TalkBacka</string>
-  <string name="summary_pref_show_exit_watermark">Kad se TalkBack uključi, prikazuje se poruka koja vam pomaže da ga brzo isključite</string>
-  <string name="talkback_exit_watermark_text">TalkBack je uključen. Držite dva prsta na zaslonu pet sekundi da biste ga isključili. Da bi se ova poruka prestala prikazivati, dodirnite s tri prsta da biste otvorili izbornik TalkBacka.</string>
-  <string name="talkback_exit_watermark_hint_text">Prikazuje se natpis koji označava da je TalkBack uključen. Da biste isključili TalkBack, držite dva prsta na zaslonu pet sekundi. Da biste uklonili taj natpis, otvorite postavke TalkBacka.</string>
+  <string name="summary_pref_show_exit_watermark">Kad se MS Screen Reader uključi, prikazuje se poruka koja vam pomaže da ga brzo isključite</string>
+  <string name="talkback_exit_watermark_text">MS Screen Reader je uključen. Držite dva prsta na zaslonu pet sekundi da biste ga isključili. Da bi se ova poruka prestala prikazivati, dodirnite s tri prsta da biste otvorili izbornik TalkBacka.</string>
+  <string name="talkback_exit_watermark_hint_text">Prikazuje se natpis koji označava da je MS Screen Reader uključen. Da biste isključili MS Screen Reader, držite dva prsta na zaslonu pet sekundi. Da biste uklonili taj natpis, otvorite postavke TalkBacka.</string>
   <string name="reset_gesture_settings_title">Vrati postavke pokreta na zadano</string>
   <string name="one_finger_gestures_title">Jedan prst</string>
   <string name="one_finger_back_forth_gestures_title">Naprijed-natrag jednim prstom</string>
@@ -157,7 +157,7 @@
       &lt;li&gt;Razlikuju se neke modifikatorske tipke.&lt;/li&gt;&lt;/ul&gt;</string>
   <string name="keycombo_keymap_changes_activity_content_learn_more">Saznajte više o konfiguracijama prečaca</string>
   <string name="keycombo_go_to_settings">Otvori postavke</string>
-  <string name="keycombo_keymap_changes_notifications_content">TalkBack se sprema na uklanjanje klasične konfiguracije prečaca. Da biste nastavili upotrebljavati tipkovne prečace, prijeđite na zadanu konfiguraciju prečaca.</string>
+  <string name="keycombo_keymap_changes_notifications_content">MS Screen Reader se sprema na uklanjanje klasične konfiguracije prečaca. Da biste nastavili upotrebljavati tipkovne prečace, prijeđite na zadanu konfiguraciju prečaca.</string>
   <string name="keycombo_keymap_changes_notifications_action">Saznajte više</string>
   <string name="keycombo_new_keymap_notification_dialog_positive_button">Shvaćam</string>
   <string name="keycombo_new_keymap_notification_dialog_negative_button">Postavke</string>
@@ -178,7 +178,7 @@
   <string name="keycombo_menu_view_system_keyboard_shortcuts">Prikaz tipkovnih prečaca sustava</string>
   <string name="keycombo_menu_choose_trigger_modifier">Odaberite modifikatorsku tipku</string>
   <string name="keycombo_menu_alert_title_trigger_modifier">Želite li koristiti tipku %1$s kao modifikatorsku tipku?</string>
-  <string name="keycombo_menu_alert_message_trigger_modifier">TalkBack trenutačno koristi %1$s kao modifikatorsku tipku.</string>
+  <string name="keycombo_menu_alert_message_trigger_modifier">MS Screen Reader trenutačno koristi %1$s kao modifikatorsku tipku.</string>
   <string name="keycombo_menu_alert_button_trigger_modifier">Koristi %1$s</string>
   <string name="keycombo_menu_announce_new_trigger_modifier">Modifikatorska tipka promijenjena je na %1$s.</string>
   <string name="keycombo_menu_announce_active_keymap">Uspješno ste aktivirali %1$s.</string>
@@ -346,7 +346,7 @@
   <string name="title_pref_brailledisplay">Brajev redak</string>
   <string name="title_pref_brailleime">Brajična tipkovnica</string>
   <string name="summary_pref_brailleime_disabled">Vaš uređaj ne podržava brajičnu tipkovnicu</string>
-  <string name="title_pref_speech_footer">S bilo kojeg zaslona možete brzo prilagoditi određene postavke zvuka za TalkBack.\n\nGlasnoća pristupačnosti: držite jedan prst na zaslonu i pritisnite tipku za pojačavanje ili stišavanje glasnoće.\nBrzina čitanja TalkBacka: trima prstima prijeđite prema gore ili dolje. Kad čujete \"brzina čitanja\", prijeđite jednim prstom prema gore ili dolje.</string>
+  <string name="title_pref_speech_footer">S bilo kojeg zaslona možete brzo prilagoditi određene postavke zvuka za MS Screen Reader.\n\nGlasnoća pristupačnosti: držite jedan prst na zaslonu i pritisnite tipku za pojačavanje ili stišavanje glasnoće.\nBrzina čitanja TalkBacka: trima prstima prijeđite prema gore ili dolje. Kad čujete \"brzina čitanja\", prijeđite jednim prstom prema gore ili dolje.</string>
   <string name="title_pref_vibration">Obavijest vibracijom</string>
   <string name="title_pref_soundback">Obavijest zvukom</string>
   <string name="title_pref_use_audio_focus">Automatsko stišavanje zvuka</string>
@@ -370,11 +370,11 @@
   <string name="message_pref_touch_explore_latency">Kraća odgoda fokusa za unos znači da se TalkBackove obavijesti izgovaraju brže nakon dodirivanja tipkovnice.\n\nOdaberite odgodu</string>
   <string name="title_pref_touch_focus_timeout">Odgoda fokusa</string>
   <string name="summary_pref_touch_focus_time">
-Upravlja brzinom kojom TalkBack govori nakon pomicanja fokusa. Kraća odgoda čini TalkBack bržim, ali može otežati izvođenje dvostrukog i trostrukog dodira.\n\n
+Upravlja brzinom kojom MS Screen Reader govori nakon pomicanja fokusa. Kraća odgoda čini MS Screen Reader bržim, ali može otežati izvođenje dvostrukog i trostrukog dodira.\n\n
 Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dodir dvama prstima za aktivaciju.
       </string>
   <string name="title_pref_talkback_gesture_detection">Upravljanje pokretima u TalkBacku</string>
-  <string name="toast_pref_talkback_gesture_detection">Isključite TalkBack, a zatim ga ponovo uključite da biste uključili postavku.</string>
+  <string name="toast_pref_talkback_gesture_detection">Isključite MS Screen Reader, a zatim ga ponovo uključite da biste uključili postavku.</string>
   <string name="title_pref_auto_image_captioning">Automatski opisi</string>
   <string name="title_pref_gemini_settings">Postavke za Gemini</string>
   <string name="title_pref_gemini_enabled">Gemini – glasovna naredba</string>
@@ -385,7 +385,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="dialog_title_turn_on_image_description">Uključite opise slika u postavkama</string>
   <string name="dialog_message_turn_on_image_description">Možete ponovno pokušati nakon uključivanja automatskih ili detaljnih opisa slika</string>
   <string name="title_pref_detailed_image_description">Detaljni opisi slika</string>
-  <string name="summary_pref_ai_description">Kada s izbornika TalkBack odaberete \"%1$s\", čut ćete duže opise.</string>
+  <string name="summary_pref_ai_description">Kada s izbornika MS Screen Reader odaberete \"%1$s\", čut ćete duže opise.</string>
   <string name="dialog_message_detailed_ai_description">Kada koristite ovu značajku, odabrane slike poslat će se Googleu radi obrade, a zatim izbrisati.\n\nGenerativni AI je u eksperimentalnoj fazi, pa može pogriješiti. Nastavkom upotrebe prihvaćate da se na vašu upotrebu primjenjuju %1$s.</string>
   <string name="dialog_message_on_device_ai_description">Čut ćete kratki opis kad fokusirate sliku u podržanim aplikacijama.\n\nSlike se obrađuju na vašem uređaju i nikad se ne šalju Googleu. \n\nGenerativni AI je u eksperimentalnoj fazi, pa može pogriješiti. Nastavkom upotrebe prihvaćate <a href="https://policies.google.com/terms/generative-ai">Googleove uvjete pružanja usluge</a>.</string>
   <string name="enable_gemini">Uključi</string>
@@ -397,7 +397,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="dialog_message_gen_ai_tos_link">Googleovi uvjeti pružanja usluge</string>
   <string name="message_aifeature_downloading">U tijeku je preuzimanje modela AI-ja. To može potrajati neko vrijeme. Primit ćete obavijest po dovršetku.</string>
   <string name="message_aifeature_downloading_with_progress">Preuzimanje je i dalje u tijeku. Preuzeto: %1$d od ukupno %2$d MB.</string>
-  <string name="message_aifeature_download_complete">Model AI-ja je preuzet. TalkBack sada može generirati opise slika.</string>
+  <string name="message_aifeature_download_complete">Model AI-ja je preuzet. MS Screen Reader sada može generirati opise slika.</string>
   <string name="summary_pref_auto_image_captioning">Za ikone, slike i tekst na slikama</string>
   <string name="summary_pref_auto_image_captioning_text_only">Za tekst na slikama</string>
   <string name="summary_pref_auto_image_captioning_no_icon">Za slike i tekst na slikama</string>
@@ -426,7 +426,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="summary_pref_gemini_support_disabled">Gemini je onemogućen</string>
   <string name="screen_dimmed">Zaslon je skriven</string>
   <string name="screen_brightness_restored">Zaslon se prikazuje</string>
-  <string name="screen_dimming_exit_instruction_line1">Usluga pristupačnosti TalkBack sakrila je zaslon</string>
+  <string name="screen_dimming_exit_instruction_line1">Usluga pristupačnosti MS Screen Reader sakrila je zaslon</string>
   <string name="screen_dimming_exit_instruction_line2">Da biste to promijenili, %1$s da biste otvorili izbornik TalkBacka, odaberite %2$s i dvaput dodirnite.</string>
   <string name="shortcut_title_basic_navigation">Osnovno kretanje</string>
   <string name="shortcut_title_system_actions">Radnje sustava</string>
@@ -573,9 +573,9 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="summary_granularity">Čitajte po znakovima, riječima, redcima i slično</string>
   <string name="summary_read_from_top">Pročitajte sve stavke na zaslonu od vrha</string>
   <string name="summary_read_from_current">Počevši od fokusirane stavke, pročitaj sve stavke na zaslonu</string>
-  <string name="summary_copy_last_spoken_phrase">Posljednja fraza koju je reproducirao TalkBack kopira se u međuspremnik da biste mogli zalijepiti tekst</string>
-  <string name="summary_spell_last_spoken_phrase">Slovka se svako slovo posljednje fraze koju je reproducirao TalkBack</string>
-  <string name="summary_repeat_last_spoken_phrase">Ponovno poslušajte posljednju frazu koju je reproducirao TalkBack</string>
+  <string name="summary_copy_last_spoken_phrase">Posljednja fraza koju je reproducirao MS Screen Reader kopira se u međuspremnik da biste mogli zalijepiti tekst</string>
+  <string name="summary_spell_last_spoken_phrase">Slovka se svako slovo posljednje fraze koju je reproducirao MS Screen Reader</string>
+  <string name="summary_repeat_last_spoken_phrase">Ponovno poslušajte posljednju frazu koju je reproducirao MS Screen Reader</string>
   <string name="summary_perform_screen_search">Unesite pojam za pretraživanje da biste na zaslonu pronašli taj tekst</string>
   <string name="summary_voice_commands">Upravljajte TalkBackom upotrebom glasa</string>
   <string name="summary_show_hide_screen">Sakrijte prikaz kako vaš zaslon ne bi bio vidljiv drugima na javnim mjestima. Nakon što sakrijete svoj zaslon, vratite ga u normalno stanje.</string>
@@ -629,7 +629,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="summary_sound_feedback">Kretanje prate zvučni efekti, na primjer pisak kojim se potvrđuje radnja</string>
   <string name="summary_vibration_feedback">Radnje kao što je odabir stavke signaliziraju se vibracijom. Ne utječe na vibracije aplikacija ili sustava.</string>
   <string name="summary_hide_screen">Sakrijte zaslon kako ne bi bio vidljiv drugima</string>
-  <string name="summary_audio_ducking">Stišajte druge zvukove koji se reproduciraju dok TalkBack govori</string>
+  <string name="summary_audio_ducking">Stišajte druge zvukove koji se reproduciraju dok MS Screen Reader govori</string>
   <string name="summary_support_scroll_seq">Pomicanje unaprijed ili unatrag</string>
   <string name="summary_support_change_a11y_volume">Pojačavanje ili stišavanje glasnoće pristupačnosti</string>
   <string name="summary_support_change_touch_explore_latency">Skratite ili produljite odgodu fokusa za unos</string>
@@ -639,7 +639,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="summary_image_caption">Govorite tekst i ikone unutar odabrane slike</string>
   <string name="summary_summarize_view">Čitanje sažetka prikaza</string>
   <string name="summary_typo_suggestions">Prikazuje se kad je pokazivač na pogrešno napisanoj riječi</string>
-  <string name="summary_cache_keyboard_keys">TalkBack unaprijed učitava obavijesti kako bi se smanjilo kašnjenje prilikom unosa teksta</string>
+  <string name="summary_cache_keyboard_keys">MS Screen Reader unaprijed učitava obavijesti kako bi se smanjilo kašnjenje prilikom unosa teksta</string>
   <string name="summary_cache_keyboard_keys_disabled">Koristite Google pretvaranje teksta u govor za upotrebu te značajke</string>
   <string name="value_direction_down">dolje</string>
   <string name="value_direction_down_and_right">dolje pa desno</string>
@@ -746,7 +746,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="pref_time_feedback_format_entries_default">Koristi format vremena uređaja</string>
   <string name="pref_time_feedback_format_entries_12_hour">12 sati</string>
   <string name="pref_time_feedback_format_entries_24_hour">24 sata</string>
-  <string name="notification_title_talkback_gestures_changed">Promjena pokreta za TalkBack</string>
+  <string name="notification_title_talkback_gestures_changed">Promjena pokreta za MS Screen Reader</string>
   <string name="notification_message_talkback_gestures_changed">Dodirnite za pregled promjena pokreta pristupačnosti</string>
   <string name="always_show_warning_checkbox">Uvijek prikazuj to upozorenje</string>
   <string name="label_dialog_title_add">Dodavanje oznake</string>
@@ -756,7 +756,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="label_dialog_text">Unesite tekst koji će se upotrebljavati kao oznaka za taj element\nNaziv za interni prikaz: %1$s</string>
   <string name="label_dialog_edit_hint">Tekst oznake</string>
   <string name="label_import">Uvezi prilagođene oznake</string>
-  <string name="label_import_dialog_title">Uvoz prilagođenih oznaka na TalkBack</string>
+  <string name="label_import_dialog_title">Uvoz prilagođenih oznaka na MS Screen Reader</string>
   <string name="label_import_dialog_message">Odaberite želite li nadjačati ili preskočiti postojeće oznake u slučaju sukoba</string>
   <string name="label_import_dialog_skip">Preskoči</string>
   <string name="label_import_dialog_override">Nadjačaj</string>
@@ -770,7 +770,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="label_choose_app_to_export">Odaberite aplikaciju da biste izvezli oznake:</string>
   <string name="talkback_gesture_change_details">Ova verzija TalkBacka uključuje promjene zadanih pokreta pristupačnosti. Radnje povezane s tim pokretima mogu se prilagoditi u postavkama TalkBacka. Kada je omogućena značajka Istraži dodirom, pomoću sljedećih pokreta možete izvršavati određene radnje.\n\n%1$s</string>
   <string name="dialog_title_dim_screen">Sakriti zaslon?</string>
-  <string name="dialog_message_dim_screen">Time se isključuje prikaz na zaslonu radi zaštite privatnosti. Neki se sadržaji i dalje mogu prikazivati, na primjer poruke za ponovno uključivanje zaslona ili izbornici za značajke pristupačnosti kao što je TalkBack.</string>
+  <string name="dialog_message_dim_screen">Time se isključuje prikaz na zaslonu radi zaštite privatnosti. Neki se sadržaji i dalje mogu prikazivati, na primjer poruke za ponovno uključivanje zaslona ili izbornici za značajke pristupačnosti kao što je MS Screen Reader.</string>
   <string name="talkback_built_in_gesture_change_details">Ova verzija TalkBacka uključuje promjene zadanih pokreta pristupačnosti.\n\nPokret \"gore pa dolje\" omogućuje vam pomak na prvu stavku na zaslonu, a pokret \"dolje pa gore\" pomaknut će vas na zadnju stavku.\n\nRazinu čitanja sada možete promijeniti tako da fokusirate stavku, a potom odaberete razinu na TalkBackovom kontekstnom izborniku.\n\nU postavkama TalkBacka možete promijeniti radnje koje se izvode tim pokretima.</string>
   <string name="default_action_changed_details">Medije sad možete pauzirati i reproducirati tako da dvama prstima dvaput dodirnete zaslon i zadržite.\n\nPromijenili su se i drugi pokreti.</string>
   <string name="talkback_built_in_gesture_open_url">Otvorite na telefonu da biste saznali više</string>
@@ -854,7 +854,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="message_pref_touch_focus_latency">Kraća odgoda fokusa znači da se TalkBackove obavijesti izgovaraju brže nakon dodirivanja zaslona</string>
   <string name="message_pref_typing_method_prefix">Za najkraću odgodu pri tipkanju odaberite \"Zadržite prst za odabir bilo koje tipke, a zatim ga podignite\"</string>
   <string name="message_pref_typing_method_postfix">Uvijek možete koristiti i podijeljeni dodir za tipkanje. U tom slučaju zadržite jedan prst na odabranoj tipki, a drugim prstom dodirnite zaslon.</string>
-  <string name="title_pref_talkback_speech_rate">TalkBack – brzina govora</string>
+  <string name="title_pref_talkback_speech_rate">MS Screen Reader – brzina govora</string>
   <string name="title_pref_selector_adjustable_widget_slider">Prilagodi klizač</string>
   <string name="title_pref_selector_typo_granularity">Jezična provjera</string>
   <string name="hint_no_typo_found">Nema pravopisnih pogrešaka.</string>
@@ -881,13 +881,13 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="msg_matches_found">{matches,plural, =0{Na ovom zaslonu nema podudaranja}=1{Jedno podudaranje}one{# podudaranje}few{# podudaranja}other{# podudaranja}}</string>
   <string name="msg_no_matches">Na ovom zaslonu nema podudaranja</string>
   <string name="dialog_title_continuous_reading_mode">Kako funkcionira kontinuirano čitanje</string>
-  <string name="dialog_message_continuous_reading_mode">Nakon odabira opcije Čitanje od vrha ili Čitanje od fokusirane stavke i dalje možete prelaziti na prethodnu ili sljedeću stavku dok se tekst čita. To vam omogućuje da se lako vratite ili prebacite na sljedeće.\n\nDa biste prilagodili glasnoću dok TalkBack govori, pritisnite tipku za pojačavanje ili stišavanje glasnoće.</string>
+  <string name="dialog_message_continuous_reading_mode">Nakon odabira opcije Čitanje od vrha ili Čitanje od fokusirane stavke i dalje možete prelaziti na prethodnu ili sljedeću stavku dok se tekst čita. To vam omogućuje da se lako vratite ili prebacite na sljedeće.\n\nDa biste prilagodili glasnoću dok MS Screen Reader govori, pritisnite tipku za pojačavanje ili stišavanje glasnoće.</string>
   <string name="always_show_this_message_label">Uvijek prikazuj tu poruku</string>
   <string name="dialog_title_voice_commands">Upotreba glasovnih naredbi za upravljanje TalkBackom</string>
-  <string name="dialog_message_voice_commands">Ovo su neke stvari koje možete reći:\n\n• Copy (Kopiraj)\n• Read from focused item (Čitaj počevši od fokusirane stavke)\n• Find [save] (Pronađi [spremljeno])\n• Speak [faster] (Govori [brže])\n• TalkBack settings (Postavke Talkbacka).\n\nRecite %1$s da biste vidjeli popis svih glasovnih naredbi</string>
+  <string name="dialog_message_voice_commands">Ovo su neke stvari koje možete reći:\n\n• Copy (Kopiraj)\n• Read from focused item (Čitaj počevši od fokusirane stavke)\n• Find [save] (Pronađi [spremljeno])\n• Speak [faster] (Govori [brže])\n• MS Screen Reader settings (Postavke Talkbacka).\n\nRecite %1$s da biste vidjeli popis svih glasovnih naredbi</string>
   <string name="start_voice_command">Upotreba glasovnih naredbi</string>
-  <string name="dialog_title_pass_through_mode">Preskočite pokrete za TalkBack da biste koristili pokrete sustava</string>
-  <string name="dialog_message_pass_through_mode">Kad čujete zvono, možete koristiti pokrete sustava koje TalkBack ne podržava. To se naziva pokret prelaska.</string>
+  <string name="dialog_title_pass_through_mode">Preskočite pokrete za MS Screen Reader da biste koristili pokrete sustava</string>
+  <string name="dialog_message_pass_through_mode">Kad čujete zvono, možete koristiti pokrete sustava koje MS Screen Reader ne podržava. To se naziva pokret prelaska.</string>
   <string name="dialog_title_voice_input_download">Ažurirajte Gboard za upotrebu glasovnog unosa</string>
   <string name="dialog_message_voice_input_download">Glasovni unos sada možete uključiti dvostrukim dodirom dvama prstima kad je Gboard aktivan. Da biste upotrebljavali taj pokret, ažurirajte Gboard na najnoviju verziju.</string>
   <string name="label_update_gboard">Ažuriranje na Google Playu</string>
@@ -939,26 +939,26 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="training_finish_button">Završi</string>
   <string name="training_navigate_up">Idi gore</string>
   <string name="training_tip">Savjet</string>
-  <string name="tv_training_overview_step_title">Kako funkcionira TalkBack</string>
-  <string name="tv_training_overview_step_summary">TalkBack je Googleov čitač zaslona. Čita naglas tekst na zaslonu i pruža vam govorne povratne informacije kako biste mogli koristiti uređaj bez gledanja zaslona.\n\nKad je TalkBack uključen, odabrana stavka na zaslonu izgovara se naglas, ponekad uz dodatne informacije ili kontekst.\n\nPritisnite Odaberi da biste nastavili. Gumb Odaberi nalazi se u sredini gumba smjera, odnosno velikog kružnog gumba pri vrhu daljinskog upravljača.</string>
+  <string name="tv_training_overview_step_title">Kako funkcionira MS Screen Reader</string>
+  <string name="tv_training_overview_step_summary">MS Screen Reader je Googleov čitač zaslona. Čita naglas tekst na zaslonu i pruža vam govorne povratne informacije kako biste mogli koristiti uređaj bez gledanja zaslona.\n\nKad je MS Screen Reader uključen, odabrana stavka na zaslonu izgovara se naglas, ponekad uz dodatne informacije ili kontekst.\n\nPritisnite Odaberi da biste nastavili. Gumb Odaberi nalazi se u sredini gumba smjera, odnosno velikog kružnog gumba pri vrhu daljinskog upravljača.</string>
   <string name="tv_training_remote_step_title">Upotreba daljinskog upravljača</string>
   <string name="tv_training_remote_step_summary">Krećite se zaslonom pomoću okruglog gumba za smjerove pri vrhu daljinskog upravljača. Da biste nešto odabrali, pritisnite sredinu gumba za smjerove pri vrhu daljinskog upravljača.\n\nU drugom retku slijeva se nalazi gumb za natrag. S desne strane nalazi se glasovni gumb za Asistenta.\n\nU trećem retku slijeva se nalazi gumb početnog zaslona. Desno je gumb za isključivanje zvuka.\n\nU četvrtom retku slijeva nalazi se prečac za YouTube. Desno je prečac za Netflix.\n\nU donjem retku nalaze se dva mala gumba. Lijevi je gumb tipka za uključivanje/isključivanje. Desnim gumbom možete otvoriti izbornik ulaza za TV.\n\nGumbi za glasnoću nalaze se s desne strane daljinskog upravljača.\n\nPritisnite Odaberi da biste nastavili.</string>
-  <string name="tv_training_shortcut_step_title">Prečac za TalkBack</string>
-  <string name="tv_training_shortcut_step_summary">Da biste pristupili prečacu za TalkBack, istovremeno pritisnite gumb za dolje i gumb za natrag i držite ih 3 sekunde. TalkBack će se uključiti ili isključiti.\n\nTom prečacu možete pristupiti i u postavkama TV-a.\n\nPritisnite gumb Odaberi da biste nastavili.</string>
+  <string name="tv_training_shortcut_step_title">Prečac za MS Screen Reader</string>
+  <string name="tv_training_shortcut_step_summary">Da biste pristupili prečacu za MS Screen Reader, istovremeno pritisnite gumb za dolje i gumb za natrag i držite ih 3 sekunde. MS Screen Reader će se uključiti ili isključiti.\n\nTom prečacu možete pristupiti i u postavkama TV-a.\n\nPritisnite gumb Odaberi da biste nastavili.</string>
   <string name="new_feature_in_talkback_title">Nove značajke u TalkBacku</string>
   <string name="exit_tutorial_title">Jeste li završili s pregledom?</string>
   <string name="exit_tutorial_content">Možete se uvijek vratiti na vodič u postavkama TalkBacka.</string>
   <string name="exit_onboarding_content">U bilo kojem se trenutku možete vratiti da biste provjerili nove značajke u postavkama TalkBacka.</string>
   <string name="keep_reviewing_tutorial_button">Nastavi pregledavanje</string>
-  <string name="welcome_to_updated_talkback_title">Dobro došli u ažurirani TalkBack</string>
+  <string name="welcome_to_updated_talkback_title">Dobro došli u ažurirani MS Screen Reader</string>
   <string name="navigation_heading">Kretanje</string>
   <string name="setting_selector_heading">Kontrole za čitanje</string>
   <string name="new_shortcut_gesture_pause_or_play_media_text">Da biste pauzirali ili reproducirali medijske sadržaje u aplikaciji za videozapise ili glazbu, dvaput dodirnite s dva prsta. Isprobajte odmah.</string>
   <string name="new_shortcut_gesture_pause_or_play_media_subtext">Druge aplikacije taj pokret mogu upotrebljavati primjerice za odgovaranje na telefonski poziv ili prekidanje poziva. Neke ga aplikacije možda ne podržavaju.</string>
-  <string name="onboarding_link_to_talkback_tutorials">Prikaži sve vodiče za TalkBack</string>
+  <string name="onboarding_link_to_talkback_tutorials">Prikaži sve vodiče za MS Screen Reader</string>
   <string name="new_shortcut_gesture_pause_media_announcement">Medij je pauziran ili se reproducira. Time će se uglavnom pauzirati ili reproducirati trenutačni videozapis ili glazba. Za nastavak prijeđite prstom udesno.</string>
   <string name="new_shortcut_gesture_stop_speech_text">Da biste privremeno zaustavili govor TalkBacka, dodirnite s dva prsta.</string>
-  <string name="new_shortcut_gesture_stop_speech_announcement">Govor TalkBacka je zaustavljen. To će uglavnom zaustaviti trenutačni izraz koji TalkBack izgovara. Za nastavak prijeđite prstom udesno.</string>
+  <string name="new_shortcut_gesture_stop_speech_announcement">Govor TalkBacka je zaustavljen. To će uglavnom zaustaviti trenutačni izraz koji MS Screen Reader izgovara. Za nastavak prijeđite prstom udesno.</string>
   <string name="new_shortcut_gesture_copy_text_text">Da biste kopirali tekst, dvaput dodirnite s tri prsta.</string>
   <string name="new_shortcut_gesture_copy_text_announcement">Tekst je kopiran. To će obično kopirati tekst koji ste odabrali. Za nastavak prijeđite prstom udesno.</string>
   <string name="new_shortcut_gesture_paste_text_text">Da biste zalijepili tekst, triput dodirnite s tri prsta.</string>
@@ -969,10 +969,10 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="new_shortcut_gesture_selection_mode_on_announcement">Način odabira isključen. To će obično pokrenuti ili prekinuti način odabira teksta kad se nalazite u polju za unos. Za nastavak prijeđite prstom udesno.</string>
   <string name="new_shortcut_gesture_reading_menu_text">Da biste koristili kontrole za čitanje, prijeđite s tri prsta ulijevo ili udesno. Također možete prijeći prema gore ili dolje s tri prsta.</string>
   <string name="new_shortcut_gesture_note">Napomena: neke ste pokrete prilagodili, stoga ove informacije možda neće biti točne. Za pregled pokreta otvorite TalkBackove postavke.</string>
-  <string name="welcome_to_android11">Dobro došli u TalkBack na Androidu 11</string>
+  <string name="welcome_to_android11">Dobro došli u MS Screen Reader na Androidu 11</string>
   <string name="welcome_to_android11_text">Dodane su nove značajke kako bi upotreba TalkBacka bila brža i jednostavnija.\n\nNa ovom zaslonu možete isprobati nove pokrete. Te informacije možete pregledati kad god želite u postavkama TalkBacka.</string>
   <string name="new_gesture_notification_title">Novi pokreti u TalkBacku</string>
-  <string name="new_gesture_notification_content">Dodirnite da biste saznali kako koristiti TalkBack brže pomoću novih pokreta.</string>
+  <string name="new_gesture_notification_content">Dodirnite da biste saznali kako koristiti MS Screen Reader brže pomoću novih pokreta.</string>
   <string name="dump_node_tree_description">Stablo čvorova ispisano je u zapisnike.</string>
   <string name="report_gesture_description">Ovo su nedavni pokreti. Prijavite koji je pokret pogrešan i što se očekuje.</string>
   <string name="update_welcome_text_content">Sad se možete povezati s brajevim recima putem HID-a, načina povezivanja s Bluetooth uređajima. Provjerite imate li najnovije upravljačke programe proizvođača, a zatim uključite Bluetooth na brajevom retku. Otvorite Postavke TalkBacka &gt; Brajev redak i uključite opciju Upotrijebi brajev redak. Pronađite svoj uređaj na popisu uređaja i povežite se s njim.</string>
@@ -988,8 +988,8 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
 &lt;br&gt;Provjerite imate li najnoviju verziju &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin\"&gt;Gboarda s Google Playa&lt;/a&gt;.</string>
   <string name="shortcut_for_dictation_content_without_google_play">Kad je Gboard na zaslonu, sada možete dvaput dodirnuti dvama prstima da biste pokrenuli glasovno diktiranje, a zatim dvaput dodirnuti dvama prstima da biste ga zaustavili.</string>
   <string name="keyboard_title">Tipkovnica</string>
-  <string name="keyboard_content">TalkBack sada ima poboljšanu konfiguraciju prečaca za tipkovnicu s raznim novim naredbama i prečacima. To poboljšanje, koje uključuje način pregledavanja za učinkovitiju navigaciju webom, pojednostavljuje navigaciju i interakciju za korisnike TalkBacka koji se oslanjaju na fizičke tipkovnice. Možete se prebaciti na poboljšanu konfiguraciju prečaca u odjeljku Postavke TalkBacka &gt; Napredne postavke &gt; Tipkovni prečaci.</string>
-  <string name="keyboard_content_tts">TalkBack sada ima poboljšanu konfiguraciju prečaca za tipkovnicu s raznim novim naredbama i prečacima. To poboljšanje, koje uključuje način pregledavanja za učinkovitiju navigaciju webom, pojednostavljuje navigaciju i interakciju za korisnike TalkBacka koji se oslanjaju na fizičke tipkovnice. Možete se prebaciti na poboljšanu konfiguraciju prečaca tako da otvorite Postavke TalkBacka, zatim Napredne postavke, a zatim Tipkovni prečaci.</string>
+  <string name="keyboard_content">MS Screen Reader sada ima poboljšanu konfiguraciju prečaca za tipkovnicu s raznim novim naredbama i prečacima. To poboljšanje, koje uključuje način pregledavanja za učinkovitiju navigaciju webom, pojednostavljuje navigaciju i interakciju za korisnike TalkBacka koji se oslanjaju na fizičke tipkovnice. Možete se prebaciti na poboljšanu konfiguraciju prečaca u odjeljku Postavke TalkBacka &gt; Napredne postavke &gt; Tipkovni prečaci.</string>
+  <string name="keyboard_content_tts">MS Screen Reader sada ima poboljšanu konfiguraciju prečaca za tipkovnicu s raznim novim naredbama i prečacima. To poboljšanje, koje uključuje način pregledavanja za učinkovitiju navigaciju webom, pojednostavljuje navigaciju i interakciju za korisnike TalkBacka koji se oslanjaju na fizičke tipkovnice. Možete se prebaciti na poboljšanu konfiguraciju prečaca tako da otvorite Postavke TalkBacka, zatim Napredne postavke, a zatim Tipkovni prečaci.</string>
   <string name="reduce_delay_title">Smanjenje odgode</string>
   <string name="reduce_delay_content">Sada možete smanjiti odgode TalkBackovih obavijesti za istraživanje dodirom i tipkanje. Da biste pregledali te postavke, otvorite Postavke TalkBacka &gt; Napredne postavke &gt; Smanji odgodu.</string>
   <string name="reduce_delay_content_tts">Sada možete smanjiti odgode TalkBackovih obavijesti za istraživanje dodirom i tipkanje. Da biste pregledali te postavke, otvorite Postavke TalkBacka, zatim Napredne postavke, a zatim Smanji odgodu.</string>
@@ -998,11 +998,11 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="customize_braille_keyboard_improvements_content_tts">Sada je moguće prilagoditi pokrete za virtualnu brajičnu tipkovnicu na zaslonu. Da biste ih prilagodili, otvorite Postavke TalkBacka, zatim Brajična tipkovnica, a zatim Pokreti.</string>
   <string name="learn_more_about_braille_keyboard">Saznajte više o brajičnoj tipkovnici</string>
   <string name="other_changes_title">Ostale promjene</string>
-  <string name="other_changes_content">Pomoću poruke na zaslonu sada možete brzo isključiti TalkBack ako se slučajno uključi. Tu značajku možete isključiti u odjeljku Postavke TalkBacka &gt; Prikaži upute za isključivanje TalkBacka.</string>
-  <string name="other_changes_content_tts">Pomoću poruke na zaslonu sada možete brzo isključiti TalkBack ako se slučajno uključi. Tu značajku možete isključiti tako da otvorite Postavke TalkBacka, a zatim Prikaži upute za isključivanje TalkBacka.</string>
+  <string name="other_changes_content">Pomoću poruke na zaslonu sada možete brzo isključiti MS Screen Reader ako se slučajno uključi. Tu značajku možete isključiti u odjeljku Postavke TalkBacka &gt; Prikaži upute za isključivanje TalkBacka.</string>
+  <string name="other_changes_content_tts">Pomoću poruke na zaslonu sada možete brzo isključiti MS Screen Reader ako se slučajno uključi. Tu značajku možete isključiti tako da otvorite Postavke TalkBacka, a zatim Prikaži upute za isključivanje TalkBacka.</string>
   <string name="keymap_changes_content">Klasična konfiguracija prečaca prebačena je na zadanu konfiguraciju prečaca, koja uključuje više prečaca.</string>
   <string name="announcing_text_formatting_title">Najavljivanje oblikovanja teksta</string>
-  <string name="announcing_text_formatting_header">TalkBack vas sada može obavijestiti o promjenama u oblikovanju teksta, kao što su podebljani tekst, kurziv i boja teksta. Da biste započeli:</string>
+  <string name="announcing_text_formatting_header">MS Screen Reader vas sada može obavijestiti o promjenama u oblikovanju teksta, kao što su podebljani tekst, kurziv i boja teksta. Da biste započeli:</string>
   <string name="announcing_text_formatting_option1">fokusirajte stavku s oblikovanjem, otvorite izbornik TalkBacka i odaberite Opiši oblikovanje teksta ili</string>
   <string name="announcing_text_formatting_option2">dodajte kontrolu za čitanje za oblikovanje teksta koja će uključiti ili isključiti najavu promjena oblikovanja.</string>
   <string name="announcing_text_formatting_middle">Kada budete to spremni isprobati, evo primjera oblikovanog teksta:</string>
@@ -1026,7 +1026,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="split_tap_everywhere_title">Podijeljeni dodir svugdje</string>
   <string name="split_tap_everywhere_text">Sada možete upotrebljavati podijeljeni dodir svugdje za aktiviranje stavki, čak i izvan tipkovnice. Da biste ga upotrebljavali, istražite zaslon jednim prstom, a zatim, bez podizanja prvog prsta, dodirnite zaslon drugim prstom da biste aktivirali trenutačno fokusiranu stavku.</string>
   <string name="keyboard_enhanced_keymap_title">Tipkovnica: poboljšana konfiguracija prečaca</string>
-  <string name="keyboard_enhanced_keymap_text">TalkBack sada ima poboljšanu konfiguraciju prečaca za fizičke tipkovnice s raznim novim naredbama i prečacima. To poboljšanje uključuje način pregledavanja za učinkovitiju navigaciju webom, pojednostavljujući navigaciju i interakciju za korisnike TalkBacka koji se oslanjaju na fizičke tipkovnice. Možete se prebaciti na poboljšanu konfiguraciju prečaca u odjeljku %1$s.\n\nAko upotrebljavate brajev redak, možete upotrebljavati i nove prečace za pregledavanje da biste se kretali sadržajem izravno iz brajevog retka. Neki prečaci za brajev redak promijenjeni su kako bi se prilagodili ovoj promjeni. Popis svih prečaca za brajev redak možete vidjeti u odjeljku %2$s.</string>
+  <string name="keyboard_enhanced_keymap_text">MS Screen Reader sada ima poboljšanu konfiguraciju prečaca za fizičke tipkovnice s raznim novim naredbama i prečacima. To poboljšanje uključuje način pregledavanja za učinkovitiju navigaciju webom, pojednostavljujući navigaciju i interakciju za korisnike TalkBacka koji se oslanjaju na fizičke tipkovnice. Možete se prebaciti na poboljšanu konfiguraciju prečaca u odjeljku %1$s.\n\nAko upotrebljavate brajev redak, možete upotrebljavati i nove prečace za pregledavanje da biste se kretali sadržajem izravno iz brajevog retka. Neki prečaci za brajev redak promijenjeni su kako bi se prilagodili ovoj promjeni. Popis svih prečaca za brajev redak možete vidjeti u odjeljku %2$s.</string>
   <string name="keyboard_shortcuts_link">Postavke TalkBacka &gt; Tipkovni prečaci</string>
   <string name="keyboard_shortcuts_link_tts">Postavke TalkBacka, a zatim Tipkovni prečaci</string>
   <string name="braille_display_settings_link">Postavke brajevog retka</string>
@@ -1035,18 +1035,18 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="advanced_settings_link">Postavke TalkBacka &gt; Napredne postavke</string>
   <string name="advanced_settings_link_tts">Postavke TalkBacka, a zatim Napredne postavke</string>
   <string name="keyboard_tutorial_title">Vodič za tipkovnicu</string>
-  <string name="keyboard_tutorial_text">TalkBack sada uključuje vodič za tipkovnicu osmišljen za lakše učenje tipkovnih prečaca i naredbi za poboljšanu konfiguraciju prečaca pri upotrebi fizičke tipkovnice. Da biste pristupili vodiču, dođite do odjeljka: %1$s.</string>
-  <string name="tutorial_link">Postavke TalkBacka &gt; Vodič kroz TalkBack</string>
-  <string name="tutorial_link_tts">Postavke TalkBacka, a zatim vodič kroz TalkBack</string>
+  <string name="keyboard_tutorial_text">MS Screen Reader sada uključuje vodič za tipkovnicu osmišljen za lakše učenje tipkovnih prečaca i naredbi za poboljšanu konfiguraciju prečaca pri upotrebi fizičke tipkovnice. Da biste pristupili vodiču, dođite do odjeljka: %1$s.</string>
+  <string name="tutorial_link">Postavke TalkBacka &gt; Vodič kroz MS Screen Reader</string>
+  <string name="tutorial_link_tts">Postavke TalkBacka, a zatim vodič kroz MS Screen Reader</string>
   <string name="tutorial_entry_point_title">Vodič</string>
-  <string name="welcome_to_talkback_title">Dobro došli u TalkBack</string>
-  <string name="talkback_is_on">TalkBack je uključen</string>
-  <string name="talkback_turn_off_description">TalkBack čita sadržaj vašeg zaslona naglas i mijenja način na koji funkcionira navigacija na vašem uređaju. Da biste ga isključili, dvaput dodirnite gumb Isključi TalkBack.</string>
-  <string name="turn_off_talkback">Isključi TalkBack</string>
+  <string name="welcome_to_talkback_title">Dobro došli u MS Screen Reader</string>
+  <string name="talkback_is_on">MS Screen Reader je uključen</string>
+  <string name="talkback_turn_off_description">MS Screen Reader čita sadržaj vašeg zaslona naglas i mijenja način na koji funkcionira navigacija na vašem uređaju. Da biste ga isključili, dvaput dodirnite gumb Isključi MS Screen Reader.</string>
+  <string name="turn_off_talkback">Isključi MS Screen Reader</string>
   <string name="tap_again_to_turn_off">Dodirnite ponovo da biste ga isključili</string>
-  <string name="talkback_turn_off_description_pointer_and_touch">TalkBack čita sadržaj vašeg zaslona naglas i mijenja način na koji funkcionira navigacija na vašem uređaju. Da biste ga isključili, odaberite Isključi TalkBack ili ga dodirnite dvaput.</string>
-  <string name="welcome_to_talkback_text">TalkBack pruža govorne povratne informacije kako biste mogli upotrebljavati uređaj bez gledanja u zaslon. TalkBack može biti koristan za osobe koje imaju poteškoća s vidom. \n\nAko želite brzo uključiti ili isključiti TalkBack uz pomoć tipki za glasnoću, možete postaviti prečac u postavkama TalkBacka &gt; Prečac za TalkBack.\n\nKad je TalkBack uključen, fokusirana stavka na zaslonu izgovara se naglas.\n\nPrijeđete li prstom udesno, prijeći ćete na sljedeću stavku; prijeđete li prstom ulijevo, vratit ćete se na prethodnu stavku.\n\nSad prijeđite prstom udesno da biste pronašli gumb Dalje</string>
-  <string name="welcome_to_talkback_text_tts">TalkBack pruža govorne povratne informacije kako biste mogli upotrebljavati uređaj bez gledanja u zaslon. TalkBack može biti koristan za osobe koje imaju poteškoća s vidom. \n\nAko želite brzo uključiti ili isključiti TalkBack uz pomoć tipki za glasnoću, možete postaviti prečac u postavkama TalkBacka &gt; Prečac za TalkBack.\n\nKad je TalkBack uključen, fokusirana stavka na zaslonu izgovara se naglas.\n\nPrijeđete li prstom udesno, prijeći ćete na sljedeću stavku; prijeđete li prstom ulijevo, vratit ćete se na prethodnu stavku.\n\nSad prijeđite prstom udesno da biste pronašli gumb Dalje.</string>
+  <string name="talkback_turn_off_description_pointer_and_touch">MS Screen Reader čita sadržaj vašeg zaslona naglas i mijenja način na koji funkcionira navigacija na vašem uređaju. Da biste ga isključili, odaberite Isključi MS Screen Reader ili ga dodirnite dvaput.</string>
+  <string name="welcome_to_talkback_text">MS Screen Reader pruža govorne povratne informacije kako biste mogli upotrebljavati uređaj bez gledanja u zaslon. MS Screen Reader može biti koristan za osobe koje imaju poteškoća s vidom. \n\nAko želite brzo uključiti ili isključiti MS Screen Reader uz pomoć tipki za glasnoću, možete postaviti prečac u postavkama TalkBacka &gt; Prečac za MS Screen Reader.\n\nKad je MS Screen Reader uključen, fokusirana stavka na zaslonu izgovara se naglas.\n\nPrijeđete li prstom udesno, prijeći ćete na sljedeću stavku; prijeđete li prstom ulijevo, vratit ćete se na prethodnu stavku.\n\nSad prijeđite prstom udesno da biste pronašli gumb Dalje</string>
+  <string name="welcome_to_talkback_text_tts">MS Screen Reader pruža govorne povratne informacije kako biste mogli upotrebljavati uređaj bez gledanja u zaslon. MS Screen Reader može biti koristan za osobe koje imaju poteškoća s vidom. \n\nAko želite brzo uključiti ili isključiti MS Screen Reader uz pomoć tipki za glasnoću, možete postaviti prečac u postavkama TalkBacka &gt; Prečac za MS Screen Reader.\n\nKad je MS Screen Reader uključen, fokusirana stavka na zaslonu izgovara se naglas.\n\nPrijeđete li prstom udesno, prijeći ćete na sljedeću stavku; prijeđete li prstom ulijevo, vratit ćete se na prethodnu stavku.\n\nSad prijeđite prstom udesno da biste pronašli gumb Dalje.</string>
   <string name="welcome_to_talkback_page_idle_announcement">Prijeđite prstom udesno odmah da biste pronašli sljedeći gumb</string>
   <string name="explore_by_touch_title">Povucite prstom i istražite</string>
   <string name="explore_by_touch_text">Stavku možete i fokusirati povlačenjem prsta po zaslonu.\n\nIsprobajte sada tu mogućnost tako da dodirnete zaslon i povlačite prema donjem lijevom kutu dok ne pronađete gumb Dalje.</string>
@@ -1074,7 +1074,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="menus_selector_text_pre_r">Ovi vam prečaci mogu pomoći da brzo promijenite postavke, primjerice promijenite način kretanja sa znak po znak na riječ po riječ ili da promijenite brzinu govora TalkBacka.\n\nDa biste brzo promijenili kontrole za čitanje, prijeđite prstom prema dolje pa gore.\n\nTalkBackov izbornik i kontrole za čitanje možete prilagoditi kasnije u postavkama TalkBacka.</string>
   <string name="all_set_title">Sve je spremno!</string>
   <string name="all_set_text">Spremni ste za upotrebu TalkBacka.\n\nSad se nastavite informirati o ostalim temama, a na ove se informacije uvijek možete vratiti u postavkama TalkBacka.</string>
-  <string name="talkback_tutorial_text">Prijeđite prstom udesno da biste odabrali temu. Za najbolji doživljaj uključite TalkBack prije početka.</string>
+  <string name="talkback_tutorial_text">Prijeđite prstom udesno da biste odabrali temu. Za najbolji doživljaj uključite MS Screen Reader prije početka.</string>
   <string name="basic_navigation_link_text">Osnovno kretanje</string>
   <string name="basic_navigation_link_subtext">Prelazite sa stavke na stavku, pomičite se, koristite izbornike i drugo</string>
   <string name="text_editing_link_text">Uređivanje teksta</string>
@@ -1110,7 +1110,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="change_typing_preference_text">Promijeni postavku unosa teksta</string>
   <string name="moving_cursor_title">Pomicanje pokazivača</string>
   <string name="moving_cursor_text">Kada aktivirate tekstni okvir, pokazivač možete pomicati između slova tako da prstom prelazite prema gore ili dolje.\n\nIsprobajte to u tekstnom okviru u nastavku.</string>
-  <string name="edit_box_text">Dobro došli u TalkBack</string>
+  <string name="edit_box_text">Dobro došli u MS Screen Reader</string>
   <string name="selecting_text_title">Odabir teksta</string>
   <string name="selecting_text_text">U tekstnom okviru postavite pokazivač na početak teksta koji želite odabrati.\n\nDodirnite dvaput dvama prstima i zadržite da biste započeli s odabirom. Zatim premjestite pokazivač na kraj teksta. Ponovo dodirnite dvaput dvama prstima i zadržite da biste dovršili odabir.\n\nPokušajte odabrati riječi \"Dobro došli\" u tekstnom okviru u nastavku.</string>
   <string name="selecting_text_text_pre_r">U tekstnom okviru postavite pokazivač na početak teksta koji želite odabrati.\n\nPrijeđite prstom prema dolje pa udesno da biste otvorili TalkBackov izbornik. Dvaput dodirnite radnje, a zatim započnite s odabirom. Postavite pokazivač na kraj teksta.\n\nPonovo otvorite TalkBackov izbornik, a zatim dvaput dodirnite radnje da biste dovršili odabir.\n\nPokušajte odabrati riječi \"Dobro došli\" u tekstnom okviru u nastavku.</string>
@@ -1184,7 +1184,7 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="lookout_text">Lookout koristi vašu kameru za pojedinosti o predmetima, slikama i tekstu u vašem okruženju.  Možete ga koristiti za čitanje znakova, razvrstavanje e-pošte itd.</string>
   <string name="lookout_tips">Lookout ima nekoliko načina rada, ovisno o zadatku koji obavljate. Na primjer, da biste skenirali stranicu teksta, odaberite način dokumenata.</string>
   <string name="checking_notifications_title">Provjeravanje obavijesti</string>
-  <string name="checking_notifications_text_head">TalkBack će vas obavijestiti kad primite novu obavijest.</string>
+  <string name="checking_notifications_text_head">MS Screen Reader će vas obavijestiti kad primite novu obavijest.</string>
   <string name="checking_notifications_step_one">Najprije se pomaknite prema dolje s četiri prsta da biste pristupili obavijesti.</string>
   <string name="checking_notifications_step_two">Zatim se pomaknite ulijevo ili udesno da biste se kretali unutar obavijesti.</string>
   <string name="checking_notifications_text_tail">Možete provjeriti koje aplikacije imaju uključene obavijesti u odjeljku Postavke &gt; Obavijest.</string>
@@ -1206,18 +1206,18 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="button_3">Gumb 3</string>
   <string name="button_4">Gumb 4</string>
   <string name="activated_view">Aktivirano: %1$s</string>
-  <string name="talkback_inactive_title">TalkBack je isključen</string>
-  <string name="talkback_inactive_warning_message">Ovaj vodič najbolje funkcionira kad je TalkBack uključen. To možete promijeniti u postavkama.\n\nAko nastavite dok je TalkBack isključen, pojedini dijelovi vodiča možda neće funkcionirati kako je predviđeno.</string>
+  <string name="talkback_inactive_title">MS Screen Reader je isključen</string>
+  <string name="talkback_inactive_warning_message">Ovaj vodič najbolje funkcionira kad je MS Screen Reader uključen. To možete promijeniti u postavkama.\n\nAko nastavite dok je MS Screen Reader isključen, pojedini dijelovi vodiča možda neće funkcionirati kako je predviđeno.</string>
   <string name="do_not_show_again_check_box">Ne prikazuj ponovno</string>
   <string name="talkback_inactive_warning_positive_button">Ipak nastavi</string>
   <string name="talkback_inactive_go_to_settings_button">Otvori postavke</string>
   <string name="talkback_inactive_stay_in_tutorial_button">Ostani u vodiču</string>
   <string name="talkback_inactive_exit_tutorial_button">Zatvori vodič</string>
   <string name="talkback_inactive_not_now_button">Ne sad</string>
-  <string name="talkback_inactive_message_practice_gestures">Da biste vježbali pokrete, najprije uključite TalkBack</string>
-  <string name="talkback_inactive_message_image_description">Da biste pokušali dohvatiti opise slika, najprije uključite TalkBack</string>
+  <string name="talkback_inactive_message_practice_gestures">Da biste vježbali pokrete, najprije uključite MS Screen Reader</string>
+  <string name="talkback_inactive_message_image_description">Da biste pokušali dohvatiti opise slika, najprije uključite MS Screen Reader</string>
   <string name="talkback_inactive_close_tutorial_button">Zatvorite vodič</string>
-  <string name="wear_training_welcome_paragraph">Kad je TalkBack uključen, fokusirana stavka na zaslonu izgovara se naglas.\n\nPrijeđete li prstom udesno, prijeći ćete na sljedeću stavku.\n\nPrijeđete li prstom ulijevo, vratit ćete se na prethodnu stavku.\n\nSad prelazite prstom udesno dok ne pronađete sljedeći gumb.</string>
+  <string name="wear_training_welcome_paragraph">Kad je MS Screen Reader uključen, fokusirana stavka na zaslonu izgovara se naglas.\n\nPrijeđete li prstom udesno, prijeći ćete na sljedeću stavku.\n\nPrijeđete li prstom ulijevo, vratit ćete se na prethodnu stavku.\n\nSad prelazite prstom udesno dok ne pronađete sljedeći gumb.</string>
   <string name="wear_training_scroll_text" tools:ignore="PluralsCandidate">Povucite %1$d prsta prema gore ili dolje.</string>
   <string name="wear_training_go_back_title">Natrag</string>
   <string name="wear_training_go_back_text" tools:ignore="PluralsCandidate">Kad se želite vratiti, %1$d prstima prijeđite udesno od ruba zaslona.</string>
@@ -1237,9 +1237,9 @@ Odgode kraće od 0,3 sekunde promijenit će dvostruki dodir za aktivaciju u dod
   <string name="wear_training_typing_text5">Isprobajte u nastavku.</string>
   <string name="wear_training_typing_practice_button_content_description">Unos teksta pomoću tipkovnice</string>
   <string name="wear_training_end_tutorial_title">Spremni ste za početak upotrebe TalkBacka</string>
-  <string name="talkback_updated_notification_title">TalkBack je ažuriran</string>
+  <string name="talkback_updated_notification_title">MS Screen Reader je ažuriran</string>
   <string name="talkback_updated_notification_content">Dodirnite da biste saznali više</string>
-  <string name="wear_new_feature_page_title">Dobro došli u ažurirani TalkBack</string>
+  <string name="wear_new_feature_page_title">Dobro došli u ažurirani MS Screen Reader</string>
   <string name="wear_new_feature_page_content">Primijetit ćete nekoliko ispravaka programskih pogrešaka i izmjena načina pomicanja fokusa</string>
   <string name="wear_new_feature_page_button_content_description">Završi</string>
   <string name="watch_remote_intent_success_confirmation_text">Otvoreno na telefonu</string>
@@ -1347,7 +1347,7 @@ U odgovoru nemoj upotrebljavati nikakvo formatiranje.</string>
   <string name="confirm_download_all_image_captioning_message">Čut ćete kratki opis kad fokusirate sliku ili ikonu u podržanim aplikacijama</string>
   <string name="confirm_download_checkbox_text">Ne prikazuj ponovo</string>
   <string name="confirm_download_positive_button_text">Preuzmi</string>
-  <string name="confirm_download_negative_button_hint">TalkBack i dalje može opisivati tekst u slikama</string>
+  <string name="confirm_download_negative_button_hint">MS Screen Reader i dalje može opisivati tekst u slikama</string>
   <string name="downloading_icon_detection_hint">Preuzimanje automatskih opisa ikona</string>
   <string name="download_icon_detection_successful_hint">Preuzeti su opisi ikona</string>
   <string name="download_icon_detection_failed_hint">Nije moguće preuzeti automatske opise ikona</string>
@@ -1358,7 +1358,7 @@ U odgovoru nemoj upotrebljavati nikakvo formatiranje.</string>
   <string name="download_all_image_captioning_successful_hint">Preuzeti su automatski opisi slika i ikona</string>
   <string name="download_all_image_captioning_failed_hint">Nije moguće preuzeti sadržaj. Pokušajte ponovo kasnije.</string>
   <string name="download_complete_notification_title">Preuzimanje je dovršeno</string>
-  <string name="download_complete_notification_content">Sada ćete uz TalkBack čuti automatske opise slika i ikona</string>
+  <string name="download_complete_notification_content">Sada ćete uz MS Screen Reader čuti automatske opise slika i ikona</string>
   <string name="download_complete_notification_action">Postavke</string>
   <string name="download_storage_error_hint">Prostor za pohranu je pun. Da biste preuzeli sadržaj, oslobodite %1$d MB u odjeljku Postavke &gt; Pohrana.</string>
   <string name="download_network_error_hint">Nije moguće preuzeti sadržaj. Provjerite vezu i pokušajte ponovo.</string>
@@ -1374,7 +1374,7 @@ U odgovoru nemoj upotrebljavati nikakvo formatiranje.</string>
   <string name="delete_icon_detection_dialog_title">Želite li izbrisati automatske opise ikona?</string>
   <string name="delete_image_description_dialog_title">Želite li izbrisati automatske opise slika?</string>
   <string name="delete_all_image_captioning_dialog_title">Želite li izbrisati automatske opise slika i ikona?</string>
-  <string name="delete_dialog_message">Da biste ponovo dobili opise, možete preuzeti tu značajku u TalkBack postavkama</string>
+  <string name="delete_dialog_message">Da biste ponovo dobili opise, možete preuzeti tu značajku u MS Screen Reader postavkama</string>
   <string name="delete_all_dialog_message">Time se brišu automatski opisi za ikone i slike.\n\nDa biste ponovo dobili opise kasnije, možete preuzeti te značajke u postavkama TalkBacka.</string>
   <string name="delete_dialog_positive_button_text">Izbriši</string>
   <string name="delete_dialog_negative_button_text">Odustani</string>
@@ -1455,11 +1455,11 @@ U odgovoru nemoj upotrebljavati nikakvo formatiranje.</string>
   <string name="title_smart_browse_mode">Pametno pregledavanje</string>
   <string name="summary_smart_browse_mode">Automatski uključuje ili isključuje pregledavanje na temelju stavke na kojoj se nalazite. Time se sinkronizira fokus unosa s fokusom TalkBacka.</string>
   <string name="typing_echo_change_visual_feedback">Odjek fizičke tipkovnice: %1$s</string>
-  <string name="talkback_turn_off_title">Želite li isključiti TalkBack?</string>
+  <string name="talkback_turn_off_title">Želite li isključiti MS Screen Reader?</string>
   <string name="talkback_turn_off_button">Isključi</string>
   <string name="talkback_keep_on_button">Ostavi uključeno</string>
   <string name="talkback_speech_bubble_label">@string/talkback_label</string>
   <string name="close_string">Zatvori</string>
-  <string name="talkback_label">TalkBack</string>
+  <string name="talkback_label">MS Screen Reader</string>
   <string name="notifictions_in_lock_screen_notification_content">Da biste čuli obavijesti kad je zaslon isključen, u postavkama opširnosti govora TalkBacka uključite opciju \"Izgovori obavijesti kada je zaslon isključen\"</string>
 </resources>

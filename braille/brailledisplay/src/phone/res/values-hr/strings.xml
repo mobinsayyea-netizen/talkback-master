@@ -25,8 +25,8 @@
   <string name="overlay_pan_left_button">Pomicanje ulijevo</string>
   <string name="overlay_pan_right_button">Pomicanje udesno</string>
   <string name="bd_preferences_title">Brajev redak</string>
-  <string name="bd_preferences_banner_talkback_off_subtitle">Da biste koristili brajev redak, najprije uključite TalkBack.</string>
-  <string name="bd_preferences_banner_talkback_off_button">Otvori TalkBack</string>
+  <string name="bd_preferences_banner_talkback_off_subtitle">Da biste koristili brajev redak, najprije uključite MS Screen Reader.</string>
+  <string name="bd_preferences_banner_talkback_off_button">Otvori MS Screen Reader</string>
   <string name="bd_preferences_banner_bluetooth_off_subtitle">Da biste koristili brajev redak, najprije uključite Bluetooth.</string>
   <string name="bd_preferences_banner_bluetooth_off_button">Uključi Bluetooth</string>
   <string name="bd_preferences_banner_nearby_devices_permission_not_granted_subtitle">Da biste koristili brajev redak, aplikacija %s treba pristup uređajima u blizini.</string>
@@ -317,7 +317,7 @@
   <string name="popup_message_history_clear">Izbriši sve</string>
   <string name="popup_message_history_empty">Prazno</string>
   <string name="popup_message_history_consent_dialog_title">Želite li uključiti povijest poruka na uređaju?</string>
-  <string name="popup_message_history_consent_dialog_msg">Time će se neke poruke, kao što su obavijesti i alarmi, pohraniti u TalkBack. Tu postavku uvijek možete izmijeniti.</string>
+  <string name="popup_message_history_consent_dialog_msg">Time će se neke poruke, kao što su obavijesti i alarmi, pohraniti u MS Screen Reader. Tu postavku uvijek možete izmijeniti.</string>
   <string name="popup_message_history_consent_dialog_positive_btn">Uključi</string>
   <string name="popup_message_history_consent_dialog_negative_btn">Ne, hvala</string>
 </resources>

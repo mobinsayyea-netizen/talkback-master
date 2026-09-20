@@ -10,7 +10,7 @@
   <string name="switched_to_uncontracted_announcement">صفحه‌کلید به بریل غیراختصاری تغییر کرد</string>
   <string name="braille_ime_displayed_name">صفحه‌کلید بریل</string>
   <string name="multiple_languages_braille_ime_displayed_name">صفحه‌کلید بریل، %s</string>
-  <string name="input_view_caption">‏صفحه‌کلید بریل TalkBack - برای راهنمایی به g.co/help/braille بروید</string>
+  <string name="input_view_caption">‏صفحه‌کلید بریل MS Screen Reader - برای راهنمایی به g.co/help/braille بروید</string>
   <string name="perform_action_next">بعدی</string>
   <string name="perform_action_submitting">درحال ارسال نوشتار</string>
   <string name="calibration_step1_hold_left_or_right_finger_announcement">درحال به‌روزرسانی موقعیت نقطه. ابتدا، بیایید نقطه‌ها را برای %s شما ثبت کنیم.</string>
@@ -101,12 +101,12 @@
   <string name="bk_pref_category_title_keyboard">صفحه‌کلید</string>
   <string name="not_enough_touch_points_dialog_title">دستگاهتان از صفحه‌کلید بریل پشتیبانی نمی‌کند</string>
   <string name="not_enough_touch_points_dialog_message">دستگاهتان از نقاط لمسی کافی پشتیبانی نمی‌کند. برای دریافت اطلاعات بیشتر، با سازنده دستگاه تماس بگیرید.</string>
-  <string name="talkback_off_dialog_title">‏برای استفاده از صفحه‌کلید بریل، TalkBack را روشن کنید</string>
+  <string name="talkback_off_dialog_title">‏برای استفاده از صفحه‌کلید بریل، MS Screen Reader را روشن کنید</string>
   <string name="talkback_off_dialog_positive_button">در تنظیمات دسترس‌پذیری روشن کنید</string>
-  <string name="talkback_suspend_dialog_title">‏برای استفاده از صفحه‌کلید بریل، سرویس TalkBack باید ازسرگرفته شود</string>
-  <string name="talkback_off_or_suspend_dialog_message">‏وقتی TalkBack روشن است، می‌توانید با ضربه زدن روی صفحه‌نمایشْ نمادهای بریل وارد کنید.</string>
-  <string name="talkback_off_custom_gestures_dialog_title">‏برای تغییر دادن اشاره، TalkBack را روشن کنید</string>
-  <string name="talkback_off_custom_gestures_dialog_message">‏‫TalkBack خاموش است. برای تغییر دادن اشاره‌های صفحه‌کلید بریل، آن را روشن کنید.</string>
+  <string name="talkback_suspend_dialog_title">‏برای استفاده از صفحه‌کلید بریل، سرویس MS Screen Reader باید ازسرگرفته شود</string>
+  <string name="talkback_off_or_suspend_dialog_message">‏وقتی MS Screen Reader روشن است، می‌توانید با ضربه زدن روی صفحه‌نمایشْ نمادهای بریل وارد کنید.</string>
+  <string name="talkback_off_custom_gestures_dialog_title">‏برای تغییر دادن اشاره، MS Screen Reader را روشن کنید</string>
+  <string name="talkback_off_custom_gestures_dialog_message">‏‫MS Screen Reader خاموش است. برای تغییر دادن اشاره‌های صفحه‌کلید بریل، آن را روشن کنید.</string>
   <string name="talkback_off_custom_gestures_dialog_positive_button">رفتن به «تنظیمات»</string>
   <string name="reset_gestures_dialog_title">همه اشاره‌ها بازنشانی شود؟</string>
   <string name="reset_gestures_dialog_message">همه اشاره‌های صفحه‌کلید بریل به حالت پیش‌فرض بازنشانی خواهند شد</string>
@@ -121,7 +121,7 @@
   <string name="custom_gestures_dialog_reset_to_default_button">بازنشانی به پیش‌فرض</string>
   <string name="custom_gestures_dialog_remove_button">برداشتن اشاره</string>
   <string name="change_gestures_dialog_message_title">نحوه تغییر دادن اشاره</string>
-  <string name="change_gestures_dialog_message">‏در صفحه بعدی، صفحه‌کلید بریل باز خواهد شد و دیگر نمی‌توانید از اشاره‌های TalkBack استفاده کنید.\n\nپس‌از باز شدن صفحه‌کلید بریل، اشاره‌ای را که می‌خواهید استفاده کنید انجام دهید، یا برای بستن صفحه‌کلید بریل و لغو کردن تغییر اشاره، با ۲ انگشت تند به پایین بکشید.\n\nدیدن اشاره‌های دردسترس\n</string>
+  <string name="change_gestures_dialog_message">‏در صفحه بعدی، صفحه‌کلید بریل باز خواهد شد و دیگر نمی‌توانید از اشاره‌های MS Screen Reader استفاده کنید.\n\nپس‌از باز شدن صفحه‌کلید بریل، اشاره‌ای را که می‌خواهید استفاده کنید انجام دهید، یا برای بستن صفحه‌کلید بریل و لغو کردن تغییر اشاره، با ۲ انگشت تند به پایین بکشید.\n\nدیدن اشاره‌های دردسترس\n</string>
   <string name="change_gestures_dialog_message_link">دیدن اشاره‌های دردسترس</string>
   <string name="change_gestures_dialog_dont_show_checkbox">این پیام دوباره نشان داده نشود</string>
   <string name="change_gestures_dialog_positive_button">ادامه</string>
@@ -133,11 +133,11 @@
   <string name="mirrored_gesture_dialog_conflict_negative_button">استفاده نکردن</string>
   <string name="next_keyboard">صفحه‌کلید بعدی</string>
   <string name="braille_tutorial_title">آموزش گام‌به‌گام صفحه‌کلید بریل</string>
-  <string name="tutorial_intro_description">‏بااستفاده از صفحه‌کلید بریل می‌توانید با ضربه زدن روی صفحه‌نمایش، بریل ۶ نقطه‌ای وارد کنید.\n\nاز «بریل انگلیسی یکپارچه» استفاده می‌کنید. برای تغییر زبان تایپ، به تنظیمات TalkBack بروید.\n\nبرای تایپ بریل، باید تلفن را به‌صورت متفاوتی دردست بگیرید و استفاده کنید.</string>
+  <string name="tutorial_intro_description">‏بااستفاده از صفحه‌کلید بریل می‌توانید با ضربه زدن روی صفحه‌نمایش، بریل ۶ نقطه‌ای وارد کنید.\n\nاز «بریل انگلیسی یکپارچه» استفاده می‌کنید. برای تغییر زبان تایپ، به تنظیمات MS Screen Reader بروید.\n\nبرای تایپ بریل، باید تلفن را به‌صورت متفاوتی دردست بگیرید و استفاده کنید.</string>
   <string name="next_step">بعدی</string>
   <string name="leave_keyboard">خروج از صفحه‌کلید بریل</string>
-  <string name="hold_six_fingers_description">‏در صفحه‌کلید بریل نمی‌توانید از اشاره‌های معمول TalkBack استفاده کنید.\n\nبرای شروع کار، بیایید موقعیت ۶ نقطه بریل را برای وقتی‌که تایپ می‌کنید تنظیم کنیم.</string>
-  <string name="rotate_orientation_description_1">‏از این به بعد نمی‌توانید از اشاره‌های TalkBack عادی استفاده کنید. TalkBack درحین استفاده از صفحه‌کلید بریل در دسترس نیست.</string>
+  <string name="hold_six_fingers_description">‏در صفحه‌کلید بریل نمی‌توانید از اشاره‌های معمول MS Screen Reader استفاده کنید.\n\nبرای شروع کار، بیایید موقعیت ۶ نقطه بریل را برای وقتی‌که تایپ می‌کنید تنظیم کنیم.</string>
+  <string name="rotate_orientation_description_1">‏از این به بعد نمی‌توانید از اشاره‌های MS Screen Reader عادی استفاده کنید. MS Screen Reader درحین استفاده از صفحه‌کلید بریل در دسترس نیست.</string>
   <string name="rotate_orientation_description_2">برای شروع، تلفن را اینگونه در دست بگیرید: صفحه‌نمایش پشت به شما باشد.</string>
   <string name="tap_to_continue">برای ادامه، روی بخشی از صفحه دو ضربه سریع بزنید</string>
   <string name="instruction_type_letter_a">‏با انگشت اشاره چپ روی نقطه ۱ تک‌ضرب بزنید تا حرف «A» تایپ شود</string>
@@ -155,7 +155,7 @@
   <string name="result_swipe_down">مکان‌نما به جلو رفت</string>
   <string name="result_swipe_down_2_fingers">پنهان کردن صفحه‌کلید</string>
   <string name="result_swipe_down_3_fingers">صفحه‌کلید بعدی</string>
-  <string name="rotate_orientation_announcement">‏از این به بعد نمی‌توانید از اشاره‌های TalkBack عادی استفاده کنید. TalkBack درحین استفاده از صفحه‌کلید بریل در دسترس نیست.\n\n%1$s</string>
+  <string name="rotate_orientation_announcement">‏از این به بعد نمی‌توانید از اشاره‌های MS Screen Reader عادی استفاده کنید. MS Screen Reader درحین استفاده از صفحه‌کلید بریل در دسترس نیست.\n\n%1$s</string>
   <string name="rotate_orientation_inactive_announcement">‏ابتدا، تلفن را بچرخانید تا صفحه‌نمایش پشت به شما قرار گیرد.\n\nسپس، تلفن را افقی بچرخانید تا در حالت منظره قرار بگیرد. دستان شما باید لبه‌های کوتاه تلفن را گرفته باشند. دست راست شما باید انتهای پایینی با درگاه USB را گرفته باشد. ۳ انگشت وسط را روی صفحه‌نمایش قرار دهید و با انگشتان کوچک و شست تلفن را نگه دارید.\n\nوقتی آماده بودید، دو ضربه سریع روی صفحه‌نمایش بزنید تا کار را ادامه دهید. \n\nبرای خروج از صفحه‌کلید بریل، با ۳ انگشت تند به‌پایین (به‌طرف زمین) بکشید. با این کار به صفحه‌کلید اصلی برمی‌گردید.</string>
   <string name="rotate_orientation_continue_announcement">تلفن شما در موقعیت عمودی قرار دارد. برای ادامه، تلفن را طوری افقی بچرخانید که لبه بزرگ در پایین قرار بگیرد. سپس دوباره آن را بچرخانید تا صفحه‌نمایش پشت به شما قرار بگیرد. وقتی آماده بودید، دو ضربه سریع روی صفحه‌نمایش بزنید تا کار را ادامه دهید.</string>
   <string name="type_letter_a_announcement">‏صفحه‌نمایش را پشت به خود نگه دارید. تلفن را از سمت لبه‌های کوتاهش در دست بگیرید تا بتوانید صفحه‌نمایش را با ۳ انگشت وسط لمس کنید.\n\n انگشت اشاره چپ شما باید روی نقطه ۱ قرار داشته باشد. اکنون، روی نقطه ۱ تک‌ضرب بزنید تا حرف «A» تایپ شود.</string>
@@ -171,7 +171,7 @@
   <string name="swipe_down_3_fingers_announcement">برای اینکه به صفحه‌کلید دیگری بروید، با ۳ انگشت تند به‌پایین بکشید. امتحان کنید.</string>
   <string name="swipe_down_3_fingers_completed_announcement">صفحه‌کلید بعدی. معمولاً با این کار به صفحه‌کلید بعدی می‌روید. این بار، در صفحه‌کلید بریل خواهید ماند چون هنوز در آموزش گام‌به‌گام هستید.</string>
   <string name="swipe_up_3_fingers_announcement">با صاف گذاشتن تلفن روی میز می‌توانید در حالت افقی روبه‌صورت هم تایپ کنید. برای تکمیل آموزش گام‌به‌گام، با ۳ انگشت تند به‌بالا بکشید و گزینه «تکمیل آموزش گام‌به‌گام» را پیدا کنید</string>
-  <string name="open_context_menu_announcement">‏منوی گزینه‌ها باز است. تلفنتان را بچرخانید تا به‌سمت شما قرار بگیرد و بتوانید آن را به‌صورت عادی نگه دارید. اکنون می‌توانید از اشاره‌های TalkBack عادی برای پیمایش استفاده کنید. برای دیدن گزینه‌های بیشتر، تند به‌راست بکشید.</string>
+  <string name="open_context_menu_announcement">‏منوی گزینه‌ها باز است. تلفنتان را بچرخانید تا به‌سمت شما قرار بگیرد و بتوانید آن را به‌صورت عادی نگه دارید. اکنون می‌توانید از اشاره‌های MS Screen Reader عادی برای پیمایش استفاده کنید. برای دیدن گزینه‌های بیشتر، تند به‌راست بکشید.</string>
   <string name="hold_six_fingers_announcement">‏%s\nدستگاه را صاف روی میز قرار دهید. سپس، در موقعیتی که تایپ کردن برایتان راحت باشد، با ۳ انگشت میانی هر دو دست صفحه‌نمایش را لمس کنید و نگه دارید.</string>
   <string name="hold_six_fingers_inactive_announcement">دستگاه را صاف روی میز قرار دهید. سپس، در موقعیتی که تایپ کردن برایتان راحت باشد، با ۳ انگشت میانی هر دو دست صفحه‌نمایش را لمس کنید و نگه دارید.</string>
   <string name="finish_tutorial_announcement">درحال نمایش صفحه‌کلید بریل. تلفن را بچرخانید تا صفحه‌نمایش پشت به شما قرار گیرد؛ تلفن را افقی بچرخانید تا در حالت منظره قرار بگیرد؛ سپس شروع به تایپ کنید.</string>
@@ -203,7 +203,7 @@
   <string name="custom_gesture_conflict_try_another">از این اشاره برای «%1$s» استفاده می‌شود و نمی‌توان آن را تغییر داد. اشاره دیگری را امتحان کنید. %2$s</string>
   <string name="custom_gesture_cannot_used">نمی‌توان از این اشاره استفاده کرد</string>
   <string name="custom_gesture_no_gesture">اشاره‌ای انجام نشد</string>
-  <string name="custom_gesture_try_another">‏اشاره دیگری را امتحان کنید. برای دیدن فهرستی از همه اشاره‌های دردسترس، به مرکز راهنمایی صفحه‌کلید بریل TalkBack بروید. %s</string>
+  <string name="custom_gesture_try_another">‏اشاره دیگری را امتحان کنید. برای دیدن فهرستی از همه اشاره‌های دردسترس، به مرکز راهنمایی صفحه‌کلید بریل MS Screen Reader بروید. %s</string>
   <string name="custom_gesture_no_match">اشاره‌ها مطابقت نداشت</string>
   <string name="custom_gesture_perform_again">اشاره‌ای را که می‌خواهید دوباره استفاده کنید انجام دهید. %s</string>
 </resources>

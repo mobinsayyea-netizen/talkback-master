@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="talkback_service_description">TalkBack ચાલુ હોય ત્યારે, તે બોલાયેલો પ્રતિસાદ પ્રદાન કરે છે, જેથી તમે સ્ક્રીન પર નજર કર્યા વગર તમારા ડિવાઇસનો ઉપયોગ કરી શકો. આ દૃષ્ટિહીન અથવા ઓછી દૃષ્ટિવાળા લોકોને સહાયરૂપ થઈ શકે છે. \n\nTalkBackનો ઉપયોગ કરીને નૅવિગેટ કરવા માટે:\n•  આઇટમમાં આગળ-પાછળ જવા માટે જમણે અથવા ડાબે સ્વાઇપ કરો\n•  આઇટમ સક્રિય કરવા બે વાર ટૅપ કરો\n•  સ્ક્રોલ કરવા માટે બે આંગળીઓ વડે ખેંચો\n\nTalkBack બંધ કરવા માટે:\n• સ્વિચ પર ટૅપ કરો. તમને કોઈ આઉટલાઇન દેખાશે. સ્વિચ પર બે વાર ટૅપ કરો. \n•  કન્ફર્મેશનના મેસેજ પર, ઓકે પર ટૅપ કરો. પછી ઓકે પર બે વાર ટૅપ કરો.</string>
-  <string name="talkback_service_html_description">TalkBackની સુવિધા ચાલુ હોય, ત્યારે તે બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે તમારી સ્ક્રીન પર નજર કર્યા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો. સ્ક્રીન જોવામાં સમસ્યા થતી હોય તેવી પરિસ્થિતિઓ અથવા તેવા લોકો માટે TalkBack બનાવવામાં આવ્યું છે.&lt;br&gt;&lt;br&gt;&lt;b&gt;TalkBackનો ઉપયોગ કરવાની રીત&lt;/b&gt;&lt;br&gt;• એક આઇટમ પરથી બીજી આઇટમ પર જવા માટે જમણે અથવા ડાબે સ્વાઇપ કરો&lt;br&gt;• આઇટમને સક્રિય કરવા માટે બે વાર ટૅપ કરો&lt;br&gt;• સ્ક્રોલ કરવા માટે 2 આંગળી વડે ખેંચો&lt;br&gt;&lt;b&gt;TalkBackને બંધ કરવાની રીત&lt;/b&gt;&lt;br&gt;1. સેટિંગમાં જઈને, &lt;b&gt;TalkBackનો ઉપયોગ કરો&lt;/b&gt; પર ટૅપ કરો. ત્યાં આઉટલાઇન હશે. તેના પર બે વાર ટૅપ કરો.&lt;br&gt;2. કન્ફર્મેશનના મેસેજ પર, &lt;b&gt;બંધ કરો&lt;/b&gt; પર ટૅપ કરો. ત્યાં આઉટલાઇન હશે. તેના પર બે વાર ટૅપ કરો.</string>
+  <string name="talkback_service_description">MS Screen Reader ચાલુ હોય ત્યારે, તે બોલાયેલો પ્રતિસાદ પ્રદાન કરે છે, જેથી તમે સ્ક્રીન પર નજર કર્યા વગર તમારા ડિવાઇસનો ઉપયોગ કરી શકો. આ દૃષ્ટિહીન અથવા ઓછી દૃષ્ટિવાળા લોકોને સહાયરૂપ થઈ શકે છે. \n\nTalkBackનો ઉપયોગ કરીને નૅવિગેટ કરવા માટે:\n•  આઇટમમાં આગળ-પાછળ જવા માટે જમણે અથવા ડાબે સ્વાઇપ કરો\n•  આઇટમ સક્રિય કરવા બે વાર ટૅપ કરો\n•  સ્ક્રોલ કરવા માટે બે આંગળીઓ વડે ખેંચો\n\nTalkBack બંધ કરવા માટે:\n• સ્વિચ પર ટૅપ કરો. તમને કોઈ આઉટલાઇન દેખાશે. સ્વિચ પર બે વાર ટૅપ કરો. \n•  કન્ફર્મેશનના મેસેજ પર, ઓકે પર ટૅપ કરો. પછી ઓકે પર બે વાર ટૅપ કરો.</string>
+  <string name="talkback_service_html_description">TalkBackની સુવિધા ચાલુ હોય, ત્યારે તે બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે તમારી સ્ક્રીન પર નજર કર્યા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો. સ્ક્રીન જોવામાં સમસ્યા થતી હોય તેવી પરિસ્થિતિઓ અથવા તેવા લોકો માટે MS Screen Reader બનાવવામાં આવ્યું છે.&lt;br&gt;&lt;br&gt;&lt;b&gt;TalkBackનો ઉપયોગ કરવાની રીત&lt;/b&gt;&lt;br&gt;• એક આઇટમ પરથી બીજી આઇટમ પર જવા માટે જમણે અથવા ડાબે સ્વાઇપ કરો&lt;br&gt;• આઇટમને સક્રિય કરવા માટે બે વાર ટૅપ કરો&lt;br&gt;• સ્ક્રોલ કરવા માટે 2 આંગળી વડે ખેંચો&lt;br&gt;&lt;b&gt;TalkBackને બંધ કરવાની રીત&lt;/b&gt;&lt;br&gt;1. સેટિંગમાં જઈને, &lt;b&gt;TalkBackનો ઉપયોગ કરો&lt;/b&gt; પર ટૅપ કરો. ત્યાં આઉટલાઇન હશે. તેના પર બે વાર ટૅપ કરો.&lt;br&gt;2. કન્ફર્મેશનના મેસેજ પર, &lt;b&gt;બંધ કરો&lt;/b&gt; પર ટૅપ કરો. ત્યાં આઉટલાઇન હશે. તેના પર બે વાર ટૅપ કરો.</string>
   <string name="talkback_service_summary">મોટેથી બોલાતી આઇટમને સાંભળવા માટે સ્ક્રીન રીડરનો ઉપયોગ કરો</string>
   <string name="talkback_preferences_title">TalkBackના સેટિંગ</string>
   <string name="talkback_settings_screen_title_breadcrumb">સેટિંગ</string>
@@ -14,7 +14,7 @@
   <string name="label_manager_summary_title">કસ્ટમ લેબલ મેનેજ કરો</string>
   <string name="label_manager_package_title">%1$s માટે લેબલ મેનેજ કરો</string>
   <string name="manage_label">લેબલ મેનેજ કરો</string>
-  <string name="label_manager_no_packages_message">હાલમાં કોઈ કસ્ટમ લેબલ નથી\n\n<b>કસ્ટમ લેબલ કેવી રીતે બનાવવું</b>\nનૅવિગેટ કરીને લેબલ વિનાની કોઈ છબી પર જાઓ અને TalkBack મેનૂમાંથી કોઈ લેબલ ઉમેરો</string>
+  <string name="label_manager_no_packages_message">હાલમાં કોઈ કસ્ટમ લેબલ નથી\n\n<b>કસ્ટમ લેબલ કેવી રીતે બનાવવું</b>\nનૅવિગેટ કરીને લેબલ વિનાની કોઈ છબી પર જાઓ અને MS Screen Reader મેનૂમાંથી કોઈ લેબલ ઉમેરો</string>
   <string name="label_manager_timestamp_text">છેલ્લે સંશોધિત %1$s</string>
   <string name="search_mode_cancel">શોધ રદ કરી.</string>
   <string name="notification_type_status_started">પ્રારંભ કર્યુ</string>
@@ -63,7 +63,7 @@
   <string name="confirm_focus_delay_reading_control_added_dialog_title">વાંચનના નિયંત્રણમાં ફોકસમાં વિલંબની સુવિધા ઉમેરી</string>
   <string name="confirm_focus_delay_reading_control_added_dialog_message">વાંચનના નિયંત્રણનો ઉપયોગ કરવા માટે 3 આંગળીઓ વડે સ્વાઇપ કરો અને કોઈપણ સમયે ફોકસ વિલંબને બદલો</string>
   <string name="confirm_the_typing_focus_delay_reduction_dialog_title">શું ટાઇપ કરવા માટે આંગળી ઉઠાવવાની સુવિધા પર સ્વિચ કરીએ?</string>
-  <string name="message_of_typing_focus_delay_reduction_confirm_dialog">જ્યારે ફોકસમાં વિલંબ 0.3 સેકન્ડથી ઓછા પર સેટ કરેલો હોય, ત્યારે ટાઇપ કરવા માટે બે વાર ટૅપ કરવું ખૂબ મુશ્કેલ બનશે. ટાઇપ કરવા માટે આંગળી ઉઠાવવાની સુવિધા પર ઑટોમૅટિક રીતે સ્વિચ કરવા માટે, \"સ્વિચ કરો\" પસંદ કરો.\n\nટાઇપ કરવા માટે આંગળી ઉઠાવવાની સુવિધાનો ઉપયોગ કરવા, કોઈપણ કી પસંદ કરવા માટે તમારી આંગળી વડે દબાવી રાખો, પછી ટાઇપ કરવા માટે આંગળી ઉઠાવો.\n\nતમે આને TalkBack સેટિંગમાં કસ્ટમાઇઝ કરી શકો છો.</string>
+  <string name="message_of_typing_focus_delay_reduction_confirm_dialog">જ્યારે ફોકસમાં વિલંબ 0.3 સેકન્ડથી ઓછા પર સેટ કરેલો હોય, ત્યારે ટાઇપ કરવા માટે બે વાર ટૅપ કરવું ખૂબ મુશ્કેલ બનશે. ટાઇપ કરવા માટે આંગળી ઉઠાવવાની સુવિધા પર ઑટોમૅટિક રીતે સ્વિચ કરવા માટે, \"સ્વિચ કરો\" પસંદ કરો.\n\nટાઇપ કરવા માટે આંગળી ઉઠાવવાની સુવિધાનો ઉપયોગ કરવા, કોઈપણ કી પસંદ કરવા માટે તમારી આંગળી વડે દબાવી રાખો, પછી ટાઇપ કરવા માટે આંગળી ઉઠાવો.\n\nતમે આને MS Screen Reader સેટિંગમાં કસ્ટમાઇઝ કરી શકો છો.</string>
   <string name="confirm_typing_focus_delay_reading_control_added_dialog_title">વાંચનના નિયંત્રણમાં ટાઇપિંગ વખતે ફોકસમાં વિલંબની સુવિધા ઉમેરી</string>
   <string name="confirm_typing_focus_delay_reading_control_added_dialog_message">જો તમને ટાઇપ કરતી વખતે બે વાર ટૅપ કરવાની સુવિધાનો ઉપયોગ કરતી વખતે સમસ્યાઓ આવી રહી હોય, તો વાંચનના નિયંત્રણનો ઉપયોગ કરવા માટે 3 આંગળીથી સ્વાઇપ કરો અને ટાઇપ કરવા દરમિયાન ફોકસમાં વિલંબની અવધિને બદલીને લાંબા સમય પર સેટ કરો</string>
   <string name="gestures_announce_typing_focus_wont_change">ટાઇપિંગ ફોકસમાં વિલંબ, ટાઇપ કરવા માટે આંગળી ઉઠાવવાની સુવિધા વિના કામ કરતો નથી.</string>
@@ -95,7 +95,7 @@
   <string name="title_pref_category_advanced">વિગતવાર</string>
   <string name="title_pref_category_others">અન્ય</string>
   <string name="title_pref_category_tutorial_and_help">ટ્યૂટૉરિઅલ અને મદદ</string>
-  <string name="title_pref_category_reduce_latency_summary">આ સેટિંગ TalkBack ઘોષણાઓ પહેલાં વિલંબ ઘટાડી શકે છે</string>
+  <string name="title_pref_category_reduce_latency_summary">આ સેટિંગ MS Screen Reader ઘોષણાઓ પહેલાં વિલંબ ઘટાડી શકે છે</string>
   <string name="reset_latency_settings_title">વિલંબ માટેના બધા સેટિંગ રીસેટ કરો</string>
   <string name="title_pref_single_tap">સક્રિય કરવા માટે એક વાર ટૅપ કરો</string>
   <string name="summary_pref_single_tap">સક્રિય કરવા માટે ફોકસ કરેલી આઇટમ પર એકવાર ટૅપ કરો. બે વાર ટૅપિંગની સરખામણીમાં ઝડપી નૅવિગેશન.</string>
@@ -105,19 +105,19 @@
   <string name="title_pref_category_manage_gestures">સંકેતો</string>
   <string name="title_pref_manage_labels">કસ્ટમ લેબલ</string>
   <string name="title_pref_manage_customize_menus">ફેરફાર કરવાના મેનૂ</string>
-  <string name="title_pref_category_context_menu">TalkBack મેનૂ કસ્ટમાઇઝ કરો</string>
+  <string name="title_pref_category_context_menu">MS Screen Reader મેનૂ કસ્ટમાઇઝ કરો</string>
   <string name="title_pref_category_selector_menu">વાંચનના નિયંત્રણો કસ્ટમાઇઝ કરો</string>
   <string name="title_pref_category_navigation_menu">નૅવિગેટશનના વિકલ્પોમાં ફેરફાર કરો</string>
-  <string name="pref_category_context_menu_summary">TalkBack મેનૂનો ઉપયોગ કરવા માટે, 3 આંગળી વડે સ્ક્રીન પર ટૅપ કરો. તમે ઉપર પછી જમણે સ્વાઇપ કરી શકો છો અથવા નીચે પછી જમણે પણ સ્વાઇપ કરી શકો છો.</string>
-  <string name="pref_category_context_menu_summary_xr">TalkBack મેનૂનો ઉપયોગ કરવા માટે, તમારી બીજી હથેળી અંદરની તરફ વાળો અને પિન્ચ કરો.</string>
-  <string name="pref_category_context_menu_summary_single_finger">TalkBack મેનૂનો ઉપયોગ કરવા માટે, પહેલા નીચે અને પછી જમણે સ્વાઇપ કરો.</string>
+  <string name="pref_category_context_menu_summary">MS Screen Reader મેનૂનો ઉપયોગ કરવા માટે, 3 આંગળી વડે સ્ક્રીન પર ટૅપ કરો. તમે ઉપર પછી જમણે સ્વાઇપ કરી શકો છો અથવા નીચે પછી જમણે પણ સ્વાઇપ કરી શકો છો.</string>
+  <string name="pref_category_context_menu_summary_xr">MS Screen Reader મેનૂનો ઉપયોગ કરવા માટે, તમારી બીજી હથેળી અંદરની તરફ વાળો અને પિન્ચ કરો.</string>
+  <string name="pref_category_context_menu_summary_single_finger">MS Screen Reader મેનૂનો ઉપયોગ કરવા માટે, પહેલા નીચે અને પછી જમણે સ્વાઇપ કરો.</string>
   <string name="pref_category_selector_menu_summary">વાંચનના નિયંત્રણોનો ઉપયોગ કરવા માટે, 3 આંગળી વડે ડાબે અથવા જમણે સ્વાઇપ કરો. તમે 3 આંગળી વડે ઉપર અથવા નીચે પણ સ્વાઇપ કરી શકો છો.</string>
   <string name="pref_category_selector_menu_summary_xr">વાંચનના નિયંત્રણો વચ્ચે હલનચલન કરવા માટે તમારી હથેળીને અંદરની તરફ વાળો, સ્ક્રીન પર તમારી આંગળીઓને મૂકેલી રાખો, જમણી કે ડાબી બાજુ ખસેડો અને તેને છોડી દો.</string>
   <string name="pref_category_selector_menu_summary_single_finger">વાંચનના નિયંત્રણોનો ઉપયોગ કરવા માટે, પહેલા ઉપર અને પછી નીચે સ્વાઇપ કરો.</string>
   <string name="title_pref_manage_keyboard_shortcuts">કીબોર્ડ શૉર્ટકટ</string>
   <string name="title_pref_export_custom_labels">કસ્ટમ લેબલ્સનો નિકાસ કરો</string>
-  <string name="title_pref_play_store">Play Store પર TalkBack ખોલો</string>
-  <string name="summary_pref_play_store">હાલનું TalkBack વર્ઝન: %1$s</string>
+  <string name="title_pref_play_store">Play Store પર MS Screen Reader ખોલો</string>
+  <string name="summary_pref_play_store">હાલનું MS Screen Reader વર્ઝન: %1$s</string>
   <string name="title_pref_help_and_feedback">મદદ અને પ્રતિસાદ</string>
   <string name="title_pref_gup">Googleની વિકલાંગતા માટેની સપોર્ટ ટીમનો સંપર્ક કરો</string>
   <string name="subtitle_pref_gup">TalkBackનો ઉપયોગ કરીને મદદ મેળવો અથવા સમસ્યાઓની જાણ કરો</string>
@@ -127,14 +127,14 @@
   <string name="title_pref_show_tos">સેવાની શરતો</string>
   <string name="title_pref_show_privacy_policy">પ્રાઇવસી પૉલિસી</string>
   <string name="title_pref_category_fingerprint_touch_shortcuts">ફિંગરપ્રિન્ટ સંકેતો</string>
-  <string name="title_pref_category_tutorial">TalkBack ટ્યૂટૉરિઅલ</string>
+  <string name="title_pref_category_tutorial">MS Screen Reader ટ્યૂટૉરિઅલ</string>
   <string name="title_pref_category_help_no_tutorial">સહાય</string>
   <string name="title_pref_category_typing">ટાઇપિંગના સેટિંગ</string>
   <string name="title_pref_advanced_settings">વિગતવાર સેટિંગ</string>
-  <string name="title_pref_show_exit_watermark">TalkBack બંધ કરવા માટેની સૂચનાઓ બતાવો</string>
-  <string name="summary_pref_show_exit_watermark">જ્યારે TalkBack ચાલુ હોય, ત્યારે તેને ઝડપથી બંધ કરવામાં મદદ કરવા માટે તમને કોઈ મેસેજ દેખાય છે</string>
-  <string name="talkback_exit_watermark_text">TalkBack ચાલુ છે. બંધ કરવા માટે સ્ક્રીન પર 2 આંગળી વડે 5 સેકન્ડ સુધી હોલ્ડ કરો. આ મેસેજ બતાવવાનું બંધ કરવા, TalkBack મેનૂ ખોલવા માટે 3 આંગળી વડે ટૅપ કરો.</string>
-  <string name="talkback_exit_watermark_hint_text">TalkBackની સુવિધા ચાલુ છે, દર્શાવતું કોઈ બૅનર. TalkBackની સુવિધા બંધ કરવા માટે, 5 સેકન્ડ માટે સ્ક્રીન પર 2 આંગળી પકડી રાખો. આ બૅનર કાઢી નાખવા માટે, TalkBack સેટિંગ પર જાઓ.</string>
+  <string name="title_pref_show_exit_watermark">MS Screen Reader બંધ કરવા માટેની સૂચનાઓ બતાવો</string>
+  <string name="summary_pref_show_exit_watermark">જ્યારે MS Screen Reader ચાલુ હોય, ત્યારે તેને ઝડપથી બંધ કરવામાં મદદ કરવા માટે તમને કોઈ મેસેજ દેખાય છે</string>
+  <string name="talkback_exit_watermark_text">MS Screen Reader ચાલુ છે. બંધ કરવા માટે સ્ક્રીન પર 2 આંગળી વડે 5 સેકન્ડ સુધી હોલ્ડ કરો. આ મેસેજ બતાવવાનું બંધ કરવા, MS Screen Reader મેનૂ ખોલવા માટે 3 આંગળી વડે ટૅપ કરો.</string>
+  <string name="talkback_exit_watermark_hint_text">TalkBackની સુવિધા ચાલુ છે, દર્શાવતું કોઈ બૅનર. TalkBackની સુવિધા બંધ કરવા માટે, 5 સેકન્ડ માટે સ્ક્રીન પર 2 આંગળી પકડી રાખો. આ બૅનર કાઢી નાખવા માટે, MS Screen Reader સેટિંગ પર જાઓ.</string>
   <string name="reset_gesture_settings_title">સંકેત માટેના સેટિંગને રીસેટ કરો</string>
   <string name="one_finger_gestures_title">એક આંગળી વડે કરવાના સંકેતો</string>
   <string name="one_finger_back_forth_gestures_title">એક આંગળી વડે પાછળ અને આગળ કરવાના સંકેતો</string>
@@ -150,23 +150,23 @@
   <string name="pref_verbosity_preset_change">%1$s શબ્દબહુલતા હવે સક્રિય છે.</string>
   <string name="pref_gesture_set_entry_0">0</string>
   <string name="pref_gesture_set_entry_1">1</string>
-  <string name="keycombo_keymap_changes_instruction_title">તમારો TalkBack કીમૅપ અપડેટ કરો</string>
+  <string name="keycombo_keymap_changes_instruction_title">તમારો MS Screen Reader કીમૅપ અપડેટ કરો</string>
   <string name="keycombo_keymap_changes_activity_content">કીબોર્ડ શૉર્ટકટનો ઉપયોગ કરવાનું ચાલુ રાખવા માટે, સેટિંગમાં જઈને ક્લાસિક કીમૅપ પરથી ડિફૉલ્ટ કીમૅપ પર સ્વિચ કરો.
       &lt;br&gt;&lt;br&gt;&lt;b&gt;ડિફૉલ્ટ કીમૅપમાં જુદું શું છે?&lt;/b&gt;
       &lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;તેમાં નૅવિગેશન અને વેબ નૅવિગેશન માટેની વધુ ક્રિયાઓ છે.&lt;/li&gt;
       &lt;li&gt;અમુક મૉડિફાયર કી જુદી છે.&lt;/li&gt;&lt;/ul&gt;</string>
   <string name="keycombo_keymap_changes_activity_content_learn_more">કીમૅપ વિશે વધુ જાણો</string>
   <string name="keycombo_go_to_settings">સેટિંગ પર જાઓ</string>
-  <string name="keycombo_keymap_changes_notifications_content">TalkBack ક્લાસિક કીમૅપ કાઢી નાખવા માટે તૈયાર થઈ રહ્યું છે. કીબોર્ડ શૉર્ટકટનો ઉપયોગ કરવાનું ચાલુ રાખવા માટે, ડિફૉલ્ટ કીમૅપ પર સ્વિચ કરો.</string>
+  <string name="keycombo_keymap_changes_notifications_content">MS Screen Reader ક્લાસિક કીમૅપ કાઢી નાખવા માટે તૈયાર થઈ રહ્યું છે. કીબોર્ડ શૉર્ટકટનો ઉપયોગ કરવાનું ચાલુ રાખવા માટે, ડિફૉલ્ટ કીમૅપ પર સ્વિચ કરો.</string>
   <string name="keycombo_keymap_changes_notifications_action">વધુ જાણો</string>
   <string name="keycombo_new_keymap_notification_dialog_positive_button">સમજાઈ ગયું</string>
   <string name="keycombo_new_keymap_notification_dialog_negative_button">સેટિંગ</string>
   <string name="keycombo_new_keymap_notification_dialog_neutral_button">વધુ જાણો</string>
   <string name="keycombo_new_keymap_notification_dialog_title_for_classic_keymap">હવે ક્લાસિક કીમૅપને સપોર્ટ આપવામાં આવતો નથી</string>
-  <string name="keycombo_new_keymap_notification_dialog_message_for_classic_keymap">તમે હવે TalkBack ડિફૉલ્ટ કીમૅપનો ઉપયોગ કરી રહ્યાં છો. બહેતર બનાવેલો નવો કીમૅપ પણ છે જેમાં ઘણા નવા આદેશો છે. મદદ કેન્દ્રમાં વધુ જાણો અથવા સેટિંગમાં નવા કીમૅપ પર સ્વિચ કરો.</string>
+  <string name="keycombo_new_keymap_notification_dialog_message_for_classic_keymap">તમે હવે MS Screen Reader ડિફૉલ્ટ કીમૅપનો ઉપયોગ કરી રહ્યાં છો. બહેતર બનાવેલો નવો કીમૅપ પણ છે જેમાં ઘણા નવા આદેશો છે. મદદ કેન્દ્રમાં વધુ જાણો અથવા સેટિંગમાં નવા કીમૅપ પર સ્વિચ કરો.</string>
   <string name="keycombo_new_keymap_notification_dialog_title_for_default_keymap">નવો કીમૅપ ઉપલબ્ધ છે</string>
-  <string name="keycombo_new_keymap_notification_dialog_message_for_default_keymap">બહેતર બનાવેલો નવો TalkBack કીમૅપ ઘણા નવા આદેશો ઉમેરે છે. મદદ કેન્દ્રમાં વધુ જાણો અથવા સેટિંગમાં નવા કીમૅપ પર સ્વિચ કરો.</string>
-  <string name="keycombo_update_modifier_key_warning_title">તમારી TalkBack મૉડિફાયર કી અપડેટ કરો</string>
+  <string name="keycombo_new_keymap_notification_dialog_message_for_default_keymap">બહેતર બનાવેલો નવો MS Screen Reader કીમૅપ ઘણા નવા આદેશો ઉમેરે છે. મદદ કેન્દ્રમાં વધુ જાણો અથવા સેટિંગમાં નવા કીમૅપ પર સ્વિચ કરો.</string>
+  <string name="keycombo_update_modifier_key_warning_title">તમારી MS Screen Reader મૉડિફાયર કી અપડેટ કરો</string>
   <string name="keycombo_update_modifier_keys_warning_negative_button">હમણાં નહીં</string>
   <string name="keycombo_warning_content_description">તમારી મૉડિફાયર કી વિશે વધુ માહિતી</string>
   <string name="keycombo_warning_dialog_title">તમારી મૉડિફાયર કી અપડેટ કરો</string>
@@ -178,7 +178,7 @@
   <string name="keycombo_menu_view_system_keyboard_shortcuts">સિસ્ટમના કીબોર્ડ શૉર્ટકટ જુઓ</string>
   <string name="keycombo_menu_choose_trigger_modifier">મૉડિફાયર કી પસંદ કરો</string>
   <string name="keycombo_menu_alert_title_trigger_modifier">%1$sનો તમારી મૉડિફાયર કી તરીકે ઉપયોગ કરવો છે?</string>
-  <string name="keycombo_menu_alert_message_trigger_modifier">TalkBack હાલમાં %1$sનો મૉડિફાયર કી તરીકે ઉપયોગ કરે છે.</string>
+  <string name="keycombo_menu_alert_message_trigger_modifier">MS Screen Reader હાલમાં %1$sનો મૉડિફાયર કી તરીકે ઉપયોગ કરે છે.</string>
   <string name="keycombo_menu_alert_button_trigger_modifier">%1$sનો ઉપયોગ કરો</string>
   <string name="keycombo_menu_announce_new_trigger_modifier">સંશોધક કીને %1$s પર બદલવામાં આવી છે.</string>
   <string name="keycombo_menu_announce_active_keymap">%1$s હવે સક્રિય છે.</string>
@@ -235,12 +235,12 @@
   <string name="keycombo_menu_other_show_link_list">લિંકની સૂચિ બતાવો</string>
   <string name="keycombo_menu_other_show_control_list">નિયંત્રણોની સૂચિ બતાવો</string>
   <string name="keycombo_menu_other_show_table_list">ટેબલની સૂચિ બતાવો</string>
-  <string name="keycombo_menu_other_talkback_context_menu">TalkBack મેનૂ બતાવો</string>
+  <string name="keycombo_menu_other_talkback_context_menu">MS Screen Reader મેનૂ બતાવો</string>
   <string name="keycombo_menu_other_custom_actions">ક્રિયાઓ બતાવો</string>
   <string name="keycombo_menu_other_language_options">ઇન્સ્ટૉલ કરેલ ભાષાઓ બતાવો</string>
   <string name="keycombo_menu_other_copy_last_spoken_phrase">છેલ્લે બોલવામાં આવેલો શબ્દસમૂહ કૉપિ કરો</string>
   <string name="keycombo_menu_other_open_tts_settings">ટેક્સ્ટ ટૂ સ્પીચ સેટિંગ ખોલો</string>
-  <string name="keycombo_menu_other_open_talkback_settings">TalkBack સેટિંગ ખોલો</string>
+  <string name="keycombo_menu_other_open_talkback_settings">MS Screen Reader સેટિંગ ખોલો</string>
   <string name="keycombo_menu_other_report_issue">પ્રતિસાદ મોકલો</string>
   <string name="keycombo_menu_other_cycle_typing_echo">લખાણ પડઘાની સાઇકલ</string>
   <string name="keycombo_menu_other_show_keyboard_shortcuts_dialog">કીબોર્ડ શૉર્ટકટની સૂચિ બતાવો</string>
@@ -341,7 +341,7 @@
   <string name="pref_node_desc_order_title">ઘટકના વર્ણનનો ક્રમ</string>
   <string name="pref_time_feedback_format_title">સમયનું ફૉર્મેટ</string>
   <string name="title_pref_latency_reduction">વિલંબ ઘટાડો</string>
-  <string name="talkback_latency_reduction_summary">TalkBack ઘોષણાઓ પહેલાં વિલંબ ઘટાડવા માટેના સેટિંગ</string>
+  <string name="talkback_latency_reduction_summary">MS Screen Reader ઘોષણાઓ પહેલાં વિલંબ ઘટાડવા માટેના સેટિંગ</string>
   <string name="summary_pref_intonation">ડિલીટ કરવામાં આવેલા અક્ષરો ઊંચા તીવ્રતાવાળા અવાજમાં બોલો</string>
   <string name="title_pref_brailledisplay">બ્રેઇલ ડિસ્પ્લે</string>
   <string name="title_pref_brailleime">બ્રેઇલ કીબોર્ડ</string>
@@ -367,10 +367,10 @@
   <string name="title_pref_typing_confirmation">ટાઇપિંગની પસંદગી</string>
   <string name="title_pref_typing_long_tap_duration">ટાઇપ કરતી વખતે આટલો સમય ટચ કરીને થોડીવાર દબાવી રાખો</string>
   <string name="title_pref_touch_explore_timeout">ટાઇપિંગ ફોકસમાં વિલંબ</string>
-  <string name="message_pref_touch_explore_latency">વધુ ટૂંકી અવધિના ટાઇપિંગ ફોકસ વિલંબનો અર્થ થાય છે કે TalkBack ઘોષણાઓ કીબોર્ડને ટચ કર્યા પછી વધુ ઝડપી બને છે.\n\nવિલંબ પસંદ કરો</string>
+  <string name="message_pref_touch_explore_latency">વધુ ટૂંકી અવધિના ટાઇપિંગ ફોકસ વિલંબનો અર્થ થાય છે કે MS Screen Reader ઘોષણાઓ કીબોર્ડને ટચ કર્યા પછી વધુ ઝડપી બને છે.\n\nવિલંબ પસંદ કરો</string>
   <string name="title_pref_touch_focus_timeout">ફોકસમાં વિલંબ</string>
   <string name="summary_pref_touch_focus_time">
-ફોકસ ખસેડ્યા પછી TalkBack કેટલું ઝડપથી બોલે છે તેનું નિયંત્રણ કરે છે. ટૂંકા વિલંબથી TalkBack ઝડપી લાગે છે, પરંતુ બે વાર અને ત્રણ વાર ટૅપ કરવાનું મુશ્કેલ બની શકે છે.\n\n
+ફોકસ ખસેડ્યા પછી MS Screen Reader કેટલું ઝડપથી બોલે છે તેનું નિયંત્રણ કરે છે. ટૂંકા વિલંબથી MS Screen Reader ઝડપી લાગે છે, પરંતુ બે વાર અને ત્રણ વાર ટૅપ કરવાનું મુશ્કેલ બની શકે છે.\n\n
 0.3 સેકન્ડથી ઓછા વિલંબ, બે વાર ટૅપ કરવાથી આઇટમ સક્રિય થવાની સુવિધા, બે આંગળીથી ટૅપ કરવાથી સક્રિય થવાની સુવિધામાં બદલાઈ જશે.
       </string>
   <string name="title_pref_talkback_gesture_detection">TalkBackમાં સંકેતો હૅન્ડલ કરો</string>
@@ -378,14 +378,14 @@
   <string name="title_pref_auto_image_captioning">ઑટોમૅટિક વર્ણનો</string>
   <string name="title_pref_gemini_settings">Geminiના સેટિંગ</string>
   <string name="title_pref_gemini_enabled">Gemini વૉઇસ આદેશ</string>
-  <string name="title_pref_category_automatic_description_summary">તમે TalkBack મેનૂમાં જઈને \“છબીનું વર્ણન કરો\” પસંદ કરો, પછી AI છબીના વિગતવાર વર્ણનો મેળવો.\n\nજ્યારે તમે કોઈ છબી કે આઇકન પર ફોકસ કરો છો, ત્યારે તમને ઑટોમૅટિક વર્ણનોની સુવિધા પણ મળી શકે છે. કોઈ ઇન્ટરનેટ કનેક્શન વિના પણ ઑટોમૅટિક વર્ણનોની સુવિધા કામ કરે છે.</string>
+  <string name="title_pref_category_automatic_description_summary">તમે MS Screen Reader મેનૂમાં જઈને \“છબીનું વર્ણન કરો\” પસંદ કરો, પછી AI છબીના વિગતવાર વર્ણનો મેળવો.\n\nજ્યારે તમે કોઈ છબી કે આઇકન પર ફોકસ કરો છો, ત્યારે તમને ઑટોમૅટિક વર્ણનોની સુવિધા પણ મળી શકે છે. કોઈ ઇન્ટરનેટ કનેક્શન વિના પણ ઑટોમૅટિક વર્ણનોની સુવિધા કામ કરે છે.</string>
   <string name="title_pref_icon_detection">આઇકનના ઑટોમૅટિક વર્ણનો</string>
   <string name="title_pref_image_description">છબીના ઑટોમૅટિક વર્ણનો</string>
   <string name="title_pref_text_recognition">છબીઓમાંની ટેક્સ્ટ માટેના ઑટોમૅટિક વર્ણનો</string>
   <string name="dialog_title_turn_on_image_description">સેટિંગમાં છબીના વર્ણનો ચાલુ કરો</string>
   <string name="dialog_message_turn_on_image_description">તમે કાં તો છબીના ઑટોમૅટિક અથવા વિગતવાર વર્ણનો ચાલુ કર્યા પછી ફરીથી પ્રયાસ કરી શકો છો</string>
   <string name="title_pref_detailed_image_description">છબીના વિગતવાર વર્ણનો</string>
-  <string name="summary_pref_ai_description">TalkBack મેનૂમાંથી \"%1$s\" પસંદ કરો, ત્યારે વધુ લાંબા વર્ણનો સાંભળો</string>
+  <string name="summary_pref_ai_description">MS Screen Reader મેનૂમાંથી \"%1$s\" પસંદ કરો, ત્યારે વધુ લાંબા વર્ણનો સાંભળો</string>
   <string name="dialog_message_detailed_ai_description">આ સુવિધાનો ઉપયોગ કરતી વખતે, પસંદ કરેલી છબીઓ પ્રક્રિયા કરવા માટે Googleને મોકલવામાં આવશે અને પછી ડિલીટ કરવામાં આવશે.\n\nજનરેટિવ AI પ્રાયોગિક છે, તેથી તે ભૂલો કરશે. આગળ વધીને, તમે %1$s સાથે સંમત થાઓ છો.</string>
   <string name="dialog_message_on_device_ai_description">તમે જ્યારે સપોર્ટેડ ઍપમાં કોઈ છબી પર ફોકસ કરો, ત્યારે તમને સંક્ષિપ્ત વર્ણન સાંભળવા મળશે.\n\nછબીઓ પર પ્રક્રિયા તમારા ડિવાઇસમાં જ કરવામાં આવે છે અને તેને ક્યારેય Googleને મોકલવામાં આવતી નથી. \n\nજનરેટિવ AI પ્રાયોગિક છે, તેથી તે ભૂલો કરશે. આગળ વધીને, તમે Googleની <a href="https://policies.google.com/terms/generative-ai">સેવાની શરતો</a> સાથે સંમત થાઓ છો.</string>
   <string name="enable_gemini">ચાલુ કરો</string>
@@ -397,7 +397,7 @@
   <string name="dialog_message_gen_ai_tos_link">Googleની સેવાની શરતો</string>
   <string name="message_aifeature_downloading">AI મૉડલ ડાઉનલોડ કરી રહ્યાં છીએ. આમાં થોડો સમય લાગી શકે છે. જ્યારે તે પૂર્ણ થશે, તમને નોટિફિકેશન મોકલવામાં આવશે.</string>
   <string name="message_aifeature_downloading_with_progress">ડાઉનલોડની પ્રક્રિયા હજી પણ ચાલુ છે. %2$dમાંથી %1$d MB ડાઉનલોડ થયું.</string>
-  <string name="message_aifeature_download_complete">AI મૉડલ ડાઉનલોડ કર્યું. TalkBack હવે છબીના વર્ણનો જનરેટ કરી શકે છે.</string>
+  <string name="message_aifeature_download_complete">AI મૉડલ ડાઉનલોડ કર્યું. MS Screen Reader હવે છબીના વર્ણનો જનરેટ કરી શકે છે.</string>
   <string name="summary_pref_auto_image_captioning">આઇકન, છબીઓ અને છબીઓમાંની ટેક્સ્ટ માટે</string>
   <string name="summary_pref_auto_image_captioning_text_only">છબીઓમાં ટેક્સ્ટ માટે</string>
   <string name="summary_pref_auto_image_captioning_no_icon">છબીઓમાં છબીઓ અને ટેક્સ્ટ માટે</string>
@@ -427,7 +427,7 @@
   <string name="screen_dimmed">સ્ક્રીન છુપાવી</string>
   <string name="screen_brightness_restored">સ્ક્રીન બતાવી રહ્યાં છીએ</string>
   <string name="screen_dimming_exit_instruction_line1">ટૉકબૅક ઍક્સેસિબિલિટી સેવાએ સ્ક્રીન છુપાવેલી છે</string>
-  <string name="screen_dimming_exit_instruction_line2">આને બદલવા માટે, TalkBack મેનૂ ખોલવા માટે %1$s, \"%2$s\" પસંદ કરો, પછી બે વાર ટૅપ કરો.</string>
+  <string name="screen_dimming_exit_instruction_line2">આને બદલવા માટે, MS Screen Reader મેનૂ ખોલવા માટે %1$s, \"%2$s\" પસંદ કરો, પછી બે વાર ટૅપ કરો.</string>
   <string name="shortcut_title_basic_navigation">મૂળભૂત નૅવિગેશન</string>
   <string name="shortcut_title_system_actions">સિસ્ટમની ઍક્શન</string>
   <string name="shortcut_title_reading_control">વાંચન</string>
@@ -455,7 +455,7 @@
   <string name="shortcut_notifications">નોટિફિકેશન</string>
   <string name="shortcut_quick_settings">ઝડપી સેટિંગ</string>
   <string name="shortcut_show_custom_actions">કસ્ટમ ક્રિયાઓ બતાવો</string>
-  <string name="shortcut_talkback_breakout">TalkBack મેનૂ ખોલો</string>
+  <string name="shortcut_talkback_breakout">MS Screen Reader મેનૂ ખોલો</string>
   <string name="shortcut_pause_or_resume_feedback">સ્પીચને થોભાવો અથવા તેને ફરી શરૂ કરો</string>
   <string name="shortcut_toggle_voice_feedback">સ્પીચ ચાલુ અથવા બંધ કરો</string>
   <string name="shortcut_read_from_top">ટોચથી વાંચો</string>
@@ -471,10 +471,10 @@
   <string name="shortcut_perform_click_action">સક્રિય કરો</string>
   <string name="shortcut_perform_double_click_action">બે વાર ક્લિક કરો</string>
   <string name="shortcut_perform_long_click_action">ટચ કરીને થોડીવાર દબાવી રાખો</string>
-  <string name="talkback_menu_title">TalkBack મેનૂ</string>
+  <string name="talkback_menu_title">MS Screen Reader મેનૂ</string>
   <string name="talkback_menu_close_button_text">@string/close_string</string>
   <string name="talkback_menu_more_options_text">સેટઅપ પૂર્ણ કર્યા પછી અથવા તમારા ડિવાઇસને અનલૉક કર્યા પછી, મેનૂના વધુ વિકલ્પો ઉપલબ્ધ થશે</string>
-  <string name="talkback_menu_title_content_description">TalkBack મેનૂ. TalkBack મેનૂમાં વિકલ્પોની શોધખોળ કરવા માટે જમણે સ્વાઇપ કરો.\n\nટ્યૂટૉરિઅલ પર પાછા ફરવા માટે, તમારી સ્ક્રીનની કિનારીએથી ડાબે અથવા જમણે સ્વાઇપ કરવા માટે 2 આંગળીઓનો ઉપયોગ કરો.</string>
+  <string name="talkback_menu_title_content_description">MS Screen Reader મેનૂ. MS Screen Reader મેનૂમાં વિકલ્પોની શોધખોળ કરવા માટે જમણે સ્વાઇપ કરો.\n\nટ્યૂટૉરિઅલ પર પાછા ફરવા માટે, તમારી સ્ક્રીનની કિનારીએથી ડાબે અથવા જમણે સ્વાઇપ કરવા માટે 2 આંગળીઓનો ઉપયોગ કરો.</string>
   <string name="shortcut_show_language_options">બોલાયેલી ભાષા બદલો</string>
   <string name="shortcut_select_next_setting">વાંચનનું આગલું નિયંત્રણ</string>
   <string name="shortcut_select_previous_setting">વાંચનનું પાછલું નિયંત્રણ</string>
@@ -573,9 +573,9 @@
   <string name="summary_granularity">અક્ષર, શબ્દ લાઇન તથા અન્ય વિકલ્પો અનુસાર વાંચો</string>
   <string name="summary_read_from_top">ઉપરથી શરૂ કરીને, સ્ક્રીન પરની બધી આઇટમ વાંચો</string>
   <string name="summary_read_from_current">ફોકસ કરેલી આઇટમથી શરૂ કરીને, સ્ક્રીન પરની બધી આઇટમ વાંચો</string>
-  <string name="summary_copy_last_spoken_phrase">TalkBack દ્વારા બોલવામાં આવેલો છેલ્લો શબ્દસમૂહ ક્લિપબોર્ડ પર કૉપિ કરો, જેથી તમે ટેક્સ્ટ પેસ્ટ કરી શકો</string>
-  <string name="summary_spell_last_spoken_phrase">TalkBack દ્વારા બોલવામાં આવેલા છેલ્લા શબ્દસમૂહના દરેક અક્ષરો લખો</string>
-  <string name="summary_repeat_last_spoken_phrase">TalkBack દ્વારા બોલવામાં આવેલા છેલ્લા શબ્દસમૂહને ફરીથી સાંભળો</string>
+  <string name="summary_copy_last_spoken_phrase">MS Screen Reader દ્વારા બોલવામાં આવેલો છેલ્લો શબ્દસમૂહ ક્લિપબોર્ડ પર કૉપિ કરો, જેથી તમે ટેક્સ્ટ પેસ્ટ કરી શકો</string>
+  <string name="summary_spell_last_spoken_phrase">MS Screen Reader દ્વારા બોલવામાં આવેલા છેલ્લા શબ્દસમૂહના દરેક અક્ષરો લખો</string>
+  <string name="summary_repeat_last_spoken_phrase">MS Screen Reader દ્વારા બોલવામાં આવેલા છેલ્લા શબ્દસમૂહને ફરીથી સાંભળો</string>
   <string name="summary_perform_screen_search">સ્ક્રીન પર જોઈતી ટેક્સ્ટ શોધવા માટે કોઈ શોધ શબ્દ દાખલ કરો</string>
   <string name="summary_voice_commands">તમારા વૉઇસ વડે TalkBackનું નિયંત્રણ કરો</string>
   <string name="summary_show_hide_screen">તમે સાર્વજનિક સ્થાનો પર હો ત્યારે તમારી સ્ક્રીન અન્ય લોકો જોઈ ન શકે તે માટે ડિસ્પ્લે છુપાવો. સ્ક્રીનને છુપાવ્યા પછી, તેને સામાન્ય સ્થિતિમાં પાછી લાવો.</string>
@@ -629,7 +629,7 @@
   <string name="summary_sound_feedback">તમે નૅવિગેટ કરો એ વખતે સાઉન્ડ ઇફેક્ટ સાંભળો, જેમ કે કોઈ ક્રિયા કન્ફર્મ કરવા માટે બીપ</string>
   <string name="summary_vibration_feedback">કોઈ આઇટમ પસંદ કરવા જેવી ક્રિયાઓ માટે વાઇબ્રેશન અનુભવો. આને કારણે ઍપ કે સિસ્ટમમાંથી આવતા વાઇબ્રેશન પર અસર થતી નથી.</string>
   <string name="summary_hide_screen">ડિસ્પ્લેને છુપાવો જેથી તમારી સ્ક્રીન અન્ય લોકોને ન દેખાય</string>
-  <string name="summary_audio_ducking">TalkBack બોલે, ત્યારે ડિવાઇસમાં વાગી રહેલા અન્ય ઑડિયોનું વૉલ્યૂમ ઓછું કરો</string>
+  <string name="summary_audio_ducking">MS Screen Reader બોલે, ત્યારે ડિવાઇસમાં વાગી રહેલા અન્ય ઑડિયોનું વૉલ્યૂમ ઓછું કરો</string>
   <string name="summary_support_scroll_seq">આગળ અથવા પાછળ સ્ક્રોલ કરો</string>
   <string name="summary_support_change_a11y_volume">ઍક્સેસિબિલિટીનું વૉલ્યૂમ વધારો કે ઘટાડો</string>
   <string name="summary_support_change_touch_explore_latency">ટાઇપિંગ ફોકસ વિલંબ વધારો કે ઘટાડો</string>
@@ -639,7 +639,7 @@
   <string name="summary_image_caption">પસંદ કરેલી છબીમાંની ટેક્સ્ટ અને આઇકન બોલો</string>
   <string name="summary_summarize_view">વ્યૂનો સારાંશ બોલો</string>
   <string name="summary_typo_suggestions">જ્યારે કર્સર કોઈ ખોટી જોડણીવાળા શબ્દ પર હોય, ત્યારે જોડણીનું સૂચન બતાવે છે</string>
-  <string name="summary_cache_keyboard_keys">જ્યારે તમે ટાઇપ કરો છો ત્યારે વિલંબ ઘટાડવા માટે TalkBack ઘોષણાઓને પહેલેથી લોડ કરે છે</string>
+  <string name="summary_cache_keyboard_keys">જ્યારે તમે ટાઇપ કરો છો ત્યારે વિલંબ ઘટાડવા માટે MS Screen Reader ઘોષણાઓને પહેલેથી લોડ કરે છે</string>
   <string name="summary_cache_keyboard_keys_disabled">આ સુવિધાનો ઉપયોગ કરવા માટે, Google ટેક્સ્ટ ટૂ સ્પીચનો ઉપયોગ કરો</string>
   <string name="value_direction_down">નીચે</string>
   <string name="value_direction_down_and_right">નીચે પછી જમણે</string>
@@ -768,9 +768,9 @@
   <string name="no_apps_to_export_labels">લેબલોની નિકાસ કરવા માટે કોઈ ઍપ્લિકેશન ન મળી.</string>
   <string name="label_choose_app_to_import">લેબલોની આયાત કરવા માટે ઍપ્લિકેશન પસંદ કરો:</string>
   <string name="label_choose_app_to_export">લેબલ્સને નિકાસ કરવા માટે ઍપ્લિકેશન પસંદ કરો:</string>
-  <string name="talkback_gesture_change_details">TalkBackના આ વર્ઝનમાં ડિફૉલ્ટ અ‍ૅક્સેસિબિલિટી સંકેતના ફેરફારોનો સમાવેશ થાય છે. આ સંકેત સાથે સંકળાયેલ ક્રિયાઓ TalkBack સેટિંગ અંતર્ગત કસ્ટમાઇઝ કરી શકાય છે. જ્યારે ટચ કરીને શોધખોળ કરવાનું ચાલુ હોય ત્યારે, તમે અમુક ચોક્કસ ક્રિયાઓ કરવા માટે નીચેના સંકેતનો ઉપયોગ કરી શકો છો.\n\n%1$s</string>
+  <string name="talkback_gesture_change_details">TalkBackના આ વર્ઝનમાં ડિફૉલ્ટ અ‍ૅક્સેસિબિલિટી સંકેતના ફેરફારોનો સમાવેશ થાય છે. આ સંકેત સાથે સંકળાયેલ ક્રિયાઓ MS Screen Reader સેટિંગ અંતર્ગત કસ્ટમાઇઝ કરી શકાય છે. જ્યારે ટચ કરીને શોધખોળ કરવાનું ચાલુ હોય ત્યારે, તમે અમુક ચોક્કસ ક્રિયાઓ કરવા માટે નીચેના સંકેતનો ઉપયોગ કરી શકો છો.\n\n%1$s</string>
   <string name="dialog_title_dim_screen">સ્ક્રીન છુપાવીએ?</string>
-  <string name="dialog_message_dim_screen">આ પ્રાઇવસીને બહેતર બનાવવા માટે ડિસ્પ્લેને બંધ કરે છે. ડિસ્પ્લેને ફરીથી ચાલુ કરવા માટેના મેસેજ અથવા TalkBack જેવી ઍક્સેસિબિલિટી સુવિધાઓ માટેના મેનૂ જેવું અમુક કન્ટેન્ટ હજી પણ બતાવવામાં આવી શકે છે.</string>
+  <string name="dialog_message_dim_screen">આ પ્રાઇવસીને બહેતર બનાવવા માટે ડિસ્પ્લેને બંધ કરે છે. ડિસ્પ્લેને ફરીથી ચાલુ કરવા માટેના મેસેજ અથવા MS Screen Reader જેવી ઍક્સેસિબિલિટી સુવિધાઓ માટેના મેનૂ જેવું અમુક કન્ટેન્ટ હજી પણ બતાવવામાં આવી શકે છે.</string>
   <string name="talkback_built_in_gesture_change_details">ટૉકબૅકના આ વર્ઝનમાં ડિફૉલ્ટ ઍક્સેસિબિલિટી સંકેતોના ફેરફારોનો સમાવેશ થાય છે.\n\nઉપર-પછી-નીચે સંકેત તમને સ્ક્રીન પરની પ્રથમ આઇટમ પર લઈ જશે અને નીચે-પછી-ઉપર સંકેત તમને છેલ્લી આઇટમ પર લઈ જશે.\n\nવાંચન ગ્રેન્યુલારિટિ હવે કોઈ આઇટમને ફોકસ કરીને અને પછી ટૉકબૅક સંદર્ભ મેનૂમાંથી કોઈ ગ્રેન્યુલારિટિ પસંદ કરીને બદલી શકાય છે.\n\nતમે ટૉકબૅકના સેટિંગમાં આ સંકેત દ્વારા કરવામાં આવતી ક્રિયાઓને બદલાવી શકો છો.</string>
   <string name="default_action_changed_details">મીડિયાને થોભાવવા અને ચલાવવા માટે, હવે તમે બે આંગળીઓ વડે બે વાર ટૅપ કરીને દબાવી રાખી શકો છો.\n\nઅન્ય સંકેતોમાં પણ ફેરફાર થયો છે.</string>
   <string name="talkback_built_in_gesture_open_url">વધુ જાણવા માટે ફોન પર ખોલો</string>
@@ -851,10 +851,10 @@
   <string name="title_pref_a11y_volume">ઍક્સેસિબિલિટી વૉલ્યૂમ</string>
   <string name="title_pref_touch_explore_latency">ટાઇપિંગ ફોકસમાં વિલંબ</string>
   <string name="title_pref_touch_focus_latency">ફોકસમાં વિલંબ</string>
-  <string name="message_pref_touch_focus_latency">વધુ ટૂંકી અવધિના ટાઇપિંગ ફોકસ વિલંબનો અર્થ થાય છે કે TalkBack ઘોષણાઓ સ્ક્રીનને ટચ કર્યા પછી વધુ ઝડપી બને છે</string>
+  <string name="message_pref_touch_focus_latency">વધુ ટૂંકી અવધિના ટાઇપિંગ ફોકસ વિલંબનો અર્થ થાય છે કે MS Screen Reader ઘોષણાઓ સ્ક્રીનને ટચ કર્યા પછી વધુ ઝડપી બને છે</string>
   <string name="message_pref_typing_method_prefix">ટાઇપ કરતી વખતે ઓછામાં ઓછા વિલંબ માટે, \"કોઈપણ કી પસંદ કરવા માટે તેને આંગળીથી દબાવી રાખો, પછી ઉપાડી લો\" પસંદ કરો</string>
   <string name="message_pref_typing_method_postfix">તમે કોઈપણ સમયે ટાઇપ કરવા માટે સ્પ્લિટ ટૅપનો ઉપયોગ પણ કરી શકો છો. આમ કરવા, કોઈપણ કી પસંદ કરવા માટે એક આંગળી દબાવી રાખો અને સ્ક્રીન પર ટૅપ કરવા માટે બીજી આંગળીનો ઉપયોગ કરો.</string>
-  <string name="title_pref_talkback_speech_rate">TalkBack સ્પીચ રેટ</string>
+  <string name="title_pref_talkback_speech_rate">MS Screen Reader સ્પીચ રેટ</string>
   <string name="title_pref_selector_adjustable_widget_slider">સ્લાઇડરની ગોઠવણી કરો</string>
   <string name="title_pref_selector_typo_granularity">પ્રૂફરીડ કરો</string>
   <string name="hint_no_typo_found">ટાઇપિંગની કોઈ ભૂલ મળી નથી.</string>
@@ -887,7 +887,7 @@
   <string name="dialog_message_voice_commands">તમે કહી શકો એવા કેટલાંક વાક્યો અહીં આપ્યા છે:\n\n• કૉપિ કરો\n• ફોકસ કરેલી આઇટમમાંથી વાંચો\n• શોધો [સાચવો]\n• બોલો [વધુ ઝડપથી]\n• TalkBackના સેટિંગ\n\nબધા વૉઇસ આદેશોની સૂચિ જોવા માટે \"%1$s\" કહો</string>
   <string name="start_voice_command">વૉઇસ આદેશોનો ઉપયોગ કરો</string>
   <string name="dialog_title_pass_through_mode">સિસ્ટમના સંકેતોનો ઉપયોગ કરવા માટે TalkBackના સંકેતો છોડો</string>
-  <string name="dialog_message_pass_through_mode">જ્યારે તમને કોઈ ઘંટડી સંભળાય, ત્યારે તમે TalkBack દ્વારા સપોર્ટ આપવામાં આવતો ન હોય તેવા કોઈ સિસ્ટમ સંકેતનો ઉપયોગ કરી શકો છો. આને \'પાસ-થ્રૂ સંકેત\' કહેવામાં આવે છે.</string>
+  <string name="dialog_message_pass_through_mode">જ્યારે તમને કોઈ ઘંટડી સંભળાય, ત્યારે તમે MS Screen Reader દ્વારા સપોર્ટ આપવામાં આવતો ન હોય તેવા કોઈ સિસ્ટમ સંકેતનો ઉપયોગ કરી શકો છો. આને \'પાસ-થ્રૂ સંકેત\' કહેવામાં આવે છે.</string>
   <string name="dialog_title_voice_input_download">વૉઇસ ઇનપુટનો ઉપયોગ કરવા માટે, Gboard અપડેટ કરો</string>
   <string name="dialog_message_voice_input_download">હવે જ્યારે પણ Gboard સક્રિય હોય, ત્યારે 2 આંગળી વડે બે વાર ટૅપ કરવાથી વૉઇસ ઇનપુટ ચાલુ થઈ શકે છે. આ સંકેતનો ઉપયોગ કરવા માટે, Gboardને લેટેસ્ટ વર્ઝન પર અપડેટ કરો.</string>
   <string name="label_update_gboard">Google Playમાં અપડેટ કરો</string>
@@ -920,12 +920,12 @@
   <string name="adjust_typo_hint">સૂચનો માટે %1$s.</string>
   <string name="use_action_hint">ક્રિયા કરવા માટે બે વાર ટૅપ કરો</string>
   <string name="no_adjust_setting_gesture">આનો ઉપયોગ કરવા માટે, TalkBackના સેટિંગ પર જાઓ અને \'%1$s\' માટે સંકેત ઉમેરો</string>
-  <string name="no_navigate_typo_gesture">આનો ઉપયોગ કરવા માટે, TalkBack સેટિંગ પર જાઓ અને જોડણીની તપાસ માટે સંકેત ઉમેરો</string>
+  <string name="no_navigate_typo_gesture">આનો ઉપયોગ કરવા માટે, MS Screen Reader સેટિંગ પર જાઓ અને જોડણીની તપાસ માટે સંકેત ઉમેરો</string>
   <string name="use_spelling_suggestion_hint">ટેક્સ્ટ બદલવા માટે બે વાર ટૅપ કરો</string>
   <string name="screen_search_keyword_hint">કીવર્ડ %1$s છે</string>
-  <string name="screen_search_no_keyword_hint">હજી સુધી કોઈ કીવર્ડ નથી. કોઈ નવી શોધ શરૂ કરવા માટે, 3 આંગળી વડે ટૅપ કરીને દબાવી રાખો અથવા TalkBack મેનૂમાંથી \'સ્ક્રીન પર શોધો\' સુવિધા ખોલો.</string>
-  <string name="screen_search_no_keyword_hint_pre_r">હજી સુધી કોઈ કીવર્ડ નથી. કોઈ નવી શોધ શરૂ કરવા માટે, પહેલાં ડાબી બાજુ પછી નીચેની બાજુ સ્વાઇપ કરો અથવા TalkBack મેનૂમાંથી \'સ્ક્રીન પર શોધો\' સુવિધા ખોલો.</string>
-  <string name="switch_to_braille_keyboard_failure_msg">બ્રેઇલ કીબોર્ડ ચાલુ કરેલું નથી. TalkBack સેટિંગ પર જાઓ, બ્રેઇલ કીબોર્ડ સેટઅપ કરીને ફરી પ્રયાસ કરો.</string>
+  <string name="screen_search_no_keyword_hint">હજી સુધી કોઈ કીવર્ડ નથી. કોઈ નવી શોધ શરૂ કરવા માટે, 3 આંગળી વડે ટૅપ કરીને દબાવી રાખો અથવા MS Screen Reader મેનૂમાંથી \'સ્ક્રીન પર શોધો\' સુવિધા ખોલો.</string>
+  <string name="screen_search_no_keyword_hint_pre_r">હજી સુધી કોઈ કીવર્ડ નથી. કોઈ નવી શોધ શરૂ કરવા માટે, પહેલાં ડાબી બાજુ પછી નીચેની બાજુ સ્વાઇપ કરો અથવા MS Screen Reader મેનૂમાંથી \'સ્ક્રીન પર શોધો\' સુવિધા ખોલો.</string>
+  <string name="switch_to_braille_keyboard_failure_msg">બ્રેઇલ કીબોર્ડ ચાલુ કરેલું નથી. MS Screen Reader સેટિંગ પર જાઓ, બ્રેઇલ કીબોર્ડ સેટઅપ કરીને ફરી પ્રયાસ કરો.</string>
   <string name="suggestions_window_available">સૂચનો ઉપલબ્ધ છે</string>
   <string name="suggestions_window_available_with_gesture">સૂચનો ઉપલબ્ધ છે. ઍક્સેસ કરવા માટે, %1$s</string>
   <string name="heads_up_window_available">નોટિફિકેશન ઉપલબ્ધ છે</string>
@@ -940,11 +940,11 @@
   <string name="training_navigate_up">ઉપર નૅવિગેટ કરો</string>
   <string name="training_tip">ટિપ</string>
   <string name="tv_training_overview_step_title">TalkBackની કાર્ય કરવાની રીત</string>
-  <string name="tv_training_overview_step_summary">TalkBack એ Googleનું સ્ક્રીન રીડર છે. આ સુવિધા તમારા ડિવાઇસની સ્ક્રીન પર પ્રદર્શિત ટેક્સ્ટને મોટેથી વાંચે છે અને તે તમને બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે સ્ક્રીન પર જોયા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો છો.\n\nTalkBack ચાલુ હોય, ત્યારે આ સુવિધા સ્ક્રીન પરની પસંદ કરાયેલી આઇટમ મોટેથી વાંચે છે, કેટલીકવાર વધારાની સંબંધિત માહિતી અથવા વધારાના સંદર્ભ ઉમેરીને બોલવામાં આવે છે.\n\nચાલુ રાખવા માટે, \'પસંદ કરો\' બટન દબાવો. \'પસંદ કરો\' બટન ડિરેક્શનલ પૅડની મધ્યમાં જોવા મળશે, જે તમારા રિમોટની સૌથી ઉપર આવેલું મોટું, ગોળાકાર બટન છે.</string>
+  <string name="tv_training_overview_step_summary">MS Screen Reader એ Googleનું સ્ક્રીન રીડર છે. આ સુવિધા તમારા ડિવાઇસની સ્ક્રીન પર પ્રદર્શિત ટેક્સ્ટને મોટેથી વાંચે છે અને તે તમને બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે સ્ક્રીન પર જોયા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો છો.\n\nTalkBack ચાલુ હોય, ત્યારે આ સુવિધા સ્ક્રીન પરની પસંદ કરાયેલી આઇટમ મોટેથી વાંચે છે, કેટલીકવાર વધારાની સંબંધિત માહિતી અથવા વધારાના સંદર્ભ ઉમેરીને બોલવામાં આવે છે.\n\nચાલુ રાખવા માટે, \'પસંદ કરો\' બટન દબાવો. \'પસંદ કરો\' બટન ડિરેક્શનલ પૅડની મધ્યમાં જોવા મળશે, જે તમારા રિમોટની સૌથી ઉપર આવેલું મોટું, ગોળાકાર બટન છે.</string>
   <string name="tv_training_remote_step_title">તમારા રિમોટનો ઉપયોગ કરવા વિશે</string>
   <string name="tv_training_remote_step_summary">તમારા રિમોટની સૌથી ઉપર આવેલા ગોળાકાર ડિરેક્શનલ બટનનો ઉપયોગ કરીને સ્ક્રીનની આસપાસ ખસેડો. કંઈક પસંદ કરવા માટે, તમારા રિમોટની સૌથી ઉપર આવેલા ડિરેક્શનલ બટનની મધ્યમાં દબાવો.\n\nડાબી બાજુની બીજી પંક્તિમાં, તમને પાછળ જવા માટેનું બટન મળશે. વૉઇસથી Assistantની સુવિધા આપતું બટન રિમોટની જમણી બાજુએ મળશે.\n\nડાબી બાજુની ત્રીજી પંક્તિમાં, તમને હોમ બટન મળશે. મ્યૂટ બટન રિમોટની જમણી બાજુએ છે.\n\nડાબી બાજુની ચોથી પંક્તિમાં, તમને YouTubeનો શૉર્ટકટ મળશે. Netflix માટેનો શૉર્ટકટ રિમોટની જમણી બાજુએ છે.\n\nનીચેની પંક્તિમાં, બે નાના બટન છે. ડાબી બાજુએ આવેલું બટન, એ પાવર બટન છે. જમણી બાજુનું બટન ટીવીનું ઇનપુટ મેનૂ ખોલશે.\n\nવૉલ્યૂમ બટન રિમોટની જમણી બાજુએ આવેલા છે.\n\nચાલુ રાખવા માટે \'પસંદ કરો\' દબાવો.</string>
   <string name="tv_training_shortcut_step_title">TalkBackનો શૉર્ટકટ</string>
-  <string name="tv_training_shortcut_step_summary">TalkBackનો શૉર્ટકટ ઍક્સેસ કરવા માટે, \'નીચે જાઓ\' અને \'પાછળ જાઓ\' બટનને એક સાથે દબાવો અને 3 સેકન્ડ માટે પકડી રાખો. આમ કરવાથી TalkBack ચાલુ થશે અથવા તો બંધ થશે.\n\nતમે તમારા ટીવીના સેટિંગમાં જઈને પણ આ શૉર્ટકટ ઍક્સેસ કરી શકો છો.\n\nચાલુ રાખવા માટે \'પસંદ કરો\' દબાવો.</string>
+  <string name="tv_training_shortcut_step_summary">TalkBackનો શૉર્ટકટ ઍક્સેસ કરવા માટે, \'નીચે જાઓ\' અને \'પાછળ જાઓ\' બટનને એક સાથે દબાવો અને 3 સેકન્ડ માટે પકડી રાખો. આમ કરવાથી MS Screen Reader ચાલુ થશે અથવા તો બંધ થશે.\n\nતમે તમારા ટીવીના સેટિંગમાં જઈને પણ આ શૉર્ટકટ ઍક્સેસ કરી શકો છો.\n\nચાલુ રાખવા માટે \'પસંદ કરો\' દબાવો.</string>
   <string name="new_feature_in_talkback_title">TalkBackમાં નવી સુવિધાઓ</string>
   <string name="exit_tutorial_title">રિવ્યૂ કરવાનું સમાપ્ત થઈ ગયું?</string>
   <string name="exit_tutorial_content">તમે TalkBackના સેટિંગમાં ગમે ત્યારે ટ્યૂટૉરિઅલ પર પાછા આવી શકો છો.</string>
@@ -975,11 +975,11 @@
   <string name="new_gesture_notification_content">નવા સંકેતો વડે ટૉકબૅકનો ઉપયોગ વધુ ઝડપથી કેવી રીતે કરવો તે જાણવા માટે ટૅપ કરો.</string>
   <string name="dump_node_tree_description">નોડ ટ્રી લૉગ પર પ્રિન્ટ કરવામાં આવ્યું છે.</string>
   <string name="report_gesture_description">અહીં તાજેતરમાં કરાયેલા સંકેતો આપવામાં આવ્યા છે, કૃપા કરીને કયા સંકેત અયોગ્ય છે અને શું અપેક્ષિત છે તે જણાવો.</string>
-  <string name="update_welcome_text_content">હવે તમે HID મારફતે બ્રેઇલ ડિસ્પ્લે સાથે કનેક્ટ કરી શકો છો, જે બ્લૂટૂથ ડિવાઇસ સાથે કનેક્ટ કરવાની એક રીત છે. ખાતરી કરો કે તમારી પાસે તમારા નિર્માતાના નવીનતમ ફર્મવેયર ડ્રાઇવર હોય, પછી તમારા બ્રેઇલ ડિસ્પ્લે પર બ્લૂટૂથ ચાલુ કરો. TalkBack સેટિંગ &gt; બ્રેઇલ ડિસ્પ્લે પર જાઓ અને \"બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરો\" ચાલુ કરો. ડિવાઇસની સૂચિમાં તમારું ડિવાઇસ શોધો અને તેની સાથે કનેક્ટ કરો.</string>
-  <string name="update_welcome_text_content_tts">હવે તમે HID મારફતે બ્રેઇલ ડિસ્પ્લે સાથે કનેક્ટ કરી શકો છો, જે બ્લૂટૂથ ડિવાઇસ સાથે કનેક્ટ કરવાની એક રીત છે. ખાતરી કરો કે તમારી પાસે તમારા નિર્માતાના નવીનતમ ફર્મવેયર ડ્રાઇવર હોય, પછી તમારા બ્રેઇલ ડિસ્પ્લે પર બ્લૂટૂથ ચાલુ કરો. TalkBack સેટિંગ પર પછી બ્રેઇલ ડિસ્પ્લે પર જાઓ અને \"બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરો\" ચાલુ કરો. ડિવાઇસની સૂચિમાં તમારું ડિવાઇસ શોધો અને તેની સાથે કનેક્ટ કરો.</string>
-  <string name="update_welcome_text_content_with_link">TalkBack સાથે બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરવાની રીત વિશે જાણો.</string>
-  <string name="update_welcome_talkback_16.1">TalkBack સંબંધિત આ અપડેટ \'સ્ક્રીનનું વર્ણન કરો\' માટે વધુ ભાષાઓમાં સપોર્ટ અને ક્વૉલિટી સંબંધિત અન્ય સુધારણાઓ રજૂ કરે છે જે TalkBackનો ઉપયોગ કરવાનું સરળ બનાવે છે.\n\nઆગામી કેટલીક સ્ક્રીન પર તમે આ ફેરફારો વિશે વધુ જાણી શકશો.\n\nતમે પછીથી TalkBackના સેટિંગ &gt; TalkBackની નવી સુવિધાઓમાં જઈને આ માહિતીનો રિવ્યૂ કરી શકો છો.</string>
-  <string name="update_welcome_talkback_16.1_tts">TalkBack સંબંધિત આ અપડેટ \'સ્ક્રીનનું વર્ણન કરો\' માટે વધુ ભાષાઓમાં સપોર્ટ અને ક્વૉલિટી સંબંધિત અન્ય સુધારણાઓ રજૂ કરે છે જે TalkBackનો ઉપયોગ કરવાનું સરળ બનાવે છે.\n\nઆગામી કેટલીક સ્ક્રીન પર તમે આ ફેરફારો વિશે વધુ જાણી શકશો.\n\nતમે પછીથી TalkBackના સેટિંગ અને ત્યારબાદ TalkBackની નવી સુવિધાઓમાં જઈને આ માહિતીનો રિવ્યૂ કરી શકો છો.</string>
+  <string name="update_welcome_text_content">હવે તમે HID મારફતે બ્રેઇલ ડિસ્પ્લે સાથે કનેક્ટ કરી શકો છો, જે બ્લૂટૂથ ડિવાઇસ સાથે કનેક્ટ કરવાની એક રીત છે. ખાતરી કરો કે તમારી પાસે તમારા નિર્માતાના નવીનતમ ફર્મવેયર ડ્રાઇવર હોય, પછી તમારા બ્રેઇલ ડિસ્પ્લે પર બ્લૂટૂથ ચાલુ કરો. MS Screen Reader સેટિંગ &gt; બ્રેઇલ ડિસ્પ્લે પર જાઓ અને \"બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરો\" ચાલુ કરો. ડિવાઇસની સૂચિમાં તમારું ડિવાઇસ શોધો અને તેની સાથે કનેક્ટ કરો.</string>
+  <string name="update_welcome_text_content_tts">હવે તમે HID મારફતે બ્રેઇલ ડિસ્પ્લે સાથે કનેક્ટ કરી શકો છો, જે બ્લૂટૂથ ડિવાઇસ સાથે કનેક્ટ કરવાની એક રીત છે. ખાતરી કરો કે તમારી પાસે તમારા નિર્માતાના નવીનતમ ફર્મવેયર ડ્રાઇવર હોય, પછી તમારા બ્રેઇલ ડિસ્પ્લે પર બ્લૂટૂથ ચાલુ કરો. MS Screen Reader સેટિંગ પર પછી બ્રેઇલ ડિસ્પ્લે પર જાઓ અને \"બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરો\" ચાલુ કરો. ડિવાઇસની સૂચિમાં તમારું ડિવાઇસ શોધો અને તેની સાથે કનેક્ટ કરો.</string>
+  <string name="update_welcome_text_content_with_link">MS Screen Reader સાથે બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરવાની રીત વિશે જાણો.</string>
+  <string name="update_welcome_talkback_16.1">MS Screen Reader સંબંધિત આ અપડેટ \'સ્ક્રીનનું વર્ણન કરો\' માટે વધુ ભાષાઓમાં સપોર્ટ અને ક્વૉલિટી સંબંધિત અન્ય સુધારણાઓ રજૂ કરે છે જે TalkBackનો ઉપયોગ કરવાનું સરળ બનાવે છે.\n\nઆગામી કેટલીક સ્ક્રીન પર તમે આ ફેરફારો વિશે વધુ જાણી શકશો.\n\nતમે પછીથી TalkBackના સેટિંગ &gt; TalkBackની નવી સુવિધાઓમાં જઈને આ માહિતીનો રિવ્યૂ કરી શકો છો.</string>
+  <string name="update_welcome_talkback_16.1_tts">MS Screen Reader સંબંધિત આ અપડેટ \'સ્ક્રીનનું વર્ણન કરો\' માટે વધુ ભાષાઓમાં સપોર્ટ અને ક્વૉલિટી સંબંધિત અન્ય સુધારણાઓ રજૂ કરે છે જે TalkBackનો ઉપયોગ કરવાનું સરળ બનાવે છે.\n\nઆગામી કેટલીક સ્ક્રીન પર તમે આ ફેરફારો વિશે વધુ જાણી શકશો.\n\nતમે પછીથી TalkBackના સેટિંગ અને ત્યારબાદ TalkBackની નવી સુવિધાઓમાં જઈને આ માહિતીનો રિવ્યૂ કરી શકો છો.</string>
   <string name="describe_screen_and_qna_title">નવી ભાષાઓમાં \'સ્ક્રીનનું વર્ણન કરો\' અને \'Geminiને પૂછો\' સુવિધા</string>
   <string name="describe_screen_and_qna_content">\'સ્ક્રીનનું વર્ણન કરો\' અને \'Geminiને પૂછો\' હવે અતિરિક્ત ભાષાઓમાં ઉપલબ્ધ છે. &lt;a href=\"https://support.google.com/accessibility/android?p=talkback_16_1\"&gt;મદદ કેન્દ્રમાં વધુ જાણો&lt;/a&gt;.</string>
   <string name="shortcut_for_dictation_title">વૉઇસ ટાઇપિંગ માટે શૉર્ટકટ</string>
@@ -988,8 +988,8 @@
 &lt;br&gt;ખાતરી કરો કે તમારી પાસે &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin\"&gt;Google Playના Gboard&lt;/a&gt;નું લેટેસ્ટ વર્ઝન હોય.</string>
   <string name="shortcut_for_dictation_content_without_google_play">જ્યારે Gboard સ્ક્રીન પર હોય, ત્યારે હવે તમે વૉઇસ ડિક્ટેશન શરૂ કરવા માટે બે આંગળી વડે બે વાર ટૅપ કરી શકો છો, પછી તેને રોકવા માટે બે આંગળી વડે બે વાર ટૅપ કરી શકો છો.</string>
   <string name="keyboard_title">કીબોર્ડ</string>
-  <string name="keyboard_content">TalkBack હવે તેના કીબોર્ડ માટે \"વધારેલું કીમૅપ\" ધરાવે છે, જેમાં વિવિધ નવા આદેશો અને શૉર્ટકટ છે. વધુ કાર્યક્ષમ વેબ નૅવિગેશન માટે \"બ્રાઉઝ મોડ\" ધરાવતું વધુ સારું બનાવવા માટેનું આ સાધન વાસ્તવિક કીબોર્ડ પર આધાર રાખતા TalkBack વપરાશકર્તાઓ માટે નૅવિગેશન અને ક્રિયાપ્રતિક્રિયાને સ્ટ્રીમલાઇન કરે છે. તમે TalkBackના સેટિંગ &gt; વિગતવાર સેટિંગ &gt; કીબોર્ડ શૉર્ટકટ પર જઈને \"વધારેલા કીમૅપ\" પર સ્વિચ કરી શકો છો.</string>
-  <string name="keyboard_content_tts">TalkBack હવે તેના કીબોર્ડ માટે \"વધારેલું કીમૅપ\" ધરાવે છે, જેમાં વિવિધ નવા આદેશો અને શૉર્ટકટ છે. વધુ કાર્યક્ષમ વેબ નૅવિગેશન માટે \"બ્રાઉઝ મોડ\" ધરાવતું વધુ સારું બનાવવા માટેનું આ સાધન વાસ્તવિક કીબોર્ડ પર આધાર રાખતા TalkBack વપરાશકર્તાઓ માટે નૅવિગેશન અને ક્રિયાપ્રતિક્રિયાને સ્ટ્રીમલાઇન કરે છે. તમે TalkBackના સેટિંગ પછી વિગતવાર સેટિંગ અને પછી કીબોર્ડ શૉર્ટકટ પર જઈને \"વધારેલા કીમૅપ\" પર સ્વિચ કરી શકો છો.</string>
+  <string name="keyboard_content">MS Screen Reader હવે તેના કીબોર્ડ માટે \"વધારેલું કીમૅપ\" ધરાવે છે, જેમાં વિવિધ નવા આદેશો અને શૉર્ટકટ છે. વધુ કાર્યક્ષમ વેબ નૅવિગેશન માટે \"બ્રાઉઝ મોડ\" ધરાવતું વધુ સારું બનાવવા માટેનું આ સાધન વાસ્તવિક કીબોર્ડ પર આધાર રાખતા MS Screen Reader વપરાશકર્તાઓ માટે નૅવિગેશન અને ક્રિયાપ્રતિક્રિયાને સ્ટ્રીમલાઇન કરે છે. તમે TalkBackના સેટિંગ &gt; વિગતવાર સેટિંગ &gt; કીબોર્ડ શૉર્ટકટ પર જઈને \"વધારેલા કીમૅપ\" પર સ્વિચ કરી શકો છો.</string>
+  <string name="keyboard_content_tts">MS Screen Reader હવે તેના કીબોર્ડ માટે \"વધારેલું કીમૅપ\" ધરાવે છે, જેમાં વિવિધ નવા આદેશો અને શૉર્ટકટ છે. વધુ કાર્યક્ષમ વેબ નૅવિગેશન માટે \"બ્રાઉઝ મોડ\" ધરાવતું વધુ સારું બનાવવા માટેનું આ સાધન વાસ્તવિક કીબોર્ડ પર આધાર રાખતા MS Screen Reader વપરાશકર્તાઓ માટે નૅવિગેશન અને ક્રિયાપ્રતિક્રિયાને સ્ટ્રીમલાઇન કરે છે. તમે TalkBackના સેટિંગ પછી વિગતવાર સેટિંગ અને પછી કીબોર્ડ શૉર્ટકટ પર જઈને \"વધારેલા કીમૅપ\" પર સ્વિચ કરી શકો છો.</string>
   <string name="reduce_delay_title">વિલંબ ઘટાડો</string>
   <string name="reduce_delay_content">હવે તમે ટચ મારફતે શોધખોળ અને ટાઇપિંગ માટે TalkBackની ઘોષણામાં થતા વિલંબને ઘટાડી શકો છો. આ સેટિંગ જોવા માટે, TalkBackના સેટિંગ &gt; વિગતવાર સેટિંગ &gt; \'વિલંબ ઘટાડો\' પર જાઓ.</string>
   <string name="reduce_delay_content_tts">હવે તમે ટચ મારફતે શોધખોળ અને ટાઇપિંગ માટે TalkBackની ઘોષણામાં થતા વિલંબને ઘટાડી શકો છો. આ સેટિંગ જોવા માટે, TalkBackના સેટિંગ પછી વિગતવાર સેટિંગ અને પછી \'વિલંબ ઘટાડો\' પર જાઓ.</string>
@@ -998,12 +998,12 @@
   <string name="customize_braille_keyboard_improvements_content_tts">હવે વર્ચ્યુઅલ ઑન-સ્ક્રીન બ્રેઇલ કીબોર્ડ માટે સંકેતોને કસ્ટમાઇઝ કરવું શક્ય છે. કસ્ટમાઇઝ કરવા માટે, TalkBackના સેટિંગ પછી બ્રેઇલ કીબોર્ડ અને પછી સંકેતો પર જાઓ.</string>
   <string name="learn_more_about_braille_keyboard">બ્રેઇલ કીબોર્ડ વિશે વધુ જાણો</string>
   <string name="other_changes_title">અન્ય ફેરફારો</string>
-  <string name="other_changes_content">જો આકસ્મિક રીતે TalkBack ચાલુ થઈ ગયું હોય, તો હવે ઑન-સ્ક્રીન મેસેજ તેને ઝડપથી બંધ કરવામાં તમારી મદદ કરશે. તમે આને TalkBackના સેટિંગ &gt; \'TalkBack બંધ કરવા માટેની સૂચનાઓ બતાવો\' પર જઈને આને બંધ કરી શકો છો.</string>
-  <string name="other_changes_content_tts">જો આકસ્મિક રીતે TalkBack ચાલુ થઈ ગયું હોય, તો હવે ઑન-સ્ક્રીન મેસેજ તેને ઝડપથી બંધ કરવામાં તમારી મદદ કરશે. તમે આને TalkBackના સેટિંગ પછી \'TalkBack બંધ કરવા માટેની સૂચનાઓ બતાવો\' પર જઈને આને બંધ કરી શકો છો.</string>
+  <string name="other_changes_content">જો આકસ્મિક રીતે MS Screen Reader ચાલુ થઈ ગયું હોય, તો હવે ઑન-સ્ક્રીન મેસેજ તેને ઝડપથી બંધ કરવામાં તમારી મદદ કરશે. તમે આને TalkBackના સેટિંગ &gt; \'MS Screen Reader બંધ કરવા માટેની સૂચનાઓ બતાવો\' પર જઈને આને બંધ કરી શકો છો.</string>
+  <string name="other_changes_content_tts">જો આકસ્મિક રીતે MS Screen Reader ચાલુ થઈ ગયું હોય, તો હવે ઑન-સ્ક્રીન મેસેજ તેને ઝડપથી બંધ કરવામાં તમારી મદદ કરશે. તમે આને TalkBackના સેટિંગ પછી \'MS Screen Reader બંધ કરવા માટેની સૂચનાઓ બતાવો\' પર જઈને આને બંધ કરી શકો છો.</string>
   <string name="keymap_changes_content">ક્લાસિક કીમૅપને ડિફૉલ્ટ કીમૅપ પર સ્વિચ કરવામાં આવ્યું છે, જેમાં વધુ શૉર્ટકટ શામેલ છે.</string>
   <string name="announcing_text_formatting_title">ટેક્સ્ટ ફૉર્મેટિંગની ઘોષણા કરવી</string>
-  <string name="announcing_text_formatting_header">હવે TalkBack ટેક્સ્ટના ફૉર્મેટિંગમાં ફેરફારો જેમ કે બોલ્ડ, ઇટાલિક અને ટેક્સ્ટના રંગમાં ફેરફારોની ઘોષણા કરી શકશે. શરૂ કરવા માટે:</string>
-  <string name="announcing_text_formatting_option1">ફૉર્મેટિંગવાળી આઇટમ પર ફોકસ કરો, TalkBack મેનૂ ખોલો અને \"ટેક્સ્ટ ફૉર્મેટિંગનું વર્ણન કરો\" પસંદ કરો અથવા</string>
+  <string name="announcing_text_formatting_header">હવે MS Screen Reader ટેક્સ્ટના ફૉર્મેટિંગમાં ફેરફારો જેમ કે બોલ્ડ, ઇટાલિક અને ટેક્સ્ટના રંગમાં ફેરફારોની ઘોષણા કરી શકશે. શરૂ કરવા માટે:</string>
+  <string name="announcing_text_formatting_option1">ફૉર્મેટિંગવાળી આઇટમ પર ફોકસ કરો, MS Screen Reader મેનૂ ખોલો અને \"ટેક્સ્ટ ફૉર્મેટિંગનું વર્ણન કરો\" પસંદ કરો અથવા</string>
   <string name="announcing_text_formatting_option2">ટેક્સ્ટ ફૉર્મેટિંગ માટે વાંચનનું નિયંત્રણ ઉમેરો, જે ફૉર્મેટિંગમાં ફેરફારોની ઘોષણા ચાલુ કે બંધ કરશે.</string>
   <string name="announcing_text_formatting_middle">જ્યારે તમે તેને અજમાવવા માટે તૈયાર હો, ત્યારે ફૉર્મેટ કરેલી ટેક્સ્ટનું ઉદાહરણ અહીં આપ્યું છે:</string>
   <string name="announcing_text_formatting_tail">જો તમે ફૉર્મેટ કરેલી ટેક્સ્ટની ઘોષણા કરવાની રીત બદલવા માગતા હો, તો તમે %1$s પર જઈ શકો છો.</string>
@@ -1019,14 +1019,14 @@
 &lt;br&gt;
 &lt;br&gt;રંગો એક જીવંતપણું, આગવો દેખાવ ભરી દે છે,
 &lt;br&gt;&lt;font color=\"#db372d\"&gt;ભડકા જેવા લાલ&lt;/font&gt;થી માંડીને &lt;font color=\"#128937\"&gt;લીલાછમ લીલા&lt;/font&gt; રંગના સૌમ્ય સ્પર્શ સુધી.</string>
-  <string name="update_welcome_talkback_16.2">TalkBackની આ અપડેટમાં ભૌતિક કીબોર્ડ માટે નવું \"બહેતર કીમૅપ\", ટેક્સ્ટ ફૉર્મેટિંગની ઘોષણાઓ માટે સપોર્ટ અને સેટિંગનો ફરીથી ડિઝાઇન કરેલો લેઆઉટ રજૂ કરવામાં આવ્યો છે, આ ઉપરાંત TalkBackનો ઉપયોગ કરવાનું સરળ બનાવવા માટે અન્ય સુધારણાઓ પણ કરવામાં આવી છે.\n\nઆગલી કેટલીક સ્ક્રીનમાં આ ફેરફારો વિશે તમે વધુ જાણશો.\n\nતમે પછીથી TalkBack સેટિંગ &gt; નવી સુવિધાઓમાંથી આ માહિતીનો રિવ્યૂ કરી શકશો.</string>
-  <string name="update_welcome_talkback_16.2_tts">TalkBackની આ અપડેટમાં શારીરિક કીબોર્ડ માટે નવું \"વધારેલું કીમૅપ\", ટેક્સ્ટ ફૉર્મેટિંગની ઘોષણાઓ માટે સપોર્ટ અને સેટિંગના લેઆઉટને ફરીથી ડિઝાઇન કરવાની સુવિધા રજૂ કરવામાં આવી છે, આ ઉપરાંત TalkBackનો ઉપયોગ કરવાનું સરળ બનાવવા માટે અન્ય સુધારણાઓ પણ કરવામાં આવી છે.\n\nઆગલી કેટલીક સ્ક્રીનમાં આ ફેરફારો વિશે તમે વધુ જાણશો.\n\nતમે પછીથી TalkBack સેટિંગ પછી નવી સુવિધાઓમાંથી આ માહિતીનો રિવ્યૂ કરી શકશો.</string>
+  <string name="update_welcome_talkback_16.2">TalkBackની આ અપડેટમાં ભૌતિક કીબોર્ડ માટે નવું \"બહેતર કીમૅપ\", ટેક્સ્ટ ફૉર્મેટિંગની ઘોષણાઓ માટે સપોર્ટ અને સેટિંગનો ફરીથી ડિઝાઇન કરેલો લેઆઉટ રજૂ કરવામાં આવ્યો છે, આ ઉપરાંત TalkBackનો ઉપયોગ કરવાનું સરળ બનાવવા માટે અન્ય સુધારણાઓ પણ કરવામાં આવી છે.\n\nઆગલી કેટલીક સ્ક્રીનમાં આ ફેરફારો વિશે તમે વધુ જાણશો.\n\nતમે પછીથી MS Screen Reader સેટિંગ &gt; નવી સુવિધાઓમાંથી આ માહિતીનો રિવ્યૂ કરી શકશો.</string>
+  <string name="update_welcome_talkback_16.2_tts">TalkBackની આ અપડેટમાં શારીરિક કીબોર્ડ માટે નવું \"વધારેલું કીમૅપ\", ટેક્સ્ટ ફૉર્મેટિંગની ઘોષણાઓ માટે સપોર્ટ અને સેટિંગના લેઆઉટને ફરીથી ડિઝાઇન કરવાની સુવિધા રજૂ કરવામાં આવી છે, આ ઉપરાંત TalkBackનો ઉપયોગ કરવાનું સરળ બનાવવા માટે અન્ય સુધારણાઓ પણ કરવામાં આવી છે.\n\nઆગલી કેટલીક સ્ક્રીનમાં આ ફેરફારો વિશે તમે વધુ જાણશો.\n\nતમે પછીથી MS Screen Reader સેટિંગ પછી નવી સુવિધાઓમાંથી આ માહિતીનો રિવ્યૂ કરી શકશો.</string>
   <string name="new_settings_layout_title">સેટિંગનો નવો લેઆઉટ</string>
   <string name="new_settings_layout_text">સુવિધાઓ શોધવાનું સરળ બનાવવા માટે સેટિંગ ગ્રૂપ અપડેટ કરવામાં આવ્યા છે. સેટિંગની નવી કૅટેગરી પણ ઉપલબ્ધ છે, જેમ કે કીબોર્ડ સેટિંગ.</string>
   <string name="split_tap_everywhere_title">દરેક જગ્યાએ સ્પ્લિટ-ટૅપ</string>
   <string name="split_tap_everywhere_text">હવે તમે કીબોર્ડની બહાર પણ, આઇટમ સક્રિય કરવા માટે દરેક જગ્યાએ સ્પ્લિટ ટૅપનો ઉપયોગ કરી શકો છો. તેનો ઉપયોગ કરવા માટે, એક આંગળી વડે સ્ક્રીન પર શોધખોળ કરો, પછી પહેલી આંગળી ઉઠાવ્યા વિના, હાલમાં ફોકસ કરેલી આઇટમને સક્રિય કરવા માટે બીજી આંગળી વડે સ્ક્રીન પર ટૅપ કરો.</string>
   <string name="keyboard_enhanced_keymap_title">કીબોર્ડ: બહેતર કીમૅપ</string>
-  <string name="keyboard_enhanced_keymap_text">TalkBack હવે વાસ્તવિક કીબોર્ડ માટે \"બહેતર કીમૅપ\" ધરાવે છે, જેમાં વિવિધ નવા આદેશો અને શૉર્ટકટ છે. વધુ કાર્યક્ષમ વેબ નૅવિગેશન માટે \"બ્રાઉઝ મોડ\" ધરાવતું વધુ સારું બનાવવા માટેનું આ સાધન ભૌતિક કીબોર્ડ પર આધાર રાખતા TalkBack વપરાશકર્તાઓ માટે નૅવિગેશન અને ક્રિયાપ્રતિક્રિયાને સ્ટ્રીમલાઇન કરે છે. તમે %1$sમાં \"બહેતર કીમૅપ\" પર સ્વિચ કરી શકો છો.\n\nજો તમે બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરતા હો, તો તમે તમારા બ્રેઇલ ડિસ્પ્લેમાંથી સીધા કન્ટેન્ટમાં આગળ વધવા માટે નવા બ્રાઉઝ મોડ શૉર્ટકટનો પણ ઉપયોગ કરી શકો છો. આ ફેરફારને સમાવવા માટે બ્રેઇલ ડિસ્પ્લેના કેટલાક શૉર્ટકટ બદલવામાં આવ્યા હતા. તમે %2$sમાં બ્રેઇલ ડિસ્પ્લેના બધા શૉર્ટકટની સૂચિ જોઈ શકો છો.</string>
+  <string name="keyboard_enhanced_keymap_text">MS Screen Reader હવે વાસ્તવિક કીબોર્ડ માટે \"બહેતર કીમૅપ\" ધરાવે છે, જેમાં વિવિધ નવા આદેશો અને શૉર્ટકટ છે. વધુ કાર્યક્ષમ વેબ નૅવિગેશન માટે \"બ્રાઉઝ મોડ\" ધરાવતું વધુ સારું બનાવવા માટેનું આ સાધન ભૌતિક કીબોર્ડ પર આધાર રાખતા MS Screen Reader વપરાશકર્તાઓ માટે નૅવિગેશન અને ક્રિયાપ્રતિક્રિયાને સ્ટ્રીમલાઇન કરે છે. તમે %1$sમાં \"બહેતર કીમૅપ\" પર સ્વિચ કરી શકો છો.\n\nજો તમે બ્રેઇલ ડિસ્પ્લેનો ઉપયોગ કરતા હો, તો તમે તમારા બ્રેઇલ ડિસ્પ્લેમાંથી સીધા કન્ટેન્ટમાં આગળ વધવા માટે નવા બ્રાઉઝ મોડ શૉર્ટકટનો પણ ઉપયોગ કરી શકો છો. આ ફેરફારને સમાવવા માટે બ્રેઇલ ડિસ્પ્લેના કેટલાક શૉર્ટકટ બદલવામાં આવ્યા હતા. તમે %2$sમાં બ્રેઇલ ડિસ્પ્લેના બધા શૉર્ટકટની સૂચિ જોઈ શકો છો.</string>
   <string name="keyboard_shortcuts_link">TalkBackના સેટિંગ &gt; કીબોર્ડ શૉર્ટકટ</string>
   <string name="keyboard_shortcuts_link_tts">TalkBackના સેટિંગ પછી કીબોર્ડ શૉર્ટકટ</string>
   <string name="braille_display_settings_link">બ્રેઇલ ડિસ્પ્લેના સેટિંગ</string>
@@ -1036,17 +1036,17 @@
   <string name="advanced_settings_link_tts">TalkBackના સેટિંગ પછી અડ્વાન્સડ સેટિંગ</string>
   <string name="keyboard_tutorial_title">કીબોર્ડ ટ્યૂટૉરિઅલ</string>
   <string name="keyboard_tutorial_text">TalkBackમાં હવે કીબોર્ડ ટ્યૂટૉરિઅલ શામેલ છે, જે ભૌતિક કીબોર્ડનો ઉપયોગ કરતી વખતે બહેતર કીમૅપ માટે કીબોર્ડ શૉર્ટકટ અને આદેશો શીખવામાં તમારી મદદ કરવા માટે ડિઝાઇન કરવામાં આવ્યું છે. ટ્યૂટૉરિઅલ ઍક્સેસ કરવા માટે, આના પર નૅવિગેટ કરો: %1$s.</string>
-  <string name="tutorial_link">TalkBackના સેટિંગ &gt; TalkBack ટ્યૂટૉરિઅલ</string>
-  <string name="tutorial_link_tts">TalkBackના સેટિંગ પછી TalkBack ટ્યૂટૉરિઅલ</string>
+  <string name="tutorial_link">TalkBackના સેટિંગ &gt; MS Screen Reader ટ્યૂટૉરિઅલ</string>
+  <string name="tutorial_link_tts">TalkBackના સેટિંગ પછી MS Screen Reader ટ્યૂટૉરિઅલ</string>
   <string name="tutorial_entry_point_title">ટ્યૂટૉરિઅલ</string>
   <string name="welcome_to_talkback_title">TalkBackમાં આપનું સ્વાગત છે</string>
   <string name="talkback_is_on">Talkbackની સુવિધા ચાલુ છે</string>
-  <string name="talkback_turn_off_description">TalkBack તમારી સ્ક્રીન પરના કન્ટેન્ટને મોટેથી વાંચે છે અને તમારા ડિવાઇસ પર નૅવિગેશનની કામ કરવાની રીતને બદલે છે. તેને બંધ કરવા માટે, \"TalkBack બંધ કરો\" પર 2 વાર ટૅપ કરો.</string>
-  <string name="turn_off_talkback">TalkBack બંધ કરો</string>
+  <string name="talkback_turn_off_description">MS Screen Reader તમારી સ્ક્રીન પરના કન્ટેન્ટને મોટેથી વાંચે છે અને તમારા ડિવાઇસ પર નૅવિગેશનની કામ કરવાની રીતને બદલે છે. તેને બંધ કરવા માટે, \"MS Screen Reader બંધ કરો\" પર 2 વાર ટૅપ કરો.</string>
+  <string name="turn_off_talkback">MS Screen Reader બંધ કરો</string>
   <string name="tap_again_to_turn_off">બંધ કરવા માટે, ફરીથી ટૅપ કરો</string>
-  <string name="talkback_turn_off_description_pointer_and_touch">TalkBack તમારી સ્ક્રીન પરના કન્ટેન્ટને મોટેથી વાંચે છે અને તમારા ડિવાઇસ પર નૅવિગેશનની કામ કરવાની રીતને બદલે છે. તેને બંધ કરવા માટે, \"TalkBack બંધ કરો\" અથવા તેના પર 2 વાર ટૅપ કરો.</string>
-  <string name="welcome_to_talkback_text">TalkBack બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે તમારી સ્ક્રીન પર નજર કર્યા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો. જે લોકોને સ્ક્રીન જોવામાં મુશ્કેલી આવતી હોય, તેવા લોકો માટે TalkBack મદદરૂપી થઈ શકે છે. \n\nજો તમે તમારી વૉલ્યૂમ કીનો ઉપયોગ કરીને TalkBackને ઝડપથી ચાલુ અથવા બંધ કરવા માગતા હો, તો તમે TalkBackના સેટિંગ &gt; TalkBack શૉર્ટકટમાં જાઈને શૉર્ટકટનું સેટઅપ કરી શકો છો.\n\nજ્યારે TalkBack ચાલુ હોય, ત્યારે સ્ક્રીન પર ફોકસ કરેલી આઇટમ વિશે મોટેથી બોલવામાં આવે છે.\n\nસ્ક્રીન પર જમણી બાજુ સ્વાઇપ કરવાથી આગળની આઇટમ પર જવાય છે અને ડાબી બાજુ સ્વાઇપ કરવાથી પાછલી આઇટમ પર જવાય છે.\n\nહવે \'આગળ\' બટન શોધવા માટે જમણી બાજુ સ્વાઇપ કરો.</string>
-  <string name="welcome_to_talkback_text_tts">TalkBack બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે તમારી સ્ક્રીન પર નજર કર્યા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો. જે લોકોને સ્ક્રીન જોવામાં મુશ્કેલી આવતી હોય, તેવા લોકો માટે TalkBack સહાયરૂપ થઈ શકે છે. \n\nજો તમે તમારી વૉલ્યૂમ કીનો ઉપયોગ કરીને TalkBackને ઝડપથી ચાલુ અથવા બંધ કરવા માગતા હો, તો તમે TalkBackમાં સેટિંગ પછી TalkBack શૉર્ટકટના શૉર્ટકટને સેટઅપ કરી શકો છો.\n\nજ્યારે TalkBack ચાલુ હોય, ત્યારે સ્ક્રીન પર ફોકસ કરેલી આઇટમ વિશે મોટેથી બોલવામાં આવે છે.\n\nસ્ક્રીન પર જમણી બાજુ સ્વાઇપ કરવાથી આગળની આઇટમ પર જવાય છે અને ડાબી બાજુ સ્વાઇપ કરવાથી પાછલી આઇટમ પર જવાય છે.\n\nહવે \'આગળ\' બટન શોધવા માટે જમણી બાજુ સ્વાઇપ કરો.</string>
+  <string name="talkback_turn_off_description_pointer_and_touch">MS Screen Reader તમારી સ્ક્રીન પરના કન્ટેન્ટને મોટેથી વાંચે છે અને તમારા ડિવાઇસ પર નૅવિગેશનની કામ કરવાની રીતને બદલે છે. તેને બંધ કરવા માટે, \"MS Screen Reader બંધ કરો\" અથવા તેના પર 2 વાર ટૅપ કરો.</string>
+  <string name="welcome_to_talkback_text">MS Screen Reader બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે તમારી સ્ક્રીન પર નજર કર્યા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો. જે લોકોને સ્ક્રીન જોવામાં મુશ્કેલી આવતી હોય, તેવા લોકો માટે MS Screen Reader મદદરૂપી થઈ શકે છે. \n\nજો તમે તમારી વૉલ્યૂમ કીનો ઉપયોગ કરીને TalkBackને ઝડપથી ચાલુ અથવા બંધ કરવા માગતા હો, તો તમે TalkBackના સેટિંગ &gt; MS Screen Reader શૉર્ટકટમાં જાઈને શૉર્ટકટનું સેટઅપ કરી શકો છો.\n\nજ્યારે MS Screen Reader ચાલુ હોય, ત્યારે સ્ક્રીન પર ફોકસ કરેલી આઇટમ વિશે મોટેથી બોલવામાં આવે છે.\n\nસ્ક્રીન પર જમણી બાજુ સ્વાઇપ કરવાથી આગળની આઇટમ પર જવાય છે અને ડાબી બાજુ સ્વાઇપ કરવાથી પાછલી આઇટમ પર જવાય છે.\n\nહવે \'આગળ\' બટન શોધવા માટે જમણી બાજુ સ્વાઇપ કરો.</string>
+  <string name="welcome_to_talkback_text_tts">MS Screen Reader બોલાયેલો પ્રતિસાદ આપે છે, જેથી તમે તમારી સ્ક્રીન પર નજર કર્યા વિના તમારા ડિવાઇસનો ઉપયોગ કરી શકો. જે લોકોને સ્ક્રીન જોવામાં મુશ્કેલી આવતી હોય, તેવા લોકો માટે MS Screen Reader સહાયરૂપ થઈ શકે છે. \n\nજો તમે તમારી વૉલ્યૂમ કીનો ઉપયોગ કરીને TalkBackને ઝડપથી ચાલુ અથવા બંધ કરવા માગતા હો, તો તમે TalkBackમાં સેટિંગ પછી MS Screen Reader શૉર્ટકટના શૉર્ટકટને સેટઅપ કરી શકો છો.\n\nજ્યારે MS Screen Reader ચાલુ હોય, ત્યારે સ્ક્રીન પર ફોકસ કરેલી આઇટમ વિશે મોટેથી બોલવામાં આવે છે.\n\nસ્ક્રીન પર જમણી બાજુ સ્વાઇપ કરવાથી આગળની આઇટમ પર જવાય છે અને ડાબી બાજુ સ્વાઇપ કરવાથી પાછલી આઇટમ પર જવાય છે.\n\nહવે \'આગળ\' બટન શોધવા માટે જમણી બાજુ સ્વાઇપ કરો.</string>
   <string name="welcome_to_talkback_page_idle_announcement">\'આગળ\' બટન શોધવા માટે, જમણે સ્વાઇપ કરો</string>
   <string name="explore_by_touch_title">શોધખોળ કરવા માટે, તમારી આંગળી ખેંચો</string>
   <string name="explore_by_touch_text">તમે તમારી આંગળીને સ્ક્રીન પર ખેંચીને કોઈ આઇટમ પર ફોકસ પણ કરી શકો છો.\n\nસ્ક્રીનને ટચ કરીને અને તમને \"આગળ\" બટન ન મળે ત્યાં સુધી તમારી આંગળીને નીચેના ડાબા ખૂણા તરફ ખેંચીને હમણાં આ અજમાવી જુઓ.</string>
@@ -1063,18 +1063,18 @@
   <string name="system_gestures_open_notifications_text_for_3_button_navigation">નોટિફિકેશન ખોલવા માટે, 2 આંગળી વડે સ્ક્રીનની ઉપરની બાજુથી નીચેની તરફ સ્વાઇપ કરો. પછી તમે 2 આંગળી વડે પાછા ઉપરની તરફ સ્વાઇપ કરીને નોટિફિકેશન બંધ કરી શકો છો.\n\nઆ હમણાં જ અજમાવી જુઓ.</string>
   <string name="system_gestures_accessibility_shortcut_text">તમારો ઍક્સેસિબિલિટી શૉર્ટકટ ખોલવા માટે, 3 આંગળી વડે સ્ક્રીનના નીચેના ભાગથી ઉપરની તરફ સ્વાઇપ કરો.</string>
   <string name="adjusting_volume_title">વૉલ્યૂમમાં વધઘટ કરો</string>
-  <string name="adjusting_volume_head">TalkBack સ્પીચના વૉલ્યૂમને ઍક્સેસિબિલિટી વૉલ્યૂમ કહેવામાં આવે છે. મીડિયા વૉલ્યૂમથી અલગ રીતે તેમાં વધઘટ કરવામાં આવે છે.\n\nઍક્સેસિબિલિટી વૉલ્યૂમમાં વધઘટ કરવા માટે:</string>
+  <string name="adjusting_volume_head">MS Screen Reader સ્પીચના વૉલ્યૂમને ઍક્સેસિબિલિટી વૉલ્યૂમ કહેવામાં આવે છે. મીડિયા વૉલ્યૂમથી અલગ રીતે તેમાં વધઘટ કરવામાં આવે છે.\n\nઍક્સેસિબિલિટી વૉલ્યૂમમાં વધઘટ કરવા માટે:</string>
   <string name="adjusting_volume_first_instruction">સ્ક્રીન પર 1 આંગળી દબાવી રાખો</string>
   <string name="adjusting_volume_second_instruction">દબાવેલું હોય, ત્યારે તમારા ડિવાઇસની બાજુમાંથી વૉલ્યૂમ વધારવાની કે વૉલ્યૂમ ઘટાડવાની કી દબાવો</string>
   <string name="adjusting_volume_tail">ઍક્સેસિબિલિટી સંબંધિત નવું વૉલ્યૂમ થોડી સેકન્ડ પછી તમને સાંભળવા મળશે.\n\nહમણાં ઍક્સેસિબિલિટી વૉલ્યૂમમાં વધઘટ કરવાનું અજમાવી જુઓ.</string>
   <string name="menus_title">મેનૂ અને નિયંત્રણોનો ઉપયોગ કરો</string>
-  <string name="menus_talkback_menu_text">TalkBack મેનૂમાં સેટિંગ અને નિયંત્રણો શામેલ છે, જેની તમને વારંવાર જરૂર પડી શકે છે.\n\n3 આંગળી વડે સ્ક્રીન પર ટૅપ કરીને હવે TalkBack મેનૂ ખોલો.</string>
-  <string name="menus_talkback_menu_text_pre_r">TalkBack મેનૂમાં સેટિંગ અને નિયંત્રણો શામેલ છે, જેની તમને વારંવાર જરૂર પડી શકે છે.\n\nપહેલા નીચે અને પછી જમણે સ્વાઇપ કરીને હવે TalkBack મેનૂ ખોલો.</string>
-  <string name="menus_selector_text">આ શૉર્ટકટ તમને સેટિંગમાં ઝડપથી ફેરફાર કરવામાં સહાય કરી શકે છે, જેમ કે તમારા નૅવિગેશનને અક્ષરો પરથી શબ્દો પર સ્વિચ કરવામાં અથવા TalkBackના સ્પીચ રેટમાં ફેરફાર કરવામાં.\n\nતમારા વાંચન નિયંત્રણોમાં ઝડપથી ફેરફાર કરવા માટે, 3 આંગળી વડે ડાબે અથવા 3 આંગળી વડે જમણે સ્વાઇપ કરો.\n\nતમે પછીથી TalkBack સેટિંગમાં જઈને TalkBack મેનૂ અને તમારા વાંચનના નિયંત્રણોને કસ્ટમાઇઝ કરી શકો છો.</string>
-  <string name="menus_selector_text_pre_r">આ શૉર્ટકટ તમને સેટિંગમાં ઝડપથી ફેરફાર કરવામાં સહાય કરી શકે છે, જેમ કે તમારા નૅવિગેશનને અક્ષરો પરથી શબ્દો પર સ્વિચ કરવામાં અથવા TalkBackના સ્પીચ રેટમાં ફેરફાર કરવામાં.\n\nતમારા વાંચન નિયંત્રણોમાં ઝડપથી ફેરફાર કરવા માટે, નીચે પછી પાછા ઉપર સ્વાઇપ કરો.\n\nતમે પછીથી TalkBack સેટિંગમાં જઈને TalkBack મેનૂ અને તમારા વાંચનના નિયંત્રણોને કસ્ટમાઇઝ કરી શકો છો.</string>
+  <string name="menus_talkback_menu_text">MS Screen Reader મેનૂમાં સેટિંગ અને નિયંત્રણો શામેલ છે, જેની તમને વારંવાર જરૂર પડી શકે છે.\n\n3 આંગળી વડે સ્ક્રીન પર ટૅપ કરીને હવે MS Screen Reader મેનૂ ખોલો.</string>
+  <string name="menus_talkback_menu_text_pre_r">MS Screen Reader મેનૂમાં સેટિંગ અને નિયંત્રણો શામેલ છે, જેની તમને વારંવાર જરૂર પડી શકે છે.\n\nપહેલા નીચે અને પછી જમણે સ્વાઇપ કરીને હવે MS Screen Reader મેનૂ ખોલો.</string>
+  <string name="menus_selector_text">આ શૉર્ટકટ તમને સેટિંગમાં ઝડપથી ફેરફાર કરવામાં સહાય કરી શકે છે, જેમ કે તમારા નૅવિગેશનને અક્ષરો પરથી શબ્દો પર સ્વિચ કરવામાં અથવા TalkBackના સ્પીચ રેટમાં ફેરફાર કરવામાં.\n\nતમારા વાંચન નિયંત્રણોમાં ઝડપથી ફેરફાર કરવા માટે, 3 આંગળી વડે ડાબે અથવા 3 આંગળી વડે જમણે સ્વાઇપ કરો.\n\nતમે પછીથી MS Screen Reader સેટિંગમાં જઈને MS Screen Reader મેનૂ અને તમારા વાંચનના નિયંત્રણોને કસ્ટમાઇઝ કરી શકો છો.</string>
+  <string name="menus_selector_text_pre_r">આ શૉર્ટકટ તમને સેટિંગમાં ઝડપથી ફેરફાર કરવામાં સહાય કરી શકે છે, જેમ કે તમારા નૅવિગેશનને અક્ષરો પરથી શબ્દો પર સ્વિચ કરવામાં અથવા TalkBackના સ્પીચ રેટમાં ફેરફાર કરવામાં.\n\nતમારા વાંચન નિયંત્રણોમાં ઝડપથી ફેરફાર કરવા માટે, નીચે પછી પાછા ઉપર સ્વાઇપ કરો.\n\nતમે પછીથી MS Screen Reader સેટિંગમાં જઈને MS Screen Reader મેનૂ અને તમારા વાંચનના નિયંત્રણોને કસ્ટમાઇઝ કરી શકો છો.</string>
   <string name="all_set_title">બધું સેટ થઈ ગયું!</string>
-  <string name="all_set_text">તમે TalkBackનો ઉપયોગ કરવા માટે તૈયાર છો.\n\nહવે અન્ય વિષયો અંગે જાણકારી મેળવતા રહો અથવા કોઈપણ સમયે TalkBack સેટિંગમાં જઈને આ માહિતીનો રિવ્યૂ કરો.</string>
-  <string name="talkback_tutorial_text">કોઈ વિષય પસંદ કરવા માટે જમણી બાજુએ સ્વાઇપ કરો. શ્રેષ્ઠ અનુભવ માટે, શરૂઆત કરતા પહેલાં TalkBack સુવિધા ચાલુ કરો.</string>
+  <string name="all_set_text">તમે TalkBackનો ઉપયોગ કરવા માટે તૈયાર છો.\n\nહવે અન્ય વિષયો અંગે જાણકારી મેળવતા રહો અથવા કોઈપણ સમયે MS Screen Reader સેટિંગમાં જઈને આ માહિતીનો રિવ્યૂ કરો.</string>
+  <string name="talkback_tutorial_text">કોઈ વિષય પસંદ કરવા માટે જમણી બાજુએ સ્વાઇપ કરો. શ્રેષ્ઠ અનુભવ માટે, શરૂઆત કરતા પહેલાં MS Screen Reader સુવિધા ચાલુ કરો.</string>
   <string name="basic_navigation_link_text">મૂળભૂત નૅવિગેશન</string>
   <string name="basic_navigation_link_subtext">એક આઇટમ પરથી બીજી આઇટમ પર જાઓ, સ્ક્રોલ કરો, મેનૂનો ઉપયોગ કરો અને બીજું ઘણું</string>
   <string name="text_editing_link_text">ટેક્સ્ટ એડિટિંગ</string>
@@ -1091,8 +1091,8 @@
   <string name="additional_tips_link_subtext">કૉલ કરવાની, મેસેજ મોકલવાની અને બીજું ઘણું કરવાની રીત જાણો</string>
   <string name="practice_gestures_link_text">સંકેતોનો ઉપયોગ કરો</string>
   <string name="practice_gestures_link_subtext">વિવિધ સંકેતો શું કાર્ય કરે છે તે જાણવા માટે તેને અજમાવી જુઓ</string>
-  <string name="help_and_feedback_link_subtext">TalkBack વિશે વધુ જાણો અને પ્રતિસાદ મોકલો</string>
-  <string name="choose_tutorial_title">તમને કેવી રીતે TalkBack સાથે ક્રિયાપ્રતિક્રિયા કરવાનું ગમશે તે પસંદ કરો</string>
+  <string name="help_and_feedback_link_subtext">MS Screen Reader વિશે વધુ જાણો અને પ્રતિસાદ મોકલો</string>
+  <string name="choose_tutorial_title">તમને કેવી રીતે MS Screen Reader સાથે ક્રિયાપ્રતિક્રિયા કરવાનું ગમશે તે પસંદ કરો</string>
   <string name="touch_tutorial_button">ટચ ટ્યૂટૉરિઅલ</string>
   <string name="keyboard_tutorial_button">કીબોર્ડ ટ્યૂટૉરિઅલ</string>
   <string name="using_text_boxes_title">ટેક્સ્ટ બૉક્સનો ઉપયોગ કરવા વિશે</string>
@@ -1102,11 +1102,11 @@
   <string name="typing_text_title">ટેક્સ્ટ ટાઇપ કરવા વિશે</string>
   <string name="basic_typing_text_text">જ્યારે તમે ટેક્સ્ટ બૉક્સમાં હો, ત્યારે તમારી સ્ક્રીનની સૌથી નીચેની બાજુએ કીબોર્ડ ખુલશે.</string>
   <string name="typing_text_text">તમારી આંગળીને સમગ્ર કીબોર્ડ પર ફેરવો. જ્યારે તમે ટાઇપ કરવા માગતા હોય તે અક્ષર તમને સંભળાય, ત્યારે તમારી આંગળી ઉઠાવી લો.\n\nનીચે આપેલા ટેક્સ્ટ બૉક્સને સક્રિય કરવાનો પ્રયાસ કરો અને તમારું નામ ટાઇપ કરો.</string>
-  <string name="typing_text_with_braille_keyboard_text">તમે બ્રેઇલ કીબોર્ડ વડે પણ ટાઇપ કરી શકો છો. તેને TalkBack સેટિંગમાં શોધો.</string>
+  <string name="typing_text_with_braille_keyboard_text">તમે બ્રેઇલ કીબોર્ડ વડે પણ ટાઇપ કરી શકો છો. તેને MS Screen Reader સેટિંગમાં શોધો.</string>
   <string name="other_ways_to_type_title">ટાઇપ કરવાની અન્ય રીતો</string>
   <string name="other_ways_to_type_text">TalkBackમાં ટાઇપ કરવાની અન્ય રીતો છે. ઉદાહરણ તરીકે, અક્ષર ટાઇપ કરવા માટે તમે \"બે વાર ટૅપ કરો\" સુવિધાનો ઉપયોગ કરી શકો છો.</string>
-  <string name="basic_other_ways_to_type_text">TalkBackમાં ટાઇપ કરવાની અન્ય રીતો છે. ઉદાહરણ તરીકે, અક્ષર ટાઇપ કરવા માટે તમે બે વાર ટૅપ કરો સુવિધાનો ઉપયોગ કરી શકો છો. તમે પછીથી આને TalkBack સેટિંગ &gt; ઑન-સ્ક્રીન કીબોર્ડ &gt; ટાઇપિંગની પસંદગીમાં જઈને બદલી શકો છો.</string>
-  <string name="basic_other_ways_to_type_text_tts">TalkBackમાં ટાઇપ કરવાની અન્ય રીતો છે. ઉદાહરણ તરીકે, અક્ષર ટાઇપ કરવા માટે તમે બે વાર ટૅપ કરો સુવિધાનો ઉપયોગ કરી શકો છો. તમે આને પછીથી TalkBack સેટિંગમાં, પછી ઑન-સ્ક્રીન કીબોર્ડ અને પછી ટાઇપિંગની પસંદગીમાં જઈને બદલી શકો છો.</string>
+  <string name="basic_other_ways_to_type_text">TalkBackમાં ટાઇપ કરવાની અન્ય રીતો છે. ઉદાહરણ તરીકે, અક્ષર ટાઇપ કરવા માટે તમે બે વાર ટૅપ કરો સુવિધાનો ઉપયોગ કરી શકો છો. તમે પછીથી આને MS Screen Reader સેટિંગ &gt; ઑન-સ્ક્રીન કીબોર્ડ &gt; ટાઇપિંગની પસંદગીમાં જઈને બદલી શકો છો.</string>
+  <string name="basic_other_ways_to_type_text_tts">TalkBackમાં ટાઇપ કરવાની અન્ય રીતો છે. ઉદાહરણ તરીકે, અક્ષર ટાઇપ કરવા માટે તમે બે વાર ટૅપ કરો સુવિધાનો ઉપયોગ કરી શકો છો. તમે આને પછીથી MS Screen Reader સેટિંગમાં, પછી ઑન-સ્ક્રીન કીબોર્ડ અને પછી ટાઇપિંગની પસંદગીમાં જઈને બદલી શકો છો.</string>
   <string name="change_typing_preference_text">ટાઇપિંગની પસંદગી બદલો</string>
   <string name="moving_cursor_title">કર્સર ખસેડવું</string>
   <string name="moving_cursor_text">જ્યારે તમે ટેક્સ્ટ બૉક્સને સક્રિય કરેલું હોય, ત્યારે તમે કર્સરને ઉપર અથવા નીચે સ્વાઇપ કરીને એક અક્ષર પરથી બીજા અક્ષર પર ખસેડી શકો છો.\n\nનીચે આપેલા ટેક્સ્ટ બૉક્સમાં તેને અજમાવી જુઓ.</string>
@@ -1117,8 +1117,8 @@
   <string name="copy_cut_paste_title">કૉપિ કરો, કટ કરો અને પેસ્ટ કરો</string>
   <string name="copy_text">ટેક્સ્ટ પસંદ કર્યા પછી, 3 આંગળી વડે બે વાર ટૅપ કરીને તેને કૉપિ કરો.\n\nનીચેના ટેક્સ્ટ બૉક્સમાં આપેલા શબ્દને કૉપિ કરવાનો પ્રયાસ કરો.</string>
   <string name="cut_paste_text">ટેક્સ્ટ કટ કરવા માટે, 3 આંગળી વડે બે વાર ટૅપ કરીને દબાવી રાખો.\n\nટેક્સ્ટ પેસ્ટ કરવા માટે, 3 આંગળી વડે ત્રણ વખત ટૅપ કરો.\n\nનીચેના ટેક્સ્ટ બૉક્સમાં એક શબ્દ પેસ્ટ કરો.</string>
-  <string name="copy_text_pre_r">ટેક્સ્ટ પસંદ કર્યા પછી, તમે તેને TalkBack મેનૂમાં કૉપિ કરી શકો છો. TalkBack મેનૂ ખોલવા માટે નીચે અને પછી જમણી બાજુએ સ્વાઇપ કરો. ક્રિયાઓ પર બે વાર ટૅપ કરો અને પછી તેને કૉપિ કરો.\n\nનીચે આપેલા ટેક્સ્ટ બૉક્સમાં કોઈ શબ્દ કૉપિ કરવાનો પ્રયાસ કરો.</string>
-  <string name="cut_paste_text_pre_r">ટેક્સ્ટ કટ અથવા પેસ્ટ કરવા માટે, TalkBack મેનૂ ખોલો અને ક્રિયાઓ પર બે વાર ટૅપ કરો.\n\nનીચે આપેલા ટેક્સ્ટ બૉક્સમાં કોઈ શબ્દ પેસ્ટ કરવાનો પ્રયાસ કરો.</string>
+  <string name="copy_text_pre_r">ટેક્સ્ટ પસંદ કર્યા પછી, તમે તેને MS Screen Reader મેનૂમાં કૉપિ કરી શકો છો. MS Screen Reader મેનૂ ખોલવા માટે નીચે અને પછી જમણી બાજુએ સ્વાઇપ કરો. ક્રિયાઓ પર બે વાર ટૅપ કરો અને પછી તેને કૉપિ કરો.\n\nનીચે આપેલા ટેક્સ્ટ બૉક્સમાં કોઈ શબ્દ કૉપિ કરવાનો પ્રયાસ કરો.</string>
+  <string name="cut_paste_text_pre_r">ટેક્સ્ટ કટ અથવા પેસ્ટ કરવા માટે, MS Screen Reader મેનૂ ખોલો અને ક્રિયાઓ પર બે વાર ટૅપ કરો.\n\nનીચે આપેલા ટેક્સ્ટ બૉક્સમાં કોઈ શબ્દ પેસ્ટ કરવાનો પ્રયાસ કરો.</string>
   <string name="edit_box_hint_paste_text">ટેક્સ્ટ અહીં પેસ્ટ કરો</string>
   <string name="typo_correction_title">પ્રૂફરીડિંગ</string>
   <string name="typo_correction_text">તમે ટેક્સ્ટ બૉક્સમાં જોડણી કે વ્યાકરણ ચેક કરવા માટે પ્રૂફરીડિંગનો ઉપયોગ કરી શકો છો.\n\nતેને અજમાવવા માટે, નીચે આપેલા ટેક્સ્ટ બૉક્સ પર ફોકસ કરો, જેમાં જોડણીની ભૂલો શામેલ છે. પછી, તમને \"પ્રૂફરીડ\" મળે નહીં ત્યાં સુધી 3 આંગળી વડે જમણી તરફ સ્વાઇપ કરો.</string>
@@ -1163,7 +1163,7 @@
   <string name="voice_commands_title">વૉઇસ આદેશો</string>
   <string name="voice_commands_text">TalkBackને ઝડપથી નિયંત્રિત કરવા માટે, તમે તમારા વૉઇસનો ઉપયોગ કરી શકો છો.\n\nઉદાહરણ તરીકે નૅવિગેશન બદલવા, આગલા મથાળા પર જવા, ટેક્સ્ટ કૉપિ કરવા અને અન્ય કાર્યો કરવા માટે કોઈ આદેશ બોલો.\n\nઆને હમણાં જ અજમાવી જોવા માટે જમણી બાજુએ પછી ઉપર સ્વાઇપ કરો.</string>
   <string name="using_screen_search_title">\"સ્ક્રીન પર શોધો\" સુવિધાનો ઉપયોગ કરવો</string>
-  <string name="using_screen_search_text">\'સ્ક્રીન પર શોધો\' સુવિધા તમને સ્ક્રીન પર ચોક્કસ કન્ટેન્ટ શોધવાની સુવિધા આપે છે.\n\nતેને અજમાવવા માટે, 3 આંગળીઓ વડે ટૅપ કરીને TalkBack મેનૂ ખોલો અને મેનૂમાં \"સ્ક્રીન પર શોધો\" સુવિધા શોધો. સ્ક્રીન પર તે ટેક્સ્ટ સાથેની આઇટમ શોધવા માટે કીવર્ડમાં લખો, જેમ કે “આગળ”.\n\nઆગળનું બટન શોધવા માટે હવે \"આગળ\" માટે શોધવાનો પ્રયાસ કરો.</string>
+  <string name="using_screen_search_text">\'સ્ક્રીન પર શોધો\' સુવિધા તમને સ્ક્રીન પર ચોક્કસ કન્ટેન્ટ શોધવાની સુવિધા આપે છે.\n\nતેને અજમાવવા માટે, 3 આંગળીઓ વડે ટૅપ કરીને MS Screen Reader મેનૂ ખોલો અને મેનૂમાં \"સ્ક્રીન પર શોધો\" સુવિધા શોધો. સ્ક્રીન પર તે ટેક્સ્ટ સાથેની આઇટમ શોધવા માટે કીવર્ડમાં લખો, જેમ કે “આગળ”.\n\nઆગળનું બટન શોધવા માટે હવે \"આગળ\" માટે શોધવાનો પ્રયાસ કરો.</string>
   <string name="screen_search_navigation_title">\"સ્ક્રીન પર શોધો\" સુવિધા દ્વારા નૅવિગેટ કરો</string>
   <string name="screen_search_navigation_text">તમે પરિણામ પસંદ કરી લો પછી \"સ્ક્રીન પર શોધો\" સુવિધામાંથી વિવિધ શોધ પરિણામોની વચ્ચે એક પરિણામથી બીજા પરિણામ પર ઝડપથી જઈ શકો છો.\n\nઆમ કરવા માટે, 3 આંગળીઓ વડે ડાબે અથવા જમણે સ્વાઇપ કરીને વાંચનના નિયંત્રણોનો ઉપયોગ કરો અને \"સ્ક્રીન પર શોધો\" નામની આઇટમ શોધો.\n\nચાલો તેને હમણાં જ અજમાવીએ. નીચે 3 બટનની સૂચિ છે, જે બધામાં \"ઍક્શન\" ટેક્સ્ટ શામેલ છે. \"સ્ક્રીન પર શોધો\" સુવિધાનો ઉપયોગ કરીને \"ઍક્શન\" માટે શોધો, તેમની વચ્ચે એકથી બીજા ઉપર જવા માટે \"સ્ક્રીન પર શોધો\" સુવિધા દ્વારા નૅવિગેટ કરો.</string>
   <string name="screen_search_action_button_1_text">ઍક્શન 1</string>
@@ -1184,40 +1184,40 @@
   <string name="lookout_text">તમારી આસપાસના ઑબ્જેક્ટ, છબીઓ અને ટેક્સ્ટની વિગતો મેળવવા માટે, Lookout તમારા કૅમેરાનો ઉપયોગ કરે છે.  તમે તેનો ઉપયોગ ચિહ્નો વાંચવા, મેઇલ સૉર્ટ કરવા અને બીજું ઘણું કરવા માટે કરી શકો છો.</string>
   <string name="lookout_tips">તમે જે કાર્ય કરવાનો પ્રયાસ કરી રહ્યાં હો, તેના આધારે Lookoutમાં ઘણા મોડ છે. ઉદાહરણ તરીકે, ટેક્સ્ટના પેજને સ્કૅન કરવા માટે, દસ્તાવેજોનો મોડ પસંદ કરો.</string>
   <string name="checking_notifications_title">નોટિફિકેશન ચેક કરવી</string>
-  <string name="checking_notifications_text_head">તમને જ્યારે કોઈ નવું નોટિફિકેશન મળશે ત્યારે TalkBack તેની ઘોષણા કરશે.</string>
+  <string name="checking_notifications_text_head">તમને જ્યારે કોઈ નવું નોટિફિકેશન મળશે ત્યારે MS Screen Reader તેની ઘોષણા કરશે.</string>
   <string name="checking_notifications_step_one">સૌથી પહેલા, નોટિફિકેશનની સુવિધાના ઍક્સેસ માટે 4 આંગળી વડે નીચેની તરફ સ્વાઇપ કરો.</string>
   <string name="checking_notifications_step_two">પછી, એક નોટિફિકેશન પરથી બીજા નોટિફિકેશન પર નૅવિગેટ કરવા માટે ડાબી અથવા જમણી બાજુએ સ્વાઇપ કરો.</string>
   <string name="checking_notifications_text_tail">તમે સેટિંગ &gt; નોટિફિકેશન પર જઈને એ ચેક કરી શકો છો કે કઈ ઍપ માટે નોટિફિકેશન મેળવવાની સુવિધા ચાલુ છે.</string>
   <string name="checking_notifications_text_tail_tts">તમે પહેલા સેટિંગ અને પછી નોટિફિકેશન પર જઈને એ ચેક કરી શકો છો કે કઈ ઍપ માટે નોટિફિકેશન મેળવવાની સુવિધા ચાલુ છે.</string>
   <string name="checking_notifications_tips">તમારો નોટિફિકેશન ઇતિહાસ ચેક કરવા માટે, તમારી સ્ક્રીનની સૌથી ઉપરથી 2 આંગળી વડે નીચેની તરફ સ્વાઇપ કરો</string>
   <string name="image_description_playground_title">છબીના વર્ણનો મેળવવાનો પ્રયાસ કરો</string>
-  <string name="image_description_playground_content_one">જ્યારે તમે કોઈ છબી પર ફોકસ કર્યું હોય, ત્યારે TalkBack મેનૂ ખોલો અને “છબીનું વર્ણન કરો” પસંદ કરો.\n\nનીચે એક ફોટો છે. તેની માટે વર્ણન મેળવવાનો પ્રયાસ કરી જુઓ.</string>
-  <string name="image_description_playground_content_two">તમે TalkBack સેટિંગ &gt; છબી અને આઇકનના વર્ણનોમાં જઈને કોઈપણ સમયે છબીના વર્ણનના સેટિંગ બદલી શકો છો.</string>
-  <string name="image_description_playground_content_two_tts">તમે TalkBack સેટિંગમાં, પછી છબી અને આઇકનના વર્ણનોમાં જઈને કોઈપણ સમયે છબીના વર્ણનના સેટિંગ બદલી શકો છો.</string>
-  <string name="image_description_sample_image_content_description">નમૂના માટેની છબી; TalkBack મેનૂ ખોલવા માટે 3 આંગળી વડે ટૅપ કરો અને વર્ણન સાંભળવા માટે \"છબીનું વર્ણન કરો\" પસંદ કરો.</string>
+  <string name="image_description_playground_content_one">જ્યારે તમે કોઈ છબી પર ફોકસ કર્યું હોય, ત્યારે MS Screen Reader મેનૂ ખોલો અને “છબીનું વર્ણન કરો” પસંદ કરો.\n\nનીચે એક ફોટો છે. તેની માટે વર્ણન મેળવવાનો પ્રયાસ કરી જુઓ.</string>
+  <string name="image_description_playground_content_two">તમે MS Screen Reader સેટિંગ &gt; છબી અને આઇકનના વર્ણનોમાં જઈને કોઈપણ સમયે છબીના વર્ણનના સેટિંગ બદલી શકો છો.</string>
+  <string name="image_description_playground_content_two_tts">તમે MS Screen Reader સેટિંગમાં, પછી છબી અને આઇકનના વર્ણનોમાં જઈને કોઈપણ સમયે છબીના વર્ણનના સેટિંગ બદલી શકો છો.</string>
+  <string name="image_description_sample_image_content_description">નમૂના માટેની છબી; MS Screen Reader મેનૂ ખોલવા માટે 3 આંગળી વડે ટૅપ કરો અને વર્ણન સાંભળવા માટે \"છબીનું વર્ણન કરો\" પસંદ કરો.</string>
   <string name="practice_gestures_title">સંકેતોનો ઉપયોગ કરો</string>
   <string name="practice_keyboard_gestures_title">કીબોર્ડ શૉર્ટકટનો અભ્યાસ કરો</string>
   <string name="pref_gesture_set_key_title">સંકેતના સેટ</string>
-  <string name="practice_gestures_text">આ સ્ક્રીન પરનો કોઈપણ TalkBack સંકેત શું કામ કરે છે તે સાંભળવા માટે તેને અજમાવી જુઓ.\n\n2 આંગળી વડે સ્ક્રીન પર ટૅપ કરો. 2, 3, અથવા 4 આંગળી વડે એક વાર, બે વાર અથવા ત્રણ વાર ટૅપ કરવાનું ચાલુ રાખો.\n\nતમે 2, 3 અથવા 4 આંગળી વડે બે વાર ટૅપ કરીને દબાવી પણ રાખી શકો છો.</string>
-  <string name="practice_gestures_text_pre_r">આ સ્ક્રીન પરનો કોઈપણ TalkBack સંકેત શું કામ કરે છે તે સાંભળવા માટે તેને અજમાવી જુઓ.\n\nબે વાર સ્વાઇપ કરવાથી યોગ્ય ખૂણો બનાવતો કોઈપણ સંકેત અજમાવી જુઓ. ઉદાહરણ તરીકે, નીચે અને પછી જમણી બાજુએ સ્વાઇપ કરો, આ દરમિયાન તમારી આંગળી ઉઠાવશો નહીં.</string>
-  <string name="practice_keyboard_gestures_text">વાસ્તવિક કીબોર્ડની કી અથવા કી કૉમ્બિનેશનને દબાવો અને જુઓ કે તે શું કાર્ય કરે છે. બહાર નીકળવા માટે Ctrl + W અથવા Escape દબાવો.\n\nતમે અહીં TalkBack સંકેતોનો અભ્યાસ પણ કરી શકો છો.</string>
+  <string name="practice_gestures_text">આ સ્ક્રીન પરનો કોઈપણ MS Screen Reader સંકેત શું કામ કરે છે તે સાંભળવા માટે તેને અજમાવી જુઓ.\n\n2 આંગળી વડે સ્ક્રીન પર ટૅપ કરો. 2, 3, અથવા 4 આંગળી વડે એક વાર, બે વાર અથવા ત્રણ વાર ટૅપ કરવાનું ચાલુ રાખો.\n\nતમે 2, 3 અથવા 4 આંગળી વડે બે વાર ટૅપ કરીને દબાવી પણ રાખી શકો છો.</string>
+  <string name="practice_gestures_text_pre_r">આ સ્ક્રીન પરનો કોઈપણ MS Screen Reader સંકેત શું કામ કરે છે તે સાંભળવા માટે તેને અજમાવી જુઓ.\n\nબે વાર સ્વાઇપ કરવાથી યોગ્ય ખૂણો બનાવતો કોઈપણ સંકેત અજમાવી જુઓ. ઉદાહરણ તરીકે, નીચે અને પછી જમણી બાજુએ સ્વાઇપ કરો, આ દરમિયાન તમારી આંગળી ઉઠાવશો નહીં.</string>
+  <string name="practice_keyboard_gestures_text">વાસ્તવિક કીબોર્ડની કી અથવા કી કૉમ્બિનેશનને દબાવો અને જુઓ કે તે શું કાર્ય કરે છે. બહાર નીકળવા માટે Ctrl + W અથવા Escape દબાવો.\n\nતમે અહીં MS Screen Reader સંકેતોનો અભ્યાસ પણ કરી શકો છો.</string>
   <string name="button_1">બટન 1</string>
   <string name="button_2">બટન 2</string>
   <string name="button_3">બટન 3</string>
   <string name="button_4">બટન 4</string>
   <string name="activated_view">%1$s સક્રિય કરી</string>
-  <string name="talkback_inactive_title">TalkBack સુવિધા બંધ છે</string>
-  <string name="talkback_inactive_warning_message">આ ટ્યૂટૉરિઅલ TalkBack ચાલુ હોય ત્યારે સૌથી સારી રીતે કામ કરે છે. તમે સેટિંગમાં આ ફેરફાર કરી શકો છો.\n\nજો તમે TalkBack બંધ રાખીને આગળ વધશો, તો અમુક ટ્યૂટૉરિઅલ ધાર્યા પ્રમાણે કદાચ કામ ન પણ કરે.</string>
+  <string name="talkback_inactive_title">MS Screen Reader સુવિધા બંધ છે</string>
+  <string name="talkback_inactive_warning_message">આ ટ્યૂટૉરિઅલ MS Screen Reader ચાલુ હોય ત્યારે સૌથી સારી રીતે કામ કરે છે. તમે સેટિંગમાં આ ફેરફાર કરી શકો છો.\n\nજો તમે MS Screen Reader બંધ રાખીને આગળ વધશો, તો અમુક ટ્યૂટૉરિઅલ ધાર્યા પ્રમાણે કદાચ કામ ન પણ કરે.</string>
   <string name="do_not_show_again_check_box">આ ફરીથી બતાવશો નહીં</string>
   <string name="talkback_inactive_warning_positive_button">તેમ છતાં આગળ વધો</string>
   <string name="talkback_inactive_go_to_settings_button">સેટિંગ પર જાઓ</string>
   <string name="talkback_inactive_stay_in_tutorial_button">ટ્યૂટૉરિઅલ ચાલુ રાખો</string>
   <string name="talkback_inactive_exit_tutorial_button">ટ્યૂટૉરિઅલમાંથી બહાર નીકળો</string>
   <string name="talkback_inactive_not_now_button">હમણાં નહીં</string>
-  <string name="talkback_inactive_message_practice_gestures">સંકેતોનો અભ્યાસ કરવા માટે, પહેલા TalkBack ચાલુ કરો</string>
-  <string name="talkback_inactive_message_image_description">છબીના વર્ણનો મેળવવાનો પ્રયાસ કરવા માટે, પહેલા TalkBack ચાલુ કરો</string>
+  <string name="talkback_inactive_message_practice_gestures">સંકેતોનો અભ્યાસ કરવા માટે, પહેલા MS Screen Reader ચાલુ કરો</string>
+  <string name="talkback_inactive_message_image_description">છબીના વર્ણનો મેળવવાનો પ્રયાસ કરવા માટે, પહેલા MS Screen Reader ચાલુ કરો</string>
   <string name="talkback_inactive_close_tutorial_button">ટ્યૂટૉરિઅલ બંધ કરો</string>
-  <string name="wear_training_welcome_paragraph">જ્યારે TalkBack ચાલુ હોય, ત્યારે સ્ક્રીન પરની ફોકસ કરેલી આઇટમ મોટેથી બોલવામાં આવે છે.\n\nજમણે સ્વાઇપ કરવાથી આગલી આઇટમ પર જઈ શકાય છે. ડાબે સ્વાઇપ કરવાથી પાછલી આઇટમ પર જઈ શકાય છે.\n\nહવે \'આગળ\' બટન ન દેખાય ત્યાં સુધી જમણે સ્વાઇપ કરો.</string>
+  <string name="wear_training_welcome_paragraph">જ્યારે MS Screen Reader ચાલુ હોય, ત્યારે સ્ક્રીન પરની ફોકસ કરેલી આઇટમ મોટેથી બોલવામાં આવે છે.\n\nજમણે સ્વાઇપ કરવાથી આગલી આઇટમ પર જઈ શકાય છે. ડાબે સ્વાઇપ કરવાથી પાછલી આઇટમ પર જઈ શકાય છે.\n\nહવે \'આગળ\' બટન ન દેખાય ત્યાં સુધી જમણે સ્વાઇપ કરો.</string>
   <string name="wear_training_scroll_text" tools:ignore="PluralsCandidate">%1$d આંગળી વડે ઉપર કે નીચેની તરફ સ્વાઇપ કરો.</string>
   <string name="wear_training_go_back_title">પાછા જાઓ</string>
   <string name="wear_training_go_back_text" tools:ignore="PluralsCandidate">જ્યારે તમે પાછા જવા માગતા હો, ત્યારે સ્ક્રીનની કિનારી પરથી જમણે સ્વાઇપ કરવા માટે %1$d આંગળીઓનો ઉપયોગ કરો.</string>
@@ -1227,7 +1227,7 @@
   <string name="wear_training_volume_up_text">જમણે અને પછી ઉપર સ્વાઇપ કરો</string>
   <string name="wear_training_volume_down_title">વૉલ્યૂમ ઘટાડો</string>
   <string name="wear_training_volume_down_text">જમણે અને પછી નીચે સ્વાઇપ કરો</string>
-  <string name="wear_training_open_talkback_menu_title">TalkBack મેનૂ ખોલો</string>
+  <string name="wear_training_open_talkback_menu_title">MS Screen Reader મેનૂ ખોલો</string>
   <string name="wear_training_open_talkback_menu_text">તમને વારંવાર જરૂરી હોઈ શકે તેવા સેટિંગ અને નિયંત્રણો ખોલવા માટે, પહેલાં નીચેની તરફ અને પછી જમણે સ્વાઇપ કરો</string>
   <string name="wear_training_typing_title">ટાઇપિંગ</string>
   <string name="wear_training_typing_text1">કીબોર્ડ વડે ટાઇપ કરવા માટે, તમારી આંગળીને સમગ્ર કીબોર્ડ પર ફેરવો. તમે ટાઇપ કરવા માગતા હો તે અક્ષર તમને સંભળાય, ત્યારે તમારી આંગળી ઉઠાવી લો.</string>
@@ -1236,7 +1236,7 @@
   <string name="wear_training_typing_text4">કીબોર્ડ બંધ કરવા અને ટાઇપ કરવાનું રદ કરવા માટે, 2 આંગળી વડે તમારી સ્ક્રીનની ડાબી બાજુની કિનારીથી જમણી તરફ સ્વાઇપ કરો.</string>
   <string name="wear_training_typing_text5">તેને નીચે અજમાવી જુઓ.</string>
   <string name="wear_training_typing_practice_button_content_description">કીબોર્ડ વડે ટાઇપિંગ</string>
-  <string name="wear_training_end_tutorial_title">તમે તમારી TalkBack સુવિધાનો ઉપયોગ કરવા માટે તૈયાર છો</string>
+  <string name="wear_training_end_tutorial_title">તમે તમારી MS Screen Reader સુવિધાનો ઉપયોગ કરવા માટે તૈયાર છો</string>
   <string name="talkback_updated_notification_title">TalkBackની સુવિધા અપડેટ કરવામાં આવી છે</string>
   <string name="talkback_updated_notification_content">વધુ જાણવા માટે ટૅપ કરો</string>
   <string name="wear_new_feature_page_title">અપડેટ થયેલા TalkBackમાં આપનું સ્વાગત છે</string>
@@ -1347,7 +1347,7 @@
   <string name="confirm_download_all_image_captioning_message">સપોર્ટેડ ઍપમાં જ્યારે તમે કોઈ છબી કે આઇકન પર ફોકસ કરશો, ત્યારે તમને કોઈ સંક્ષિપ્ત વર્ણન સાંભળવા મળશે</string>
   <string name="confirm_download_checkbox_text">આ ફરીથી બતાવશો નહીં</string>
   <string name="confirm_download_positive_button_text">ડાઉનલોડ કરો</string>
-  <string name="confirm_download_negative_button_hint">TalkBack હજી પણ છબીઓમાંની ટેક્સ્ટનું વર્ણન કરી શકે છે</string>
+  <string name="confirm_download_negative_button_hint">MS Screen Reader હજી પણ છબીઓમાંની ટેક્સ્ટનું વર્ણન કરી શકે છે</string>
   <string name="downloading_icon_detection_hint">આઇકનના ઑટોમૅટિક વર્ણનો ડાઉનલોડ કરી રહ્યાં છીએ</string>
   <string name="download_icon_detection_successful_hint">આઇકન વર્ણનો ડાઉનલોડ કર્યા</string>
   <string name="download_icon_detection_failed_hint">આઇકનના ઑટોમૅટિક વર્ણનો ડાઉનલોડ કરી શકાતા નથી</string>
@@ -1358,7 +1358,7 @@
   <string name="download_all_image_captioning_successful_hint">છબી અને આઇકનના ઑટોમૅટિક વર્ણનો ડાઉનલોડ કર્યા</string>
   <string name="download_all_image_captioning_failed_hint">ડાઉનલોડ કરી શકાતા નથી. થોડા સમય પછી ફરી પ્રયાસ કરો.</string>
   <string name="download_complete_notification_title">ડાઉનલોડ પૂર્ણ થયું</string>
-  <string name="download_complete_notification_content">તમે હવે TalkBack વડે ઑટોમૅટિક છબી અને આઇકનના વર્ણનો સાંભળી શકશો</string>
+  <string name="download_complete_notification_content">તમે હવે MS Screen Reader વડે ઑટોમૅટિક છબી અને આઇકનના વર્ણનો સાંભળી શકશો</string>
   <string name="download_complete_notification_action">સેટિંગ</string>
   <string name="download_storage_error_hint">સ્ટોરેજ ભરાઈ ગયો છે. ડાઉનલોડ કરવા માટે, સેટિંગ &gt; સ્ટોરેજમાંથી %1$d MB ખાલી કરો.</string>
   <string name="download_network_error_hint">ડાઉનલોડ કરી શકાતા નથી. તમારું કનેક્શન ચેક કરો અને ફરી પ્રયાસ કરો.</string>
@@ -1368,14 +1368,14 @@
   <string name="switch_text_recognition_dialog_title">છબીઓમાંની ટેક્સ્ટનું ઑટોમૅટિક રીતે વર્ણન કરો</string>
   <string name="switch_text_recognition_dialog_message">જ્યારે તમે ટેક્સ્ટ ધરાવતી છબી પર ફોકસ કરો, ત્યારે વર્ણનો સાંભળો</string>
   <string name="switch_auto_image_caption_dialog_subtitle">ડાઉનલોડ કરેલા</string>
-  <string name="disable_auto_image_caption_dialog_subtext">તમે હજી પણ TalkBack મેનૂમાંથી પસંદ કરેલી છબી માટે વર્ણનો મેળવી શકો છો</string>
+  <string name="disable_auto_image_caption_dialog_subtext">તમે હજી પણ MS Screen Reader મેનૂમાંથી પસંદ કરેલી છબી માટે વર્ણનો મેળવી શકો છો</string>
   <string name="switch_auto_image_caption_dialog_positive_button_text">ઓકે</string>
   <string name="switch_auto_image_caption_dialog_negative_button_text">ડાઉનલોડ ડિલીટ કરો</string>
   <string name="delete_icon_detection_dialog_title">શું આઇકનના ઑટોમૅટિક વર્ણનો ડિલીટ કરીએ?</string>
   <string name="delete_image_description_dialog_title">શું છબીના ઑટોમૅટિક વર્ણનો ડિલીટ કરીએ?</string>
   <string name="delete_all_image_captioning_dialog_title">શું છબીના અને આઇકનના ઑટોમૅટિક વર્ણનો ડિલીટ કરીએ?</string>
-  <string name="delete_dialog_message">પછીથી વર્ણનો ફરી મેળવવા માટે, તમે TalkBack સેટિંગમાંથી આ સુવિધા ડાઉનલોડ કરી શકો છો</string>
-  <string name="delete_all_dialog_message">આમ કરવાથી આઇકન અને છબીઓ બન્નેના ઑટોમૅટિક વર્ણનો ડિલીટ થાય છે.\n\nથોડા સમય પછી ફરીથી વર્ણનો મેળવવા માટે, તમે આ સુવિધાઓ TalkBack સેટિંગમાંથી ડાઉનલોડ કરી શકો છો.</string>
+  <string name="delete_dialog_message">પછીથી વર્ણનો ફરી મેળવવા માટે, તમે MS Screen Reader સેટિંગમાંથી આ સુવિધા ડાઉનલોડ કરી શકો છો</string>
+  <string name="delete_all_dialog_message">આમ કરવાથી આઇકન અને છબીઓ બન્નેના ઑટોમૅટિક વર્ણનો ડિલીટ થાય છે.\n\nથોડા સમય પછી ફરીથી વર્ણનો મેળવવા માટે, તમે આ સુવિધાઓ MS Screen Reader સેટિંગમાંથી ડાઉનલોડ કરી શકો છો.</string>
   <string name="delete_dialog_positive_button_text">ડિલીટ કરો</string>
   <string name="delete_dialog_negative_button_text">રદ કરો</string>
   <string name="delete_icon_description_hint">આઇકનના ઑટોમૅટિક વર્ણનો ડિલીટ કર્યા</string>
@@ -1385,7 +1385,7 @@
   <string name="gemini_disable_dialog_message">Gemini વડે સ્ક્રીન સમજવી</string>
   <string name="disable_gemini_dialog_subtext">Gemini વડે સ્ક્રીન સમજવાની સુવિધા ચાલુ કરવા માટે ચાલુ કરો</string>
   <string name="ai_services_update_dialog_title">છબીઓનું વર્ણન કરવા માટે %1$s ઍપ અપડેટ કરો</string>
-  <string name="ai_services_update_dialog_message">છબીના વર્ણનો સાંભળવા માટે, Google Play પરથી %1$sનું નવીનતમ વર્ઝન મેળવો.\n\nએકવાર ડાઉનલોડ કરવાનું પૂર્ણ થઈ જાય, પછી TalkBack સેટિંગ પર પાછા ફરો અને છબીના ઑટોમૅટિક વર્ણનો ફરી ચાલુ કરો.</string>
+  <string name="ai_services_update_dialog_message">છબીના વર્ણનો સાંભળવા માટે, Google Play પરથી %1$sનું નવીનતમ વર્ઝન મેળવો.\n\nએકવાર ડાઉનલોડ કરવાનું પૂર્ણ થઈ જાય, પછી MS Screen Reader સેટિંગ પર પાછા ફરો અને છબીના ઑટોમૅટિક વર્ણનો ફરી ચાલુ કરો.</string>
   <string name="ai_services_update_dialog_button_text">Google Play પર જાઓ</string>
   <string name="aicore_app_name">AICore</string>
   <string name="astrea_app_name">Private Compute Services</string>
@@ -1453,13 +1453,13 @@
   <string name="browse_mode_off_hint">બ્રાઉઝ મોડ બંધ છે</string>
   <string name="browse_mode_double_trigger_modifier">%1$s %1$s</string>
   <string name="title_smart_browse_mode">સ્માર્ટ બ્રાઉઝ મોડ</string>
-  <string name="summary_smart_browse_mode">તમે જે આઇટમ પર છો તેના આધારે બ્રાઉઝ મોડ ઑટોમૅટિક રીતે ચાલુ કે બંધ થાય છે. આ ઇનપુટ ફોકસને TalkBack ફોકસ સાથે સિંક કરે છે.</string>
+  <string name="summary_smart_browse_mode">તમે જે આઇટમ પર છો તેના આધારે બ્રાઉઝ મોડ ઑટોમૅટિક રીતે ચાલુ કે બંધ થાય છે. આ ઇનપુટ ફોકસને MS Screen Reader ફોકસ સાથે સિંક કરે છે.</string>
   <string name="typing_echo_change_visual_feedback">વાસ્તવિક કીબોર્ડનો પડઘો: %1$s</string>
-  <string name="talkback_turn_off_title">શું TalkBack બંધ કરીએ?</string>
+  <string name="talkback_turn_off_title">શું MS Screen Reader બંધ કરીએ?</string>
   <string name="talkback_turn_off_button">બંધ કરો</string>
   <string name="talkback_keep_on_button">ચાલુ રાખો</string>
   <string name="talkback_speech_bubble_label">@string/talkback_label</string>
   <string name="close_string">બંધ કરો</string>
-  <string name="talkback_label">TalkBack</string>
-  <string name="notifictions_in_lock_screen_notification_content">જ્યારે તમારી સ્ક્રીન બંધ હોય ત્યારે નોટિફિકેશન સાંભળવા માટે, TalkBack શબ્દબહુલતા સેટિંગમાં \"સ્ક્રીન બંધ હોય ત્યારે નોટિફિકેશન બોલો\" ચાલુ કરો</string>
+  <string name="talkback_label">MS Screen Reader</string>
+  <string name="notifictions_in_lock_screen_notification_content">જ્યારે તમારી સ્ક્રીન બંધ હોય ત્યારે નોટિફિકેશન સાંભળવા માટે, MS Screen Reader શબ્દબહુલતા સેટિંગમાં \"સ્ક્રીન બંધ હોય ત્યારે નોટિફિકેશન બોલો\" ચાલુ કરો</string>
 </resources>

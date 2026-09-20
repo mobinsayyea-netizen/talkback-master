@@ -25,8 +25,8 @@
   <string name="overlay_pan_left_button">Pomicanje ulijevo</string>
   <string name="overlay_pan_right_button">Pomicanje udesno</string>
   <string name="bd_preferences_title">Brailleov ekran</string>
-  <string name="bd_preferences_banner_talkback_off_subtitle">Da koristite Brailleov ekran, najprije uključite TalkBack</string>
-  <string name="bd_preferences_banner_talkback_off_button">Idi na TalkBack</string>
+  <string name="bd_preferences_banner_talkback_off_subtitle">Da koristite Brailleov ekran, najprije uključite MS Screen Reader</string>
+  <string name="bd_preferences_banner_talkback_off_button">Idi na MS Screen Reader</string>
   <string name="bd_preferences_banner_bluetooth_off_subtitle">Da koristite Brailleov ekran, najprije uključite Bluetooth</string>
   <string name="bd_preferences_banner_bluetooth_off_button">Uključi Bluetooth</string>
   <string name="bd_preferences_banner_nearby_devices_permission_not_granted_subtitle">Da koristite Brailleov ekran, aplikaciji %s je potreban pristup uređajima u blizini</string>
@@ -222,7 +222,7 @@
   <string name="bd_cmd_toggle_screen_search">Otvori pretraživanje ekrana</string>
   <string name="bd_cmd_edit_custom_label">Uredi prilagođenu oznaku</string>
   <string name="bd_cmd_open_talkback_menu">Otvori meni TalkBacka</string>
-  <string name="bd_cmd_toggle_voice_feedback">Uključi ili isključi TalkBack govor</string>
+  <string name="bd_cmd_toggle_voice_feedback">Uključi ili isključi MS Screen Reader govor</string>
   <string name="bd_cmd_read_stop">Prestani čitati</string>
   <string name="bd_cmd_talkback_settings">Otvori postavke TalkBacka</string>
   <string name="bd_cmd_switch_to_next_input_language">Pređi na sljedeći jezik pisanja</string>
@@ -317,7 +317,7 @@
   <string name="popup_message_history_clear">Obriši sve</string>
   <string name="popup_message_history_empty">Prazno</string>
   <string name="popup_message_history_consent_dialog_title">Uključiti historiju poruka uređaja?</string>
-  <string name="popup_message_history_consent_dialog_msg">Ovo će pohranjivati određene poruke u TalkBack, kao što su obavještenja i alarmi. Možete promijeniti ovu postavku bilo kada.</string>
+  <string name="popup_message_history_consent_dialog_msg">Ovo će pohranjivati određene poruke u MS Screen Reader, kao što su obavještenja i alarmi. Možete promijeniti ovu postavku bilo kada.</string>
   <string name="popup_message_history_consent_dialog_positive_btn">Uključi</string>
   <string name="popup_message_history_consent_dialog_negative_btn">Ne, hvala</string>
 </resources>

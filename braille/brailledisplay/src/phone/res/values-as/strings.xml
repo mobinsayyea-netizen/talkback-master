@@ -2,12 +2,12 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="braille_ime_name">ব্ৰেইল হাৰ্ডৱেৰ কীব\'ৰ্ড</string>
   <string name="bd_application_name">Android Accessibility Suite</string>
-  <string name="bd_ime_unavailable_activity_name">TalkBack ব্ৰেইল কীব’ৰ্ড উপলব্ধ নহয়</string>
-  <string name="bd_ime_disabled_dialog_title">TalkBack ব্ৰেইল কীব’ৰ্ড অন কৰক</string>
+  <string name="bd_ime_unavailable_activity_name">MS Screen Reader ব্ৰেইল কীব’ৰ্ড উপলব্ধ নহয়</string>
+  <string name="bd_ime_disabled_dialog_title">MS Screen Reader ব্ৰেইল কীব’ৰ্ড অন কৰক</string>
   <string name="bd_ime_disabled_dialog_message">টাইপিঙৰ বাবে আপোনাৰ ব্ৰেইল ডিছপ্লে’ ব্যৱহাৰ কৰিবলৈ, ইয়াক অন কৰিবলৈ ইনপুটৰ ছেটিঙলৈ যাওক</string>
   <string name="bd_ime_disabled_dialog_title_positive">ইনপুটৰ ছেটিং</string>
   <string name="bd_ime_not_default_dialog_title">আপোনাৰ ইনপুটৰ পদ্ধতি সলনি কৰক</string>
-  <string name="bd_ime_not_default_dialog_message">টাইপিং কৰি থাকিবলৈ, TalkBack ব্ৰেইল কীব’ৰ্ডক আপোনাৰ ইনপুটৰ পদ্ধতি হিচাপে ছেট কৰক</string>
+  <string name="bd_ime_not_default_dialog_message">টাইপিং কৰি থাকিবলৈ, MS Screen Reader ব্ৰেইল কীব’ৰ্ডক আপোনাৰ ইনপুটৰ পদ্ধতি হিচাপে ছেট কৰক</string>
   <string name="bd_ime_not_default_dialog_positive">ইনপুট সলনি কৰক</string>
   <string name="type_unlabeled">লেবেল যোগ নকৰা</string>
   <string name="type_unlabeled_edittext">লেবেল যোগ নিদিয়া সম্পাদনাৰ বাকচ</string>
@@ -25,7 +25,7 @@
   <string name="overlay_pan_left_button">বাওঁফালে পেন কৰক</string>
   <string name="overlay_pan_right_button">সোঁফালে পেন কৰক</string>
   <string name="bd_preferences_title">ব্ৰেইল ডিছপ্লে’</string>
-  <string name="bd_preferences_banner_talkback_off_subtitle">ব্ৰেইল ডিছপ্লে’ ব্যৱহাৰ কৰিবলৈ, প্ৰথমে TalkBack অন কৰক</string>
+  <string name="bd_preferences_banner_talkback_off_subtitle">ব্ৰেইল ডিছপ্লে’ ব্যৱহাৰ কৰিবলৈ, প্ৰথমে MS Screen Reader অন কৰক</string>
   <string name="bd_preferences_banner_talkback_off_button">TalkBackলৈ যাওক</string>
   <string name="bd_preferences_banner_bluetooth_off_subtitle">ব্ৰেইল ডিছপ্লে’ ব্যৱহাৰ কৰিবলৈ, প্ৰথমে ব্লুটুথ অন কৰক</string>
   <string name="bd_preferences_banner_bluetooth_off_button">ব্লুটুথ অন কৰক</string>

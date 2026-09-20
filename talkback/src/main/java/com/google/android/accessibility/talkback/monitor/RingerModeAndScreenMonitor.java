@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.media.AudioManager;
+import android.os.BatteryManager;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -296,7 +297,7 @@ public class RingerModeAndScreenMonitor extends SameThreadBroadcastReceiver
         pipeline.returnFeedback(
             eventId,
             Feedback.part()
-                .setSound(Feedback.Sound.create(R.raw.volume_beep, 1.0f, volume))
+                .setSound(Feedback.Sound.create(R.raw.screen_off, 1.0f, volume))
                 .speech(ttsText, speakOptions));
       } else {
         pipeline.returnFeedback(eventId, Feedback.speech(ttsText, speakOptions));
@@ -349,6 +350,7 @@ public class RingerModeAndScreenMonitor extends SameThreadBroadcastReceiver
               service.getContentResolver(), Settings.Secure.DEVICE_PROVISIONED, 0)
           != 0) {
         appendCurrentTimeAnnouncementIfNeeded(ttsText);
+        appendBatteryLevelIfNeeded(ttsText);
       } else {
         // Device is not ready, just speak screen on
         ttsText.append(service.getString(R.string.value_screen_on));
@@ -363,7 +365,29 @@ public class RingerModeAndScreenMonitor extends SameThreadBroadcastReceiver
             .setQueueMode(SpeechController.QUEUE_MODE_GLOBALLY_UNINTERRUPTED)
             .setFlags(FeedbackItem.FLAG_FORCE_FEEDBACK_EVEN_IF_AUDIO_PLAYBACK_ACTIVE);
 
-    pipeline.returnFeedback(eventId, Feedback.speech(ttsText, speakOptions));
+    pipeline.returnFeedback(
+        eventId,
+        Feedback.part()
+            .setSound(Feedback.Sound.create(R.raw.screen_on, 1.0f, 1.0f))
+            .speech(ttsText, speakOptions));
+  }
+
+  /** Appends a short English battery level, like "Battery 65%", after the time. */
+  private void appendBatteryLevelIfNeeded(SpannableStringBuilder builder) {
+    if (!enabledTellingTime) {
+      return;
+    }
+    Intent battery = service.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+    if (battery == null) {
+      return;
+    }
+    int level = battery.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+    int scale = battery.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+    if (level < 0 || scale <= 0) {
+      return;
+    }
+    int percent = Math.round(level * 100f / scale);
+    StringBuilderUtils.appendWithSeparator(builder, "Battery " + percent + "%");
   }
 
   /**

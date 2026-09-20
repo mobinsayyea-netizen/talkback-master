@@ -104,9 +104,9 @@
   <string name="talkback_off_dialog_title">TalkBackin ottaminen käyttöön pistekirjoitusnäppäimistön käyttöä varten</string>
   <string name="talkback_off_dialog_positive_button">Ota käyttöön esteettömyysasetuksista</string>
   <string name="talkback_suspend_dialog_title">Jatka TalkBackia käyttääksesi pistekirjoitusnäppäimistöä</string>
-  <string name="talkback_off_or_suspend_dialog_message">Kun TalkBack on käytössä, voit syöttää pistekirjoitusmerkkejä napauttamalla näyttöä.</string>
-  <string name="talkback_off_custom_gestures_dialog_title">Laita TalkBack päälle muuttaaksesi elettä</string>
-  <string name="talkback_off_custom_gestures_dialog_message">TalkBack on pois päältä. Laita se päälle, jotta voit muuttaa pistekirjoitusnäppäimistön eleitä.</string>
+  <string name="talkback_off_or_suspend_dialog_message">Kun MS Screen Reader on käytössä, voit syöttää pistekirjoitusmerkkejä napauttamalla näyttöä.</string>
+  <string name="talkback_off_custom_gestures_dialog_title">Laita MS Screen Reader päälle muuttaaksesi elettä</string>
+  <string name="talkback_off_custom_gestures_dialog_message">MS Screen Reader on pois päältä. Laita se päälle, jotta voit muuttaa pistekirjoitusnäppäimistön eleitä.</string>
   <string name="talkback_off_custom_gestures_dialog_positive_button">Avaa Asetukset</string>
   <string name="reset_gestures_dialog_title">Nollataanko kaikki eleet?</string>
   <string name="reset_gestures_dialog_message">Kaikki pistekirjoitusnäppäimistön eleet palautetaan oletusasetuksiin</string>
@@ -121,7 +121,7 @@
   <string name="custom_gestures_dialog_reset_to_default_button">Palauta oletus</string>
   <string name="custom_gestures_dialog_remove_button">Poista ele</string>
   <string name="change_gestures_dialog_message_title">Eleen muuttaminen</string>
-  <string name="change_gestures_dialog_message">Seuraavalla näytöllä avautuu pistekirjoitusnäppäimistö, etkä voit käyttää TalkBack-eleitä.\n\nKun pistekirjoitusnäppäimistö avautuu, tee ele, jota haluat käyttää. Jos haluat sulkea pistekirjoitusnäppäimistön ja perua eleen muutoksen, pyyhkäise alas kahdella sormella.\n\nKatso käytettävissä olevat eleet\n</string>
+  <string name="change_gestures_dialog_message">Seuraavalla näytöllä avautuu pistekirjoitusnäppäimistö, etkä voit käyttää MS Screen Reader-eleitä.\n\nKun pistekirjoitusnäppäimistö avautuu, tee ele, jota haluat käyttää. Jos haluat sulkea pistekirjoitusnäppäimistön ja perua eleen muutoksen, pyyhkäise alas kahdella sormella.\n\nKatso käytettävissä olevat eleet\n</string>
   <string name="change_gestures_dialog_message_link">Katso käytettävissä olevat eleet</string>
   <string name="change_gestures_dialog_dont_show_checkbox">Älä näytä tätä viestiä uudelleen</string>
   <string name="change_gestures_dialog_positive_button">Jatka</string>
@@ -136,8 +136,8 @@
   <string name="tutorial_intro_description">Kun sinulla on pistekirjoitusnäppäimistö, voit syöttää 6 pisteen pistekirjoitusta napauttamalla näyttöä.\n\nKäytät yleistä englanninkielistä pistekirjoitusta. Voit vaihtaa kirjoituskieltä palaamalla TalkBackin asetuksiin.\n\nPistekirjoitusta varten puhelinta on pidettävä ja käytettävä eri tavalla.</string>
   <string name="next_step">Seuraava</string>
   <string name="leave_keyboard">Sulje pistekirjoitusnäppäimistö</string>
-  <string name="hold_six_fingers_description">Et voi käyttää tavallisia TalkBack-eleitä pistekirjoitusnäppäimistöllä.\n\nAloitetaan määrittämällä kirjoittamiseen käyttämiesi kuuden pisteen sijainti.</string>
-  <string name="rotate_orientation_description_1">Tästä alkaen et voi käyttää normaaleja TalkBack-eleitä. TalkBack ei ole käytettävissä pistekirjoitusnäppäimistön käytön aikana.</string>
+  <string name="hold_six_fingers_description">Et voi käyttää tavallisia MS Screen Reader-eleitä pistekirjoitusnäppäimistöllä.\n\nAloitetaan määrittämällä kirjoittamiseen käyttämiesi kuuden pisteen sijainti.</string>
+  <string name="rotate_orientation_description_1">Tästä alkaen et voi käyttää normaaleja MS Screen Reader-eleitä. MS Screen Reader ei ole käytettävissä pistekirjoitusnäppäimistön käytön aikana.</string>
   <string name="rotate_orientation_description_2">Aloita pitämällä puhelinta niin, että sen näyttö on itsestäsi poispäin.</string>
   <string name="tap_to_continue">Jatka kaksoisnapauttamalla näyttöä.</string>
   <string name="instruction_type_letter_a">Kirjoita A napauttamalla pistettä 1 vasemman käden etusormella.</string>
@@ -155,7 +155,7 @@
   <string name="result_swipe_down">SIIRRÄ KOHDISTINTA ETEENPÄIN</string>
   <string name="result_swipe_down_2_fingers">PIILOTA NÄPPÄIMISTÖ</string>
   <string name="result_swipe_down_3_fingers">SEURAAVA NÄPPÄIMISTÖ</string>
-  <string name="rotate_orientation_announcement">Tästä alkaen et voi käyttää normaaleja TalkBack-eleitä. TalkBack ei ole käytettävissä pistekirjoitusnäppäimistön käytön aikana.\n\n%1$s</string>
+  <string name="rotate_orientation_announcement">Tästä alkaen et voi käyttää normaaleja MS Screen Reader-eleitä. MS Screen Reader ei ole käytettävissä pistekirjoitusnäppäimistön käytön aikana.\n\n%1$s</string>
   <string name="rotate_orientation_inactive_announcement">Käännä puhelin ensin siten, että näyttö on poispäin itsestäsi.\n\nKäännä sitten puhelin vaakasuoraan asentoon. Pitele puhelinta sen lyhyistä sivuista. Pitele USB-portin puolta oikealla kädellä. Pidä kolmea keskimmäistä sormeasi näytöllä ja tue puhelinta pikkusormella ja peukalolla.\n\nKun olet valmis, jatka kaksoisnapauttamalla näyttöä.\n\nPoistu pistekirjoitusnäppäimistöstä pyyhkäisemällä alaspäin kolmella sormella. Tämä vaihtaa takaisin alkuperäiseen näppäimistöösi.</string>
   <string name="rotate_orientation_continue_announcement">Puhelimesi on pystyasennossa. Jatka kääntämällä puhelin vaakasuoraan siten, että pitkä sivu on alaspäin. Käännä sitten näyttö itsestäsi poispäin. Kun olet valmis, jatka kaksoisnapauttamalla näyttöä.</string>
   <string name="type_letter_a_announcement">Pidä näyttö itsestäsi poispäin. Pitele puhelinta molemmin käsin sen lyhyistä reunoista siten, että molempien käsien kolme keskimmäistä sormea voivat koskettaa näyttöä.\n\nVasemman käden etusormen tulisi olla pisteen 1 päällä. Kirjoita A napauttamalla pistettä 1.</string>
@@ -171,7 +171,7 @@
   <string name="swipe_down_3_fingers_announcement">Vaihda toiseen näppäimistöön pyyhkäisemällä alas kolmella sormella. Kokeile nyt.</string>
   <string name="swipe_down_3_fingers_completed_announcement">Seuraava näppäimistö. Tavallisesti tämä vaihtaa seuraavaan näppäimistöön. Tällä kertaa pysyt pistekirjoitusnäppäimistössä, koska ohje on vielä avoinna.</string>
   <string name="swipe_up_3_fingers_announcement">Voit myös kirjoittaa pöytätilassa asettamalla puhelimen vaakatasoon pöydälle. Sulje ohje pyyhkäisemällä ylös kolmella sormella ja valitsemalla lopettamisvaihtoehto.</string>
-  <string name="open_context_menu_announcement">Asetusvalikko on avoinna. Käännä puhelin ympäri niin, että näyttö on itseesi päin, ja pitele sitä normaalisti. Voit nyt navigoida normaaleilla TalkBack-eleillä. Katso lisää vaihtoehtoja pyyhkäisemällä oikealle.</string>
+  <string name="open_context_menu_announcement">Asetusvalikko on avoinna. Käännä puhelin ympäri niin, että näyttö on itseesi päin, ja pitele sitä normaalisti. Voit nyt navigoida normaaleilla MS Screen Reader-eleillä. Katso lisää vaihtoehtoja pyyhkäisemällä oikealle.</string>
   <string name="hold_six_fingers_announcement">%s\nAseta puhelin pöydälle vaakatasossa. Kosketa sitten näyttöä pitkään kummankin käden kolmella keskimmäisellä sormella asennossa, jossa kirjoittaminen tuntuu mukavalta.</string>
   <string name="hold_six_fingers_inactive_announcement">Aseta puhelin pöydälle vaakatasossa. Kosketa sitten näyttöä pitkään kummankin käden kolmella keskimmäisellä sormella asennossa, jossa kirjoittaminen tuntuu mukavalta.</string>
   <string name="finish_tutorial_announcement">Pistekirjoitusnäppäimistö näkyy. Käännä puhelinta ensin niin, että näyttö on poispäin sinusta. Käännä sitten puhelin vaakasuoraan asentoon. Aloita sitten kirjoittaminen.</string>

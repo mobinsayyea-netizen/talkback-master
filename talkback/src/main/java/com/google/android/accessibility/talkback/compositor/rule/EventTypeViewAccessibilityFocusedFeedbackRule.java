@@ -400,6 +400,10 @@ public final class EventTypeViewAccessibilityFocusedFeedbackRule {
       return R.raw.complete;
     }
 
+    if (AccessibilityNodeInfoUtils.getWindowType(node) == TYPE_INPUT_METHOD) {
+      return R.raw.keyboard_focus;
+    }
+
     if (globalVariables.lastFocusInScrollableNode()
         != globalVariables.currentFocusInScrollableNode()) {
       return globalVariables.currentFocusInScrollableNode() ? R.raw.chime_up : R.raw.chime_down;

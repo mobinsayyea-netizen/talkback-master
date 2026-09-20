@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="braille_ime_service_name">TalkBack Брайль пернетақтасы</string>
+  <string name="braille_ime_service_name">MS Screen Reader Брайль пернетақтасы</string>
   <string name="braille_ime_bd_mode_name">Брайль дисплейінде енгізу</string>
   <string name="switch_to_tabletop_announcement">Экранды жоғары қаратып қою режимі. Құрылғыны зарядтау ұяшығы сол жақта тұратындай қойыңыз.</string>
   <string name="calibration_tip_announcement">Нүктенің орнын өзгерту үшін %d саусақпен басып тұрыңыз.</string>
@@ -10,7 +10,7 @@
   <string name="switched_to_uncontracted_announcement">Қысқартылмаған Брайль пернетақтасына ауыстырылды.</string>
   <string name="braille_ime_displayed_name">Брайль пернетақтасы</string>
   <string name="multiple_languages_braille_ime_displayed_name">Брайль пернетақтасы, %s</string>
-  <string name="input_view_caption">TalkBack Брайль пернетақтасы – анықтама алу үшін g.co/help/braille бетіне өтіңіз.</string>
+  <string name="input_view_caption">MS Screen Reader Брайль пернетақтасы – анықтама алу үшін g.co/help/braille бетіне өтіңіз.</string>
   <string name="perform_action_next">Келесі</string>
   <string name="perform_action_submitting">Мәтін жіберу</string>
   <string name="calibration_step1_hold_left_or_right_finger_announcement">Нүкте орны өзгертіліп жатыр. Алдымен %s нүктелерді жазып алайық.</string>
@@ -101,12 +101,12 @@
   <string name="bk_pref_category_title_keyboard">Пернетақта</string>
   <string name="not_enough_touch_points_dialog_title">Құрылғыңыз Брайль пернетақтасын қолдамайды.</string>
   <string name="not_enough_touch_points_dialog_message">Құрылғыңыз жеткілікті түрту орындарын қолдамайды. Қосымша ақпарат алу үшін құрылғы өндірушісіне хабарласыңыз.</string>
-  <string name="talkback_off_dialog_title">Брайль пернетақтасын пайдалану үшін TalkBack функциясын іске қосыңыз.</string>
+  <string name="talkback_off_dialog_title">Брайль пернетақтасын пайдалану үшін MS Screen Reader функциясын іске қосыңыз.</string>
   <string name="talkback_off_dialog_positive_button">\"Арнайы мүмкіндіктер\" параметрлерін іске қосу</string>
-  <string name="talkback_suspend_dialog_title">Брайль пернетақтасын пайдалану үшін TalkBack функциясын қолдана беріңіз.</string>
-  <string name="talkback_off_or_suspend_dialog_message">TalkBack қосылған кезде, Брайль таңбаларын енгізу үшін экранды түртіңіз.</string>
-  <string name="talkback_off_custom_gestures_dialog_title">Қимылды өзгерту үшін TalkBack функциясын қосыңыз</string>
-  <string name="talkback_off_custom_gestures_dialog_message">TalkBack өшірулі. Брайль пернетақтасының қимылдарын өзгерту үшін оны қосыңыз.</string>
+  <string name="talkback_suspend_dialog_title">Брайль пернетақтасын пайдалану үшін MS Screen Reader функциясын қолдана беріңіз.</string>
+  <string name="talkback_off_or_suspend_dialog_message">MS Screen Reader қосылған кезде, Брайль таңбаларын енгізу үшін экранды түртіңіз.</string>
+  <string name="talkback_off_custom_gestures_dialog_title">Қимылды өзгерту үшін MS Screen Reader функциясын қосыңыз</string>
+  <string name="talkback_off_custom_gestures_dialog_message">MS Screen Reader өшірулі. Брайль пернетақтасының қимылдарын өзгерту үшін оны қосыңыз.</string>
   <string name="talkback_off_custom_gestures_dialog_positive_button">Параметрлерге өту</string>
   <string name="reset_gestures_dialog_title">Барлық қимылды бастапқы күйге қайтару қажет пе?</string>
   <string name="reset_gestures_dialog_message">Брайль пернетақтасының қимылдары әдепкі параметрлерге қайтарылады.</string>
@@ -121,7 +121,7 @@
   <string name="custom_gestures_dialog_reset_to_default_button">Әдепкі күйге қайтару</string>
   <string name="custom_gestures_dialog_remove_button">Қимылды өшіру</string>
   <string name="change_gestures_dialog_message_title">Қимылды өзгерту жолы</string>
-  <string name="change_gestures_dialog_message">Келесі экранда Брайль пернетақтасы ашылады және TalkBack қимылдарын пайдалана алмайсыз.\n\nБрайль пернетақтасы ашылғаннан кейін, қажетті қимылды орындаңыз немесе Брайль пернетақтасын жауып, қимыл өзгерісінен бас тартып, 2 саусақпен төмен сырғытыңыз.\n\nҚолжетімді қимылдарды көру\n</string>
+  <string name="change_gestures_dialog_message">Келесі экранда Брайль пернетақтасы ашылады және MS Screen Reader қимылдарын пайдалана алмайсыз.\n\nБрайль пернетақтасы ашылғаннан кейін, қажетті қимылды орындаңыз немесе Брайль пернетақтасын жауып, қимыл өзгерісінен бас тартып, 2 саусақпен төмен сырғытыңыз.\n\nҚолжетімді қимылдарды көру\n</string>
   <string name="change_gestures_dialog_message_link">Қолжетімді қимылдарды көру</string>
   <string name="change_gestures_dialog_dont_show_checkbox">Бұл хабарды қайта көрсетпеу</string>
   <string name="change_gestures_dialog_positive_button">Жалғастыру</string>
@@ -133,11 +133,11 @@
   <string name="mirrored_gesture_dialog_conflict_negative_button">Пайдаланбау</string>
   <string name="next_keyboard">Келесі пернетақта</string>
   <string name="braille_tutorial_title">Брайль пернетақтасы оқулығы</string>
-  <string name="tutorial_intro_description">Брайль пернетақтасының көмегімен 6 нүктелі Брайль қарпін экранды түрту арқылы енгізе аласыз.\n\nUnified English Braille пайдаланудасыз. Теру тілін ауыстыру үшін TalkBack параметрлеріне өтіңіз.\n\nБрайль қарпін теру үшін телефоныңызды басқаша ұстап, пайдалануыңыз қажет.</string>
+  <string name="tutorial_intro_description">Брайль пернетақтасының көмегімен 6 нүктелі Брайль қарпін экранды түрту арқылы енгізе аласыз.\n\nUnified English Braille пайдаланудасыз. Теру тілін ауыстыру үшін MS Screen Reader параметрлеріне өтіңіз.\n\nБрайль қарпін теру үшін телефоныңызды басқаша ұстап, пайдалануыңыз қажет.</string>
   <string name="next_step">Келесі</string>
   <string name="leave_keyboard">Брайль пернетақтасын жабу</string>
-  <string name="hold_six_fingers_description">Брайль пернетақтасында әдетте қолданатын TalkBack қимылдарын пайдалана алмайсыз.\n\nБастау үшін теру кезінде пайдаланатын 6 Брайль нүктелерінің орнын белгілеп алайық.</string>
-  <string name="rotate_orientation_description_1">Бұдан былай кәдімгі TalkBack қимылдарын пайдалана алмайсыз. TalkBack функциясы Брайль пернетақтасын пайдалану кезінде қолжетімді болмайды.</string>
+  <string name="hold_six_fingers_description">Брайль пернетақтасында әдетте қолданатын MS Screen Reader қимылдарын пайдалана алмайсыз.\n\nБастау үшін теру кезінде пайдаланатын 6 Брайль нүктелерінің орнын белгілеп алайық.</string>
+  <string name="rotate_orientation_description_1">Бұдан былай кәдімгі MS Screen Reader қимылдарын пайдалана алмайсыз. MS Screen Reader функциясы Брайль пернетақтасын пайдалану кезінде қолжетімді болмайды.</string>
   <string name="rotate_orientation_description_2">Бастау үшін телефоныңыздың экранын әрі қаратып ұстаңыз.</string>
   <string name="tap_to_continue">Жалғастыру үшін кез келген жерді екі рет түртіңіз.</string>
   <string name="instruction_type_letter_a">\"A\" әрпін теру үшін сол сұқ саусағыңызбен 1 нүктесін түртіңіз.</string>
@@ -155,7 +155,7 @@
   <string name="result_swipe_down">КУРСОР АЛҒА ЖЫЛЖЫТЫЛДЫ.</string>
   <string name="result_swipe_down_2_fingers">ПЕРНЕТАҚТАНЫ ЖАСЫРУ</string>
   <string name="result_swipe_down_3_fingers">КЕЛЕСІ ПЕРНЕТАҚТА</string>
-  <string name="rotate_orientation_announcement">Бұдан былай кәдімгі TalkBack қимылдарын пайдалана алмайсыз. TalkBack функциясы Брайль пернетақтасын пайдалану кезінде қолжетімді болмайды.\n\n%1$s</string>
+  <string name="rotate_orientation_announcement">Бұдан былай кәдімгі MS Screen Reader қимылдарын пайдалана алмайсыз. MS Screen Reader функциясы Брайль пернетақтасын пайдалану кезінде қолжетімді болмайды.\n\n%1$s</string>
   <string name="rotate_orientation_inactive_announcement">Алдымен телефонды қосыңыз. Оның экраны әрі қарап тұруы керек.\n\nОдан кейін телефонды көлденеңінен бұрып, альбом қалпына келтіріңіз. Саусақтарыңыз телефонның шетінде болуы керек. Оң қолыңызбен USB портының шетінен ұстаңыз. 3 саусақ экранда, ал шынашақ пен бас бармақ телефонның шетінде.\n\nДайын болған кезде, экранды екі рет түртіңіз.\n\nБрайль пернетақтасын жабу үшін 3 саусақпен төмен қарай сырғытыңыз. Бастапқы пернетақтаға ораласыз.</string>
   <string name="rotate_orientation_continue_announcement">Телефон тік қалыпта. Жалғастыру үшін оны көлденең қалыпта ұстаңыз. Одан кейін экранды әрі қаратып ұстаңыз. Дайын болған кезде, экранды екі рет түртіңіз.</string>
   <string name="type_letter_a_announcement">Экранды әрі қаратып ұстаңыз. Ортаңғы 3 саусағыңыз экранды түрте алатындай етіп, телефонның шетінен екі қолыңызбен ұстаңыз.\n\nСол жақ сұқ саусағыңыз 1-нүктеде болуы керек. \"A\" әрпін теру үшін 1-нүктені түртіңіз.</string>
@@ -171,7 +171,7 @@
   <string name="swipe_down_3_fingers_announcement">Басқа пернетақтаға ауысу үшін 3 саусақпен төмен қарай сырғытыңыз. Қазір байқап көріңіз.</string>
   <string name="swipe_down_3_fingers_completed_announcement">Келесі пернетақта. Әдетте бұл пәрмен келесі пернетақтаға ауыстырады. Ал қазір сіз оқулықты ашып отырғандықтан, Брайль пернетақтасы да ашық болады.</string>
   <string name="swipe_up_3_fingers_announcement">Телефоныңызды үстелге жатқызып қою арқылы үстел үсті режимінде тере аласыз. Оқулықты жабу үшін 3 саусақпен жоғары сырғытыңыз және оқулықты жабу опциясын таңдаңыз.</string>
-  <string name="open_context_menu_announcement">Опциялар мәзірі ашық. Телефонды аударып, өзіңізге қаратыңыз да, әдеттегідей ұстаңыз. Телефонды қолдану үшін әдеттегі TalkBack қимылдарын пайдалана беруіңізге болады. Басқа опцияларды көру үшін оңға сырғытыңыз.</string>
+  <string name="open_context_menu_announcement">Опциялар мәзірі ашық. Телефонды аударып, өзіңізге қаратыңыз да, әдеттегідей ұстаңыз. Телефонды қолдану үшін әдеттегі MS Screen Reader қимылдарын пайдалана беруіңізге болады. Басқа опцияларды көру үшін оңға сырғытыңыз.</string>
   <string name="hold_six_fingers_announcement">%s\nҚұрылғыңызды үстелге жатқызып қойыңыз. Содан кейін теруге ыңғайлы болатындай әр қолыңыздың ортаңғы 3 саусағын экранға қойыңыз.</string>
   <string name="hold_six_fingers_inactive_announcement">Құрылғыңызды үстелге жатқызып қойыңыз. Содан кейін теруге ыңғайлы болатындай әр қолыңыздың ортаңғы 3 саусағын экранға қойыңыз.</string>
   <string name="finish_tutorial_announcement">Брайль пернетақтасын көрсету. Телефонды аударып, экранын ары қаратыңыз. Телефонды көлденеңінен ұстаңыз. Содан кейін мәтін тере беруіңізге болады.</string>
@@ -203,7 +203,7 @@
   <string name="custom_gesture_conflict_try_another">Бұл қимыл \"%1$s\" үшін қолданылады және оны өзгерту мүмкін емес. Басқа қимылды байқап көріңіз. %2$s</string>
   <string name="custom_gesture_cannot_used">Бұл қимылды пайдалану мүмкін емес</string>
   <string name="custom_gesture_no_gesture">Ешқандай қимыл орындалмады</string>
-  <string name="custom_gesture_try_another">Басқа қимылды байқап көріңіз. Барлық қолжетімді қимыл тізімін көру үшін TalkBack Брайль пернетақтасының Анықтамалық орталығына өтіңіз. %s</string>
+  <string name="custom_gesture_try_another">Басқа қимылды байқап көріңіз. Барлық қолжетімді қимыл тізімін көру үшін MS Screen Reader Брайль пернетақтасының Анықтамалық орталығына өтіңіз. %s</string>
   <string name="custom_gesture_no_match">Қимылдар сәйкес келмейді</string>
   <string name="custom_gesture_perform_again">Қайтадан пайдаланғыңыз келген қимылды орындаңыз. %s</string>
 </resources>
