@@ -3,5 +3,7 @@
     <string name="title_pref_selector_copy_text">Copy</string>
     <string name="title_pref_selector_translate_text">Translate</string>
     <string name="summary_pref_selector_copy_text">Swipe down to copy the focused text, swipe up to add it below the copied text</string>
+    <string name="title_pref_selector_ocr_text">Read text (OCR)</string>
+    <string name="summary_pref_selector_ocr_text">Swipe down to read the text in the focused item from the screen, swipe up to read it and translate it</string>
     <string name="summary_pref_selector_translate_text">Swipe up to hear the original text, swipe down to hear the translation</string>
 </resources>

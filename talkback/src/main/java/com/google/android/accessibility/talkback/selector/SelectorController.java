@@ -57,6 +57,9 @@ import static com.google.android.accessibility.utils.traversal.TraversalStrategy
 import static com.google.android.accessibility.utils.traversal.TraversalStrategy.SEARCH_FOCUS_FORWARD;
 
 import android.content.Context;
+import android.accessibilityservice.AccessibilityService;
+import android.graphics.Rect;
+import com.google.android.accessibility.talkback.translate.OcrTool;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import com.google.android.accessibility.talkback.ExtraSounds;
@@ -358,6 +361,10 @@ public class SelectorController implements UserInputEventListener {
         R.string.pref_selector_translate_text_key,
         R.string.selector_translate_text,
         R.bool.pref_selector_translate_text_default),
+    OCR_TEXT(
+        R.string.pref_selector_ocr_text_key,
+        R.string.selector_ocr_text,
+        R.bool.pref_selector_ocr_text_default),
     FORMATTING(
         R.string.pref_selector_text_formatting_inline_key,
         R.string.title_switch_text_formatting,
@@ -623,7 +630,8 @@ public class SelectorController implements UserInputEventListener {
           Setting.ADJUSTABLE_WIDGET,
           Setting.CONTROL_TELLING_TIME,
           Setting.COPY_TEXT,
-          Setting.TRANSLATE_TEXT);
+          Setting.TRANSLATE_TEXT,
+          Setting.OCR_TEXT);
 
   /** Lists all {@link Setting} that should be hidden for users. */
   private final ImmutableList<Setting> hiddenSettings;
@@ -937,6 +945,10 @@ public class SelectorController implements UserInputEventListener {
       }
       case TRANSLATE_TEXT -> {
         actionDescription = context.getString(R.string.title_pref_selector_translate_text);
+        hint = getAdjustSelectedSettingGestures();
+      }
+      case OCR_TEXT -> {
+        actionDescription = context.getString(R.string.title_pref_selector_ocr_text);
         hint = getAdjustSelectedSettingGestures();
       }
       case ACTIONS -> {
@@ -1704,6 +1716,10 @@ public class SelectorController implements UserInputEventListener {
         translateFocusedText(eventId, isNext);
         return;
       }
+      case OCR_TEXT -> {
+        ocrFocusedText(eventId, /* thenTranslate= */ !isNext);
+        return;
+      }
       case GRANULARITY -> {
         // Granularity is phased out. Assigns to the character setting.
         updateSettingPref(context, GRANULARITY_CHARACTERS);
@@ -2299,11 +2315,42 @@ public class SelectorController implements UserInputEventListener {
     speakText(eventId, isNext ? "Copied" : "Appended");
   }
 
+  /** Reads the text of the focused item from the screen on the phone, then speaks or translates it. */
+  private void ocrFocusedText(EventId eventId, boolean thenTranslate) {
+    @Nullable
+    AccessibilityNodeInfoCompat node =
+        accessibilityFocusMonitor.getAccessibilityFocus(/* useInputFocusIfEmpty= */ false);
+    if (node == null) {
+      speakText(eventId, "Nothing is focused");
+      return;
+    }
+    if (!(context instanceof AccessibilityService)) {
+      speakText(eventId, "Text reading is not available");
+      return;
+    }
+    Rect bounds = new Rect();
+    node.getBoundsInScreen(bounds);
+    speakText(eventId, "Reading text");
+    OcrTool.recognize(
+        (AccessibilityService) context,
+        bounds,
+        (text, message) -> {
+          if (text == null || text.isEmpty()) {
+            speakText(eventId, message == null ? "No text found" : message);
+          } else if (thenTranslate) {
+            TranslateEngine.translate(context, text, spoken -> speakText(eventId, spoken));
+          } else {
+            speakText(eventId, text);
+          }
+        });
+  }
+
   /** Swipe up: speak the original text. Swipe down: speak its translation. */
   private void translateFocusedText(EventId eventId, boolean isNext) {
     String text = focusedText();
     if (text.isEmpty()) {
-      speakText(eventId, "Nothing to translate");
+      // No text on the item (for example a picture): read it from the screen first.
+      ocrFocusedText(eventId, /* thenTranslate= */ isNext);
       return;
     }
     if (!isNext) {

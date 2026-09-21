@@ -65,7 +65,14 @@ public class GeminiRestRequestPerformer {
               }
             },
             error -> {
-              callback.onFailure(error.toString());
+              int code = error.networkResponse != null ? error.networkResponse.statusCode : 0;
+              if (code == 429) {
+                callback.onFailure("HTTP_429");
+              } else if (code == 400 || code == 401 || code == 403) {
+                callback.onFailure("HTTP_AUTH");
+              } else {
+                callback.onFailure(error.toString());
+              }
             });
 
     stringRequest.setRetryPolicy(

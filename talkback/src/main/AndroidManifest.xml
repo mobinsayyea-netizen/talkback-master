@@ -105,7 +105,18 @@
         <activity
             android:name="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity"
             android:exported="false"
-            android:label="Translate"
+            android:label="OCR &amp; Translate"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.actor.gemini.GeminiKeyActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.actor.gemini.GeminiSettingsActivity"
+            android:exported="false"
+            android:label="Gemini"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
         <activity-alias
             android:name="com.android.talkback.MsLauncherEntry"

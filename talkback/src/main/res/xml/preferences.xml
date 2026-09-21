@@ -82,11 +82,19 @@
       android:title="Recognition">
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
         android:key="pref_ms_translate_settings_key"
-        android:title="Translate"
-        android:summary="Languages and language packs">
+        android:title="OCR &amp; Translate"
+        android:summary="Text reading, languages and language packs">
       <intent
           android:targetPackage="com.android.talkback"
           android:targetClass="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity" />
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:key="pref_ms_gemini_settings_key"
+        android:title="Gemini"
+        android:summary="Key and model for image and screen descriptions">
+      <intent
+          android:targetPackage="com.android.talkback"
+          android:targetClass="com.google.android.accessibility.talkback.actor.gemini.GeminiSettingsActivity" />
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory

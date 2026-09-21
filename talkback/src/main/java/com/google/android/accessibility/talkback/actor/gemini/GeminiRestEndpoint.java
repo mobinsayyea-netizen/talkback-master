@@ -49,9 +49,9 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
 
   private final Context context;
   private final SharedPreferences prefs;
-  private final String model;
-  private final String url;
-  private final String urlWithApiKey;
+  private String model;
+  private String url;
+  private String urlWithApiKey;
   private final GeminiRestRequestPerformer requestPerformer;
   private final String safetyThresholdHarassment;
   private final String safetyThresholdHateSpeech;
@@ -62,13 +62,7 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
   public GeminiRestEndpoint(
       Context context, String apiKey, GeminiRestRequestPerformer requestPerformer) {
     this.context = context;
-    model = GeminiConfiguration.getGeminiModel(context);
-    url = GEMINI_URL + model + GEMINI_URL_NO_PARAM;
-    if (!TextUtils.isEmpty(apiKey)) {
-      urlWithApiKey = GEMINI_URL + model + GEMINI_URL_PARAM + apiKey;
-    } else {
-      urlWithApiKey = "";
-    }
+    refreshConfig();
     this.requestPerformer = requestPerformer;
     safetyThresholdHarassment = GeminiConfiguration.getSafetyThresholdHarassment(context);
     safetyThresholdHateSpeech = GeminiConfiguration.getSafetyThresholdHateSpeech(context);
@@ -80,7 +74,16 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
     prefs = SharedPreferencesUtils.getSharedPreferences(context);
   }
 
+  /** Reads the key and model the user saved in settings, so changes work without a restart. */
+  private void refreshConfig() {
+    String key = GeminiKeyStore.key(context);
+    model = GeminiKeyStore.model(context);
+    url = GEMINI_URL + model + GEMINI_URL_NO_PARAM;
+    urlWithApiKey = TextUtils.isEmpty(key) ? "" : GEMINI_URL + model + GEMINI_URL_PARAM + key;
+  }
+
   private boolean isSupported() {
+    refreshConfig();
     return !TextUtils.isEmpty(urlWithApiKey) || requestPerformer.isKeylessInitialized();
   }
 
@@ -111,6 +114,13 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
       geminiResponseListener = commonRequest.getListener();
     } else {
       LogUtils.v(TAG, "Not a common request - Return.");
+      return false;
+    }
+
+    refreshConfig();
+    if (GeminiKeyStore.inQuotaCooldown(context)) {
+      GeminiKeyStore.quotaShortMessage(context);
+      geminiResponseListener.onResponse(FinishReason.ERROR_RESPONSE, /* response= */ null);
       return false;
     }
 
@@ -163,6 +173,11 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
             @Override
             public void onFailure(String reason) {
               LogUtils.w(TAG, "ErrorResponse processing Gemini request:%s", reason);
+              if ("HTTP_429".equals(reason)) {
+                GeminiKeyStore.onQuotaFinished(context);
+              } else if ("HTTP_AUTH".equals(reason)) {
+                GeminiKeyStore.onInvalidKey(context);
+              }
               geminiResponseListener.onResponse(FinishReason.ERROR_RESPONSE, /* response= */ null);
             }
 
@@ -193,6 +208,7 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
       String command, byte[] imageByteArray, GeminiResponseListener geminiResponseListener) {
     if (!isSupported()) {
       LogUtils.d(TAG, "Gemini API is not supported");
+      GeminiKeyStore.onMissingKey(context);
       geminiResponseListener.onError(ErrorReason.UNSUPPORTED);
       return false;
     }

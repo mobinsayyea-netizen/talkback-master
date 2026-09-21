@@ -30,7 +30,7 @@ public class TranslateSettingsActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setTitle("Translate");
+    setTitle("OCR & Translate");
     prefs = TranslateEngine.prefs(this);
 
     LinearLayout layout = new LinearLayout(this);
@@ -40,7 +40,7 @@ public class TranslateSettingsActivity extends Activity {
     layout.setPadding(pad, pad, pad, pad);
 
     TextView heading = new TextView(this);
-    heading.setText("Translate");
+    heading.setText("OCR & Translate");
     heading.setTextColor(Color.WHITE);
     heading.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f);
     if (Build.VERSION.SDK_INT >= 28) {
@@ -77,6 +77,7 @@ public class TranslateSettingsActivity extends Activity {
             + (TranslateEngine.AUTO.equals(source) ? "Auto-detect" : TranslateEngine.languageName(source))
             + ". Tap to change");
     rows.add("Language packs. Tap to see or remove");
+    rows.add("Text reading (OCR) works on this phone for English, Hindi and Marathi.");
     rows.add("Translate works on this phone. Language packs download over mobile data or Wi-Fi.");
     adapter.notifyDataSetChanged();
   }

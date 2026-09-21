@@ -27,7 +27,7 @@ public final class GeminiConfiguration {
   }
 
   static String getGeminiModel(Context context) {
-    return "";
+    return GeminiKeyStore.model(context);
   }
 
   public static String getQnaSupportLocales(Context context) {
