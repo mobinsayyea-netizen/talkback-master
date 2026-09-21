@@ -185,6 +185,8 @@
     <string name="pref_selector_change_touch_focus_latency_key" translatable="false">pref_selector_change_touch_focus_latency_key</string>
     <string name="pref_selector_change_typing_focus_latency_key" translatable="false">pref_selector_change_typing_focus_latency_key</string>
     <string name="pref_selector_control_telling_time" translatable="false">pref_selector_control_telling_time</string>
+    <string name="pref_selector_copy_text_key" translatable="false">pref_selector_copy_text_key</string>
+    <string name="pref_selector_translate_text_key" translatable="false">pref_selector_translate_text_key</string>
     <string name="pref_selector_actions_key" translatable="false">pref_selector_actions_key </string>
 
     <string name="pref_selector_granularity_headings_key">pref_selector_granularity_headings_key</string>
@@ -1292,13 +1294,15 @@
     <bool name="pref_selector_language_default">false</bool>
     <bool name="pref_selector_verbosity_default">false</bool>
     <bool name="pref_selector_punctuation_default">false</bool>
-    <bool name="pref_selector_granularity_default">false</bool>
+    <bool name="pref_selector_granularity_default">true</bool>
     <bool name="pref_selector_hide_screen_default">false</bool>
     <bool name="pref_selector_scroll_seq_default">false</bool>
     <bool name="pref_selector_a11y_volume_default">false</bool>
     <bool name="pref_selector_typing_focus_latency_default">false</bool>
     <bool name="pref_selector_touch_focus_latency_default">false</bool>
     <bool name="pref_selector_control_telling_time_default">false</bool>
+    <bool name="pref_selector_copy_text_default">true</bool>
+    <bool name="pref_selector_translate_text_default">true</bool>
     <bool name="pref_selector_audio_focus_default">false</bool>
     <bool name="pref_selector_actions_default">true</bool>
     <bool name="pref_selector_granularity_headings_default">true</bool>
@@ -1392,7 +1396,7 @@
     <bool name="pref_show_navigation_menu_visited_links_default">false</bool>
     <bool name="pref_show_navigation_menu_unvisited_links_default">false</bool>
     <bool name="pref_show_navigation_menu_radios_default">false</bool>
-    <bool name="pref_show_navigation_menu_granularity_default">false</bool>
+    <bool name="pref_show_navigation_menu_granularity_default">true</bool>
     <bool name="pref_show_navigation_menu_window_default">true</bool>
     <bool name="pref_show_navigation_menu_container_default">true</bool>
      <bool name="pref_show_navigation_menu_row_column_default">true</bool>
@@ -1600,6 +1604,8 @@
     <string name="selector_punctuation" translatable="false">PUNCTUATION</string>
     <string name="selector_speech_rate" translatable="false">SPEECH_RATE</string>
     <string name="selector_language" translatable="false">LANGUAGE</string>
+    <string name="selector_copy_text" translatable="false">COPY_TEXT</string>
+    <string name="selector_translate_text" translatable="false">TRANSLATE_TEXT</string>
     <string name="selector_granularity" translatable="false">GRANULARITY</string>
     <string name="selector_hide_screen" translatable="false" >HIDE_SCREEN</string>
     <string name="selector_audio_focus" translatable="false">AUDIO_DUCKING</string>

@@ -57,6 +57,11 @@ import static com.google.android.accessibility.utils.traversal.TraversalStrategy
 import static com.google.android.accessibility.utils.traversal.TraversalStrategy.SEARCH_FOCUS_FORWARD;
 
 import android.content.Context;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import com.google.android.accessibility.talkback.ExtraSounds;
+import com.google.android.accessibility.talkback.translate.TranslateEngine;
+import com.google.android.accessibility.utils.AccessibilityNodeInfoUtils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -345,6 +350,14 @@ public class SelectorController implements UserInputEventListener {
         R.string.pref_selector_control_telling_time,
         R.string.selector_control_telling_time,
         R.bool.pref_selector_control_telling_time_default),
+    COPY_TEXT(
+        R.string.pref_selector_copy_text_key,
+        R.string.selector_copy_text,
+        R.bool.pref_selector_copy_text_default),
+    TRANSLATE_TEXT(
+        R.string.pref_selector_translate_text_key,
+        R.string.selector_translate_text,
+        R.bool.pref_selector_translate_text_default),
     FORMATTING(
         R.string.pref_selector_text_formatting_inline_key,
         R.string.title_switch_text_formatting,
@@ -608,7 +621,9 @@ public class SelectorController implements UserInputEventListener {
           Setting.CHANGE_TOUCH_FOCUS_LATENCY,
           Setting.CHANGE_TYPING_FOCUS_LATENCY,
           Setting.ADJUSTABLE_WIDGET,
-          Setting.CONTROL_TELLING_TIME);
+          Setting.CONTROL_TELLING_TIME,
+          Setting.COPY_TEXT,
+          Setting.TRANSLATE_TEXT);
 
   /** Lists all {@link Setting} that should be hidden for users. */
   private final ImmutableList<Setting> hiddenSettings;
@@ -914,6 +929,14 @@ public class SelectorController implements UserInputEventListener {
       }
       case CONTROL_TELLING_TIME -> {
         actionDescription = context.getString(R.string.title_control_speak_time);
+        hint = getAdjustSelectedSettingGestures();
+      }
+      case COPY_TEXT -> {
+        actionDescription = context.getString(R.string.title_pref_selector_copy_text);
+        hint = getAdjustSelectedSettingGestures();
+      }
+      case TRANSLATE_TEXT -> {
+        actionDescription = context.getString(R.string.title_pref_selector_translate_text);
         hint = getAdjustSelectedSettingGestures();
       }
       case ACTIONS -> {
@@ -1673,6 +1696,14 @@ public class SelectorController implements UserInputEventListener {
         switchTellingTimeOnOrOff(eventId);
         return;
       }
+      case COPY_TEXT -> {
+        copyFocusedText(eventId, isNext);
+        return;
+      }
+      case TRANSLATE_TEXT -> {
+        translateFocusedText(eventId, isNext);
+        return;
+      }
       case GRANULARITY -> {
         // Granularity is phased out. Assigns to the character setting.
         updateSettingPref(context, GRANULARITY_CHARACTERS);
@@ -2215,6 +2246,71 @@ public class SelectorController implements UserInputEventListener {
     lastChangeAccessibilityEventId = eventId;
     volumeMonitor.removeVolumeChangedListener(a11yVolumeChangedListener);
     volumeMonitor.addVolumeChangedListener(a11yVolumeChangedListener);
+  }
+
+  private String lastCopiedText = "";
+
+  private String focusedText() {
+    @Nullable
+    AccessibilityNodeInfoCompat node =
+        accessibilityFocusMonitor.getAccessibilityFocus(/* useInputFocusIfEmpty= */ false);
+    CharSequence text = AccessibilityNodeInfoUtils.getNodeText(node);
+    return text == null ? "" : text.toString().trim();
+  }
+
+  private void speakText(EventId eventId, CharSequence text) {
+    pipeline.returnFeedback(eventId, Feedback.speech(text));
+  }
+
+  private String readClipboardText(ClipboardManager clipboard) {
+    try {
+      ClipData data = clipboard.getPrimaryClip();
+      if (data != null && data.getItemCount() > 0) {
+        CharSequence t = data.getItemAt(0).coerceToText(context);
+        return t == null ? "" : t.toString();
+      }
+    } catch (RuntimeException e) {
+      // Clipboard may not be readable from the background; fall back to what we copied last.
+    }
+    return "";
+  }
+
+  /** Swipe down: copy the focused text. Swipe up: add it below the text already copied. */
+  private void copyFocusedText(EventId eventId, boolean isNext) {
+    String text = focusedText();
+    if (text.isEmpty()) {
+      speakText(eventId, "Nothing to copy");
+      return;
+    }
+    ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+    String result = text;
+    if (!isNext) {
+      String existing = readClipboardText(clipboard);
+      if (existing.isEmpty()) {
+        existing = lastCopiedText;
+      }
+      if (!existing.isEmpty()) {
+        result = existing + "\n" + text;
+      }
+    }
+    clipboard.setPrimaryClip(ClipData.newPlainText("MS Screen Reader", result));
+    lastCopiedText = result;
+    ExtraSounds.play(context, R.raw.clipboard);
+    speakText(eventId, isNext ? "Copied" : "Appended");
+  }
+
+  /** Swipe up: speak the original text. Swipe down: speak its translation. */
+  private void translateFocusedText(EventId eventId, boolean isNext) {
+    String text = focusedText();
+    if (text.isEmpty()) {
+      speakText(eventId, "Nothing to translate");
+      return;
+    }
+    if (!isNext) {
+      speakText(eventId, text);
+      return;
+    }
+    TranslateEngine.translate(context, text, spoken -> speakText(eventId, spoken));
   }
 
   private void switchTellingTimeOnOrOff(EventId eventId) {

@@ -78,6 +78,18 @@
         android:title="@string/title_pref_gemini_settings" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory
+      android:key="pref_category_recognition_key"
+      android:title="Recognition">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:key="pref_ms_translate_settings_key"
+        android:title="Translate"
+        android:summary="Languages and language packs">
+      <intent
+          android:targetPackage="com.android.talkback"
+          android:targetClass="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity" />
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory
       android:key="@string/pref_category_typing_key"
       android:title="@string/title_pref_category_typing"
       app:allowDividerAbove="true" >

@@ -96,6 +96,29 @@
             android:exported="false"
             android:label="TalkBackIpcService" />
 
+        <activity
+            android:name="com.google.android.accessibility.talkback.translate.TranslateSetupActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity"
+            android:exported="false"
+            android:label="Translate"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity-alias
+            android:name="com.android.talkback.MsLauncherEntry"
+            android:targetActivity="com.android.talkback.TalkBackPreferencesActivity"
+            android:exported="true"
+            android:label="@string/talkback_title"
+            android:icon="@drawable/icon">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
         <!-- TalkBack Preferences -->
         <activity
             android:name="com.android.talkback.TalkBackPreferencesActivity"

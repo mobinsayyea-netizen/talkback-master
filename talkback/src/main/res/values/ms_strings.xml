@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_pref_selector_copy_text">Copy</string>
+    <string name="title_pref_selector_translate_text">Translate</string>
+    <string name="summary_pref_selector_copy_text">Swipe down to copy the focused text, swipe up to add it below the copied text</string>
+    <string name="summary_pref_selector_translate_text">Swipe up to hear the original text, swipe down to hear the translation</string>
+</resources>

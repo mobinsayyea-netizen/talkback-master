@@ -25,6 +25,8 @@
   <application
      android:name="com.google.android.accessibility.talkback.TalkBackApplication"
      android:enableOnBackInvokedCallback="true"
+     android:label="@string/talkback_title"
+     android:icon="@drawable/icon"
      />
 
 </manifest>
