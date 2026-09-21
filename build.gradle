@@ -46,6 +46,7 @@ android {
         applicationId talkbackApplicationId
         versionCode runNumber
         resConfigs "en"
+        resConfigs "en"
         resConfigs "en"   // keep only English texts to make the app smaller
         resConfigs "en"
         resourceConfigurations = ['en']
