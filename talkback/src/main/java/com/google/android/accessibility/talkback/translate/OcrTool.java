@@ -21,6 +21,10 @@ public final class OcrTool {
   private OcrTool() {}
 
   public static void recognize(AccessibilityService service, final Rect region, final Callback cb) {
+    if (android.os.Build.VERSION.SDK_INT < 30) {
+      cb.done(null, "Text reading needs Android 11 or newer");
+      return;
+    }
     ScreenshotCapture.takeScreenshot(
         service,
         (bitmap, isFormatSupported) -> {
