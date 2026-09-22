@@ -167,7 +167,7 @@ public class SoundThemeCustomizeActivity extends Activity {
     }
   }
 
-  private @android.annotation.Nullable String resolvedPath(String themeIdToCheck, String slotKey) {
+  private @androidx.annotation.Nullable String resolvedPath(String themeIdToCheck, String slotKey) {
     Map<String, String> assignments = manager.readAssignments(themeIdToCheck);
     String fileName = assignments.get(slotKey);
     if (fileName == null) {
