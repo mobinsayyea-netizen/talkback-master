@@ -22,6 +22,15 @@
       android:key="@string/pref_soundback_volume_key"
       android:summary="%s"
       android:title="@string/title_pref_soundback_volume" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+      android:dependency="@string/pref_soundback_key"
+      android:key="pref_ms_sound_theme_key"
+      android:title="Sound Theme"
+      android:summary="Choose or customize which sounds TalkBack plays">
+    <intent
+        android:targetPackage="com.android.talkback"
+        android:targetClass="com.google.android.accessibility.talkback.soundtheme.SoundThemeListActivity" />
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference
       android:defaultValue="@bool/pref_use_audio_focus_default"
       android:key="@string/pref_use_audio_focus_key"
