@@ -77,6 +77,18 @@ public class FeedbackController {
 
   private final HapticPatternParser parser;
 
+  /** Lets another module supply a custom sound file to play instead of a raw resource. */
+  public interface SoundOverrideProvider {
+    /** Returns an absolute file path to play instead of {@code resId}, or null to use the default. */
+    @Nullable
+    String getOverridePath(int resId);
+  }
+
+  private @Nullable SoundOverrideProvider soundOverrideProvider;
+
+  /** Map from an override file path to its SoundPool sound ID. */
+  private final HashMap<String, Integer> mOverrideSoundIds = new HashMap<>();
+
   /** The volume adjustment for sound feedback. */
   private float mVolumeAdjustment = 1.0f;
 
@@ -92,6 +104,11 @@ public class FeedbackController {
 
   public FeedbackController(Context context) {
     this(context, createSoundPool(), (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE));
+  }
+
+  /** Sets (or clears, with null) the provider used to look up custom sound-theme overrides. */
+  public void setSoundOverrideProvider(@Nullable SoundOverrideProvider provider) {
+    soundOverrideProvider = provider;
   }
 
   public FeedbackController(Context context, SoundPool soundPool, Vibrator vibrator) {
@@ -222,6 +239,15 @@ public class FeedbackController {
     LogUtils.v(TAG, "playAuditory() resId=%d eventId=%s", resId, eventId);
 
     final float adjustedVolume = ignoreVolumeAdjustment ? volume : volume * mVolumeAdjustment;
+
+    @Nullable
+    String overridePath =
+        (soundOverrideProvider == null) ? null : soundOverrideProvider.getOverridePath(resId);
+    if (overridePath != null) {
+      playAuditoryFromPath(overridePath, rate, adjustedVolume);
+      return;
+    }
+
     int soundId = mSoundIds.get(resId);
 
     if (soundId != 0) {
@@ -236,6 +262,27 @@ public class FeedbackController {
             }
           });
       mSoundIds.put(resId, mSoundPool.load(mContext, resId, 1));
+    }
+  }
+
+  /** Plays a sound-theme override loaded straight from a file path, caching it by path. */
+  private void playAuditoryFromPath(String path, float rate, float adjustedVolume) {
+    Integer boxedSoundId = mOverrideSoundIds.get(path);
+    int soundId = (boxedSoundId == null) ? 0 : boxedSoundId;
+    if (soundId != 0) {
+      new EarconsPlayTask(mSoundPool, soundId, adjustedVolume, rate).execute();
+      return;
+    }
+    mSoundPool.setOnLoadCompleteListener(
+        (soundPool, sampleId, status) -> {
+          if (mAuditoryEnabled && sampleId != 0) {
+            new EarconsPlayTask(mSoundPool, sampleId, adjustedVolume, rate).execute();
+          }
+        });
+    try {
+      mOverrideSoundIds.put(path, mSoundPool.load(path, 1));
+    } catch (RuntimeException e) {
+      LogUtils.w(TAG, "Could not load sound-theme override %s: %s", path, e);
     }
   }
 

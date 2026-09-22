@@ -119,6 +119,30 @@
             android:label="Gemini"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
         <activity
+            android:name="com.google.android.accessibility.talkback.soundtheme.SoundThemeListActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Sound Theme"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.soundtheme.SoundThemeCustomizeActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Customize Sound Theme"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.soundtheme.SoundPickerActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Choose a sound"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
             android:name="com.google.android.accessibility.talkback.clipboard.ClipboardActivity"
             android:exported="false"
             android:excludeFromRecents="true"
