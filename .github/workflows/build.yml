@@ -68,6 +68,16 @@ jobs:
             exit 1
           fi
 
+      - name: Upload build log (only if the build failed)
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "buildlog-${{ github.run_number }}" build_output.log \
+            --title "Build log for failed run ${{ github.run_number }}" \
+            --notes "Full gradle output from the failed build. Safe to delete once read." \
+            --prerelease
+
       - name: Name the APK
         run: |
           APK=$(find . -path "*outputs/apk/phone/debug/*.apk" | head -1)
