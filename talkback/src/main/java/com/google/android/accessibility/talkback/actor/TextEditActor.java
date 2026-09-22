@@ -41,6 +41,7 @@ import android.util.Pair;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import com.google.android.accessibility.talkback.clipboard.ClipboardStore;
 import com.google.android.accessibility.talkback.Feedback;
 import com.google.android.accessibility.talkback.Pipeline.FeedbackReturner;
 import com.google.android.accessibility.talkback.ExtraSounds;
@@ -417,11 +418,15 @@ public class TextEditActor implements VoiceDictationDelegate {
       boolean copiedNodeText = copyToClipboard(clipboard, copyData);
       if (copiedNodeText) {
         ExtraSounds.play(service, R.raw.clipboard);
+        ClipboardStore.add(service, copyData);
       }
       return copiedNodeText;
     }
     if (result) {
       ExtraSounds.play(service, R.raw.clipboard);
+      if (copyData != null) {
+        ClipboardStore.add(service, copyData);
+      }
     }
     turnOffSelectionMode(node, eventId, /* clearSelection= */ true);
     CharSequence copiedText = CompositorUtils.refineInputText(service, copyData);

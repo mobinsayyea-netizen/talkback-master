@@ -81,6 +81,7 @@ import android.os.Looper;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import com.google.android.accessibility.talkback.clipboard.ClipboardBridge;
 import com.google.android.accessibility.talkback.ActorState;
 import com.google.android.accessibility.talkback.Feedback;
 import com.google.android.accessibility.talkback.Feedback.GeminiRequest;
@@ -545,6 +546,8 @@ public class GestureController {
     } else if (action.equals(service.getString(R.string.shortcut_value_braille_display_settings))) {
       pipeline.returnFeedback(
           eventId, Feedback.triggerIntent(Action.TRIGGER_BRAILLE_DISPLAY_SETTINGS));
+    } else if (action.equals(service.getString(R.string.shortcut_value_clipboard))) {
+      openClipboard();
     } else if (action.equals(service.getString(R.string.shortcut_value_tutorial))) {
       pipeline.returnFeedback(eventId, Feedback.triggerIntent(Action.TRIGGER_TUTORIAL));
     } else if (action.equals(service.getString(R.string.shortcut_value_practice_gestures))) {
@@ -875,6 +878,48 @@ public class GestureController {
       speak(service.getString(R.string.not_editable));
       return null;
     }
+  }
+
+  /**
+   * Opens the clipboard screen. When an edit box is focused, a double tap on a clipboard item pastes
+   * the item into that edit box.
+   */
+  private void openClipboard() {
+    @Nullable
+    AccessibilityNodeInfoCompat focused =
+        accessibilityFocusMonitor.getAccessibilityFocus(/* useInputFocusIfEmpty= */ true);
+    ClipboardBridge.PasteTarget target = null;
+    if (focused != null && Role.getRole(focused) == Role.ROLE_EDIT_TEXT) {
+      final AccessibilityNodeInfoCompat editBox = AccessibilityNodeInfoCompat.obtain(focused);
+      target = () -> pasteIntoEditBox(editBox, /* attempt= */ 0);
+    }
+    try {
+      ClipboardBridge.open(service, target);
+    } catch (RuntimeException e) {
+      speak("Clipboard could not be opened");
+    }
+  }
+
+  /** Pastes into the edit box after the clipboard screen has closed and the window is back. */
+  private void pasteIntoEditBox(AccessibilityNodeInfoCompat editBox, int attempt) {
+    new android.os.Handler(android.os.Looper.getMainLooper())
+        .postDelayed(
+            () -> {
+              boolean valid = editBox.refresh();
+              boolean pasted = false;
+              if (valid) {
+                if (!editBox.isFocused()) {
+                  editBox.performAction(AccessibilityNodeInfoCompat.ACTION_FOCUS);
+                }
+                pasted = pipeline.returnFeedback(EVENT_ID_UNTRACKED, Feedback.edit(editBox, PASTE));
+              }
+              if (!pasted && attempt < 2) {
+                pasteIntoEditBox(editBox, attempt + 1);
+              } else if (!pasted) {
+                speak("Copied. Could not paste here");
+              }
+            },
+            attempt == 0 ? 500 : 700);
   }
 
   private @Nullable AccessibilityNodeInfoCompat getEditTextInputFocus() {

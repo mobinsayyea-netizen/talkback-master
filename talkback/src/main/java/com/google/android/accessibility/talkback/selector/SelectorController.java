@@ -59,6 +59,7 @@ import static com.google.android.accessibility.utils.traversal.TraversalStrategy
 import android.content.Context;
 import android.accessibilityservice.AccessibilityService;
 import android.graphics.Rect;
+import com.google.android.accessibility.talkback.clipboard.ClipboardStore;
 import com.google.android.accessibility.talkback.translate.OcrTool;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -2300,17 +2301,20 @@ public class SelectorController implements UserInputEventListener {
     }
     ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     String result = text;
+    String existingText = "";
     if (!isNext) {
       String existing = readClipboardText(clipboard);
       if (existing.isEmpty()) {
         existing = lastCopiedText;
       }
+      existingText = existing;
       if (!existing.isEmpty()) {
         result = existing + "\n" + text;
       }
     }
     clipboard.setPrimaryClip(ClipData.newPlainText("MS Screen Reader", result));
     lastCopiedText = result;
+    ClipboardStore.replace(context, existingText, result);
     ExtraSounds.play(context, R.raw.clipboard);
     speakText(eventId, isNext ? "Copied" : "Appended");
   }

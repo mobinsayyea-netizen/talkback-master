@@ -6,4 +6,5 @@
     <string name="title_pref_selector_ocr_text">Read text (OCR)</string>
     <string name="summary_pref_selector_ocr_text">Swipe down to read the text in the focused item from the screen, swipe up to read it and translate it</string>
     <string name="summary_pref_selector_translate_text">Swipe up to hear the original text, swipe down to hear the translation</string>
+    <string name="shortcut_clipboard">Clipboard</string>
 </resources>

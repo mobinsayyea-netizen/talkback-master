@@ -76,6 +76,14 @@
         android:fragment="com.google.android.accessibility.talkback.preference.base.GeminiSettingsFragment"
         android:key="@string/pref_gemini_settings_key"
         android:title="@string/title_pref_gemini_settings" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:key="pref_ms_clipboard_key"
+        android:title="Clipboard"
+        android:summary="Copied text history, favorites and paste">
+      <intent
+          android:targetPackage="com.android.talkback"
+          android:targetClass="com.google.android.accessibility.talkback.clipboard.ClipboardActivity" />
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory
       android:key="pref_category_recognition_key"

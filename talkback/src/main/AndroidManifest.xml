@@ -118,6 +118,25 @@
             android:exported="false"
             android:label="Gemini"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.clipboard.ClipboardActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Clipboard"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity-alias
+            android:name="com.android.talkback.MsClipboardEntry"
+            android:targetActivity="com.google.android.accessibility.talkback.clipboard.ClipboardActivity"
+            android:exported="true"
+            android:label="Clipboard"
+            android:icon="@drawable/icon">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
         <activity-alias
             android:name="com.android.talkback.MsLauncherEntry"
             android:targetActivity="com.android.talkback.TalkBackPreferencesActivity"

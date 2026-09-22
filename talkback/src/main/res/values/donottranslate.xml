@@ -1070,6 +1070,7 @@
   <string name="shortcut_value_split_typing" translatable="false">SPLIT_TYPE</string>
   <string name="shortcut_value_toggle_braille_display" translatable="false">TOGGLE_BRAILLE_DISPLAY</string>
   <string name="shortcut_value_screen_overview" translatable="false">SCREEN_OVERVIEW</string>
+  <string name="shortcut_value_clipboard" translatable="false">CLIPBOARD</string>
   <string name="shortcut_value_describe_image" translatable="false">DESCRIBE_IMAGE</string>
   <string name="shortcut_value_increase_touch_explore_latency" translatable="false">INCREASE_TOUCH_EXPLORE_LATENCY</string>
   <string name="shortcut_value_decrease_touch_explore_latency" translatable="false">DECREASE_TOUCH_EXPLORE_LATENCY</string>
@@ -1438,7 +1439,7 @@
 
     <string name="pref_shortcut_2finger_1tap_default">@string/shortcut_value_pause_or_resume_feedback</string>
     <string name="pref_shortcut_2finger_2tap_default">@string/shortcut_value_media_control_or_voice_input</string>
-    <string name="pref_shortcut_2finger_3tap_default">@string/shortcut_value_read_from_current</string>
+    <string name="pref_shortcut_2finger_3tap_default">@string/shortcut_value_clipboard</string>
     <string name="pref_shortcut_3finger_1tap_default">@string/shortcut_value_talkback_breakout</string>
     <string name="pref_shortcut_3finger_2tap_default">@string/shortcut_value_copy</string>
     <string name="pref_shortcut_3finger_3tap_default">@string/shortcut_value_paste</string>

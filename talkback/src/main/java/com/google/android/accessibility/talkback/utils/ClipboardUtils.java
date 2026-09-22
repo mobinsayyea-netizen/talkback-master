@@ -20,6 +20,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.text.TextUtils;
+import com.google.android.accessibility.talkback.clipboard.ClipboardStore;
 
 /** Utility class to copy text to clipboard. */
 public final class ClipboardUtils {
@@ -36,7 +37,11 @@ public final class ClipboardUtils {
 
     final ClipboardManager clipboard =
         (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-    return copyToClipboard(clipboard, text);
+    boolean copied = copyToClipboard(clipboard, text);
+    if (copied) {
+      ClipboardStore.add(context, text);
+    }
+    return copied;
   }
 
   /**
