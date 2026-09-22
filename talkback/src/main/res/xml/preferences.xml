@@ -157,4 +157,16 @@
         android:summary="@string/subtitle_pref_gup"
         android:title="@string/title_pref_gup" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory
+      android:key="pref_ms_about_updates_key"
+      android:title="About &amp; Updates">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:key="pref_ms_check_updates_key"
+        android:title="Check for updates"
+        android:summary="See if a newer build is available and install it">
+      <intent
+          android:targetPackage="com.android.talkback"
+          android:targetClass="com.google.android.accessibility.talkback.updater.CheckForUpdatesActivity" />
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
 </PreferenceScreen>
