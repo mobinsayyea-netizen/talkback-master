@@ -134,8 +134,29 @@
             android:exported="false"
             android:excludeFromRecents="true"
             android:taskAffinity=""
-            android:label="Sound Theme"
+            android:label="Sound theme manager"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.soundtheme.SoundThemeChooseActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Sound theme"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.soundtheme.SoundThemeSettingsActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Sound theme settings"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.backup.SettingsBackupActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Backup and restore settings"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
         <activity
             android:name="com.google.android.accessibility.talkback.soundtheme.SoundThemeCustomizeActivity"

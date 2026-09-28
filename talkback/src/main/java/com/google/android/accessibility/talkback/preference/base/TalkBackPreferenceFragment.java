@@ -122,7 +122,9 @@ public class TalkBackPreferenceFragment extends TalkbackBaseFragment {
     // Remove braille category if none of braille feature supported.
     if (!FeatureSupport.supportBrailleDisplay(context)
         && !FeatureSupport.supportBrailleKeyboard(context)) {
-      removeCategory(R.string.pref_category_braille_key);
+      // Braille entries now live inside the Typing and Advanced categories, so hide them directly.
+      PreferenceSettingsUtils.hidePreference(context, getPreferenceScreen(), R.string.pref_brailleime_key);
+      PreferenceSettingsUtils.hidePreference(context, getPreferenceScreen(), R.string.pref_brailledisplay_key);
     } else {
       boolean isMultiTouchSupported =
           context

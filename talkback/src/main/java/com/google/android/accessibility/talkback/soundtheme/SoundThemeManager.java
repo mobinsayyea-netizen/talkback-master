@@ -71,26 +71,30 @@ public final class SoundThemeManager implements FeedbackController.SoundOverride
 
   private static List<SoundSlot> buildSlots() {
     List<SoundSlot> slots = new ArrayList<>();
+    // Order follows the Jieshuo "Sound scheme settings" list. Keys are stable; only labels/order change.
+    slots.add(new SoundSlot("focus_actionable", "Clickable element", R.raw.focus_actionable));
+    slots.add(new SoundSlot("focus", "Focusable element", R.raw.focus));
+    slots.add(new SoundSlot("keyboard_focus", "Keyboard element", R.raw.keyboard_focus));
     slots.add(new SoundSlot("click", "Click", R.raw.tick));
     slots.add(new SoundSlot("long_press", "Long press", R.raw.long_clicked));
-    slots.add(new SoundSlot("focus", "Focus", R.raw.focus));
-    slots.add(new SoundSlot("focus_actionable", "Focus on a clickable item", R.raw.focus_actionable));
-    slots.add(new SoundSlot("scroll", "Scroll", R.raw.scroll_tone));
-    slots.add(new SoundSlot("window_changed", "Window changed", R.raw.view_entered));
-    slots.add(new SoundSlot("complete", "Action complete", R.raw.complete));
+    slots.add(new SoundSlot("chime_up", "Scroll up", R.raw.chime_up));
+    slots.add(new SoundSlot("chime_down", "Scroll down", R.raw.chime_down));
+    slots.add(new SoundSlot("scroll", "Scrolling", R.raw.scroll_tone));
+    slots.add(new SoundSlot("window_state", "Window change", R.raw.window_state));
+    slots.add(new SoundSlot("window_changed", "View entered", R.raw.view_entered));
+    slots.add(new SoundSlot("screen_off", "Screen locked", R.raw.screen_off));
+    slots.add(new SoundSlot("screen_on", "Screen unlocked", R.raw.screen_on));
     slots.add(new SoundSlot("gesture_begin", "Gesture started", R.raw.gesture_begin));
     slots.add(new SoundSlot("gesture_end", "Gesture finished", R.raw.gesture_end));
-    slots.add(new SoundSlot("chime_up", "Chime up", R.raw.chime_up));
-    slots.add(new SoundSlot("chime_down", "Chime down", R.raw.chime_down));
-    slots.add(new SoundSlot("screen_on", "Screen on", R.raw.screen_on));
-    slots.add(new SoundSlot("screen_off", "Screen off", R.raw.screen_off));
+    slots.add(new SoundSlot("complete", "Action complete", R.raw.complete));
     slots.add(new SoundSlot("typo", "Spelling mistake", R.raw.typo));
     slots.add(new SoundSlot("clipboard", "Clipboard", R.raw.clipboard));
-    slots.add(new SoundSlot("keyboard_focus", "Keyboard key", R.raw.keyboard_focus));
     slots.add(new SoundSlot("loading", "Loading", R.raw.loading));
     slots.add(new SoundSlot("volume_beep", "Volume change", R.raw.volume_beep));
     slots.add(new SoundSlot("power_connected", "Charger connected", R.raw.power_connected));
     slots.add(new SoundSlot("power_full", "Battery full", R.raw.power_full));
+    slots.add(new SoundSlot("hyperlink", "Link", R.raw.hyperlink));
+    slots.add(new SoundSlot("formatting", "Text formatting", R.raw.formatting));
     slots.add(new SoundSlot("browse_on", "Browse mode on", R.raw.browse_mode_on_v4_2));
     slots.add(new SoundSlot("browse_off", "Browse mode off", R.raw.browse_mode_off_v4_2));
     return slots;

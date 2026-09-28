@@ -25,11 +25,29 @@
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
       android:dependency="@string/pref_soundback_key"
       android:key="pref_ms_sound_theme_key"
-      android:title="Sound Theme"
-      android:summary="Choose or customize which sounds TalkBack plays">
+      android:title="Sound theme"
+      android:summary="Choose which sound theme is used">
+    <intent
+        android:targetPackage="com.android.talkback"
+        android:targetClass="com.google.android.accessibility.talkback.soundtheme.SoundThemeChooseActivity" />
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+      android:dependency="@string/pref_soundback_key"
+      android:key="pref_ms_sound_theme_manager_key"
+      android:title="Sound theme manager"
+      android:summary="Add or delete sound themes">
     <intent
         android:targetPackage="com.android.talkback"
         android:targetClass="com.google.android.accessibility.talkback.soundtheme.SoundThemeListActivity" />
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+      android:dependency="@string/pref_soundback_key"
+      android:key="pref_ms_sound_theme_settings_key"
+      android:title="Sound theme settings"
+      android:summary="Choose the sound for each event in the active theme">
+    <intent
+        android:targetPackage="com.android.talkback"
+        android:targetClass="com.google.android.accessibility.talkback.soundtheme.SoundThemeSettingsActivity" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference
       android:defaultValue="@bool/pref_use_audio_focus_default"

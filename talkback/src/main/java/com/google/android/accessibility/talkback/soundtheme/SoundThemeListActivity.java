@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Lists the Default sound theme and any themes the user has added. Each row can be customized
- * (change individual sounds); added themes can also be deleted. "Add Sound Theme" copies every
- * file from a chosen folder into a new theme.
+ * Sound theme manager (like Jieshuo's "Sound scheme manager"): lists the Default theme and any themes
+ * the user has added; added themes can be deleted. "Add Sound Theme" copies every file from a chosen
+ * folder into a new theme. Choosing the active theme and customizing its sounds are separate screens.
  */
 public class SoundThemeListActivity extends Activity {
 
@@ -35,7 +35,7 @@ public class SoundThemeListActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setTitle("Sound Theme");
+    setTitle("Sound theme manager");
     manager = new SoundThemeManager(this);
 
     LinearLayout layout = new LinearLayout(this);
@@ -45,7 +45,7 @@ public class SoundThemeListActivity extends Activity {
     layout.setPadding(pad, pad, pad, pad);
 
     TextView heading = new TextView(this);
-    heading.setText("Sound Theme");
+    heading.setText("Sound theme manager");
     heading.setTextColor(Color.WHITE);
     heading.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f);
     layout.addView(
@@ -85,28 +85,6 @@ public class SoundThemeListActivity extends Activity {
             label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f);
             label.setText(active ? theme.name + ". Active" : theme.name);
             row.addView(label, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-
-            if (!active) {
-              Button setActive = smallButton("Set active");
-              setActive.setOnClickListener(
-                  v -> {
-                    manager.setActiveThemeId(theme.id);
-                    refresh();
-                    list.announceForAccessibility(theme.name + " set active");
-                  });
-              row.addView(setActive);
-            }
-
-            Button customize = smallButton("Customize");
-            customize.setOnClickListener(
-                v -> {
-                  Intent intent =
-                      new Intent(SoundThemeListActivity.this, SoundThemeCustomizeActivity.class);
-                  intent.putExtra(SoundThemeCustomizeActivity.EXTRA_THEME_ID, theme.id);
-                  intent.putExtra(SoundThemeCustomizeActivity.EXTRA_THEME_NAME, theme.name);
-                  startActivity(intent);
-                });
-            row.addView(customize);
 
             if (!theme.builtin) {
               Button delete = smallButton("Delete");

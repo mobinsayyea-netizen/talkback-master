@@ -374,7 +374,9 @@ public class RingerModeAndScreenMonitor extends SameThreadBroadcastReceiver
 
   /** Appends a short English battery level, like "Battery 65%", after the time. */
   private void appendBatteryLevelIfNeeded(SpannableStringBuilder builder) {
-    if (!enabledTellingTime) {
+    // Own on/off switch (Settings > General settings), separate from the time announcement.
+    if (!com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(service)
+        .getBoolean("pref_ms_battery_announce_key", true)) {
       return;
     }
     Intent battery = service.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
