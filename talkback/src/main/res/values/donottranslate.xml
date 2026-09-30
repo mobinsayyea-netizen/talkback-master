@@ -1503,6 +1503,8 @@
     <item type="id" name="enable_dimming" />
     <item type="id" name="disable_dimming" />
     <item type="id" name="enable_telling_time" />
+    <item type="id" name="video_description_start" />
+    <item type="id" name="video_description_stop" />
     <item type="id" name="disable_telling_time" />
     <item type="id" name="hear_lesson" />
     <item type="id" name="viewpager_breakout_prev_page" />

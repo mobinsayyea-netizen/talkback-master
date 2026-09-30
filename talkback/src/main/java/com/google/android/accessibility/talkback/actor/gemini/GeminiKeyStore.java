@@ -13,6 +13,7 @@ public final class GeminiKeyStore {
 
   public static final String PREFS = "ms_gemini";
   public static final String DEFAULT_MODEL = "gemini-flash-latest";
+  public static final String DEFAULT_LIVE_MODEL = "gemini-3.1-flash-live-preview";
 
   private static final long QUOTA_BLOCK_MS = 2 * 60 * 1000L;
   private static final long QUOTA_FULL_MESSAGE_EVERY_MS = 10 * 60 * 1000L;
@@ -34,6 +35,16 @@ public final class GeminiKeyStore {
   public static String model(Context context) {
     String m = prefs(context).getString("model", "").trim();
     return TextUtils.isEmpty(m) ? DEFAULT_MODEL : m;
+  }
+
+  /** Model used by the live video description (Gemini Live). */
+  public static String liveModel(Context context) {
+    String m = prefs(context).getString("live_model", "").trim();
+    return TextUtils.isEmpty(m) ? DEFAULT_LIVE_MODEL : m;
+  }
+
+  public static void setLiveModel(Context context, String model) {
+    prefs(context).edit().putString("live_model", model == null ? "" : model.trim()).apply();
   }
 
   public static void setModel(Context context, String model) {

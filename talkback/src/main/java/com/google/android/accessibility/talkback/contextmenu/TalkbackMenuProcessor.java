@@ -73,6 +73,7 @@ public class TalkbackMenuProcessor {
   private static final int ORDER_SHOW_HIDE_SCREEN = 20;
   private static final int ORDER_SYSTEM_ACTIONS = 24;
   private static final int ORDER_TELL_TIME = 27;
+  private static final int ORDER_VIDEO_DESCRIPTION = 6;
 
   private final TalkBackService service;
   private final ActorState actorState;
@@ -133,6 +134,9 @@ public class TalkbackMenuProcessor {
       addItemOrSubMenuForCurrentNode(
           menu, R.id.summarize_view_menu, R.string.title_summarize_view, ORDER_SUMMARIZE_VIEW);
     }
+
+    // Video description (live)
+    addVideoDescriptionMenu(menu);
 
     // Text formatting
     addItemOrSubMenuForCurrentNode(
@@ -449,6 +453,28 @@ public class TalkbackMenuProcessor {
           R.id.enable_dimming,
           ORDER_SHOW_HIDE_SCREEN,
           R.string.shortcut_enable_dimming);
+    }
+  }
+
+  private void addVideoDescriptionMenu(ContextMenu menu) {
+    menu.removeItem(R.id.video_description_start);
+    menu.removeItem(R.id.video_description_stop);
+    if (!FeatureSupport.canTakeScreenShotByAccessibilityService()
+        || ScreenMonitor.isDeviceLocked(service)) {
+      return;
+    }
+    if (com.google.android.accessibility.talkback.actor.video.VideoDescriber.isRunning()) {
+      menu.add(
+          /* groupId= */ 0,
+          R.id.video_description_stop,
+          ORDER_VIDEO_DESCRIPTION,
+          R.string.title_video_description_stop);
+    } else {
+      menu.add(
+          /* groupId= */ 0,
+          R.id.video_description_start,
+          ORDER_VIDEO_DESCRIPTION,
+          R.string.title_video_description);
     }
   }
 

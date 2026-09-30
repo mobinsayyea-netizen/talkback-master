@@ -80,6 +80,13 @@ Raw resources are in `talkback/src/main/res/raw`, `braille/common/src/phone/res/
 
 **Reorganised settings** (not done yet): categories **General settings, TTS settings, Sounds, Recognition, Controls, Typing, Advanced, About & Updates**. TTS options stay exactly as they are. Keep preference **keys unchanged** (only move/rename). Remove "Share your feedback" and "Contact Google Disability support". OCR & Translate settings live together under Recognition.
 
+### 3.3 Live video description (added after build 8)
+- Menu item **Video description** in the TalkBack action menu (next to *Describe screen*); while running it shows **Stop video description**. It also stops by itself when the screen turns off and says "Video description stop".
+- Code: `talkback/.../actor/video/VideoDescriber.java`. It takes a screenshot about once a second with the service's own screenshot permission (**no screen-recording permission needed**, Android 11+), scales it to max 640 px, skips unchanged frames (saves quota), and sends it to **Gemini Live** over a WebSocket (OkHttp added in `shared.gradle`). Every ~1.5 s after the last answer it sends `[TICK]` and Gemini says only what is new (or a dot). Speech goes through TalkBack's own pipeline (Google TTS), with Hindi/English parts marked by `LocaleSpan`. Language = the Translate target language (default Hindi).
+- Live model default `gemini-3.1-flash-live-preview` (`GeminiKeyStore.liveModel`, pref `live_model`, **no settings screen yet**). Falls back to simpler setup, then audio answers with transcript, like the Vision Assistant app. Quota (429) and invalid key are handled with the existing messages.
+- **Unverified on a phone:** menu item position, speech timing/queueing, how often it speaks, battery use, behaviour on protected (black) video apps.
+- Planned, not done: Lua bridge `service.execute("video description")`, auto-labelling of unlabeled buttons, shared online label list.
+
 ## 5. TODO — in this order
 
 1. **Clipboard (next build).** Persistent history (kept until he deletes it). Screen with **check boxes to select several items ("Manage")**, plus **Favorite** and **Delete** on the selected. "Delete all" must keep favorites. Open it with **two-finger triple tap** (add a new shortcut action in `GestureShortcutMapping`, default on `TWO_FINGER_TRIPLE_TAP`, still re-assignable), plus an activity-alias "Clipboard" in the app list and an entry in settings. Record copies made by the Copy control and TalkBack's own copy (`TextEditActor`). Limit: Android blocks reading the clipboard from the background, so only these copies are captured.

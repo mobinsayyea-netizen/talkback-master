@@ -98,6 +98,8 @@ public class ContextMenuItemClickProcessor {
         || (itemId == R.id.tts_settings)
         || (itemId == R.id.enable_dimming)
         || (itemId == R.id.disable_dimming)
+        || (itemId == R.id.video_description_start)
+        || (itemId == R.id.video_description_stop)
         || (itemId == R.id.enable_telling_time)
         || (itemId == R.id.disable_telling_time)
         || (itemId == R.id.screen_search)
@@ -167,6 +169,11 @@ public class ContextMenuItemClickProcessor {
     } else if (itemId == R.id.braille_display_settings) {
       pipeline.returnFeedback(
           eventId, Feedback.triggerIntent(Action.TRIGGER_BRAILLE_DISPLAY_SETTINGS));
+    } else if (itemId == R.id.video_description_start) {
+      com.google.android.accessibility.talkback.actor.video.VideoDescriber.start(service, pipeline);
+    } else if (itemId == R.id.video_description_stop) {
+      com.google.android.accessibility.talkback.actor.video.VideoDescriber.stop(
+          "Video description stop");
     } else if (itemId == R.id.enable_telling_time) {
       onManuallyChangeSetting(R.string.pref_speak_time_key);
       SharedPreferencesUtils.putBooleanPref(
