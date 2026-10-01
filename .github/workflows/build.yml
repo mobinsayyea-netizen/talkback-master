@@ -28,7 +28,7 @@ jobs:
       - name: Install Android SDK pieces
         run: |
           yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "platforms;android-36" "build-tools;36.0.0" || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" || true
 
       - name: Prepare signing key
         env:

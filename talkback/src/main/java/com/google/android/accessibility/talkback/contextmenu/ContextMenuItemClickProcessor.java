@@ -105,7 +105,9 @@ public class ContextMenuItemClickProcessor {
         || (itemId == R.id.screen_search)
         || (itemId == R.id.voice_commands)
         || (itemId == R.id.braille_display_settings)
-        || (itemId == R.id.show_keyboard_shortcuts);
+        || (itemId == R.id.show_keyboard_shortcuts)
+        || (itemId == R.id.lua_create_extension)
+        || (itemId == R.id.lua_create_tool);
   }
 
   public boolean onMenuItemClicked(MenuItem menuItem) {
@@ -184,6 +186,10 @@ public class ContextMenuItemClickProcessor {
           prefs, service.getResources(), R.string.pref_speak_time_key, false);
     } else if (itemId == R.id.show_keyboard_shortcuts) {
       pipeline.returnFeedback(eventId, Feedback.keyboard(SHOW_KEYBOARD_SHORTCUTS_DIALOG));
+    } else if (itemId == R.id.lua_create_extension) {
+      com.google.android.accessibility.talkback.editor.ProjectCreateDialog.show(service, true);
+    } else if (itemId == R.id.lua_create_tool) {
+      com.google.android.accessibility.talkback.editor.ProjectCreateDialog.show(service, false);
     }
 
     return true;

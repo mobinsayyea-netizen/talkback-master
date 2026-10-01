@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_create_extension">Create Extension</string>
+    <string name="menu_create_tool">Create Tool</string>
+    <string name="dialog_enter_name">Enter keyword</string>
+    <string name="ide_save">Save</string>
+    <string name="ide_insert">Insert</string>
+    <string name="ide_granular">Granular Mode</string>
+    <string name="ide_execute">Execute</string>
+    <string name="ide_undo">Undo</string>
+    <string name="ide_redo">Redo</string>
+    <string name="ide_editor_hint">Lua code</string>
+    <string name="insert_function">Insert Function</string>
+    <string name="insert_plugins">Insert Plugins</string>
+    <string name="insert_tools">Insert Tools</string>
+    <string name="insert_custom_voice">Insert Custom voice commands</string>
+    <string name="insert_app">Insert Application</string>
+    <string name="insert_auto_click">Insert Automatic click</string>
+    <string name="dialog_auto_click_hint">Enter buttons to click (one per line)</string>
+</resources>

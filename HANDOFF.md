@@ -2,6 +2,8 @@
 
 **हिंदी सार (for Mobeen):** यह फ़ाइल नई चैट के लिए है। इसमें बताया है कि MS Screen Reader क्या है, अब तक क्या बना, आपने क्या-क्या तय किया, और आगे क्या करना है (क्रम से)। नई चैट में बस लिखिए: "MS Screen Reader का काम आगे बढ़ाओ, रेपो talkback-master की HANDOFF.md पढ़ो"।
 
+> **Lua extension system (AndroLua + editor):** see `LUA_IDE_PROGRESS.md` for status and remaining steps.
+
 ---
 
 ## 1. The user and how to work with him

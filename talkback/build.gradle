@@ -17,6 +17,13 @@ dependencies {
 
 android {
     namespace "com.google.android.accessibility.talkback"
+    ndkVersion "27.1.12297006"
+    // AndroLua (Lua 5.3 + LuaJava) native engine for the Lua extension system
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
     defaultConfig {
         buildConfigField("String", "APPLICATION_ID", '"' + talkbackApplicationId + '"')
         buildConfigField("String", "GEMINI_API_KEY", "\"\"")

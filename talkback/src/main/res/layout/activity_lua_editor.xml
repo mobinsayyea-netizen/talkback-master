@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1E1E1E">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#252526"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button android:id="@+id/btn_save" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_save" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_insert" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_insert" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_granular" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_granular" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_execute" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_execute" android:textColor="#4CAF50" />
+            <Button android:id="@+id/btn_undo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_undo" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_redo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_redo" android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <EditText
+        android:id="@+id/editor_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top|start"
+        android:background="@null"
+        android:hint="@string/ide_editor_hint"
+        android:textColor="#D4D4D4"
+        android:textColorHint="#6A9955"
+        android:fontFamily="monospace"
+        android:textSize="14sp"
+        android:padding="12dp"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:scrollbars="vertical" />
+</LinearLayout>

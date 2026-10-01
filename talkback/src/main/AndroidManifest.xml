@@ -32,6 +32,11 @@
     <!-- Required for App Enumeration -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission"/>
 
+    <!-- Lua extensions: keep scripts in /sdcard/TalkBack (optional, falls back to the app folder). -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+
     <!-- Required for sending data to Google Analytics. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
@@ -97,6 +102,11 @@
             android:exported="false"
             android:label="TalkBackIpcService" />
 
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.LuaEditorActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
         <activity
             android:name="com.google.android.accessibility.talkback.translate.TranslateSetupActivity"
             android:exported="false"
