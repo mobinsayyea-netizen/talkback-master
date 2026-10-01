@@ -33,6 +33,19 @@
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
       android:dependency="@string/pref_soundback_key"
+      android:key="pref_ms_no_sound_apps_key"
+      android:title="@string/ms_no_sound_apps_title">
+    <intent
+        android:targetPackage="com.android.talkback"
+        android:targetClass="com.google.android.accessibility.talkback.soundtheme.AppSoundMuteActivity" />
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference
+      android:defaultValue="false"
+      android:dependency="@string/pref_soundback_key"
+      android:key="pref_ms_precise_sound_effect"
+      android:title="@string/ms_precise_sound_effect_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+      android:dependency="@string/pref_soundback_key"
       android:key="pref_ms_sound_theme_manager_key"
       android:title="Sound theme manager"
       android:summary="Add or delete sound themes">
@@ -58,6 +71,15 @@
       android:defaultValue="@bool/pref_vibration_default"
       android:key="@string/pref_vibration_key"
       android:title="@string/title_pref_vibration" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference
+      android:defaultValue="32"
+      android:dependency="@string/pref_vibration_key"
+      android:dialogTitle="@string/ms_vibrate_intensity_title"
+      android:entries="@array/ms_vibrate_intensity_entries"
+      android:entryValues="@array/ms_vibrate_intensity_values"
+      android:key="pref_ms_vibrate_intensity"
+      android:summary="%s"
+      android:title="@string/ms_vibrate_intensity_title" />
   <com.google.android.accessibility.talkback.preference.base.AccessibilityFooterPreference
       android:key="@string/pref_speech_footer_key"
       android:title="@string/title_pref_speech_footer"

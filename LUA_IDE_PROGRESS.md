@@ -24,3 +24,13 @@ Use nirenr's **AndroLua_pro** (MIT) C engine (Lua 5.3 + LuaJava) directly, not L
 - Menu items may be hidden if TalkBack's "customize menus" setting filters them — check on device.
 - Later (from his ideas): long-press an extension -> Delete / Send / Edit / assign gesture; per-app notification on/off from the app-icon long-press menu.
 - Do not touch key/package/signing (see HANDOFF.md).
+
+## Feedback settings (copy of Jieshuo's screen) — status
+Rules from user: replicate Jieshuo's whole "Feedback settings" EXCEPT "download more sound themes". Screen renamed from "Sound and vibration" to "Feedback settings" (res/values/strings.xml). User said: finish it fully, not half; OK to use Jieshuo's bundled default sounds.
+- DONE (unverified build): vibration intensity list (Light 12/Medium 32/Strong 48/Strongest 64) -> `utils/.../FeedbackController.applyHapticIntensity` (Medium = unchanged). Pref `pref_ms_vibrate_intensity`.
+- DONE (unverified): "Apps where additional sound effects are not used" -> `soundtheme/AppSoundMuteActivity`, pref `pref_ms_no_sound_apps`. Effective: `ExtraEventSounds` tracks the front app (`currentPackage`) and `SoundThemeManager.playSlot` skips ticked apps. Applies only to the extra slots, not to TalkBack's own 25 sounds.
+- DONE (unverified): "precise sound effect" switch (`pref_ms_precise_sound_effect`, default off). STORED ONLY: the text-matching sound feature does not exist yet.
+- DONE (unverified): 54 extra sound slots (`SoundThemeManager.buildSlots`). Seven have a Jieshuo default file (res/raw/jx_*.ogg): focus0, focus4, beep, cancel, tick, clock, camera_click. Others silent until a theme assigns a file.
+- Triggers wired (`soundtheme/ExtraEventSounds`, fed from `TalkBackService.onAccessibilityEvent`): talkman_start/stop, feedback_paused/resume, power_disconnected, power_low, unlock, raise/lower_volume, dialog, toast, edit_box, check_box, seek_bar, progress, has_action, scroll_top/bottom/page, inputmethod_show/hide, copy, paste (TextEditActor), to_back, screenshot (SystemActionPerformer), auto_ocr/_done/_error (OcrTool), auto_trans (TranslateEngine).
+- NOT wired (no matching feature/event in this TalkBack yet): focus0, focus4, beep, cancel, tick, clock, camera_click, action_item, page_up/down, progress_up/down, progress_100, timer_start/end, recognition_*, previous_text/next_text, append_copy, clear, clear_notification. They can be assigned and previewed, but nothing plays them.
+- NOT DONE: first GitHub Actions build + fixing compile errors.

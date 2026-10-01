@@ -56,6 +56,11 @@ public final class SystemActionPerformer {
   }
 
   public boolean performAction(int id) {
+    if (id == AccessibilityService.GLOBAL_ACTION_BACK) {
+      com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("to_back");
+    } else if (id == AccessibilityService.GLOBAL_ACTION_TAKE_SCREENSHOT) {
+      com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("screenshot");
+    }
     if (actorState != null) {
       actorState.setLastSystemAction(id);
     }

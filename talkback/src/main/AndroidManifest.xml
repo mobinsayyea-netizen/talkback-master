@@ -155,6 +155,13 @@
             android:label="Sound theme"
             android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
         <activity
+            android:name="com.google.android.accessibility.talkback.soundtheme.AppSoundMuteActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:label="Apps where additional sound effects are not used"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
+        <activity
             android:name="com.google.android.accessibility.talkback.soundtheme.SoundThemeSettingsActivity"
             android:exported="false"
             android:excludeFromRecents="true"

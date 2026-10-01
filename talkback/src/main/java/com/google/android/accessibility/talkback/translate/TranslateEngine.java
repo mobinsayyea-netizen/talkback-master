@@ -191,6 +191,7 @@ public final class TranslateEngine {
                     0,
                     spoken.length(),
                     Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("auto_trans");
                 callback.speak(spoken);
               }
               translator.close();

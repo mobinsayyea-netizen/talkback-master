@@ -173,7 +173,7 @@ public class SoundThemeCustomizeActivity extends Activity {
       } catch (Exception e) {
         stopPreview();
       }
-    } else {
+    } else if (slot.defaultResId != 0) {
       try {
         android.media.MediaPlayer mp = android.media.MediaPlayer.create(this, slot.defaultResId);
         if (mp != null) {

@@ -20,7 +20,15 @@ public final class OcrTool {
 
   private OcrTool() {}
 
-  public static void recognize(AccessibilityService service, final Rect region, final Callback cb) {
+  public static void recognize(
+      AccessibilityService service, final Rect region, final Callback originalCb) {
+    com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("auto_ocr");
+    final Callback cb =
+        (text, message) -> {
+          com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire(
+              text != null ? "auto_ocr_done" : "auto_ocr_error");
+          originalCb.done(text, message);
+        };
     if (android.os.Build.VERSION.SDK_INT < 30) {
       cb.done(null, "Text reading needs Android 11 or newer");
       return;

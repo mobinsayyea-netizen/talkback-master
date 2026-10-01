@@ -68,10 +68,28 @@ public class GeminiRestRequestPerformer {
               int code = error.networkResponse != null ? error.networkResponse.statusCode : 0;
               if (code == 429) {
                 callback.onFailure("HTTP_429");
-              } else if (code == 400 || code == 401 || code == 403) {
+              } else if (code == 401 || code == 403) {
                 callback.onFailure("HTTP_AUTH");
               } else {
-                callback.onFailure(error.toString());
+                String detail = "";
+                try {
+                  if (error.networkResponse != null && error.networkResponse.data != null) {
+                    String body = new String(error.networkResponse.data, "UTF-8");
+                    org.json.JSONObject e = new org.json.JSONObject(body).optJSONObject("error");
+                    if (e != null) {
+                      detail = e.optString("message", "");
+                    }
+                  }
+                } catch (Exception ignored) {
+                  // Keep the short form.
+                }
+                if (code == 400 && detail.toLowerCase().contains("api key")) {
+                  callback.onFailure("HTTP_AUTH");
+                } else if (code != 0) {
+                  callback.onFailure("HTTP " + code + ": " + detail);
+                } else {
+                  callback.onFailure(error.toString());
+                }
               }
             });
 

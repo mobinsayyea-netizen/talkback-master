@@ -2488,13 +2488,13 @@ Description: Explain that the feature is enabled for all images. [CHAR_LIMIT=NON
   Source: Title for the sound and vibration.
   Description: The user can set sound and vibration. [CHAR_LIMIT=NONE]
   -->
-  <string name="title_pref_sound_and_vibration">Sound and vibration</string>
+  <string name="title_pref_sound_and_vibration">Feedback settings</string>
 
   <!--
   Source: Title for the sound and vibration.
   Description: The user can set sound. [CHAR_LIMIT=NONE]
   -->
-  <string name="title_pref_sound">Sound</string>
+  <string name="title_pref_sound">Feedback settings</string>
 
   <!--
     Source: An utterance template for announcing copy of text (during edit).

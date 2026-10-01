@@ -160,6 +160,12 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
                 geminiResponseListener.onResponse(FinishReason.STOP, response.text());
                 LogUtils.v(TAG, "Gemini succeeds");
               } else { // Redefine the hint of these kinds when the use cases are understood.
+                GeminiKeyStore.say(
+                    context,
+                    "Gemini gave no answer. Reason: "
+                        + (response.blockReason() != null
+                            ? response.blockReason()
+                            : response.finishReason()));
                 geminiResponseListener.onResponse(FinishReason.ERROR_BLOCKED, /* response= */ null);
                 LogUtils.v(
                     TAG,
@@ -177,6 +183,12 @@ public class GeminiRestEndpoint implements GeminiEndpoint {
                 GeminiKeyStore.onQuotaFinished(context);
               } else if ("HTTP_AUTH".equals(reason)) {
                 GeminiKeyStore.onInvalidKey(context);
+              } else {
+                String shown = reason == null ? "unknown" : reason;
+                if (shown.length() > 220) {
+                  shown = shown.substring(0, 220);
+                }
+                GeminiKeyStore.say(context, "Gemini error. " + shown);
               }
               geminiResponseListener.onResponse(FinishReason.ERROR_RESPONSE, /* response= */ null);
             }

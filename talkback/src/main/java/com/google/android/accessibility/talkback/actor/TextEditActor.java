@@ -418,12 +418,14 @@ public class TextEditActor implements VoiceDictationDelegate {
       boolean copiedNodeText = copyToClipboard(clipboard, copyData);
       if (copiedNodeText) {
         ExtraSounds.play(service, R.raw.clipboard);
+        com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("copy");
         ClipboardStore.add(service, copyData);
       }
       return copiedNodeText;
     }
     if (result) {
       ExtraSounds.play(service, R.raw.clipboard);
+        com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("copy");
       if (copyData != null) {
         ClipboardStore.add(service, copyData);
       }
@@ -532,6 +534,7 @@ public class TextEditActor implements VoiceDictationDelegate {
     editTextActionHistory.afterPaste();
     if (result) {
       ExtraSounds.play(service, R.raw.clipboard);
+        com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("paste");
     }
 
     if (!result) {

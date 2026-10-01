@@ -66,7 +66,9 @@ public final class SoundThemeManager implements FeedbackController.SoundOverride
   public SoundThemeManager(Context context) {
     this.appContext = context.getApplicationContext();
     for (SoundSlot slot : buildSlots()) {
-      slotsByResId.put(slot.defaultResId, slot);
+      if (slot.defaultResId != 0) {
+        slotsByResId.put(slot.defaultResId, slot);
+      }
       slotsByKey.put(slot.key, slot);
     }
     ensureDefaultThemeExists();
@@ -100,11 +102,133 @@ public final class SoundThemeManager implements FeedbackController.SoundOverride
     slots.add(new SoundSlot("formatting", "Text formatting", R.raw.formatting));
     slots.add(new SoundSlot("browse_on", "Browse mode on", R.raw.browse_mode_on_v4_2));
     slots.add(new SoundSlot("browse_off", "Browse mode off", R.raw.browse_mode_off_v4_2));
+    // Further occasions from Jieshuo's list. Seven have a Jieshuo default sound (jx_*); the rest are silent until a theme assigns a file.
+    slots.add(new SoundSlot("focus0", "Edge menu element or navigation type", R.raw.jx_focus0));
+    slots.add(new SoundSlot("focus4", "Not focusable element", R.raw.jx_focus4));
+    slots.add(new SoundSlot("action_item", "Action item", 0));
+    slots.add(new SoundSlot("scroll_page", "Scroll page", 0));
+    slots.add(new SoundSlot("page_up", "Page up", 0));
+    slots.add(new SoundSlot("page_down", "Page down", 0));
+    slots.add(new SoundSlot("scroll_top", "Scrolled to top", 0));
+    slots.add(new SoundSlot("scroll_bottom", "Scrolled to bottom", 0));
+    slots.add(new SoundSlot("progress_up", "Progress increase", 0));
+    slots.add(new SoundSlot("progress_down", "Progress decrease", 0));
+    slots.add(new SoundSlot("progress", "Progress indicator", 0));
+    slots.add(new SoundSlot("progress_100", "100 percent progress", 0));
+    slots.add(new SoundSlot("beep", "Reaching last element", R.raw.jx_beep));
+    slots.add(new SoundSlot("cancel", "Cancel", R.raw.jx_cancel));
+    slots.add(new SoundSlot("tick", "Timer tick", R.raw.jx_tick));
+    slots.add(new SoundSlot("clock", "Clock", R.raw.jx_clock));
+    slots.add(new SoundSlot("dialog", "Dialog box", 0));
+    slots.add(new SoundSlot("toast", "Toast message", 0));
+    slots.add(new SoundSlot("unlock", "Device unlocked", 0));
+    slots.add(new SoundSlot("timer_start", "Timer start", 0));
+    slots.add(new SoundSlot("timer_end", "Timer end", 0));
+    slots.add(new SoundSlot("recognition_start", "Recognition started", 0));
+    slots.add(new SoundSlot("recognition_end", "Recognition stopped", 0));
+    slots.add(new SoundSlot("recognition_success", "Recognition successful", 0));
+    slots.add(new SoundSlot("recognition_error", "Recognition error", 0));
+    slots.add(new SoundSlot("recognition_cancel", "Recognition cancelled", 0));
+    slots.add(new SoundSlot("power_disconnected", "Charging stopped", 0));
+    slots.add(new SoundSlot("power_low", "Battery low", 0));
+    slots.add(new SoundSlot("previous_text", "Previous text", 0));
+    slots.add(new SoundSlot("next_text", "Next text", 0));
+    slots.add(new SoundSlot("raise_volume", "Increase volume", 0));
+    slots.add(new SoundSlot("lower_volume", "Decrease volume", 0));
+    slots.add(new SoundSlot("copy", "Copy", 0));
+    slots.add(new SoundSlot("append_copy", "Append copy", 0));
+    slots.add(new SoundSlot("clear", "Clear", 0));
+    slots.add(new SoundSlot("paste", "Paste", 0));
+    slots.add(new SoundSlot("to_back", "Go back", 0));
+    slots.add(new SoundSlot("has_action", "Actions available", 0));
+    slots.add(new SoundSlot("edit_box", "Edit box", 0));
+    slots.add(new SoundSlot("check_box", "Check box", 0));
+    slots.add(new SoundSlot("seek_bar", "Seek bar", 0));
+    slots.add(new SoundSlot("auto_trans", "Automatic translation", 0));
+    slots.add(new SoundSlot("auto_ocr", "Automatic OCR started", 0));
+    slots.add(new SoundSlot("auto_ocr_done", "Automatic OCR success", 0));
+    slots.add(new SoundSlot("auto_ocr_error", "Automatic OCR error", 0));
+    slots.add(new SoundSlot("camera_click", "Camera shutter", R.raw.jx_camera_click));
+    slots.add(new SoundSlot("screenshot", "Screenshot", 0));
+    slots.add(new SoundSlot("clear_notification", "Clear all notifications", 0));
+    slots.add(new SoundSlot("inputmethod_show", "Keyboard shown", 0));
+    slots.add(new SoundSlot("inputmethod_hide", "Keyboard hidden", 0));
+    slots.add(new SoundSlot("feedback_paused", "Feedback paused", 0));
+    slots.add(new SoundSlot("feedback_resume", "Feedback resumed", 0));
+    slots.add(new SoundSlot("talkman_start", "MS Screen Reader turned on", 0));
+    slots.add(new SoundSlot("talkman_stop", "MS Screen Reader turned off", 0));
     return slots;
   }
 
   public List<SoundSlot> getSlots() {
     return new ArrayList<>(slotsByKey.values());
+  }
+
+  // ------------------------------------------------------------------------------------------
+  // Playing a slot directly (for occasions that have no built-in sound) and per-app muting
+
+  public static final String PREF_NO_SOUND_APPS = "pref_ms_no_sound_apps";
+  public static final String PREF_PRECISE_EFFECT = "pref_ms_precise_sound_effect";
+
+  private @Nullable android.media.MediaPlayer slotPlayer;
+
+  /** Returns the file the active theme (or Default) assigns to this slot, or null if none. */
+  public @Nullable String resolveSlotPath(String slotKey) {
+    String activeId = getActiveThemeId();
+    String path = poolPathForAssignment(activeId, slotKey);
+    if (path == null && !DEFAULT_THEME_ID.equals(activeId)) {
+      path = poolPathForAssignment(DEFAULT_THEME_ID, slotKey);
+    }
+    return path;
+  }
+
+  /** True if sound is switched on and the given app is not in the "no extra sound" list. */
+  public boolean isSoundAllowedFor(@Nullable String packageName) {
+    android.content.SharedPreferences prefs =
+        com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(appContext);
+    if (!prefs.getBoolean(appContext.getString(R.string.pref_soundback_key), true)) {
+      return false;
+    }
+    if (packageName == null) {
+      return true;
+    }
+    java.util.Set<String> muted =
+        prefs.getStringSet(PREF_NO_SOUND_APPS, java.util.Collections.<String>emptySet());
+    return muted == null || !muted.contains(packageName);
+  }
+
+  /** Plays the sound assigned to a slot, if any. Silent when nothing is assigned. */
+  public synchronized void playSlot(String slotKey, @Nullable String currentPackage) {
+    if (!isSoundAllowedFor(currentPackage)) {
+      return;
+    }
+    String path = resolveSlotPath(slotKey);
+    if (path == null) {
+      SoundSlot slot = slotsByKey.get(slotKey);
+      if (slot != null && slot.defaultResId != 0) {
+        com.google.android.accessibility.talkback.ExtraSounds.play(appContext, slot.defaultResId);
+      }
+      return;
+    }
+    try {
+      if (slotPlayer != null) {
+        slotPlayer.release();
+        slotPlayer = null;
+      }
+      android.media.MediaPlayer mp = new android.media.MediaPlayer();
+      mp.setAudioAttributes(
+          new android.media.AudioAttributes.Builder()
+              .setUsage(android.media.AudioAttributes.USAGE_ASSISTANCE_ACCESSIBILITY)
+              .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION)
+              .build());
+      mp.setDataSource(path);
+      mp.setOnCompletionListener(android.media.MediaPlayer::release);
+      mp.prepare();
+      mp.start();
+      slotPlayer = mp;
+    } catch (Exception e) {
+      android.util.Log.w(TAG, "Could not play slot " + slotKey, e);
+    }
   }
 
   // ------------------------------------------------------------------------------------------

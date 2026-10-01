@@ -63,6 +63,7 @@ public final class GeminiKeyStore {
   public static void onMissingKey(Context context) {
     if (!promptDone(context)) {
       setPromptDone(context);
+      say(context, "Gemini key is needed. Opening the key box. If it does not open, add the key in settings, Recognition, Gemini.");
       Intent intent = new Intent(context.getApplicationContext(), GeminiKeyActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       context.getApplicationContext().startActivity(intent);
@@ -97,9 +98,32 @@ public final class GeminiKeyStore {
     toast(context, "Quota finished");
   }
 
+  /** Speaks the message with the screen reader's own voice and also shows a toast. */
+  public static void say(final Context context, final String message) {
+    toast(context, message);
+  }
+
   private static void toast(final Context context, final String message) {
     final Context app = context.getApplicationContext();
     new Handler(Looper.getMainLooper())
-        .post(() -> Toast.makeText(app, message, Toast.LENGTH_LONG).show());
+        .post(
+            () -> {
+              try {
+                com.google.android.accessibility.talkback.TalkBackService service =
+                    com.google.android.accessibility.talkback.TalkBackService.getInstance();
+                if (service != null) {
+                  service
+                      .getSpeechController()
+                      .speak(
+                          message,
+                          com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED,
+                          com.google.android.accessibility.utils.output.SpeechController.SpeakOptions
+                              .create());
+                }
+              } catch (RuntimeException ignored) {
+                // Fall back to the toast below.
+              }
+              Toast.makeText(app, message, Toast.LENGTH_LONG).show();
+            });
   }
 }

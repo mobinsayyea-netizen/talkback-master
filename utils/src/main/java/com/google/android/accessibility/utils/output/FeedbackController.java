@@ -142,7 +142,7 @@ public class FeedbackController {
       return false;
     }
 
-    VibrationEffect effect = parser.parse(patternArray);
+    VibrationEffect effect = parser.parse(applyHapticIntensity(patternArray));
 
     long nanoTime = System.nanoTime();
     for (HapticFeedbackListener listener : mHapticFeedbackListeners) {
@@ -152,6 +152,51 @@ public class FeedbackController {
     mVibrator.vibrate(effect);
 
     return true;
+  }
+
+  /** Preference key for the Feedback settings "Haptic feedback intensity" list (12/32/48/64). */
+  private static final String PREF_VIBRATE_INTENSITY = "pref_ms_vibrate_intensity";
+
+  private static final int HAPTIC_SEPARATOR = -9999;
+  private static final int HAPTIC_MEDIUM = 32;
+
+  /**
+   * Scales a haptic pattern by the chosen intensity (Light 12, Medium 32, Strong 48, Strongest 64).
+   * Medium leaves the pattern as it is. Waveform "on" times get longer or shorter; primitive
+   * strengths (after the separator) are scaled and kept within 0..255.
+   */
+  private int[] applyHapticIntensity(int[] pattern) {
+    int level = HAPTIC_MEDIUM;
+    try {
+      level =
+          Integer.parseInt(
+              com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(mContext)
+                  .getString(PREF_VIBRATE_INTENSITY, String.valueOf(HAPTIC_MEDIUM)));
+    } catch (RuntimeException e) {
+      return pattern;
+    }
+    if (level == HAPTIC_MEDIUM || level <= 0) {
+      return pattern;
+    }
+    float factor = level / (float) HAPTIC_MEDIUM;
+    int[] out = pattern.clone();
+    int split = -1;
+    for (int i = 0; i < out.length; i++) {
+      if (out[i] == HAPTIC_SEPARATOR) {
+        split = i;
+        break;
+      }
+    }
+    int waveformEnd = split >= 0 ? split : out.length;
+    for (int i = 1; i < waveformEnd; i += 2) {
+      out[i] = Math.max(1, Math.round(out[i] * factor));
+    }
+    if (split >= 0) {
+      for (int i = split + 1; i + 1 < out.length; i += 3) {
+        out[i + 1] = Math.min(255, Math.max(1, Math.round(out[i + 1] * factor)));
+      }
+    }
+    return out;
   }
 
   /**

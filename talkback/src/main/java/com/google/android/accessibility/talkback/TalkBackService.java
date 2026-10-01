@@ -592,6 +592,7 @@ public class TalkBackService extends AccessibilityServiceCompat
 
   /** Controller for audio and haptic feedback. */
   private FeedbackController feedbackController;
+  private com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds extraEventSounds;
 
   /** Watches the proximity sensor, and silences feedback when triggered. */
   private ProximitySensorMonitor proximitySensorMonitor;
@@ -884,6 +885,10 @@ public class TalkBackService extends AccessibilityServiceCompat
 
   @Override
   public void onDestroy() {
+    if (extraEventSounds != null) {
+      extraEventSounds.stop();
+      extraEventSounds = null;
+    }
     if (userInterface != null) {
       userInterface.unregisterAllListeners();
     }
@@ -1009,6 +1014,9 @@ public class TalkBackService extends AccessibilityServiceCompat
   public void onAccessibilityEvent(AccessibilityEvent event) {
     Performance perf = Performance.getInstance();
     EventId eventId = perf.onEventReceived(event);
+    if (extraEventSounds != null) {
+      extraEventSounds.onAccessibilityEvent(this, event);
+    }
     int eventType = event.getEventType();
     if (eventType == AccessibilityEvent.TYPE_TOUCH_INTERACTION_START) {
       // TODO: Could move the logic of TOUCH_INTERACTION related event handling out of
@@ -1742,8 +1750,16 @@ public class TalkBackService extends AccessibilityServiceCompat
     displayMonitor = new DisplayMonitor(this);
     accessibilityEventProcessor = new AccessibilityEventProcessor(this, displayMonitor);
     feedbackController = new FeedbackController(this);
-    feedbackController.setSoundOverrideProvider(
-        new com.google.android.accessibility.talkback.soundtheme.SoundThemeManager(this));
+    com.google.android.accessibility.talkback.soundtheme.SoundThemeManager soundThemeManager =
+        new com.google.android.accessibility.talkback.soundtheme.SoundThemeManager(this);
+    feedbackController.setSoundOverrideProvider(soundThemeManager);
+    if (extraEventSounds != null) {
+      extraEventSounds.stop();
+    }
+    extraEventSounds =
+        new com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds(
+            this, soundThemeManager);
+    extraEventSounds.start();
     speechController =
         new SpeechControllerImpl(
             this,
@@ -2475,6 +2491,9 @@ public class TalkBackService extends AccessibilityServiceCompat
    * #onServiceConnected} and when TalkBack resumes from a suspended state.
    */
   private void resumeInfrastructure() {
+    if (extraEventSounds != null) {
+      extraEventSounds.play("feedback_resume");
+    }
 
     // Load log-level preference early, so that we can log it and use it during startup.
     reloadPreferenceLogLevel();
@@ -2682,6 +2701,9 @@ public class TalkBackService extends AccessibilityServiceCompat
       return;
     }
 
+    if (extraEventSounds != null) {
+      extraEventSounds.play("feedback_paused");
+    }
     setServiceState(ServiceStateListener.SERVICE_STATE_SHUTTING_DOWN);
 
     if (displayMonitor != null) {

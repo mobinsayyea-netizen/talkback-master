@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ms_no_sound_apps_title">Apps where additional sound effects are not used</string>
+  <string name="ms_precise_sound_effect_title">Play additional sound effects precisely when matching text is reached</string>
+  <string name="ms_vibrate_intensity_title">Haptic feedback intensity</string>
+  <string-array name="ms_vibrate_intensity_entries">
+    <item>Light</item>
+    <item>Medium</item>
+    <item>Strong</item>
+    <item>Strongest</item>
+  </string-array>
+  <string-array name="ms_vibrate_intensity_values">
+    <item>12</item>
+    <item>32</item>
+    <item>48</item>
+    <item>64</item>
+  </string-array>
+</resources>
