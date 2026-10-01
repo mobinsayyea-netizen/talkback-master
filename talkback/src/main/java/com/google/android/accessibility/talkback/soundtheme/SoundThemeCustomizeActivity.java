@@ -28,6 +28,7 @@ public class SoundThemeCustomizeActivity extends Activity {
   public static final String EXTRA_THEME_ID = "theme_id";
   public static final String EXTRA_THEME_NAME = "theme_name";
   private static final int REQUEST_PICK_SOUND = 9202;
+  private static final int REQUEST_ADD_SOUND = 9203;
 
   private SoundThemeManager manager;
   private String themeId;
@@ -61,7 +62,8 @@ public class SoundThemeCustomizeActivity extends Activity {
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
     TextView hint = new TextView(this);
-    hint.setText("Move to a sound to hear it. Double tap to change it.");
+    hint.setText(
+        "Move to a sound to hear it. Double tap to change it. Use Add sound to bring in your own sounds.");
     hint.setTextColor(Color.LTGRAY);
     hint.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f);
     layout.addView(
@@ -74,6 +76,24 @@ public class SoundThemeCustomizeActivity extends Activity {
     list.setItemsCanFocus(false);
     layout.addView(
         list, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
+    android.widget.Button addSound = new android.widget.Button(this);
+    addSound.setText("Add sound");
+    addSound.setOnClickListener(
+        v -> {
+          Intent pick = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+          pick.addCategory(Intent.CATEGORY_OPENABLE);
+          pick.setType("audio/*");
+          pick.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+          try {
+            startActivityForResult(pick, REQUEST_ADD_SOUND);
+          } catch (android.content.ActivityNotFoundException e) {
+            list.announceForAccessibility("No file picker is available on this device");
+          }
+        });
+    layout.addView(
+        addSound,
+        new LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     setContentView(layout);
 
     shown.addAll(manager.getSlots());
@@ -199,6 +219,16 @@ public class SoundThemeCustomizeActivity extends Activity {
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_ADD_SOUND) {
+      if (resultCode == RESULT_OK && data != null) {
+        int n = manager.addPoolFilesFromPick(themeId, data);
+        list.announceForAccessibility(
+            n > 0
+                ? n + (n == 1 ? " sound" : " sounds") + " added. Double tap a sound name to use it."
+                : "No sound was added");
+      }
+      return;
+    }
     if (requestCode == REQUEST_PICK_SOUND
         && resultCode == RESULT_OK
         && data != null

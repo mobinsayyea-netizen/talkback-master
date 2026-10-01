@@ -1541,6 +1541,7 @@ public class TalkBackService extends AccessibilityServiceCompat
   @Override
   protected void onServiceConnected() {
     super.onServiceConnected();
+    CrashReporter.deliverIfAny(this);
     EventId talkbackOnEventId =
         Performance.getInstance().onHintEventReceived(Performance.HINT_SUB_TYPE_TALKBACK_ON);
 
@@ -3610,6 +3611,7 @@ public class TalkBackService extends AccessibilityServiceCompat
 
   @Override
   public void uncaughtException(Thread thread, Throwable ex) {
+    CrashReporter.save(this, thread, ex);
     try {
       if (dimScreenController != null) {
         dimScreenController.shutdown();

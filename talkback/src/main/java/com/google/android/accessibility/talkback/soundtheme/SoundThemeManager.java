@@ -2,9 +2,12 @@ package com.google.android.accessibility.talkback.soundtheme;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.DocumentsContract;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import androidx.annotation.Nullable;
 import com.google.android.accessibility.talkback.R;
@@ -325,6 +328,49 @@ public final class SoundThemeManager implements FeedbackController.SoundOverride
     File dest = uniqueFile(pool, sanitizeFileName(suggestedName));
     boolean ok = copyUriToFile(appContext.getContentResolver(), fileUri, dest);
     return ok ? dest.getName() : null;
+  }
+
+  /** Adds every audio file the user picked (one or several) to this theme's pool. */
+  public int addPoolFilesFromPick(String themeId, Intent data) {
+    List<Uri> uris = new ArrayList<>();
+    if (data.getClipData() != null) {
+      for (int i = 0; i < data.getClipData().getItemCount(); i++) {
+        uris.add(data.getClipData().getItemAt(i).getUri());
+      }
+    } else if (data.getData() != null) {
+      uris.add(data.getData());
+    }
+    int added = 0;
+    for (Uri uri : uris) {
+      if (addPoolFile(themeId, uri, displayNameOf(uri)) != null) {
+        added++;
+      }
+    }
+    return added;
+  }
+
+  private String displayNameOf(Uri uri) {
+    Cursor c = null;
+    try {
+      c =
+          appContext
+              .getContentResolver()
+              .query(uri, new String[] {OpenableColumns.DISPLAY_NAME}, null, null, null);
+      if (c != null && c.moveToFirst()) {
+        String n = c.getString(0);
+        if (n != null && !n.isEmpty()) {
+          return n;
+        }
+      }
+    } catch (RuntimeException ignored) {
+      // Fall back to the last part of the address.
+    } finally {
+      if (c != null) {
+        c.close();
+      }
+    }
+    String last = uri.getLastPathSegment();
+    return last == null ? "sound" : last;
   }
 
   // ------------------------------------------------------------------------------------------

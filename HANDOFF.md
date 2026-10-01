@@ -87,6 +87,10 @@ Raw resources are in `talkback/src/main/res/raw`, `braille/common/src/phone/res/
 - **Unverified on a phone:** menu item position, speech timing/queueing, how often it speaks, battery use, behaviour on protected (black) video apps.
 - Planned, not done: Lua bridge `service.execute("video description")`, auto-labelling of unlabeled buttons, shared online label list.
 
+### 3.4 Crash report + Add sound (after build 17)
+- `CrashReporter`: `TalkBackService.uncaughtException` saves the stack trace to `files/last_crash.txt`; on the next `onServiceConnected` it is **copied to the clipboard** with a toast ("Paste it in the chat"). Added because build 17 crashed on *Describe image* (and Describe screen / Video description did nothing) on a fresh install; cause still unknown.
+- Sound theme: **Add sound** button on the Customize screen (works for Default too; picks several audio files into the theme's pool, then double tap a slot to assign).
+
 ## 5. TODO — in this order
 
 1. **Clipboard (next build).** Persistent history (kept until he deletes it). Screen with **check boxes to select several items ("Manage")**, plus **Favorite** and **Delete** on the selected. "Delete all" must keep favorites. Open it with **two-finger triple tap** (add a new shortcut action in `GestureShortcutMapping`, default on `TWO_FINGER_TRIPLE_TAP`, still re-assignable), plus an activity-alias "Clipboard" in the app list and an entry in settings. Record copies made by the Copy control and TalkBack's own copy (`TextEditActor`). Limit: Android blocks reading the clipboard from the background, so only these copies are captured.

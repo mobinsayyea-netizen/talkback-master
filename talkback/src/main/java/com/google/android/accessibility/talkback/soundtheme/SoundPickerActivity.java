@@ -60,7 +60,7 @@ public class SoundPickerActivity extends Activity {
 
     if (fileNames.isEmpty()) {
       TextView empty = new TextView(this);
-      empty.setText("This theme has no sounds yet. Add a sound theme with some files first.");
+      empty.setText("This theme has no sounds yet. Go back and use the Add sound button first.");
       empty.setTextColor(Color.WHITE);
       layout.addView(
           empty,
