@@ -31,7 +31,7 @@ import com.google.android.accessibility.utils.compat.provider.SettingsCompatUtil
 import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-class TextToSpeechUtils {
+public class TextToSpeechUtils {
 
   /**
    * Reloads the list of installed TTS engines.
