@@ -19,6 +19,7 @@
 
     <!-- Required for haptic feedback. -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
 
     <!-- Required for keeping the screen awake during continuous reading and key filtering. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />

@@ -1200,7 +1200,10 @@ public class FocusProcessorForLogicalNavigation {
     }
 
     // Try to wrap around inside current window if reaching the edge.
-    if (reachEdge && navigationAction.shouldWrap && navigationResult.isEmpty()) {
+    if (reachEdge
+        && navigationAction.shouldWrap
+        && com.google.android.accessibility.talkback.MsOperationController.isWrapEnabled(service)
+        && navigationResult.isEmpty()) {
       navigationResult =
           findTargetForWrapAround(rootNode, navigationAction, traversalStrategy, eventId);
       if (navigationResult.shouldSkipNavigation()) {

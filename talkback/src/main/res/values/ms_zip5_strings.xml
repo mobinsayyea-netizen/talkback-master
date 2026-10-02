@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ms_adv_cat_say">What to speak</string>
+    <string name="ms_adv_say_time">Time</string>
+    <string name="ms_adv_say_date">Date</string>
+    <string name="ms_adv_say_year">Year</string>
+    <string name="ms_adv_say_battery">Battery level</string>
+    <string name="ms_adv_announce_voice">Voice for these announcements</string>
+    <string name="ms_adv_cat_when">When to speak</string>
+    <string name="ms_adv_unlock_announce">Speak after unlocking the screen</string>
+    <string name="ms_adv_timer_enabled">Automatically read at an interval</string>
+    <string name="ms_adv_timer_interval">Time interval</string>
+    <string name="ms_adv_timer_from">Active hours: from hour</string>
+    <string name="ms_adv_timer_to">Active hours: until hour</string>
+    <string name="ms_adv_cat_power">Power management</string>
+    <string name="ms_adv_battery_opt">Prevent the system from stopping the screen reader (battery optimization)</string>
+    <string name="ms_scn_chat_read">Automatically read incoming chat messages</string>
+    <string name="ms_scn_chat_voice">Voice for chat messages</string>
+    <string name="ms_scn_chat_apps">Chat apps (package names, comma separated)</string>
+    <string name="ms_scenario_title">Scenario voices</string>
+    <string name="ms_scenario_summary">Chat messages and which voice reads them</string>
+    <string name="ms_op_cat_more">More key actions</string>
+    <string name="ms_op_headset_action">Headset button action</string>
+    <string name="ms_op_up_volume_2_key">Double press of volume up</string>
+    <string name="ms_op_up_volume_3_key">Triple press of volume up</string>
+    <string name="ms_op_down_volume_2_key">Double press of volume down</string>
+    <string name="ms_op_down_volume_3_key">Triple press of volume down</string>
+    <string-array name="ms_voice_entries">
+        <item>Main voice</item>
+        <item>Secondary voice</item>
+    </string-array>
+    <string-array name="ms_voice_values">
+        <item>main</item>
+        <item>secondary</item>
+    </string-array>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_adv_cat_say" android:title="@string/ms_adv_cat_say">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_adv_say_time" android:title="@string/ms_adv_say_time" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_adv_say_date" android:title="@string/ms_adv_say_date" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_adv_say_year" android:title="@string/ms_adv_say_year" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_adv_say_battery" android:title="@string/ms_adv_say_battery" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_adv_announce_voice" android:title="@string/ms_adv_announce_voice" android:dialogTitle="@string/ms_adv_announce_voice" android:entries="@array/ms_voice_entries" android:entryValues="@array/ms_voice_values" android:defaultValue="main" android:summary="%s" />
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_adv_cat_when" android:title="@string/ms_adv_cat_when">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_adv_unlock_announce" android:title="@string/ms_adv_unlock_announce" android:defaultValue="false" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_adv_timer_enabled" android:title="@string/ms_adv_timer_enabled" android:defaultValue="false" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_adv_timer_interval" android:title="@string/ms_adv_timer_interval" android:dialogTitle="@string/ms_adv_timer_interval" android:entries="@array/ms_adv_interval_entries" android:entryValues="@array/ms_adv_interval_values" android:defaultValue="30" android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_adv_timer_from" android:title="@string/ms_adv_timer_from" android:dialogTitle="@string/ms_adv_timer_from" android:entries="@array/ms_adv_hour_entries" android:entryValues="@array/ms_adv_hour_values" android:defaultValue="7" android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_adv_timer_to" android:title="@string/ms_adv_timer_to" android:dialogTitle="@string/ms_adv_timer_to" android:entries="@array/ms_adv_hour_entries" android:entryValues="@array/ms_adv_hour_values" android:defaultValue="23" android:summary="%s" />
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_adv_cat_power" android:title="@string/ms_adv_cat_power">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_adv_battery_opt" android:title="@string/ms_adv_battery_opt"><intent android:action="android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS" /></com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+</PreferenceScreen>

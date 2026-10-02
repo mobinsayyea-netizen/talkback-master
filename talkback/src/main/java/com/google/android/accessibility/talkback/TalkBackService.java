@@ -744,6 +744,27 @@ public class TalkBackService extends AccessibilityServiceCompat
   // event is in the time window between TYPE_TOUCH_INTERACTION_START and
   // TYPE_TOUCH_INTERACTION_END will be considered as passthrough window.
   private boolean isTouchInteracting = false;
+  private MsOperationController msOperation;
+  private MsSecondaryTts msSecondaryTts;
+  private MsNotificationController msNotification;
+  private MsTimerController msTimer;
+  private MsClickController msClick;
+
+  /** MS Screen Reader: speaks text with the main TTS voice through the normal pipeline. */
+  public void msSpeakMain(CharSequence text, boolean queue) {
+    if (pipeline == null) {
+      return;
+    }
+    pipeline.returnFeedback(
+        EVENT_ID_UNTRACKED,
+        Feedback.speech(
+            text,
+            com.google.android.accessibility.utils.output.SpeechController.SpeakOptions.create()
+                .setQueueMode(
+                    queue
+                        ? SpeechController.QUEUE_MODE_QUEUE
+                        : SpeechController.QUEUE_MODE_INTERRUPT)));
+  }
   // In order to handle key action down/up in pair for the same functions.
   // Records whether the last keystroke of VolumeUp key occurred in the passthrough window.
   private boolean volumeUpKeyPressedInPassThroughWindow = false;
@@ -885,6 +906,23 @@ public class TalkBackService extends AccessibilityServiceCompat
 
   @Override
   public void onDestroy() {
+    if (msOperation != null) {
+      msOperation.stop();
+      msOperation = null;
+    }
+    if (msClick != null) {
+      msClick.stop();
+      msClick = null;
+    }
+    if (msTimer != null) {
+      msTimer.stop();
+      msTimer = null;
+    }
+    if (msSecondaryTts != null) {
+      msSecondaryTts.shutdown();
+      msSecondaryTts = null;
+    }
+    msNotification = null;
     if (extraEventSounds != null) {
       extraEventSounds.stop();
       extraEventSounds = null;
@@ -1018,6 +1056,18 @@ public class TalkBackService extends AccessibilityServiceCompat
       extraEventSounds.onAccessibilityEvent(this, event);
     }
     int eventType = event.getEventType();
+    if (msClick != null) {
+      msClick.onEvent(event);
+    }
+    if (eventType == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED
+        && msNotification != null
+        && msNotification.handle(event, isTouchInteracting)) {
+      return;
+    }
+    if (eventType == AccessibilityEvent.TYPE_TOUCH_INTERACTION_START
+        && msSecondaryTts != null) {
+      msSecondaryTts.onTouchStart();
+    }
     if (eventType == AccessibilityEvent.TYPE_TOUCH_INTERACTION_START) {
       // TODO: Could move the logic of TOUCH_INTERACTION related event handling out of
       // TalkBackService, and concentrated in a dedicated module such as ?
@@ -1126,6 +1176,10 @@ public class TalkBackService extends AccessibilityServiceCompat
   /** Handles a key event and returns whether it should be considered consumed. */
   protected boolean onKeyEventInternal(KeyEvent keyEvent) {
     if (brailleDisplay.onKeyEvent(keyEvent)) {
+      return true;
+    }
+
+    if (msOperation != null && msOperation.onKeyEvent(keyEvent)) {
       return true;
     }
 
@@ -1566,6 +1620,16 @@ public class TalkBackService extends AccessibilityServiceCompat
     }
 
     initializeInfrastructure();
+    if (msOperation == null) {
+      msOperation = new MsOperationController(this);
+    }
+    msOperation.start();
+    msSecondaryTts = new MsSecondaryTts(this);
+    msSecondaryTts.start();
+    msNotification = new MsNotificationController(this, msSecondaryTts);
+    msTimer = new MsTimerController(this, msSecondaryTts);
+    msClick = new MsClickController(this);
+    msTimer.start();
 
     // Configure logs.
     LogUtils.setTagPrefix("talkback: ");

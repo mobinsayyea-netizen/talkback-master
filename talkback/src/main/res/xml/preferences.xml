@@ -57,6 +57,36 @@
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
         android:key="@string/pref_tts_settings_key"
         android:title="@string/tts_preferences_title" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:fragment="com.google.android.accessibility.talkback.preference.base.MsTtsFragment"
+        android:key="pref_ms_tts_screen_key"
+        android:title="@string/ms_tts_title"
+        android:summary="@string/ms_tts_summary" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:fragment="com.google.android.accessibility.talkback.preference.base.MsSecondaryTtsFragment"
+        android:key="pref_ms_secondary_tts_screen_key"
+        android:title="@string/ms_secondary_tts_title"
+        android:summary="@string/ms_secondary_tts_summary" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:fragment="com.google.android.accessibility.talkback.preference.base.MsOperationFragment"
+        android:key="pref_ms_operation_screen_key"
+        android:title="@string/ms_operation_title"
+        android:summary="@string/ms_operation_summary" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:fragment="com.google.android.accessibility.talkback.preference.base.MsNotificationFragment"
+        android:key="pref_ms_notification_screen_key"
+        android:title="@string/ms_notification_title"
+        android:summary="@string/ms_notification_summary" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:fragment="com.google.android.accessibility.talkback.preference.base.MsAdvancedFragment"
+        android:key="pref_ms_advanced_screen_key"
+        android:title="@string/ms_advanced_title"
+        android:summary="@string/ms_advanced_summary" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:fragment="com.google.android.accessibility.talkback.preference.base.MsScenarioFragment"
+        android:key="pref_ms_scenario_screen_key"
+        android:title="@string/ms_scenario_title"
+        android:summary="@string/ms_scenario_summary" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory
       android:key="pref_category_ms_sounds_key"

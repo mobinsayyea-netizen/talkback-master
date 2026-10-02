@@ -231,6 +231,14 @@ public class FailoverTextToSpeech {
 
   /** The package name of the preferred TTS engine. */
   private String defaultTtsEngine;
+  private static final String MS_TTS_ENGINE_KEY = "ms_tts_engine";
+  private final android.content.SharedPreferences.OnSharedPreferenceChangeListener
+      msEngineListener =
+          (prefs, key) -> {
+            if (MS_TTS_ENGINE_KEY.equals(key)) {
+              updateDefaultEngine();
+            }
+          };
 
   /** The package name of the system TTS engine. */
   private String systemTtsEngine;
@@ -294,6 +302,8 @@ public class FailoverTextToSpeech {
     final Uri defaultPitch = Secure.getUriFor(Secure.TTS_DEFAULT_PITCH);
     final Uri defaultRate = Secure.getUriFor(Secure.TTS_DEFAULT_RATE);
 
+    com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(context)
+        .registerOnSharedPreferenceChangeListener(msEngineListener);
     resolver = context.getContentResolver();
     resolver.registerContentObserver(defaultSynth, false, mSynthObserver);
     resolver.registerContentObserver(defaultPitch, false, mPitchObserver);
@@ -564,6 +574,8 @@ public class FailoverTextToSpeech {
     unregisterGoogleTtsFixCallbacks();
     mHandler.removeCallbacksAndMessages(null);
 
+    com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(context)
+        .unregisterOnSharedPreferenceChangeListener(msEngineListener);
     resolver.unregisterContentObserver(mSynthObserver);
     resolver.unregisterContentObserver(mPitchObserver);
     resolver.unregisterContentObserver(mRateObserver);
@@ -1151,6 +1163,13 @@ public class FailoverTextToSpeech {
 
     // This may be null if the user hasn't specified an engine.
     defaultTtsEngine = Secure.getString(resolver, Secure.TTS_DEFAULT_SYNTH);
+    // MS Screen Reader: engine chosen in "TTS engine and voice" overrides the system default.
+    String msEngine =
+        com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(context)
+            .getString(MS_TTS_ENGINE_KEY, "");
+    if (!TextUtils.isEmpty(msEngine) && installedTtsEngines.contains(msEngine)) {
+      defaultTtsEngine = msEngine;
+    }
 
     // Switch engines when the system default changes and it's not the current engine.
     if (ttsEngine == null || !ttsEngine.equals(defaultTtsEngine)) {

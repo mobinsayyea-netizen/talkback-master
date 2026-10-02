@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference
+      android:key="ms_async_tts_engine"
+      android:title="@string/ms_tts_engine_title"
+      android:dialogTitle="@string/ms_tts_engine_title"
+      android:defaultValue=""
+      android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+      android:key="ms_async_tts_system_settings"
+      android:title="@string/ms_tts_system_settings_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference
+      android:defaultValue="1.0"
+      android:dialogTitle="@string/ms_tts_speed_title"
+      android:entries="@array/pref_speech_rate_entries"
+      android:entryValues="@array/pref_speech_rate_values"
+      android:key="ms_async_tts_speed"
+      android:summary="%s"
+      android:title="@string/ms_tts_speed_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference
+      android:defaultValue="1.0"
+      android:dialogTitle="@string/ms_tts_pitch_title"
+      android:entries="@array/ms_tts_pitch_entries"
+      android:entryValues="@array/ms_tts_pitch_values"
+      android:key="ms_async_tts_pitch"
+      android:summary="%s"
+      android:title="@string/ms_tts_pitch_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference
+      android:defaultValue="100"
+      android:dialogTitle="@string/ms_tts_volume_title"
+      android:entries="@array/ms_tts_percent_entries"
+      android:entryValues="@array/ms_tts_percent_values"
+      android:key="ms_async_tts_volume"
+      android:summary="%s"
+      android:title="@string/ms_tts_volume_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference
+      android:defaultValue="false"
+      android:key="ms_async_tts_audio_focus"
+      android:summary="@string/ms_tts_audio_focus_summary"
+      android:title="@string/ms_tts_audio_focus_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference
+      android:defaultValue="false"
+      android:key="ms_async_tts_proximity"
+      android:title="@string/ms_tts_proximity_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference
+      android:defaultValue="false"
+      android:key="ms_async_tts_accessibility_volume"
+      android:title="@string/ms_tts_accessibility_volume_title" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference
+      android:defaultValue="false"
+      android:key="ms_async_tts_touch_stop"
+      android:title="@string/ms_tts_touch_stop_title" />
+</PreferenceScreen>

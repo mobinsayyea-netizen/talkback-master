@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ms_operation_title">Operation settings</string>
+    <string name="ms_operation_summary">Navigation, clicking, volume keys and shake</string>
+    <string name="ms_op_fast_node">Improve node rendering speed</string>
+    <string name="ms_op_loop_move">Wrap navigation</string>
+    <string name="ms_op_loop_move_warn">Warn before navigation wrapping occurs</string>
+    <string name="ms_op_pager_scroll">Automatically scroll pages</string>
+    <string name="ms_op_move_window">Automatically switch between onscreen windows</string>
+    <string name="ms_op_keep_type_move">Remember the selected navigation type when changing windows</string>
+    <string name="ms_op_auto_view_type">Automatically switch navigation type to Actions when supported</string>
+    <string name="ms_op_cat_nav">Navigation settings</string>
+    <string name="ms_op_single_tap">Use single tap to activate the focused item</string>
+    <string name="ms_op_up_tap">Use Lift to Activate</string>
+    <string name="ms_op_up_tap_prompt">Lift to activate timeout prompt</string>
+    <string name="ms_op_raw_click">Use direct click instead of accessibility click</string>
+    <string name="ms_op_up_long_click">Hold to long press</string>
+    <string name="ms_op_long_click">Holding duration</string>
+    <string name="ms_op_cat_click">Clicking settings</string>
+    <string name="ms_op_key_shortcut">Use the volume keys</string>
+    <string name="ms_op_show_volume_ui">Show the system volume panel while adjusting volume</string>
+    <string name="ms_op_volume_key_move_text">Use the volume keys to move the edit cursor and change slider values</string>
+    <string name="ms_op_headset_key">Use the headset button</string>
+    <string name="ms_op_multi_hot_key">Use the volume button multi-press feature</string>
+    <string name="ms_op_up_down_volume_short_key">Simultaneous press of the two volume keys</string>
+    <string name="ms_op_up_volume_key">Long press of the volume up key</string>
+    <string name="ms_op_down_volume_key">Long press of the volume down key</string>
+    <string name="ms_op_up_volume_key_off">Long press of volume up while the screen is locked</string>
+    <string name="ms_op_down_volume_key_off">Long press of volume down while the screen is locked</string>
+    <string name="ms_op_cat_keys">Shortcut keys settings</string>
+    <string name="ms_op_shake_action">Shake action</string>
+    <string name="ms_op_shake_action_sens">Shake sensitivity</string>
+    <string name="ms_op_shake_action_call">Allow answering an incoming call with a shake</string>
+    <string name="ms_op_back_break_auto_mode">Use the back gesture to interrupt automatic browsing</string>
+    <string name="ms_op_cat_other">Other settings</string>
+    <string-array name="ms_op_action_entries">
+        <item>Do nothing</item>
+        <item>Stop speech</item>
+        <item>Voice assistant</item>
+        <item>Quick settings</item>
+        <item>Home screen</item>
+        <item>Go back</item>
+        <item>Open notification panel</item>
+        <item>Recent apps</item>
+    </string-array>
+    <string-array name="ms_op_action_values">
+        <item>nothing</item>
+        <item>suspend</item>
+        <item>assistant</item>
+        <item>quick</item>
+        <item>home</item>
+        <item>back</item>
+        <item>notifications</item>
+        <item>recents</item>
+    </string-array>
+    <string-array name="ms_op_hold_entries">
+        <item>Short</item>
+        <item>Medium</item>
+        <item>Long</item>
+    </string-array>
+    <string-array name="ms_op_hold_values">
+        <item>500</item>
+        <item>750</item>
+        <item>1000</item>
+    </string-array>
+    <string-array name="ms_op_sens_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="ms_op_sens_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+</resources>

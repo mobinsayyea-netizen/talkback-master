@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ms_notif_auto_read">Automatically read notifications</string>
+    <string name="ms_notif_read_toast">Automatically read toast messages</string>
+    <string name="ms_notif_no_read_touching">Do not read while a finger is on the screen</string>
+    <string name="ms_notif_no_read_in_call">Do not read during calls</string>
+    <string name="ms_notif_summary_only">Read notification summary only</string>
+    <string name="ms_notif_read_source">Read the source (app name) of the notification</string>
+    <string name="ms_notif_use_secondary_tts">Read notifications with the secondary TTS voice</string>
+    <string name="ms_notif_queue">Queue notifications instead of interrupting</string>
+    <string name="ms_notification_title">Notification settings</string>
+    <string name="ms_notification_summary">Auto reading, toast, summary, source and calls</string>
+    <string name="ms_advanced_title">MS advanced settings</string>
+    <string name="ms_advanced_summary">Automatic time announcement</string>
+    <string-array name="ms_notif_mode_entries">
+        <item>Off</item>
+        <item>Only when screen is locked</item>
+        <item>Only when screen is unlocked</item>
+        <item>Locked and unlocked</item>
+    </string-array>
+    <string-array name="ms_notif_mode_values">
+        <item>off</item>
+        <item>locked</item>
+        <item>unlocked</item>
+        <item>both</item>
+    </string-array>
+    <string-array name="ms_adv_interval_entries">
+        <item>Every 10 minutes</item>
+        <item>Every 15 minutes</item>
+        <item>Every 30 minutes</item>
+        <item>Every hour</item>
+    </string-array>
+    <string-array name="ms_adv_interval_values">
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+    <string-array name="ms_adv_hour_entries">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+    <string-array name="ms_adv_hour_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+</resources>

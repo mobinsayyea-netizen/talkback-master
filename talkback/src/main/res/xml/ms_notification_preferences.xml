@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_notif_auto_read" android:title="@string/ms_notif_auto_read" android:dialogTitle="@string/ms_notif_auto_read" android:entries="@array/ms_notif_mode_entries" android:entryValues="@array/ms_notif_mode_values" android:defaultValue="both" android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_read_toast" android:title="@string/ms_notif_read_toast" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_no_read_touching" android:title="@string/ms_notif_no_read_touching" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_no_read_in_call" android:title="@string/ms_notif_no_read_in_call" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_summary_only" android:title="@string/ms_notif_summary_only" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_read_source" android:title="@string/ms_notif_read_source" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_use_secondary_tts" android:title="@string/ms_notif_use_secondary_tts" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_queue" android:title="@string/ms_notif_queue" android:defaultValue="false" />
+</PreferenceScreen>

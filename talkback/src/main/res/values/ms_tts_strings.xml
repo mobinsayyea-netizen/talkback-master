@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ms_tts_title">TTS engine and voice</string>
+    <string name="ms_tts_summary">Engine, speed, pitch, volume and audio options</string>
+    <string name="ms_secondary_tts_title">Secondary TTS settings</string>
+    <string name="ms_secondary_tts_summary">A second voice with its own engine, speed, pitch and volume</string>
+    <string name="ms_tts_engine_title">TTS engine</string>
+    <string name="ms_tts_engine_system_default">System default</string>
+    <string name="ms_tts_system_settings_title">System text-to-speech settings</string>
+    <string name="ms_tts_speed_title">Speech speed</string>
+    <string name="ms_tts_pitch_title">Speech pitch</string>
+    <string name="ms_tts_volume_title">Speech volume</string>
+    <string name="ms_tts_audio_focus_title">Use audio focus</string>
+    <string name="ms_tts_audio_focus_summary">Lower other audio while speaking</string>
+    <string name="ms_tts_proximity_title">Stop speech when the proximity sensor is covered</string>
+    <string name="ms_tts_accessibility_volume_title">Use accessibility volume</string>
+    <string name="ms_tts_touch_stop_title">Stop speech on touch</string>
+
+    <string-array name="ms_tts_pitch_entries">
+        <item>50%</item><item>75%</item><item>100%</item><item>125%</item><item>150%</item><item>200%</item>
+    </string-array>
+    <string-array name="ms_tts_pitch_values">
+        <item>0.5</item><item>0.75</item><item>1.0</item><item>1.25</item><item>1.5</item><item>2.0</item>
+    </string-array>
+    <string-array name="ms_tts_percent_entries">
+        <item>10%</item><item>25%</item><item>50%</item><item>75%</item><item>100%</item>
+    </string-array>
+    <string-array name="ms_tts_percent_values">
+        <item>10</item><item>25</item><item>50</item><item>75</item><item>100</item>
+    </string-array>
+</resources>

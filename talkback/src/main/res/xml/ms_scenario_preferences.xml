@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_scn_chat_read" android:title="@string/ms_scn_chat_read" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_scn_chat_voice" android:title="@string/ms_scn_chat_voice" android:dialogTitle="@string/ms_scn_chat_voice" android:entries="@array/ms_voice_entries" android:entryValues="@array/ms_voice_values" android:defaultValue="secondary" android:summary="%s" />
+  <EditTextPreference android:key="ms_scn_chat_apps" android:title="@string/ms_scn_chat_apps" android:defaultValue="org.telegram.messenger,com.whatsapp,com.whatsapp.w4b" android:summary="%s" />
+</PreferenceScreen>
