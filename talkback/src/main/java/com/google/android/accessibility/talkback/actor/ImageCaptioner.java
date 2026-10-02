@@ -917,6 +917,8 @@ public class ImageCaptioner extends Handler
 
   /** Performs image captioning on the given {@link AccessibilityNodeInfoCompat} by Gemini. */
   public boolean captionWithGemini(AccessibilityNodeInfoCompat node) {
+    com.google.android.accessibility.talkback.actor.gemini.GeminiKeyStore.say(
+        service, "Describing the image. Please wait.");
     if (!canTakeScreenshot()) {
       returnFeedback(R.string.image_caption_with_hide_screen);
       return false;
@@ -941,6 +943,8 @@ public class ImageCaptioner extends Handler
   }
 
   public boolean geminiScreenOverview(AccessibilityNodeInfoCompat node) {
+    com.google.android.accessibility.talkback.actor.gemini.GeminiKeyStore.say(
+        service, "Describing the screen. Please wait.");
     if (!canTakeScreenshot()) {
       returnFeedback(R.string.image_caption_with_hide_screen);
       return false;

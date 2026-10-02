@@ -1816,16 +1816,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     displayMonitor = new DisplayMonitor(this);
     accessibilityEventProcessor = new AccessibilityEventProcessor(this, displayMonitor);
     feedbackController = new FeedbackController(this);
-    com.google.android.accessibility.talkback.soundtheme.SoundThemeManager soundThemeManager =
-        new com.google.android.accessibility.talkback.soundtheme.SoundThemeManager(this);
-    feedbackController.setSoundOverrideProvider(soundThemeManager);
-    if (extraEventSounds != null) {
-      extraEventSounds.stop();
-    }
-    extraEventSounds =
-        new com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds(
-            this, soundThemeManager);
-    extraEventSounds.start();
+    // Sound themes and extra event sounds were removed: TalkBack's normal sounds are used.
     speechController =
         new SpeechControllerImpl(
             this,

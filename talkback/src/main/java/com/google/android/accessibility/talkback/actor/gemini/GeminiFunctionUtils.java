@@ -624,6 +624,11 @@ public class GeminiFunctionUtils {
   public static Feedback.Part.Builder getPreferredImageDescriptionFeedback(
       Context context, ActorState actorState, @Nullable AccessibilityNodeInfoCompat node) {
 
+    // MS Screen Reader: the user's own Gemini key is always used, so there are no opt-in dialogs.
+    if (node != null) {
+      return Feedback.performDetailedImageCaption(node);
+    }
+
     SharedPreferences prefs = SharedPreferencesUtils.getSharedPreferences(context);
 
     @Nullable List<DescribeImageCandidate> candidates = null;
@@ -680,7 +685,9 @@ public class GeminiFunctionUtils {
     if (node == null) {
       return null;
     }
-    if (SharedPreferencesUtils.getBooleanPref(
+    // MS Screen Reader: no opt-in dialog, the user's own key is used.
+    if (true
+        || SharedPreferencesUtils.getBooleanPref(
         prefs,
         context.getResources(),
         R.string.pref_opt_in_screen_overview_key,
