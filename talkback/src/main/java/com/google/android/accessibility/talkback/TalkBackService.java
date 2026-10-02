@@ -755,7 +755,9 @@ public class TalkBackService extends AccessibilityServiceCompat
     if (pipeline == null) {
       return;
     }
-    pipeline.returnFeedback(
+    pipeline
+        .getFeedbackReturner()
+        .returnFeedback(
         EVENT_ID_UNTRACKED,
         Feedback.speech(
             text,
