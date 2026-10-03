@@ -28,7 +28,7 @@
       android:title="Sound theme"
       android:summary="Choose which sound theme is used">
     <intent
-        android:targetPackage="com.android.talkback"
+        android:targetPackage="com.mobeen.msscreenreader"
         android:targetClass="com.google.android.accessibility.talkback.soundtheme.SoundThemeChooseActivity" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
@@ -37,7 +37,7 @@
       android:title="Sound theme manager"
       android:summary="Add or delete sound themes">
     <intent
-        android:targetPackage="com.android.talkback"
+        android:targetPackage="com.mobeen.msscreenreader"
         android:targetClass="com.google.android.accessibility.talkback.soundtheme.SoundThemeListActivity" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
@@ -46,7 +46,7 @@
       android:title="Sound theme settings"
       android:summary="Choose the sound for each event in the active theme">
     <intent
-        android:targetPackage="com.android.talkback"
+        android:targetPackage="com.mobeen.msscreenreader"
         android:targetClass="com.google.android.accessibility.talkback.soundtheme.SoundThemeSettingsActivity" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference

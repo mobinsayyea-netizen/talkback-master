@@ -109,7 +109,7 @@
         android:title="OCR &amp; Translate"
         android:summary="Text reading, languages and language packs">
       <intent
-          android:targetPackage="com.android.talkback"
+          android:targetPackage="com.mobeen.msscreenreader"
           android:targetClass="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity" />
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
@@ -117,7 +117,7 @@
         android:title="Gemini"
         android:summary="Key and model for image and screen descriptions">
       <intent
-          android:targetPackage="com.android.talkback"
+          android:targetPackage="com.mobeen.msscreenreader"
           android:targetClass="com.google.android.accessibility.talkback.actor.gemini.GeminiSettingsActivity" />
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
@@ -145,7 +145,7 @@
         android:title="Clipboard"
         android:summary="Copied text history, favorites and paste">
       <intent
-          android:targetPackage="com.android.talkback"
+          android:targetPackage="com.mobeen.msscreenreader"
           android:targetClass="com.google.android.accessibility.talkback.clipboard.ClipboardActivity" />
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
@@ -190,7 +190,7 @@
         android:title="Backup and restore"
         android:summary="Back up everything to Google Drive or a file, automatically or by hand, and restore it">
       <intent
-          android:targetPackage="com.android.talkback"
+          android:targetPackage="com.mobeen.msscreenreader"
           android:targetClass="com.google.android.accessibility.talkback.backup.SettingsBackupActivity" />
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
@@ -198,7 +198,7 @@
         android:title="Check for updates"
         android:summary="See if a newer build is available and install it">
       <intent
-          android:targetPackage="com.android.talkback"
+          android:targetPackage="com.mobeen.msscreenreader"
           android:targetClass="com.google.android.accessibility.talkback.updater.CheckForUpdatesActivity" />
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference

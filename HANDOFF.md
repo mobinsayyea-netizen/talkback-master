@@ -118,3 +118,6 @@ Raw resources are in `talkback/src/main/res/raw`, `braille/common/src/phone/res/
 
 ## 8. Glossary of his voice-typed words
 - "मिस / एस स्क्रीन रीडर" = MS Screen Reader. "टॉकबैक" = TalkBack. "होशियार / ओसीआर" = OCR. "फोकस / फॉक्स" = focus. "डिफ़ॉल्ट" = Default. "अपेंड" = append. "क्लिपबोर्ड" = Clipboard. "बना" = start building. "जीसू / जीशू" = Jieshuo (a Chinese screen reader), "कॉमेंट्री स्क्रीन रीडर" = Commentary Screen Reader (CSR). "उल्टे हाथ" = left, "सीधे हाथ" = right. "रो कॉलम" = rows and columns. "एपीके / एपी की" = APK / API key. "रिपोर्ट" often means repo.
+
+## Package name changed (build 28)
+After a phone security update, APKs named `com.android.talkback` stopped installing on the user's Moto G45 (silent "Installing..." then exit; other APKs fine). Test build uses applicationId `com.mobeen.msscreenreader` (set once in shared.gradle; Java classes/namespace unchanged). It installs as a NEW app: old settings do not carry over. Signing key unchanged.
