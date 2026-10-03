@@ -53,10 +53,17 @@ public final class MsNotificationController {
     if (TextUtils.isEmpty(text)) {
       return true;
     }
+    text = MsContentFilter.apply(service, text).toString();
+    if (TextUtils.isEmpty(text)) {
+      return true;
+    }
     boolean queue = prefs.getBoolean(P + "queue", false);
     boolean useSecondary = prefs.getBoolean(P + "use_secondary_tts", true);
     if (isChatApp(event.getPackageName())) {
       if (!prefs.getBoolean("ms_scn_chat_read", true)) {
+        return true;
+      }
+      if (MsContentFilter.autoBlocked(service, text)) {
         return true;
       }
       useSecondary = "secondary".equals(prefs.getString("ms_scn_chat_voice", "secondary"));

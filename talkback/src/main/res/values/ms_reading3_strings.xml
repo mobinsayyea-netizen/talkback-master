@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ms_rd_call_title">Caller announcement settings</string>
+    <string name="ms_rd_filter_title">Content filtering settings</string>
+    <string name="ms_rd_auto_title">Chat messages auto-reading settings</string>
+    <string name="ms_rd_call_announce">Read the caller\'s ID</string>
+    <string name="ms_rd_call_announce_sum">Say the caller\'s name or number when a call comes in</string>
+    <string name="ms_rd_call_repeat">Repeat the caller ID for</string>
+    <string name="ms_rd_call_ringvol">Use ringtone volume for speaking</string>
+    <string name="ms_rd_call_ringvol_sum">Speak the caller ID at the ringtone volume instead of the screen reader volume</string>
+    <string name="ms_rd_call_time">Speak the duration of the finished phone call</string>
+    <string name="ms_rd_call_time_sum">Say how long the call lasted when it ends</string>
+    <string name="ms_rd_call_perm">Allow phone and contacts permissions</string>
+    <string name="ms_rd_call_perm_sum">Opens app info. Under Permissions allow Phone, Call logs and Contacts, so the number and name can be read</string>
+    <string name="ms_rd_call_incoming">Incoming call from %1$s</string>
+    <string name="ms_rd_call_duration_ms">Call duration %1$d minutes %2$d seconds</string>
+    <string name="ms_rd_call_duration_s">Call duration %1$d seconds</string>
+    <string-array name="ms_rd_call_repeat_entries">
+        <item>1 time</item>
+        <item>2 times</item>
+        <item>3 times</item>
+        <item>5 times</item>
+    </string-array>
+    <string-array name="ms_rd_call_repeat_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+    </string-array>
+    <string name="ms_rd_filter_blacklist">Content blacklist</string>
+    <string name="ms_rd_filter_blacklist_sum">One entry per line. Plain text silences speech that is exactly that text. contains:word silences speech containing the word. re:pattern uses a regular expression.</string>
+    <string name="ms_rd_filter_small">Filter unwanted controls</string>
+    <string name="ms_rd_filter_small_sum">Do not speak text made only of symbols, such as dividers and bullets</string>
+    <string name="ms_rd_auto_read">Automatically read incoming chat messages</string>
+    <string name="ms_rd_auto_read_sum">Read new messages from the chat apps below when their notification arrives</string>
+    <string name="ms_rd_auto_apps">List of chat apps</string>
+    <string name="ms_rd_auto_blacklist">Automatic message reading blacklist</string>
+    <string name="ms_rd_auto_blacklist_sum">One word or phrase per line. A chat message containing it is not read.</string>
+    <string name="ms_rd_chars_first">Read the text first when explaining</string>
+    <string name="ms_rd_chars_first_sum">When an example word is spoken for a letter, say the letter before the word</string>
+    <string name="ms_rd_chars_index">Read the index of a latin letter</string>
+    <string name="ms_rd_chars_index_sum">In character navigation, also say the place of an English letter in the alphabet</string>
+    <string name="ms_rd_chars_index_spoken">number %1$d</string>
+    <string name="ms_rd_alias_use">Use custom node aliases</string>
+    <string name="ms_rd_alias_use_sum">Speak your own name for chosen elements</string>
+    <string name="ms_rd_alias_edit">Aliases manager</string>
+    <string name="ms_rd_alias_edit_sum">One per line: view id or exact element text = name to speak. Example: com.whatsapp:id/send=Send message</string>
+    <item type="id" name="ms_menu_recognition" />
+    <item type="id" name="ms_menu_functions" />
+    <item type="id" name="ms_menu_navigation" />
+    <item type="id" name="ms_menu_copy" />
+    <item type="id" name="ms_menu_append" />
+    <item type="id" name="ms_menu_translate" />
+    <item type="id" name="ms_menu_ocr" />
+    <item type="id" name="ms_menu_ocr_translate" />
+    <string name="ms_menu_recognition_title">Recognition menu</string>
+    <string name="ms_menu_functions_title">Functions menu</string>
+    <string name="ms_menu_navigation_title">Navigation menu</string>
+    <string name="ms_menu_copy_title">Copy</string>
+    <string name="ms_menu_append_title">Append</string>
+    <string name="ms_menu_translate_title">Translation</string>
+    <string name="ms_menu_ocr_title">Text recognition</string>
+    <string name="ms_menu_ocr_translate_title">Text recognition and translation</string>
+</resources>

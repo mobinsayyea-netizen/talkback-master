@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ms_reading_title">Reading settings</string>
+    <string name="ms_reading_summary">What is spoken for alerts, lists, labels and changing content</string>
+    <string name="ms_rd_alert_title">Dynamic alert reading settings</string>
+    <string name="ms_rd_list_title">List reading settings</string>
+    <string name="ms_rd_label_title">Label reading settings</string>
+    <string name="ms_rd_content_title">Dynamic content reading settings</string>
+    <string name="ms_rd_usage_hints">Read usage hints</string>
+    <string name="ms_rd_usage_hints_sum">Speak hints such as double tap to activate</string>
+    <string name="ms_rd_volume">Read volume when changing</string>
+    <string name="ms_rd_volume_sum">Speak the volume percentage after a volume change</string>
+    <string name="ms_rd_volume_spoken">%1$d percent</string>
+    <string name="ms_rd_window_all">Read the whole window on window change</string>
+    <string name="ms_rd_window_all_sum">After a new app window opens, read all its visible text</string>
+    <string name="ms_rd_key_echo">Key echo: on-screen keyboard</string>
+    <string name="ms_rd_key_echo_physical">Key echo: physical keyboard</string>
+    <string name="ms_rd_list_index">Read element positions in lists</string>
+    <string name="ms_rd_list_index_sum">Speak item numbers such as 3 of 20 in lists and grids</string>
+    <string name="ms_rd_list_range">Read list display range while scrolling</string>
+    <string name="ms_rd_list_range_sum">Speak which items are showing after you scroll a list</string>
+    <string name="ms_rd_view_name">Speak the element type of current focus</string>
+    <string name="ms_rd_view_name_sum">Button, checkbox, heading and so on</string>
+    <string name="ms_rd_unlabeled">Read unlabelled controls</string>
+    <string name="ms_rd_unlabeled_sum">Speak the element ID for buttons that have no label</string>
+    <string name="ms_rd_progress">Automatically read the value of the progress bar</string>
+    <string name="ms_rd_progress_sum">Speak every progress update, for example while downloading</string>
+    <string name="ms_rd_focus_changed">Automatically read changes in the currently focused item</string>
+    <string name="ms_rd_focus_changed_sum">Speak when the text of the focused item changes. Live regions are always spoken</string>
+    <string name="ms_rd_window_title">Speak window name</string>
+    <string name="ms_rd_window_title_sum">Speak the title when a window or dialog opens</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="@string/pref_allow_frequent_content_change_announcement_key" android:title="@string/ms_rd_progress" android:summary="@string/ms_rd_progress_sum" android:defaultValue="@bool/pref_allow_frequent_content_change_announcement_default" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_focus_content_changed" android:title="@string/ms_rd_focus_changed" android:summary="@string/ms_rd_focus_changed_sum" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_window_title" android:title="@string/ms_rd_window_title" android:summary="@string/ms_rd_window_title_sum" android:defaultValue="true" />
+</PreferenceScreen>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="@string/pref_speak_container_element_positions_key" android:title="@string/ms_rd_list_index" android:summary="@string/ms_rd_list_index_sum" android:defaultValue="@bool/pref_speak_container_element_positions_default" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="@string/pref_verbose_scroll_announcement_key" android:title="@string/ms_rd_list_range" android:summary="@string/ms_rd_list_range_sum" android:defaultValue="@bool/pref_verbose_scroll_announcement_default" />
+</PreferenceScreen>

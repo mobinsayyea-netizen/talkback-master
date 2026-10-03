@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_call_announce" android:title="@string/ms_rd_call_announce" android:summary="@string/ms_rd_call_announce_sum" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_rd_call_repeat" android:title="@string/ms_rd_call_repeat" android:dialogTitle="@string/ms_rd_call_repeat" android:entries="@array/ms_rd_call_repeat_entries" android:entryValues="@array/ms_rd_call_repeat_values" android:defaultValue="2" android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_call_ringvol" android:title="@string/ms_rd_call_ringvol" android:summary="@string/ms_rd_call_ringvol_sum" android:defaultValue="false" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_call_time" android:title="@string/ms_rd_call_time" android:summary="@string/ms_rd_call_time_sum" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_rd_call_perm" android:title="@string/ms_rd_call_perm" android:summary="@string/ms_rd_call_perm_sum"><intent android:action="android.settings.APPLICATION_DETAILS_SETTINGS" android:data="package:com.android.talkback" /></com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+</PreferenceScreen>

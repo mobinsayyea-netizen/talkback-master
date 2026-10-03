@@ -521,12 +521,14 @@ public class Compositor {
     // Compose speech, and speech parameters.
     CharSequence ttsOutput =
         eventFeedback.ttsOutput().isPresent() ? eventFeedback.ttsOutput().get() : "";
+    ttsOutput = com.google.android.accessibility.talkback.MsContentFilter.apply(mContext, ttsOutput);
     if (!TextUtils.isEmpty(ttsOutput)) {
       // Cleans up the TTS output if it is just 1 character long. This will announce single
       // symbols correctly.
       // TODO: Think about a unified clean up strategy instead of calling clean ups at
       // various places in the code.
       ttsOutput = SpeechCleanupUtils.cleanUp(mContext, ttsOutput);
+      ttsOutput = com.google.android.accessibility.talkback.MsDictionary.apply(mContext, ttsOutput);
       // Compute queueing mode.
       int queueMode = eventFeedback.queueMode();
       if (queueMode == QUEUE_MODE_INTERRUPTIBLE_IF_LONG) {

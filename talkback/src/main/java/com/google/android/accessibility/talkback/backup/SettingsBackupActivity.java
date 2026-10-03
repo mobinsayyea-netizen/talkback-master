@@ -1,74 +1,118 @@
 package com.google.android.accessibility.talkback.backup;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.format.DateFormat;
 import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
-import com.google.android.accessibility.utils.SharedPreferencesUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Date;
 
 /**
- * Backs up MS Screen Reader's settings to a file the user chooses (so they survive an uninstall),
- * and restores them from such a file.
+ * Backup and restore of ALL MS Screen Reader data: settings (including the Gemini key), sound
+ * themes, clipboard history, labels and Lua files. Works with a folder (Google Drive or any other
+ * folder picked with the system picker), automatically or by hand, and with a single local file.
  */
 public class SettingsBackupActivity extends Activity {
 
-  private static final int REQUEST_BACKUP = 9201;
-  private static final int REQUEST_RESTORE = 9202;
-  private static final String BACKUP_FILE_NAME = "ms-screen-reader-settings.json";
+  private static final int REQUEST_FOLDER = 9203;
+  private static final int REQUEST_FILE_BACKUP = 9201;
+  private static final int REQUEST_FILE_RESTORE = 9202;
 
   private TextView status;
+  private TextView folderInfo;
+  private final Handler main = new Handler(Looper.getMainLooper());
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setTitle("Backup and restore settings");
+    setTitle("Backup and restore");
 
+    ScrollView scroll = new ScrollView(this);
+    scroll.setBackgroundColor(Color.BLACK);
     LinearLayout layout = new LinearLayout(this);
     layout.setOrientation(LinearLayout.VERTICAL);
-    layout.setBackgroundColor(Color.BLACK);
     int pad = (int) (16 * getResources().getDisplayMetrics().density);
     layout.setPadding(pad, pad, pad, pad);
+    scroll.addView(layout);
 
-    TextView heading = new TextView(this);
-    heading.setText("Backup and restore settings");
-    heading.setTextColor(Color.WHITE);
-    heading.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f);
-    layout.addView(heading, wrap());
+    layout.addView(text("Backup and restore", 22f, true), wrap());
+    layout.addView(
+        text(
+            "Saves everything: all settings, Gemini key and model, sound themes, clipboard"
+                + " history, labels and Lua files.",
+            15f,
+            false),
+        wrap());
 
-    Button backup = new Button(this);
-    backup.setText("Back up settings to a file");
-    backup.setOnClickListener(v -> startBackup());
-    layout.addView(backup, wrap());
+    layout.addView(text("Folder backup (Google Drive or any folder)", 18f, true), wrap());
+    folderInfo = text("", 15f, false);
+    layout.addView(folderInfo, wrap());
 
-    Button restore = new Button(this);
-    restore.setText("Restore settings from a file");
-    restore.setOnClickListener(v -> startRestore());
-    layout.addView(restore, wrap());
+    addButton(layout, "Choose backup folder", v -> chooseFolder());
+    addButton(layout, "Back up now to the folder", v -> backupToFolderNow());
+    addButton(layout, "Restore from the folder", v -> confirmRestoreFromFolder());
 
-    status = new TextView(this);
-    status.setTextColor(Color.WHITE);
-    status.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f);
+    Switch auto = new Switch(this);
+    auto.setText("Automatic backup to the folder (about every 6 hours)");
+    auto.setTextColor(Color.WHITE);
+    auto.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f);
+    auto.setChecked(MsBackupManager.state(this).getBoolean(MsBackupManager.KEY_AUTO, false));
+    auto.setOnCheckedChangeListener(
+        (CompoundButton b, boolean on) -> {
+          MsBackupManager.state(this).edit().putBoolean(MsBackupManager.KEY_AUTO, on).apply();
+          if (on && MsBackupManager.folderUri(this) == null) {
+            say("Automatic backup is on, but choose a backup folder first");
+          } else {
+            say(on ? "Automatic backup on" : "Automatic backup off");
+          }
+        });
+    layout.addView(auto, wrap());
+
+    layout.addView(text("Single file backup", 18f, true), wrap());
+    addButton(layout, "Back up to a file", v -> startFileBackup());
+    addButton(layout, "Restore from a file", v -> startFileRestore());
+
+    status = text("", 16f, false);
     layout.addView(status, wrap());
 
-    setContentView(layout);
+    setContentView(scroll);
+    refreshFolderInfo();
+  }
+
+  private TextView text(String s, float sp, boolean heading) {
+    TextView t = new TextView(this);
+    t.setText(s);
+    t.setTextColor(Color.WHITE);
+    t.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp);
+    if (heading) {
+      t.setAccessibilityHeading(true);
+    }
+    int p = (int) (8 * getResources().getDisplayMetrics().density);
+    t.setPadding(0, p, 0, p);
+    return t;
+  }
+
+  private void addButton(LinearLayout layout, String label, android.view.View.OnClickListener l) {
+    Button b = new Button(this);
+    b.setText(label);
+    b.setOnClickListener(l);
+    layout.addView(b, wrap());
   }
 
   private static LinearLayout.LayoutParams wrap() {
@@ -81,24 +125,110 @@ public class SettingsBackupActivity extends Activity {
     status.announceForAccessibility(message);
   }
 
-  private void startBackup() {
+  private void refreshFolderInfo() {
+    Uri folder = MsBackupManager.folderUri(this);
+    long last = MsBackupManager.state(this).getLong(MsBackupManager.KEY_LAST_TIME, 0L);
+    String s = folder == null ? "No folder chosen yet." : "Folder is chosen.";
+    if (last > 0) {
+      s += " Last backup: " + DateFormat.format("d MMM yyyy, h:mm a", new Date(last));
+    }
+    folderInfo.setText(s);
+  }
+
+  // --- Folder -------------------------------------------------------------------------------
+
+  private void chooseFolder() {
+    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+    intent.addFlags(
+        Intent.FLAG_GRANT_READ_URI_PERMISSION
+            | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+            | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+            | Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
+    try {
+      startActivityForResult(intent, REQUEST_FOLDER);
+      say("Pick a folder in Google Drive, then press Use this folder");
+    } catch (ActivityNotFoundException e) {
+      say("No folder picker is available on this device");
+    }
+  }
+
+  private void backupToFolderNow() {
+    if (MsBackupManager.folderUri(this) == null) {
+      say("Choose a backup folder first");
+      return;
+    }
+    say("Backing up, please wait");
+    new Thread(
+            () -> {
+              String result = MsBackupManager.backupToSavedFolder(getApplicationContext());
+              main.post(
+                  () -> {
+                    say(result);
+                    refreshFolderInfo();
+                  });
+            })
+        .start();
+  }
+
+  private void confirmRestoreFromFolder() {
+    Uri folder = MsBackupManager.folderUri(this);
+    if (folder == null) {
+      say("Choose the backup folder first");
+      return;
+    }
+    new AlertDialog.Builder(this)
+        .setTitle("Restore from the folder?")
+        .setMessage("This replaces your current settings, sound themes, labels and Lua files.")
+        .setPositiveButton("Restore", (d, w) -> restoreFromFolder(folder))
+        .setNegativeButton("Cancel", null)
+        .show();
+  }
+
+  private void restoreFromFolder(Uri folder) {
+    say("Restoring, please wait");
+    new Thread(
+            () -> {
+              String result;
+              try {
+                byte[] zip = MsBackupManager.readFromFolder(getApplicationContext(), folder);
+                if (zip == null) {
+                  result = "No backup file found in that folder";
+                } else {
+                  result = restoredMessage(MsBackupManager.restore(getApplicationContext(), zip));
+                }
+              } catch (Exception e) {
+                result = "Restore failed: " + e.getMessage();
+              }
+              final String r = result;
+              main.post(() -> say(r));
+            })
+        .start();
+  }
+
+  private static String restoredMessage(String summary) {
+    return "Restored: " + summary + ". Turn the screen reader off and on once to apply everything.";
+  }
+
+  // --- Single file --------------------------------------------------------------------------
+
+  private void startFileBackup() {
     Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
     intent.addCategory(Intent.CATEGORY_OPENABLE);
-    intent.setType("application/json");
-    intent.putExtra(Intent.EXTRA_TITLE, BACKUP_FILE_NAME);
+    intent.setType("application/zip");
+    intent.putExtra(Intent.EXTRA_TITLE, MsBackupManager.BACKUP_FILE_NAME);
     try {
-      startActivityForResult(intent, REQUEST_BACKUP);
+      startActivityForResult(intent, REQUEST_FILE_BACKUP);
     } catch (ActivityNotFoundException e) {
       say("No file picker is available on this device");
     }
   }
 
-  private void startRestore() {
+  private void startFileRestore() {
     Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
     intent.addCategory(Intent.CATEGORY_OPENABLE);
     intent.setType("*/*");
     try {
-      startActivityForResult(intent, REQUEST_RESTORE);
+      startActivityForResult(intent, REQUEST_FILE_RESTORE);
     } catch (ActivityNotFoundException e) {
       say("No file picker is available on this device");
     }
@@ -111,128 +241,61 @@ public class SettingsBackupActivity extends Activity {
       return;
     }
     Uri uri = data.getData();
-    if (requestCode == REQUEST_BACKUP) {
-      writeBackup(uri);
-    } else if (requestCode == REQUEST_RESTORE) {
-      readBackup(uri);
+    if (requestCode == REQUEST_FOLDER) {
+      MsBackupManager.setFolder(this, uri);
+      refreshFolderInfo();
+      say("Folder saved. Press Back up now, or turn on automatic backup");
+    } else if (requestCode == REQUEST_FILE_BACKUP) {
+      new Thread(
+              () -> {
+                String r;
+                try (OutputStream out = getContentResolver().openOutputStream(uri, "wt")) {
+                  if (out == null) {
+                    r = "Could not write the backup file";
+                  } else {
+                    out.write(MsBackupManager.buildBackup(getApplicationContext()));
+                    r = "Backed up to the file";
+                  }
+                } catch (Exception e) {
+                  r = "Backup failed: " + e.getMessage();
+                }
+                final String rr = r;
+                main.post(() -> say(rr));
+              })
+          .start();
+    } else if (requestCode == REQUEST_FILE_RESTORE) {
+      new AlertDialog.Builder(this)
+          .setTitle("Restore from this file?")
+          .setMessage("This replaces your current settings, sound themes, labels and Lua files.")
+          .setPositiveButton("Restore", (d, w) -> restoreFromFile(uri))
+          .setNegativeButton("Cancel", null)
+          .show();
     }
   }
 
-  private void writeBackup(Uri uri) {
-    try {
-      SharedPreferences prefs = SharedPreferencesUtils.getSharedPreferences(this);
-      JSONObject values = new JSONObject();
-      for (Map.Entry<String, ?> entry : prefs.getAll().entrySet()) {
-        Object value = entry.getValue();
-        JSONObject item = new JSONObject();
-        if (value instanceof Boolean) {
-          item.put("t", "b");
-          item.put("v", ((Boolean) value).booleanValue());
-        } else if (value instanceof Integer) {
-          item.put("t", "i");
-          item.put("v", ((Integer) value).intValue());
-        } else if (value instanceof Long) {
-          item.put("t", "l");
-          item.put("v", ((Long) value).longValue());
-        } else if (value instanceof Float) {
-          item.put("t", "f");
-          item.put("v", ((Float) value).doubleValue());
-        } else if (value instanceof String) {
-          item.put("t", "s");
-          item.put("v", (String) value);
-        } else if (value instanceof Set) {
-          JSONArray array = new JSONArray();
-          for (Object o : (Set<?>) value) {
-            array.put(String.valueOf(o));
-          }
-          item.put("t", "S");
-          item.put("v", array);
-        } else {
-          continue;
-        }
-        values.put(entry.getKey(), item);
-      }
-      JSONObject root = new JSONObject();
-      root.put("app", "MS Screen Reader");
-      root.put("version", 1);
-      root.put("values", values);
-      try (OutputStream out = getContentResolver().openOutputStream(uri)) {
-        if (out == null) {
-          say("Could not write the backup file");
-          return;
-        }
-        out.write(root.toString().getBytes(StandardCharsets.UTF_8));
-      }
-      say("Settings backed up");
-    } catch (Exception e) {
-      say("Backup failed");
-    }
-  }
-
-  private void readBackup(Uri uri) {
-    try {
-      String text;
-      try (InputStream in = getContentResolver().openInputStream(uri)) {
-        if (in == null) {
-          say("Could not read the backup file");
-          return;
-        }
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        byte[] chunk = new byte[8192];
-        int n;
-        while ((n = in.read(chunk)) > 0) {
-          buffer.write(chunk, 0, n);
-        }
-        text = new String(buffer.toByteArray(), StandardCharsets.UTF_8);
-      }
-      JSONObject root = new JSONObject(text);
-      if (!"MS Screen Reader".equals(root.optString("app"))) {
-        say("This is not an MS Screen Reader backup file");
-        return;
-      }
-      JSONObject values = root.getJSONObject("values");
-      SharedPreferences.Editor editor = SharedPreferencesUtils.getSharedPreferences(this).edit();
-      int count = 0;
-      java.util.Iterator<String> keys = values.keys();
-      while (keys.hasNext()) {
-        String key = keys.next();
-        JSONObject item = values.getJSONObject(key);
-        String type = item.getString("t");
-        switch (type) {
-          case "b":
-            editor.putBoolean(key, item.getBoolean("v"));
-            break;
-          case "i":
-            editor.putInt(key, item.getInt("v"));
-            break;
-          case "l":
-            editor.putLong(key, item.getLong("v"));
-            break;
-          case "f":
-            editor.putFloat(key, (float) item.getDouble("v"));
-            break;
-          case "s":
-            editor.putString(key, item.getString("v"));
-            break;
-          case "S":
-            JSONArray array = item.getJSONArray("v");
-            Set<String> set = new HashSet<>();
-            for (int i = 0; i < array.length(); i++) {
-              set.add(array.getString(i));
-            }
-            editor.putStringSet(key, set);
-            break;
-          default:
-            continue;
-        }
-        count++;
-      }
-      editor.apply();
-      say("Settings restored: " + count + " items");
-    } catch (JSONException e) {
-      say("This file is not a valid backup");
-    } catch (Exception e) {
-      say("Restore failed");
-    }
+  private void restoreFromFile(Uri uri) {
+    say("Restoring, please wait");
+    new Thread(
+            () -> {
+              String r;
+              try (InputStream in = getContentResolver().openInputStream(uri)) {
+                if (in == null) {
+                  r = "Could not read the file";
+                } else {
+                  ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                  byte[] chunk = new byte[16384];
+                  int n;
+                  while ((n = in.read(chunk)) > 0) {
+                    buffer.write(chunk, 0, n);
+                  }
+                  r = restoredMessage(MsBackupManager.restore(getApplicationContext(), buffer.toByteArray()));
+                }
+              } catch (Exception e) {
+                r = "Restore failed: " + e.getMessage();
+              }
+              final String rr = r;
+              main.post(() -> say(rr));
+            })
+        .start();
   }
 }

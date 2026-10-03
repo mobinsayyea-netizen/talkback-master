@@ -115,6 +115,14 @@ public class LuaEditorActivity extends Activity {
       } catch (IOException e) {
         Toast.makeText(this, "Error loading file", Toast.LENGTH_SHORT).show();
       }
+    } else if ("Extensions".equals(f.getParentFile().getParentFile().getName())) {
+      // New extension: start with the header lines that connect it to the menu and to events.
+      sb.append("-- title: ").append(f.getParentFile().getName()).append('\n');
+      sb.append("-- menu: on\n");
+      sb.append("-- event: \n");
+      sb.append("-- events: window_changed, app_opened, notification, service_started\n");
+      sb.append("-- From the menu the focused item is the global node.\n");
+      sb.append("-- From an event the globals event_type, event_package, event_text are set.\n\n");
     }
     applyingHistory = true;
     editor.setText(sb.toString());

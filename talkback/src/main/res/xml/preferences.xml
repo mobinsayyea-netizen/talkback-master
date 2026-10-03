@@ -87,6 +87,11 @@
         android:key="pref_ms_scenario_screen_key"
         android:title="@string/ms_scenario_title"
         android:summary="@string/ms_scenario_summary" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
+        android:fragment="com.google.android.accessibility.talkback.preference.base.MsReadingFragment"
+        android:key="pref_ms_reading_screen_key"
+        android:title="@string/ms_reading_title"
+        android:summary="@string/ms_reading_summary" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory
       android:key="pref_category_ms_sounds_key"
@@ -182,8 +187,8 @@
       android:title="About &amp; Updates">
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference
         android:key="pref_ms_backup_restore_key"
-        android:title="Backup and restore settings"
-        android:summary="Save your settings to a file, or restore them from one">
+        android:title="Backup and restore"
+        android:summary="Back up everything to Google Drive or a file, automatically or by hand, and restore it">
       <intent
           android:targetPackage="com.android.talkback"
           android:targetClass="com.google.android.accessibility.talkback.backup.SettingsBackupActivity" />

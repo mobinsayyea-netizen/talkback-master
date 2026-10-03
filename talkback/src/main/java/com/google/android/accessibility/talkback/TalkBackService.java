@@ -747,14 +747,90 @@ public class TalkBackService extends AccessibilityServiceCompat
   private MsOperationController msOperation;
   private MsSecondaryTts msSecondaryTts;
   private MsNotificationController msNotification;
+  private MsReadingController msReading;
+  private MsCallController msCall;
   private MsTimerController msTimer;
   private MsClickController msClick;
+
+  /** MS Screen Reader: text actions of the main menu (copy, append, translate, OCR). */
+  public void msRunTextAction(int action) {
+    if (selectorController != null) {
+      selectorController.msRunTextAction(action);
+    }
+  }
+
+  /**
+   * MS Screen Reader: starts TalkBack's own voice commands (the same listener the "Voice commands"
+   * gesture uses). Returns false when the pipeline is not ready yet.
+   */
+  public boolean msStartVoiceCommands() {
+    if (pipeline == null) {
+      return false;
+    }
+    pipeline
+        .getFeedbackReturner()
+        .returnFeedback(
+            EVENT_ID_UNTRACKED,
+            Feedback.voiceRecognition(
+                Feedback.VoiceRecognition.Action.START_LISTENING_IF_SCREEN_NOT_LOCKED,
+                /* checkDialog= */ true,
+                /* nodeMenuShortcut= */ ""));
+    return true;
+  }
+
+  private final android.os.Handler msBackupHandler =
+      new android.os.Handler(android.os.Looper.getMainLooper());
+  private boolean msBackupRunning;
+  private final Runnable msBackupTick =
+      new Runnable() {
+        @Override
+        public void run() {
+          if (!msBackupRunning) {
+            return;
+          }
+          if (com.google.android.accessibility.talkback.backup.MsBackupManager.autoBackupDue(
+              TalkBackService.this)) {
+            final android.content.Context appContext = getApplicationContext();
+            new Thread(
+                    () ->
+                        com.google.android.accessibility.talkback.backup.MsBackupManager
+                            .backupToSavedFolder(appContext))
+                .start();
+          }
+          msBackupHandler.postDelayed(this, 15L * 60L * 1000L);
+        }
+      };
+
+  /** MS Screen Reader: automatic backup to the chosen folder; checks every 15 minutes. */
+  private void msStartAutoBackup() {
+    msBackupRunning = true;
+    msBackupHandler.removeCallbacks(msBackupTick);
+    msBackupHandler.postDelayed(msBackupTick, 60L * 1000L);
+  }
+
+  private void msStopAutoBackup() {
+    msBackupRunning = false;
+    msBackupHandler.removeCallbacks(msBackupTick);
+  }
+
+  /** MS Screen Reader: the item that has screen reader focus now (for Lua extensions), or null. */
+  public android.view.accessibility.AccessibilityNodeInfo msFocusedNode() {
+    try {
+      android.view.accessibility.AccessibilityNodeInfo root = getRootInActiveWindow();
+      return root == null
+          ? null
+          : root.findFocus(android.view.accessibility.AccessibilityNodeInfo.FOCUS_ACCESSIBILITY);
+    } catch (Exception e) {
+      return null;
+    }
+  }
 
   /** MS Screen Reader: speaks text with the main TTS voice through the normal pipeline. */
   public void msSpeakMain(CharSequence text, boolean queue) {
     if (pipeline == null) {
       return;
     }
+    text = MsDictionary.apply(this, text);
     pipeline
         .getFeedbackReturner()
         .returnFeedback(
@@ -916,6 +992,7 @@ public class TalkBackService extends AccessibilityServiceCompat
       msClick.stop();
       msClick = null;
     }
+    msStopAutoBackup();
     if (msTimer != null) {
       msTimer.stop();
       msTimer = null;
@@ -925,6 +1002,14 @@ public class TalkBackService extends AccessibilityServiceCompat
       msSecondaryTts = null;
     }
     msNotification = null;
+    if (msCall != null) {
+      msCall.stop();
+      msCall = null;
+    }
+    if (msReading != null) {
+      msReading.stop();
+      msReading = null;
+    }
     if (extraEventSounds != null) {
       extraEventSounds.stop();
       extraEventSounds = null;
@@ -1061,6 +1146,11 @@ public class TalkBackService extends AccessibilityServiceCompat
     if (msClick != null) {
       msClick.onEvent(event);
     }
+    if (msReading != null) {
+      msReading.onEvent(event);
+    }
+    com.google.android.accessibility.talkback.editor.LuaExtensionManager.onAccessibilityEvent(
+        this, event);
     if (eventType == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED
         && msNotification != null
         && msNotification.handle(event, isTouchInteracting)) {
@@ -1631,6 +1721,12 @@ public class TalkBackService extends AccessibilityServiceCompat
     msNotification = new MsNotificationController(this, msSecondaryTts);
     msTimer = new MsTimerController(this, msSecondaryTts);
     msClick = new MsClickController(this);
+    msStartAutoBackup();
+    com.google.android.accessibility.talkback.editor.LuaExtensionManager.onServiceStarted(this);
+    msReading = new MsReadingController(this);
+    msReading.start();
+    msCall = new MsCallController(this);
+    msCall.start();
     msTimer.start();
 
     // Configure logs.

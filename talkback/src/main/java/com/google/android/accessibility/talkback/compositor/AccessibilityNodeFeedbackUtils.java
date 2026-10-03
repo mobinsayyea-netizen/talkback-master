@@ -111,6 +111,10 @@ public class AccessibilityNodeFeedbackUtils {
       Context context,
       ImageContents imageContents,
       GlobalVariables globalVariables) {
+    CharSequence msAlias = com.google.android.accessibility.talkback.MsNodeAlias.lookup(context, node);
+    if (!TextUtils.isEmpty(msAlias)) {
+      return msAlias;
+    }
     CharSequence nodeTextDescription = getNodeTextDescription(node, context, globalVariables);
     if (!TextUtils.isEmpty(nodeTextDescription)) {
       return nodeTextDescription;

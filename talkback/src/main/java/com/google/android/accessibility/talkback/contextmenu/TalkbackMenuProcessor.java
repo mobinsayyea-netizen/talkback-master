@@ -188,9 +188,126 @@ public class TalkbackMenuProcessor {
     setSkipRefocusAndWindowAnnounce(menu, R.id.sound_feedback, true);
     setSkipRefocusAndWindowAnnounce(menu, R.id.vibration_feedback, true);
 
+    addMsGroupMenus(menu);
+
     menu.sortItemsByOrder();
 
     return true;
+  }
+
+  private static final int ORDER_MS_RECOGNITION = 6;
+  private static final int ORDER_MS_NAVIGATION = 7;
+  private static final int ORDER_MS_FUNCTIONS = 8;
+  private static final int ORDER_MS_EXTENSIONS = 9;
+
+  /**
+   * MS Screen Reader: groups the menu into Recognition, Navigation and Functions menus (like the
+   * Jieshuo main menu). Items that are not present are skipped; empty groups are not shown.
+   */
+  private void addMsGroupMenus(ContextMenu menu) {
+    // New text items. Orders keep them first inside their group.
+    menu.add(0, R.id.ms_menu_translate, 1, R.string.ms_menu_translate_title);
+    menu.add(0, R.id.ms_menu_ocr, 2, R.string.ms_menu_ocr_title);
+    menu.add(0, R.id.ms_menu_ocr_translate, 3, R.string.ms_menu_ocr_translate_title);
+    menu.add(0, R.id.ms_menu_copy, 1, R.string.ms_menu_copy_title);
+    menu.add(0, R.id.ms_menu_append, 2, R.string.ms_menu_append_title);
+
+    moveIntoGroup(
+        menu,
+        R.id.ms_menu_recognition,
+        ORDER_MS_RECOGNITION,
+        R.string.ms_menu_recognition_title,
+        new int[] {
+          R.id.ms_menu_translate,
+          R.id.ms_menu_ocr,
+          R.id.ms_menu_ocr_translate,
+          R.id.image_caption_menu,
+          R.id.summarize_view_menu,
+          R.id.video_description_start,
+          R.id.video_description_stop,
+        });
+    moveIntoGroup(
+        menu,
+        R.id.ms_menu_navigation,
+        ORDER_MS_NAVIGATION,
+        R.string.ms_menu_navigation_title,
+        new int[] {
+          R.id.granularity_menu, R.id.read_from_top, R.id.read_from_current, R.id.screen_search,
+        });
+    moveIntoGroup(
+        menu,
+        R.id.ms_menu_functions,
+        ORDER_MS_FUNCTIONS,
+        R.string.ms_menu_functions_title,
+        new int[] {
+          R.id.ms_menu_copy,
+          R.id.ms_menu_append,
+          R.id.copy_last_utterance_to_clipboard,
+          R.id.spell_last_utterance,
+          R.id.repeat_last_utterance,
+          R.id.text_formatting,
+          R.id.language_menu,
+          R.id.enable_dimming,
+          R.id.disable_dimming,
+          R.id.enable_telling_time,
+          R.id.disable_telling_time,
+          R.id.window_menu,
+          R.id.audio_ducking,
+          R.id.sound_feedback,
+          R.id.vibration_feedback,
+        });
+    addExtensionsMenu(menu);
+  }
+
+  /** Adds an "Extensions" menu with one item per Lua extension (Extensions/NAME/main.lua). */
+  private void addExtensionsMenu(ContextMenu menu) {
+    java.util.List<com.google.android.accessibility.talkback.editor.LuaExtensionManager.Extension>
+        exts =
+            com.google.android.accessibility.talkback.editor.LuaExtensionManager.prepareMenuList(
+                service);
+    if (exts.isEmpty()) {
+      return;
+    }
+    ListSubMenu sub =
+        menu.addSubMenu(
+            /* groupId= */ 0,
+            R.id.ms_menu_extensions,
+            ORDER_MS_EXTENSIONS,
+            service.getString(R.string.ms_menu_extensions_title));
+    for (int i = 0;
+        i < exts.size()
+            && i
+                < com.google.android.accessibility.talkback.editor.LuaExtensionManager.MENU_ID_MAX
+                    - com.google.android.accessibility.talkback.editor.LuaExtensionManager
+                        .MENU_ID_BASE;
+        i++) {
+      sub.add(
+          0,
+          com.google.android.accessibility.talkback.editor.LuaExtensionManager.MENU_ID_BASE + i,
+          i,
+          exts.get(i).title);
+    }
+    sub.sortItemsByOrder();
+  }
+
+  private void moveIntoGroup(
+      ContextMenu menu, int groupItemId, int order, int titleRes, int[] itemIds) {
+    java.util.List<ContextMenuItem> found = new java.util.ArrayList<>();
+    for (int id : itemIds) {
+      ContextMenuItem item = menu.findItem(id);
+      if (item != null) {
+        found.add(item);
+      }
+    }
+    if (found.isEmpty()) {
+      return;
+    }
+    ListSubMenu sub = menu.addSubMenu(/* groupId= */ 0, groupItemId, order, service.getString(titleRes));
+    for (ContextMenuItem item : found) {
+      menu.removeItem(item.getItemId());
+      sub.add(item);
+    }
+    sub.sortItemsByOrder();
   }
 
   private boolean showMenuItem(@StringRes int prefKeyId, @BoolRes int defaultValueResId) {

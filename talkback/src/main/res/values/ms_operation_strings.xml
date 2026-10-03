@@ -36,7 +36,8 @@
     <string-array name="ms_op_action_entries">
         <item>Do nothing</item>
         <item>Stop speech</item>
-        <item>Voice assistant</item>
+        <item>Voice assistant (voice commands)</item>
+        <item>Phone assistant (system)</item>
         <item>Quick settings</item>
         <item>Home screen</item>
         <item>Go back</item>
@@ -47,6 +48,7 @@
         <item>nothing</item>
         <item>suspend</item>
         <item>assistant</item>
+        <item>system_assistant</item>
         <item>quick</item>
         <item>home</item>
         <item>back</item>

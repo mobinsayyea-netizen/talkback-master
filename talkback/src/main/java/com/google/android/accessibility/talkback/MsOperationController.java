@@ -321,6 +321,12 @@ public final class MsOperationController {
         service.interruptAllFeedback(/* stopTtsSpeechCompletely= */ true);
         break;
       case "assistant":
+        // TalkBack's own voice commands; falls back to the phone's assistant if not ready.
+        if (!service.msStartVoiceCommands()) {
+          launchAssistant();
+        }
+        break;
+      case "system_assistant":
         launchAssistant();
         break;
       case "home":
