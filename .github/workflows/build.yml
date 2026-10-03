@@ -85,6 +85,22 @@ jobs:
           echo "Found: $APK"
           cp "$APK" MSScreenReader.apk
 
+      - name: Make smaller 64-bit-only APK (same key, updates in place)
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          BT="$ANDROID_HOME/build-tools/36.0.0"
+          cp MSScreenReader.apk tmp64.apk
+          zip -q -d tmp64.apk 'lib/armeabi-v7a/*' || true
+          "$BT/zipalign" -f -p 4 tmp64.apk aligned64.apk
+          "$BT/apksigner" sign --ks "$KEYSTORE_PATH" --ks-key-alias "$KEY_ALIAS" \
+            --ks-pass env:KEYSTORE_PASSWORD --key-pass env:KEY_PASSWORD \
+            --out MSScreenReader-64bit.apk aligned64.apk
+          "$BT/apksigner" verify MSScreenReader-64bit.apk
+          ls -l MSScreenReader.apk MSScreenReader-64bit.apk
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
@@ -95,7 +111,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "build-${{ github.run_number }}" MSScreenReader.apk \
+          gh release create "build-${{ github.run_number }}" MSScreenReader.apk MSScreenReader-64bit.apk \
             --title "MS Screen Reader build ${{ github.run_number }}" \
             --notes "Automatic build from commit ${{ github.sha }}" \
             --latest
