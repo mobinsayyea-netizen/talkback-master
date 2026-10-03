@@ -20,6 +20,8 @@
     <!-- Required for haptic feedback. -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <!-- Required for keeping the screen awake during continuous reading and key filtering. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -174,7 +176,7 @@
             android:exported="false"
             android:excludeFromRecents="true"
             android:taskAffinity=""
-            android:label="Backup and restore settings"
+            android:label="Backup and restore"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
         <activity
             android:name="com.google.android.accessibility.talkback.soundtheme.SoundThemeCustomizeActivity"

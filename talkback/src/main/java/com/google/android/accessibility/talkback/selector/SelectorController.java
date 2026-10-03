@@ -2292,6 +2292,22 @@ public class SelectorController implements UserInputEventListener {
     return "";
   }
 
+  /**
+   * MS Screen Reader: runs a text action from the main menu. 0 = copy, 1 = append, 2 = translate,
+   * 3 = read text from screen (OCR), 4 = OCR then translate.
+   */
+  public void msRunTextAction(int action) {
+    EventId eventId = com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED;
+    switch (action) {
+      case 0 -> copyFocusedText(eventId, /* isNext= */ true);
+      case 1 -> copyFocusedText(eventId, /* isNext= */ false);
+      case 2 -> translateFocusedText(eventId, /* isNext= */ true);
+      case 3 -> ocrFocusedText(eventId, /* thenTranslate= */ false);
+      case 4 -> ocrFocusedText(eventId, /* thenTranslate= */ true);
+      default -> {}
+    }
+  }
+
   /** Swipe down: copy the focused text. Swipe up: add it below the text already copied. */
   private void copyFocusedText(EventId eventId, boolean isNext) {
     String text = focusedText();

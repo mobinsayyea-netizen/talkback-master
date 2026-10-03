@@ -75,7 +75,16 @@ public final class MsTimerController {
     Calendar c = Calendar.getInstance();
     StringBuilder sb = new StringBuilder();
     if (prefs.getBoolean(P + "say_time", true)) {
-      sb.append(DateFormat.getTimeFormat(service).format(c.getTime())).append(". ");
+      String tf = prefs.getString("ms_rd_time_format", "def");
+      java.text.DateFormat df;
+      if ("12".equals(tf)) {
+        df = new java.text.SimpleDateFormat("h:mm a", Locale.getDefault());
+      } else if ("24".equals(tf)) {
+        df = new java.text.SimpleDateFormat("HH:mm", Locale.getDefault());
+      } else {
+        df = DateFormat.getTimeFormat(service);
+      }
+      sb.append(df.format(c.getTime())).append(". ");
     }
     boolean date = prefs.getBoolean(P + "say_date", true);
     boolean year = prefs.getBoolean(P + "say_year", true);

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ms_rd_screen_title">Screen state reading settings</string>
+    <string name="ms_rd_chars_title">Character explanation settings</string>
+    <string name="ms_rd_dict_title">Custom label and dictionary settings</string>
+    <string name="ms_rd_screen_on">Speak screen lock state when screen is unlocked</string>
+    <string name="ms_rd_screen_on_sum">Say Unlocked after you unlock the phone</string>
+    <string name="ms_rd_screen_off">Speak screen lock state when screen is locked</string>
+    <string name="ms_rd_screen_off_sum">Say Screen locked when the screen turns off</string>
+    <string name="ms_rd_time_format">Time reading format</string>
+    <string name="ms_rd_screen_battery">Always read battery status</string>
+    <string name="ms_rd_screen_battery_sum">Speak the battery level after unlocking</string>
+    <string name="ms_rd_screen_notif">Read unread notifications count</string>
+    <string name="ms_rd_screen_notif_sum">After unlocking, say how many new notifications came while the screen was off</string>
+    <string name="ms_rd_unlocked">Unlocked</string>
+    <string name="ms_rd_locked">Screen locked</string>
+    <string name="ms_rd_battery_spoken">Battery %1$d percent</string>
+    <string name="ms_rd_notif_spoken">%1$d new notifications</string>
+    <string name="ms_rd_notif_spoken_one">1 new notification</string>
+    <string-array name="ms_rd_time_entries">
+        <item>System default</item>
+        <item>12-hour format</item>
+        <item>24-hour format</item>
+    </string-array>
+    <string-array name="ms_rd_time_values">
+        <item>def</item>
+        <item>12</item>
+        <item>24</item>
+    </string-array>
+    <string name="ms_rd_phonetic">Speak example words for letters in character navigation</string>
+    <string name="ms_rd_phonetic_sum">For example, A for Apple</string>
+    <string name="ms_rd_capital">Read capital letters</string>
+    <string name="ms_rd_labels_manage">Custom label manager</string>
+    <string name="ms_rd_labels_manage_sum">Add or edit labels for unlabelled controls</string>
+    <string name="ms_rd_dict_use">Use the user dictionary</string>
+    <string name="ms_rd_dict_use_sum">Replace words in spoken text using your list</string>
+    <string name="ms_rd_dict_regex">Use regular expressions for dictionary replacements</string>
+    <string name="ms_rd_dict_regex_sum">When on, the left side of each line is a regular expression</string>
+    <string name="ms_rd_dict_edit">User dictionary settings</string>
+    <string name="ms_rd_dict_edit_sum">One replacement per line, written as word=spoken text</string>
+</resources>

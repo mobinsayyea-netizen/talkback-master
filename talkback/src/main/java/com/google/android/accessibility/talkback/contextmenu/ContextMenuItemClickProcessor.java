@@ -85,7 +85,8 @@ public class ContextMenuItemClickProcessor {
     }
     final int itemId = menuItem.getItemId();
 
-    return (itemId == R.id.read_from_top)
+    return com.google.android.accessibility.talkback.editor.LuaExtensionManager.isMenuId(itemId)
+        || (itemId == R.id.read_from_top)
         || (itemId == R.id.read_from_current)
         || (itemId == R.id.repeat_last_utterance)
         || (itemId == R.id.spell_last_utterance)
@@ -106,6 +107,11 @@ public class ContextMenuItemClickProcessor {
         || (itemId == R.id.voice_commands)
         || (itemId == R.id.braille_display_settings)
         || (itemId == R.id.show_keyboard_shortcuts)
+        || (itemId == R.id.ms_menu_copy)
+        || (itemId == R.id.ms_menu_append)
+        || (itemId == R.id.ms_menu_translate)
+        || (itemId == R.id.ms_menu_ocr)
+        || (itemId == R.id.ms_menu_ocr_translate)
         || (itemId == R.id.lua_create_extension)
         || (itemId == R.id.lua_create_tool);
   }
@@ -119,6 +125,11 @@ public class ContextMenuItemClickProcessor {
     EventId eventId = EVENT_ID_UNTRACKED; // Currently not tracking performance for menu events.
 
     final int itemId = menuItem.getItemId();
+    if (com.google.android.accessibility.talkback.editor.LuaExtensionManager.isMenuId(itemId)) {
+      com.google.android.accessibility.talkback.editor.LuaExtensionManager.runFromMenu(
+          service, itemId, service.msFocusedNode());
+      return true;
+    }
     if (itemId == R.id.read_from_top) {
       pipeline.returnFeedback(eventId, Feedback.continuousRead(START_AT_TOP));
     } else if (itemId == R.id.read_from_current) {
@@ -186,6 +197,16 @@ public class ContextMenuItemClickProcessor {
           prefs, service.getResources(), R.string.pref_speak_time_key, false);
     } else if (itemId == R.id.show_keyboard_shortcuts) {
       pipeline.returnFeedback(eventId, Feedback.keyboard(SHOW_KEYBOARD_SHORTCUTS_DIALOG));
+    } else if (itemId == R.id.ms_menu_copy) {
+      service.msRunTextAction(0);
+    } else if (itemId == R.id.ms_menu_append) {
+      service.msRunTextAction(1);
+    } else if (itemId == R.id.ms_menu_translate) {
+      service.msRunTextAction(2);
+    } else if (itemId == R.id.ms_menu_ocr) {
+      service.msRunTextAction(3);
+    } else if (itemId == R.id.ms_menu_ocr_translate) {
+      service.msRunTextAction(4);
     } else if (itemId == R.id.lua_create_extension) {
       com.google.android.accessibility.talkback.editor.ProjectCreateDialog.show(service, true);
     } else if (itemId == R.id.lua_create_tool) {

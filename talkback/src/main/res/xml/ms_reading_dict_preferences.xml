@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_rd_labels_manage" android:title="@string/ms_rd_labels_manage" android:summary="@string/ms_rd_labels_manage_sum">
+    <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.labeling.LabelManagerSummaryActivity" />
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_dict_use" android:title="@string/ms_rd_dict_use" android:summary="@string/ms_rd_dict_use_sum" android:defaultValue="false" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_dict_regex" android:title="@string/ms_rd_dict_regex" android:summary="@string/ms_rd_dict_regex_sum" android:defaultValue="false" />
+  <EditTextPreference android:key="ms_rd_dict_text" android:title="@string/ms_rd_dict_edit" android:summary="@string/ms_rd_dict_edit_sum" android:dialogTitle="@string/ms_rd_dict_edit" android:defaultValue="" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_alias_use" android:title="@string/ms_rd_alias_use" android:summary="@string/ms_rd_alias_use_sum" android:defaultValue="false" />
+  <EditTextPreference android:key="ms_rd_alias_text" android:title="@string/ms_rd_alias_edit" android:summary="@string/ms_rd_alias_edit_sum" android:dialogTitle="@string/ms_rd_alias_edit" android:defaultValue="" />
+</PreferenceScreen>

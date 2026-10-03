@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="@string/pref_phonetic_letters_key" android:title="@string/ms_rd_phonetic" android:summary="@string/ms_rd_phonetic_sum" android:defaultValue="@bool/pref_phonetic_letters_default" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="@string/pref_capital_letters_key" android:title="@string/ms_rd_capital" android:dialogTitle="@string/ms_rd_capital" android:entries="@array/pref_capital_letters_entries" android:entryValues="@array/pref_capital_letters_values" android:defaultValue="@string/pref_capital_letters_default" android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_chars_first" android:title="@string/ms_rd_chars_first" android:summary="@string/ms_rd_chars_first_sum" android:defaultValue="false" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_chars_index" android:title="@string/ms_rd_chars_index" android:summary="@string/ms_rd_chars_index_sum" android:defaultValue="false" />
+</PreferenceScreen>

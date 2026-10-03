@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="@string/pref_a11y_hints_key" android:title="@string/ms_rd_usage_hints" android:summary="@string/ms_rd_usage_hints_sum" android:defaultValue="@bool/pref_a11y_hints_default" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_volume" android:title="@string/ms_rd_volume" android:summary="@string/ms_rd_volume_sum" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_window_all" android:title="@string/ms_rd_window_all" android:summary="@string/ms_rd_window_all_sum" android:defaultValue="false" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="@string/pref_keyboard_echo_on_screen_key" android:title="@string/ms_rd_key_echo" android:dialogTitle="@string/ms_rd_key_echo" android:entries="@array/pref_keyboard_echo_entries" android:entryValues="@array/pref_keyboard_echo_values" android:defaultValue="@string/pref_keyboard_echo_default" android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="@string/pref_keyboard_echo_physical_key" android:title="@string/ms_rd_key_echo_physical" android:dialogTitle="@string/ms_rd_key_echo_physical" android:entries="@array/pref_keyboard_echo_entries" android:entryValues="@array/pref_keyboard_echo_values" android:defaultValue="@string/pref_keyboard_echo_default" android:summary="%s" />
+</PreferenceScreen>

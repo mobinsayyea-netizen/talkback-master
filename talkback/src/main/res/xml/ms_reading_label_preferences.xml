@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="@string/pref_speak_roles_key" android:title="@string/ms_rd_view_name" android:summary="@string/ms_rd_view_name_sum" android:defaultValue="@bool/pref_speak_roles_default" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="@string/pref_speak_element_ids_key" android:title="@string/ms_rd_unlabeled" android:summary="@string/ms_rd_unlabeled_sum" android:defaultValue="@bool/pref_speak_element_ids_default" />
+</PreferenceScreen>

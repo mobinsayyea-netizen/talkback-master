@@ -21,6 +21,7 @@ import static com.google.android.accessibility.talkback.Feedback.HINT;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.LocaleSpan;
@@ -133,7 +134,7 @@ public class ProcessorPhoneticLetters implements AccessibilityEventListener {
       cancelPhoneticLetter(eventId);
     }
 
-    if (!globalVariables.getSpeakPhoneticLettersEnabled()) {
+    if (!globalVariables.getSpeakPhoneticLettersEnabled() && !msIndexEnabled()) {
       return;
     }
 
@@ -237,10 +238,56 @@ public class ProcessorPhoneticLetters implements AccessibilityEventListener {
     } else {
       localeString = service.getUserPreferredLocale().toLanguageTag();
     }
-    CharSequence phoneticLetter = getPhoneticLetter(localeString, letter);
-    if (phoneticLetter != null) {
-      postPhoneticLetterRunnable(phoneticLetter, eventId);
+    CharSequence phoneticLetter =
+        globalVariables.getSpeakPhoneticLettersEnabled()
+            ? getPhoneticLetter(localeString, letter)
+            : null;
+    // MS Screen Reader: "read text first" and "read index of a latin letter" options.
+    android.content.SharedPreferences msPrefs =
+        com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(service);
+    StringBuilder msExtra = new StringBuilder();
+    if (phoneticLetter != null && msPrefs.getBoolean(K_MS_TEXT_FIRST, false)) {
+      msExtra.append(letter).append(", ");
     }
+    CharSequence msIndex = msIndexText(msPrefs, letter);
+    if (phoneticLetter != null || msIndex != null) {
+      CharSequence out = phoneticLetter;
+      if (msExtra.length() > 0 || msIndex != null) {
+        SpannableStringBuilder sb = new SpannableStringBuilder(msExtra);
+        if (phoneticLetter != null) {
+          sb.append(phoneticLetter);
+        }
+        if (msIndex != null) {
+          if (sb.length() > 0) {
+            sb.append(", ");
+          }
+          sb.append(msIndex);
+        }
+        out = sb;
+      }
+      postPhoneticLetterRunnable(out, eventId);
+    }
+  }
+
+  private static final String K_MS_TEXT_FIRST = "ms_rd_chars_first";
+  private static final String K_MS_INDEX = "ms_rd_chars_index";
+
+  private boolean msIndexEnabled() {
+    return com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(
+            service)
+        .getBoolean(K_MS_INDEX, false);
+  }
+
+  /** Returns "letter number N" for a Latin letter a-z (N = place in the alphabet), else null. */
+  private @Nullable CharSequence msIndexText(android.content.SharedPreferences prefs, String letter) {
+    if (!prefs.getBoolean(K_MS_INDEX, false) || letter == null || letter.length() != 1) {
+      return null;
+    }
+    char c = Character.toLowerCase(letter.charAt(0));
+    if (c < 'a' || c > 'z') {
+      return null;
+    }
+    return service.getString(R.string.ms_rd_chars_index_spoken, c - 'a' + 1);
   }
 
   public String getPhoneticText(CharSequence text) {

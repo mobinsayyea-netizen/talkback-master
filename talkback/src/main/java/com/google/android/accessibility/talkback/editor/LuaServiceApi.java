@@ -49,6 +49,26 @@ public class LuaServiceApi implements LuaContext {
 
   /** Runs a script. Returns null on success, or an error text. Always call from a worker thread. */
   public static String run(Context ctx, File script, AccessibilityNodeInfo node) {
+    return run(ctx, script, node, null);
+  }
+
+  /** Speaks a status text without needing a script (used for extension errors). */
+  public static void speakStatic(String text) {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s != null && text != null) {
+      s.getSpeechController().speak(text, Performance.EVENT_ID_UNTRACKED, SpeakOptions.create());
+    }
+  }
+
+  /**
+   * Same as {@link #run(Context, File, AccessibilityNodeInfo)}; every entry of {@code extras}
+   * becomes a global string in Lua (used for event_type, event_package, event_text).
+   */
+  public static String run(
+      Context ctx,
+      File script,
+      AccessibilityNodeInfo node,
+      java.util.Map<String, String> extras) {
     if (depth >= MAX_DEPTH) {
       return "Too many nested scripts";
     }
@@ -56,6 +76,12 @@ public class LuaServiceApi implements LuaContext {
     LuaServiceApi api = null;
     try {
       api = new LuaServiceApi(ctx.getApplicationContext(), script.getParentFile());
+      if (extras != null) {
+        for (java.util.Map.Entry<String, String> e : extras.entrySet()) {
+          api.L.pushString(e.getValue() == null ? "" : e.getValue());
+          api.L.setGlobal(e.getKey());
+        }
+      }
       return api.runFile(script, node);
     } catch (Throwable t) {
       return "Error: " + t;

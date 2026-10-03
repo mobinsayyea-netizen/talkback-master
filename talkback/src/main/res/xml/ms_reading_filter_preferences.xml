@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <EditTextPreference android:key="ms_rd_filter_blacklist" android:title="@string/ms_rd_filter_blacklist" android:summary="@string/ms_rd_filter_blacklist_sum" android:dialogTitle="@string/ms_rd_filter_blacklist" android:defaultValue="" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_filter_small" android:title="@string/ms_rd_filter_small" android:summary="@string/ms_rd_filter_small_sum" android:defaultValue="false" />
+</PreferenceScreen>

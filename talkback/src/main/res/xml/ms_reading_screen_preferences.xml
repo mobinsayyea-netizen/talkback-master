@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_screen_on" android:title="@string/ms_rd_screen_on" android:summary="@string/ms_rd_screen_on_sum" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_screen_off" android:title="@string/ms_rd_screen_off" android:summary="@string/ms_rd_screen_off_sum" android:defaultValue="true" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_rd_time_format" android:title="@string/ms_rd_time_format" android:dialogTitle="@string/ms_rd_time_format" android:entries="@array/ms_rd_time_entries" android:entryValues="@array/ms_rd_time_values" android:defaultValue="def" android:summary="%s" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_screen_battery" android:title="@string/ms_rd_screen_battery" android:summary="@string/ms_rd_screen_battery_sum" android:defaultValue="false" />
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_screen_notif" android:title="@string/ms_rd_screen_notif" android:summary="@string/ms_rd_screen_notif_sum" android:defaultValue="false" />
+</PreferenceScreen>

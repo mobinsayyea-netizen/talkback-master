@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_scn_chat_read" android:title="@string/ms_rd_auto_read" android:summary="@string/ms_rd_auto_read_sum" android:defaultValue="true" />
+  <EditTextPreference android:key="ms_scn_chat_apps" android:title="@string/ms_rd_auto_apps" android:dialogTitle="@string/ms_rd_auto_apps" android:defaultValue="org.telegram.messenger,com.whatsapp,com.whatsapp.w4b" android:summary="%s" />
+  <EditTextPreference android:key="ms_rd_auto_blacklist" android:title="@string/ms_rd_auto_blacklist" android:summary="@string/ms_rd_auto_blacklist_sum" android:dialogTitle="@string/ms_rd_auto_blacklist" android:defaultValue="" />
+</PreferenceScreen>
