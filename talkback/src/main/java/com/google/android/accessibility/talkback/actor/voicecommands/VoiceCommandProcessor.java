@@ -323,6 +323,25 @@ public class VoiceCommandProcessor {
       return true;
     }
 
+    // MS Screen Reader: "open <app name>" (English or Hindi). Checked first so that words inside
+    // the app name (play, store, settings, home...) do not trigger other commands.
+    String msAppName = MsAppLauncher.parse(command);
+    if (msAppName != null) {
+      if (isPartialResult) {
+        // Wait for the final result, otherwise "open play" would start the wrong app.
+        return false;
+      }
+      MsAppLauncher.Result msResult = MsAppLauncher.open(service, msAppName);
+      if (msResult.launched) {
+        pipeline.returnFeedback(eventId, Feedback.sound(R.raw.complete));
+        speakDelayed(service.getString(R.string.ms_voice_opening_app, msResult.label));
+      } else {
+        speakDelayed(service.getString(R.string.ms_voice_app_not_found, msAppName));
+      }
+      handleVoiceCommandRecognized(VOICE_COMMAND_TYPE_ASSISTANT);
+      return true;
+    }
+
     @Nullable AccessibilityNodeInfoCompat node = null;
     // select all voice command
     // command format: Select all

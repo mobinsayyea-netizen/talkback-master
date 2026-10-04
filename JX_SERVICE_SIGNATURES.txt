@@ -1,0 +1,1683 @@
+.method public constructor <init>()V
+.method public static addNotificationMap(Ljava/lang/String;Ljava/lang/String;Landroid/app/PendingIntent;)V
+.method public static clearStatInfo()V
+.method public static deviceHasNavigationBar()Z
+.method public static getAllDisplays(Landroid/content/Context;)Ljava/util/List;
+.method public static getEventCount()I
+.method public static getEventTime()J
+.method public static getFileName(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+.method public static getGestureCount()I
+.method public static getGestureTime()J
+.method public static getHoverCount()I
+.method public static getHoverTime()J
+.method public static getInstance()Lcom/nirenr/talkman/TalkManAccessibilityService;
+.method public static getNavBarHeight(Landroid/content/Context;)I
+.method public static getTouchExpCount()I
+.method public static getTouchExpTime()J
+.method public static ۟۟۟۠ۦ(Ljava/lang/Object;)Z
+.method public static ۟۟۟ۢۥ(Ljava/lang/Object;)I
+.method public static ۟۟۟ۦ۟(Ljava/lang/Object;)I
+.method public static ۟۟۟ۧۥ(Ljava/lang/Object;)Z
+.method public static ۟۟۠۠۟(Ljava/lang/Object;)V
+.method public static ۟۟۠ۡ(Ljava/lang/Object;)I
+.method public static ۟۟۠ۡۨ(Ljava/lang/Object;)I
+.method public static ۟۟۠ۤ۟()[S
+.method public static ۟۟۠ۧ(Ljava/lang/Object;)Z
+.method public static ۣ۟۟۠ۨ(Ljava/lang/Object;)Z
+.method public static ۟۟ۡۡۤ(Ljava/lang/Object;)Z
+.method public static ۟۟ۡۧۡ(Ljava/lang/Object;)Landroid/media/AudioManager$OnAudioFocusChangeListener;
+.method public static ۟۟ۡۨۦ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۟ۢ۟۠(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟۟ۢ۠ۨ(Ljava/lang/Object;)I
+.method public static ۟۟ۢۤۦ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟۟ۢۨ(Ljava/lang/Object;)Z
+.method public static ۣ۟۟ۨۧ(Ljava/lang/Object;)Z
+.method public static ۟۟ۤ۠ۡ(Ljava/lang/Object;)Z
+.method public static ۟۟ۤ۠ۦ(Ljava/lang/Object;)I
+.method public static ۟۟ۤۤ۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟۟ۤۤۤ(Ljava/lang/Object;)Z
+.method public static ۟۟ۤۧۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۟ۥ۟ۥ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۟۟ۥۢ۟(Ljava/lang/Object;)Ljava/util/regex/Pattern;
+.method public static ۟۟ۥۣۢ(Ljava/lang/Object;)Z
+.method public static ۟۟ۥۤۨ()I
+.method public static ۟۟ۥۦ۠(Ljava/lang/Object;Ljava/lang/Object;)Lcom/nirenr/talkman/dialog/VirtualScreen;
+.method public static ۟۟ۥۧۥ(Ljava/lang/Object;I)V
+.method public static ۟۟ۦ۠ۥ()I
+.method public static ۟۟ۦۤۦ(Ljava/lang/Object;)Z
+.method public static ۟۟ۦۦۥ(Ljava/lang/Object;)I
+.method public static ۣ۟۟ۧۦ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۟ۧۤ۠(Ljava/lang/Object;)Landroid/content/ServiceConnection;
+.method public static ۟۟ۧۤۡ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/CharSequence;
+.method public static ۟۟ۧۧۤ(Ljava/lang/Object;)Z
+.method public static ۟۟ۧۨ۠(Ljava/lang/Object;)I
+.method public static ۟۟ۨ۟ۤ(Ljava/lang/Object;)J
+.method public static ۟۟ۨ۠۟(Ljava/lang/Object;)V
+.method public static ۟۟ۨۡۥ(Ljava/lang/Object;)Z
+.method public static ۟۟ۨۡۦ(Ljava/lang/Object;)I
+.method public static ۟۟ۨۢۧ(Ljava/lang/Object;)I
+.method public static ۣ۟۟ۨۡ(Ljava/lang/Object;)I
+.method public static ۟۠۟۠۠(Ljava/lang/Object;)Z
+.method public static ۟۠۟ۡۤ(Ljava/lang/Object;)V
+.method public static ۟۠۟ۦۥ(Ljava/lang/Object;)I
+.method public static ۟۠۟ۧۥ(Ljava/lang/Object;)Z
+.method public static ۟۠۟ۨۨ(Ljava/lang/Object;)Z
+.method public static ۟۠۠۠ۨ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟۠۠ۢۤ(Ljava/lang/Object;)I
+.method public static ۟۠۠ۤۥ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟۠۠ۦ(Ljava/lang/Object;)Z
+.method public static ۟۠۠ۨ۠(Ljava/lang/Object;)Z
+.method public static ۟۠ۡۡۡ(Ljava/lang/Object;)Z
+.method public static ۟۠ۡۡۥ(Ljava/lang/Object;)Ljava/lang/Object;
+.method public static ۟۠ۡۡۨ(Ljava/lang/Object;)J
+.method public static ۟۠ۡۢۦ(Ljava/lang/Object;)Z
+.method public static ۟۠ۡۥ۠(Ljava/lang/Object;)Z
+.method public static ۟۠ۡۦۥ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟۠ۢۢ۟(Ljava/lang/Object;)I
+.method public static ۣ۟۠ۢۤ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟۠ۧۨ(Ljava/lang/Object;)I
+.method public static ۣۣ۟۠ۨ(Ljava/lang/Object;)J
+.method public static ۟۠ۤ۠۟(Ljava/lang/Object;)Z
+.method public static ۟۠ۤۢۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۠ۤۦۤ(Ljava/lang/Object;)Z
+.method public static ۟۠ۥۣۦ(Ljava/lang/Object;I)Z
+.method public static ۟۠ۥۣۤ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۠ۥۨۧ(Ljava/lang/Object;)I
+.method public static ۟۠ۦ۠ۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۠ۦۡۡ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۠ۦۦۤ(Ljava/lang/Object;)Z
+.method public static ۟۠ۦۧۦ(Ljava/lang/Object;)V
+.method public static ۣ۟۠ۧۡ(Ljava/lang/Object;)Z
+.method public static ۟۠ۧۥ۠(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟۠ۧۥۣ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟۠ۧۦۢ(Ljava/lang/Object;)J
+.method public static ۟۠ۧۦۤ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟۠ۨۤۨ(Ljava/lang/Object;)Z
+.method public static ۟۠ۨۥۣ(Ljava/lang/Object;)J
+.method public static ۟۠ۨۧۧ(Ljava/lang/Object;)Z
+.method public static ۟ۡ۟۟۠(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۡ۟۟ۨ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۡ۟۠ۡ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۡ۟(Ljava/lang/Object;)Z
+.method public static ۟ۡ۟ۦۨ(Ljava/lang/Object;)Ljava/util/regex/Pattern;
+.method public static ۟ۡ۠۟۟(Ljava/lang/Object;)J
+.method public static ۟ۡ۠۟ۢ(Ljava/lang/Object;)Lcom/nirenr/talkman/IInputMethodInterface;
+.method public static ۟ۡ۠ۤۢ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۡ۠ۧۧ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۡۡۢۡ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟ۡۡۨ(Ljava/lang/Object;)V
+.method public static ۟ۡۡۥۧ(Ljava/lang/Object;)Landroid/media/MediaPlayer;
+.method public static ۟ۡۡۧ(Ljava/lang/Object;)I
+.method public static ۟ۡۢ۠ۦ(Ljava/lang/Object;)I
+.method public static ۟ۡۢۡۥ(Ljava/lang/Object;)Landroid/media/MediaPlayer;
+.method public static ۟ۡۢۦۥ(Ljava/lang/Object;)I
+.method public static ۟ۡۢۨۨ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۡ۟۠(Ljava/lang/Object;)Z
+.method public static ۣ۟ۡ۟ۦ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۡ۟ۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣ۟ۡۡ(Ljava/lang/Object;)V
+.method public static ۣ۟ۡۤۢ(Ljava/lang/Object;)I
+.method public static ۣ۟ۡۤۧ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۡۦ۟(Ljava/lang/Object;)Z
+.method public static ۣ۟ۡۧۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۡۤۡۥ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۡۤۢۢ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۡۤۤۢ(Ljava/lang/Object;)J
+.method public static ۟ۡۤۦۨ(Ljava/lang/Object;IF)V
+.method public static ۟ۡۤۨۤ(Ljava/lang/Object;)Z
+.method public static ۟ۡۥ۟ۧ(Ljava/lang/Object;)V
+.method public static ۟ۡۥۡۡ(Ljava/lang/Object;)I
+.method public static ۟ۡۥۦۨ(Ljava/lang/Object;)Z
+.method public static ۟ۡۥۧ۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۡۥۣۧ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۟ۡۦ۠۠(Ljava/lang/Object;)V
+.method public static ۟ۡۦۡۢ(Ljava/lang/Object;)I
+.method public static ۟ۡۦۢۥ(Ljava/lang/Object;)J
+.method public static ۟ۡۦۥۣ(Ljava/lang/Object;)Z
+.method public static ۟ۡۧۡ۠(Ljava/lang/Object;)I
+.method public static ۟ۡۧۢۨ(Ljava/lang/Object;)J
+.method public static ۟ۡۧۥۢ(Ljava/lang/Object;)I
+.method public static ۟ۡۧۦۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟ۡۨ۟()J
+.method public static ۟ۡۨۡۤ(Ljava/lang/Object;)Z
+.method public static ۟ۡۨۡۦ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۡۨۢ۠(Ljava/lang/Object;)J
+.method public static ۣ۟ۡۨۨ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۣ۟ۡۨۤ(Ljava/lang/Object;)Z
+.method public static ۟ۡۨۦ۠(Ljava/lang/Object;)Z
+.method public static ۟ۡۨۦۤ(Ljava/lang/Object;)Z
+.method public static ۟ۡۨۧۨ(Ljava/lang/Object;)Z
+.method public static ۟ۢ۟ۤۤ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟ۢ۟ۧۤ(Ljava/lang/Object;)I
+.method public static ۟ۢ۠ۡ۟(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟ۢ۠ۦ(Ljava/lang/Object;)Z
+.method public static ۟ۢ۠ۧۡ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟ۢۡ۠(Ljava/lang/Object;)I
+.method public static ۟ۢۡۢۡ(Ljava/lang/Object;)J
+.method public static ۟ۢۢ۟(Ljava/lang/Object;ILjava/lang/Object;)Z
+.method public static ۟ۢۢۢۧ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۢۢۥۧ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۢۢۧ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۣ۟ۢۢۨ(Ljava/lang/Object;)I
+.method public static ۣ۟ۢۤ۠(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣ۟ۢۥۥ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۢۤ۠ۧ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۢۤۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۢۤۤ۠(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۢۤۥۦ(Ljava/lang/Object;)I
+.method public static ۟ۢۥۣ۟(Ljava/lang/Object;)Lcom/androlua/LuaApplication;
+.method public static ۟ۢۥ۟ۨ(Ljava/lang/Object;)Z
+.method public static ۟ۢۥۣۦ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۢۥۧ۠(Ljava/lang/Object;)Z
+.method public static ۟ۢۥۧۡ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۢۥۨۧ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۟ۢۦ۠۟(Ljava/lang/Object;)Ljava/lang/Integer;
+.method public static ۟ۢۦۣۡ(Ljava/lang/Object;)I
+.method public static ۟ۢۧۡۡ(Ljava/lang/Object;)J
+.method public static ۣ۟ۢۧ۟(Ljava/lang/Object;)Ln2/a0;
+.method public static ۟ۢۧۤۨ(Ljava/lang/Object;Ljava/lang/Object;I)V
+.method public static ۟ۢۧۦۦ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۢۧۧ(Ljava/lang/Object;)Ljava/util/Set;
+.method public static ۟ۢۧۨ۟(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟۟۟ۤ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣ۟۟۠۠(Ljava/lang/Object;)Z
+.method public static ۣۣ۟۟۠(Ljava/lang/Object;)Z
+.method public static ۣ۟۟ۦۧ(Ljava/lang/Object;)J
+.method public static ۣ۟۠۠۠(Ljava/lang/Object;)Z
+.method public static ۣ۟۠ۡ۠(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۣ۟۠ۢۥ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣۣ۟۠ۧ()J
+.method public static ۣ۟۠ۧۥ(Ljava/lang/Object;)I
+.method public static ۣ۟ۡ۠ۤ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۡۡ۠(Ljava/lang/Object;)Z
+.method public static ۣۣ۟ۡ۠(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟ۡۥ۠(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟ۡۧۢ(Ljava/lang/Object;)V
+.method public static ۣ۟ۡۨۤ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟ۢۢ()Ljava/util/ArrayList;
+.method public static ۣ۟ۢۢۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۣ۟ۡۡ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣۣ۟ۢۡ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۣ۟ۦۤ(Ljava/lang/Object;)I
+.method public static ۣ۟ۤ۟ۡ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣ۟ۤۡ(Ljava/lang/Object;)I
+.method public static ۣ۟ۤۡۨ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۤۧۥ(Ljava/lang/Object;)Lcom/nirenr/talkman/d;
+.method public static ۣ۟ۤۨۡ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۥ۠۟(Ljava/lang/Object;I)Z
+.method public static ۣ۟ۥۡ۟(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۣ۟ۦ۟ۤ(Ljava/lang/Object;)Landroid/graphics/Region;
+.method public static ۣ۟ۦۨۢ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۧ۟۟(Ljava/lang/Object;F)I
+.method public static ۣ۟ۧۡۨ(Ljava/lang/Object;)J
+.method public static ۣ۟ۧۨ۟(Ljava/lang/Object;)Z
+.method public static ۣ۟ۨۤۤ(Ljava/lang/Object;)I
+.method public static ۣ۟ۨۥۣ(Ljava/lang/Object;ZI)V
+.method public static ۟ۤ۟(Ljava/lang/Object;)Z
+.method public static ۟ۤ۟۟ۡ(Ljava/lang/Object;)Z
+.method public static ۟ۤ۟ۡۡ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣ۟ۤ۟ۡ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۤ۟ۡۨ(Ljava/lang/Object;)I
+.method public static ۟ۤ۟ۧۦ(Ljava/lang/Object;)Z
+.method public static ۟ۤ۟ۨۡ(Ljava/lang/Object;)I
+.method public static ۟ۤ۠۠ۥ(Ljava/lang/Object;)J
+.method public static ۟ۤ۠ۡۦ(Ljava/lang/Object;)V
+.method public static ۣۣ۟ۤ۠(Ljava/lang/Object;)I
+.method public static ۟ۤ۠ۤ۟(Ljava/lang/Object;)I
+.method public static ۣ۟ۤ۠ۨ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۤۡ۟(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۣ۟ۤۡۡ(Ljava/lang/Object;)Z
+.method public static ۟ۤۡۢۤ(Ljava/lang/Object;)V
+.method public static ۣ۟ۤۡ۟(Ljava/lang/Object;)I
+.method public static ۟ۤۡۥۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;ZZ)Z
+.method public static ۟ۤۡۦۣ(Ljava/lang/Object;)Z
+.method public static ۟ۤۢ۠ۨ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۟ۤۢۢ(Ljava/lang/Object;)Z
+.method public static ۣ۟ۤۢ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$ScreenReceiver;
+.method public static ۣ۟ۤۢۤ(Ljava/lang/Object;)Z
+.method public static ۟ۤۢۥ۠(Ljava/lang/Object;)I
+.method public static ۟ۤۢۧۥ(Ljava/lang/Object;)J
+.method public static ۣ۟ۤ۠۠(Ljava/lang/Object;)Z
+.method public static ۣۣ۟ۤۢ(Ljava/lang/Object;)I
+.method public static ۣ۟ۤۤ۠(Ljava/lang/Object;)I
+.method public static ۣ۟ۤۧ(Ljava/lang/Object;)I
+.method public static ۣ۟ۤۤ۠(Ljava/lang/Object;)Z
+.method public static ۟ۤۤۤۨ(Ljava/lang/Object;)Z
+.method public static ۟ۤۤۥ(Ljava/lang/Object;I)V
+.method public static ۟ۤۤۥۤ(Ljava/lang/Object;)Ljava/lang/Integer;
+.method public static ۟ۤۤۦۣ(Ljava/lang/Object;)Ln2/j;
+.method public static ۟ۤۤۨۦ(Ljava/lang/Object;)Z
+.method public static ۟ۤۥ۟ۨ(Ljava/lang/Object;)Z
+.method public static ۟ۤۥۢ۟(Ljava/lang/Object;)Ljava/util/Set;
+.method public static ۟ۤۥۥ۠(Ljava/lang/Object;J)Z
+.method public static ۟ۤۥۧۡ(Ljava/lang/Object;)Z
+.method public static ۟ۤۥۧۨ(Ljava/lang/Object;)Landroid/util/SparseArray;
+.method public static ۟ۤۦ۠ۡ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۤۦۢۦ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۟ۤۦۣۢ(Ljava/lang/Object;)Z
+.method public static ۟ۤۦۣۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۤۧ۟۠()I
+.method public static ۟ۤۧۥۣ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۤۧۦۨ(Ljava/lang/Object;)Z
+.method public static ۟ۤۧۧ۟(Ljava/lang/Object;)Z
+.method public static ۟ۤۧۨ(Ljava/lang/Object;)Z
+.method public static ۟ۤۧۨۤ(Ljava/lang/Object;)I
+.method public static ۟ۤۨۢۧ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۣ۟ۤۨۨ(Ljava/lang/Object;)Ln2/m;
+.method public static ۟ۤۨۦۧ(Ljava/lang/Object;)Z
+.method public static ۟ۥ۟۠ۨ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۥ۟ۢۨ(Ljava/lang/Object;)I
+.method public static ۟ۥۣ۟(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۥ۟ۤ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۟ۥ۟ۤۤ(Ljava/lang/Object;)J
+.method public static ۟ۥ۟ۥۤ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۥ۟ۥۦ(Ljava/lang/Object;)V
+.method public static ۟ۥ۟ۦۡ(Ljava/lang/Object;)Z
+.method public static ۟ۥ۟ۦۢ(Ljava/lang/Object;)I
+.method public static ۟ۥ۠ۤۤ(Ljava/lang/Object;)Z
+.method public static ۟ۥ۠ۦۥ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟ۥ۠ۧ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۥۣۡۧ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۥۢۢۡ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$k8;
+.method public static ۟ۥۢۥۧ(Ljava/lang/Object;)Landroid/media/SoundPool;
+.method public static ۟ۥۢۧۦ(Ljava/lang/Object;)J
+.method public static ۟ۥۢۧۨ(Ljava/lang/Object;)Ljava/io/BufferedWriter;
+.method public static ۟ۥۣ۠۟(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۥۣۡۤ(Ljava/lang/Object;)Lcom/nirenr/talkman/TextToSpeechListener;
+.method public static ۟ۥۣۤۡ(Ljava/lang/Object;)I
+.method public static ۟ۥۣۤ۟()Lcom/nirenr/talkman/TalkManAccessibilityService;
+.method public static ۟ۥۤۡ۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۥۤۤۡ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۥۣۤۧ(Ljava/lang/Object;Z)V
+.method public static ۟ۥۤۨۦ(Ljava/lang/Object;)Lcom/nirenr/talkman/ai/h;
+.method public static ۟ۥۥ۟ۡ(Ljava/lang/Object;)Z
+.method public static ۟ۥۥ۠۟(Ljava/lang/Object;)J
+.method public static ۟ۥۥۣ۠(Ljava/lang/Object;)I
+.method public static ۟ۥۥۢۢ(Ljava/lang/Object;)I
+.method public static ۟ۥۥۥۤ(Ljava/lang/Object;)I
+.method public static ۟ۥۥۦ۠(Ljava/lang/Object;)I
+.method public static ۟ۥۥۦۧ(Ljava/lang/Object;)Z
+.method public static ۟ۥۦ(Ljava/lang/Object;)Z
+.method public static ۟ۥۦ۟(Ljava/lang/Object;)Z
+.method public static ۟ۥۦۣۡ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۥۦۢۧ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۥۦۥ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$d8;
+.method public static ۟ۥۦۧۡ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۥۦۨۤ(Ljava/lang/Object;)Z
+.method public static ۟ۥۧ۟(Ljava/lang/Object;)Landroid/os/Handler;
+.method public static ۟ۥۧ۟۠(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۥۧۡ(Ljava/lang/Object;)V
+.method public static ۟ۥۧۡۨ(Ljava/lang/Object;)Z
+.method public static ۟ۥۣۧۡ(Ljava/lang/Object;)Z
+.method public static ۟ۥۧۤۨ(Ljava/lang/Object;)J
+.method public static ۟ۥۧۥ۠(Ljava/lang/Object;)Z
+.method public static ۟ۥۧۧۧ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۥۨ۟ۤ(Ljava/lang/Object;)Lcom/nirenr/talkman/m;
+.method public static ۟ۥۣۨۥ(Ljava/lang/Object;)Z
+.method public static ۟ۥۨۤۡ(Ljava/lang/Object;)Z
+.method public static ۟ۥۨۨۡ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۦ۟۟۠(Ljava/lang/Object;)Z
+.method public static ۟ۦ۟۟ۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۦ۟۟ۦ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟ۦ۟۠ۦ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۦ۟ۢۦ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۦۣ۟ۦ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۦ۠۟(Ljava/lang/Object;)I
+.method public static ۟ۦ۠ۥۢ(Ljava/lang/Object;)I
+.method public static ۟ۦۡ۟ۦ(Ljava/lang/Object;)Lcom/nirenr/talkman/j;
+.method public static ۟ۦۡۡۨ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟ۦۡۧ(Ljava/lang/Object;)I
+.method public static ۟ۦۡۨۢ(Ljava/lang/Object;)Ljava/util/Set;
+.method public static ۟ۦۢ۟(Ljava/lang/Object;)V
+.method public static ۟ۦۢۢ۟(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟ۦۣۢ۠()J
+.method public static ۟ۦۢۤ۟(Ljava/lang/Object;)I
+.method public static ۟ۦۢۦۣ(Ljava/lang/Object;)Z
+.method public static ۟ۦۢۦۧ(Ljava/lang/Object;)Landroid/view/inputmethod/InputMethodManager;
+.method public static ۟ۦۢۨ۠(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۦۢۨۤ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۦۣۡۨ(Ljava/lang/Object;)Z
+.method public static ۟ۦۣۤۢ(Ljava/lang/Object;)J
+.method public static ۟ۦۣۤۥ(Ljava/lang/Object;)V
+.method public static ۟ۦۣۥۨ(Ljava/lang/Object;)V
+.method public static ۟ۦۤ۟ۤ(Ljava/lang/Object;)V
+.method public static ۟ۦۤ۟ۧ(Ljava/lang/Object;)I
+.method public static ۟ۦۤ۠ۢ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۟ۦۣۤۡ(Ljava/lang/Object;)I
+.method public static ۟ۦۤۤۢ(Ljava/lang/Object;)I
+.method public static ۟ۦۤۤۥ(Ljava/lang/Object;)V
+.method public static ۟ۦۤۤۨ(Ljava/lang/Object;)Landroid/media/AudioFocusRequest;
+.method public static ۟ۦۥ۟ۨ(Ljava/lang/Object;)Z
+.method public static ۟ۦۥ۠(Ljava/lang/Object;)I
+.method public static ۟ۦۥۡۥ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۦۦۣۢ()Ljava/util/HashMap;
+.method public static ۟ۦۦۤۥ(Ljava/lang/Object;)I
+.method public static ۟ۦۧ۟ۨ()Ljava/util/ArrayList;
+.method public static ۟ۦۧۡ(Ljava/lang/Object;)V
+.method public static ۟ۦۣۧۧ(Ljava/lang/Object;)Z
+.method public static ۟ۦۧۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۦۧۥۥ(Ljava/lang/Object;)I
+.method public static ۟ۦۧۦ۠(Ljava/lang/Object;)J
+.method public static ۟ۦۧۧۢ(Ljava/lang/Object;)Ljava/util/regex/Pattern;
+.method public static ۟ۦۧۧۨ(Ljava/lang/Object;)V
+.method public static ۟ۦۣۨۡ(Ljava/lang/Object;)I
+.method public static ۟ۦۨۤۢ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۟ۦۨۤۥ(Ljava/lang/Object;)Z
+.method public static ۟ۦۨۤۧ(Ljava/lang/Object;)Z
+.method public static ۟ۦۨۥ(Ljava/lang/Object;)Lcom/nirenr/talkman/BatteryReceiver;
+.method public static ۟ۦۨۧۡ(Ljava/lang/Object;)Z
+.method public static ۟ۧ۟ۤۧ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۧ۠۠ۦ(Ljava/lang/Object;)Landroid/util/DisplayMetrics;
+.method public static ۟ۧ۠ۢ۠(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۣ۟ۧ۠ۤ(Ljava/lang/Object;)Z
+.method public static ۟ۧۡ۟ۡ(Ljava/lang/Object;)V
+.method public static ۟ۧۡۡۢ(Ljava/lang/Object;)Z
+.method public static ۟ۧۡۦ۠(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۧۡۧۥ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۧۢ۟ۥ(Ljava/lang/Object;)Ljava/util/List;
+.method public static ۟ۧۢۡۨ(Ljava/lang/Object;)I
+.method public static ۟ۧۢۢ۟(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۟ۧۢۦۨ(Ljava/lang/Object;)J
+.method public static ۟ۧۢۧۢ(Ljava/lang/Object;F)I
+.method public static ۟ۧۢۨ(Ljava/lang/Object;)Z
+.method public static ۟ۧۤۢۧ(Ljava/lang/Object;)I
+.method public static ۣۣ۟ۧۤ(Ljava/lang/Object;)Ln2/a;
+.method public static ۟ۧۤۧۨ(Ljava/lang/Object;)Z
+.method public static ۟ۧۤۨ۠(Ljava/lang/Object;)Z
+.method public static ۟ۧۥۣ۟(Ljava/lang/Object;)I
+.method public static ۟ۧۥۥ۠(Ljava/lang/Object;)Landroid/util/SparseArray;
+.method public static ۟ۧۥۣۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۧۦ۟ۧ(Ljava/lang/Object;)J
+.method public static ۟ۧۦۡ۟(Ljava/lang/Object;)Z
+.method public static ۟ۧۦۡۤ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۟ۧۦۣۢ(Ljava/lang/Object;)Landroid/media/AudioManager;
+.method public static ۟ۧۦۣ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۧۦۣۤ(Ljava/lang/Object;)Z
+.method public static ۟ۧۦۦۡ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۟ۧۧ۟۟(Ljava/lang/Object;)I
+.method public static ۟ۧۧ۟ۡ(Ljava/lang/Object;)Ljava/lang/Runnable;
+.method public static ۟ۧۧۦ(Ljava/lang/Object;)Z
+.method public static ۟ۧۨ(Ljava/lang/Object;)Z
+.method public static ۟ۨ۠۟(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۟ۨ۠ۤ(Ljava/lang/Object;)Z
+.method public static ۟ۨ۠ۧ(Ljava/lang/Object;)Z
+.method public static ۟ۨۧ۟(Ljava/lang/Object;)Z
+.method public static ۠۟۠ۧ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$j8;
+.method public static ۠۟ۤ۟(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۠۟ۦۤ(Ljava/lang/Object;)Z
+.method public static ۠۠۠ۧ(Ljava/lang/Object;)Z
+.method public static ۠۠ۡۦ(Ljava/lang/Object;)V
+.method public static ۣ۠۠ۤ(Ljava/lang/Object;)Z
+.method public static ۠۠ۤۨ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۠۠ۨۡ(Ljava/lang/Object;)Z
+.method public static ۣ۠ۡ۠(Ljava/lang/Object;)I
+.method public static ۠ۡۡۡ(Ljava/lang/Object;)Z
+.method public static ۠ۡۥۣ()I
+.method public static ۠ۡۧۨ(Ljava/lang/Object;)Z
+.method public static ۣ۠ۡۨ(Ljava/lang/Object;)Landroid/app/PendingIntent;
+.method public static ۠ۡۨۦ(Ljava/lang/Object;)Z
+.method public static ۠ۡۨۨ(Ljava/lang/Object;)Ln2/k;
+.method public static ۠ۢۨ(Ljava/lang/Object;)J
+.method public static ۣ۠۠۠(Ljava/lang/Object;)Ljava/lang/Runnable;
+.method public static ۣۣ۠ۤ(Ljava/lang/Object;)Z
+.method public static ۣ۠ۤۡ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣ۠ۦۥ(Ljava/lang/Object;)Z
+.method public static ۣ۠ۧۧ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۠ۤۤۡ(Ljava/lang/Object;)Z
+.method public static ۠ۤۤۤ(Ljava/lang/Object;)Z
+.method public static ۠ۤۥۨ(Ljava/lang/Object;)Landroid/telephony/PhoneStateListener;
+.method public static ۠ۤۨ(Ljava/lang/Object;)Z
+.method public static ۠ۤۨۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۠ۤۨۧ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۠ۥۡ۠(Ljava/lang/Object;)Z
+.method public static ۠ۥۣۢ(Ljava/lang/Object;IF)V
+.method public static ۠ۥۣۨ(Ljava/lang/Object;)V
+.method public static ۠ۥۥۤ(Ljava/lang/Object;)V
+.method public static ۠ۥۥۧ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۠ۥۨ۟(Ljava/lang/Object;)Z
+.method public static ۠ۦ۟(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۠ۦ۠۠(Ljava/lang/Object;)Z
+.method public static ۠ۦ۠ۤ(Ljava/lang/Object;)Z
+.method public static ۠ۦۡۨ(Ljava/lang/Object;IF)V
+.method public static ۠ۦۣۨ(Ljava/lang/Object;)V
+.method public static ۠ۦۥ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۠ۦۥۥ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۠ۦۥۨ(Ljava/lang/Object;)Z
+.method public static ۠ۦۦۧ(Ljava/lang/Object;)Z
+.method public static ۠ۧ۟(Ljava/lang/Object;)V
+.method public static ۠ۧ۟ۤ(Ljava/lang/Object;)Z
+.method public static ۠ۧ۟ۥ(Ljava/lang/Object;)Z
+.method public static ۣ۠ۧ۟(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۠ۧۤۥ(Ljava/lang/Object;)Z
+.method public static ۡ۟۠ۧ(Ljava/lang/Object;)Ljava/lang/Integer;
+.method public static ۡ۟ۢۢ(Ljava/lang/Object;)Z
+.method public static ۡ۟ۥۥ(Ljava/lang/Object;)Lcom/nirenr/talkman/OnAccessibilityFocusedListener;
+.method public static ۡ۟ۦۡ(Ljava/lang/Object;)I
+.method public static ۡ۠۠ۤ(Ljava/lang/Object;)V
+.method public static ۡ۠ۥۣ(Ljava/lang/Object;)Z
+.method public static ۡۡ۠ۤ(Ljava/lang/Object;)I
+.method public static ۡۡۢۢ(Ljava/lang/Object;)Z
+.method public static ۡۡۢۧ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$OnViewFocusedListener;
+.method public static ۡۡۤۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۡۡۦۡ(Ljava/lang/Object;)Z
+.method public static ۡۢۡۥ(Ljava/lang/Object;)Landroid/telephony/TelephonyManager;
+.method public static ۣۡۢ۟(Ljava/lang/Object;)I
+.method public static ۣۡۢۡ(Ljava/lang/Object;)Z
+.method public static ۣۡۢۥ(Ljava/lang/Object;)Z
+.method public static ۡۢۦۧ(Ljava/lang/Object;)Z
+.method public static ۣۡۢۨ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۡۢۨۨ(Ljava/lang/Object;)V
+.method public static ۣۣۡۤ(Ljava/lang/Object;)Z
+.method public static ۣۡۤۦ(Ljava/lang/Object;)Landroid/graphics/Rect;
+.method public static ۣۡۥۢ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۣۡۧۡ(Ljava/lang/Object;)Ljava/lang/Runnable;
+.method public static ۡۤۢۧ(Ljava/lang/Object;)Z
+.method public static ۣۣۡۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۡۤۨ۠(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۡۤۨۡ(Ljava/lang/Object;)I
+.method public static ۡۤۨۥ(Ljava/lang/Object;)Lk2/i;
+.method public static ۡۥۡ۟(Ljava/lang/Object;)I
+.method public static ۡۥۡۧ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Z)Z
+.method public static ۡۥۣۨ(Ljava/lang/Object;)Z
+.method public static ۡۥۣۤ(Ljava/lang/Object;)Ljava/lang/Runnable;
+.method public static ۡۥۦۥ(Ljava/lang/Object;)Z
+.method public static ۡۥۧ(Ljava/lang/Object;)I
+.method public static ۡۥۧۨ(Ljava/lang/Object;)V
+.method public static ۡۦۡۦ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۡۦۤۦ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۡۦۨۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۡۧ۠۠(Ljava/lang/Object;)Z
+.method public static ۡۧۡۦ(Ljava/lang/Object;)Z
+.method public static ۡۧۡۧ(Ljava/lang/Object;)Z
+.method public static ۣۣۡۧ(Ljava/lang/Object;)Z
+.method public static ۡۧۦۣ(Ljava/lang/Object;)Landroid/content/ClipboardManager$OnPrimaryClipChangedListener;
+.method public static ۡۨۢۤ(Ljava/lang/Object;)Z
+.method public static ۣۡۨۧ(Ljava/lang/Object;)J
+.method public static ۡۨۦۡ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۡۨۧۥ(Ljava/lang/Object;)J
+.method public static ۡۨۧۨ(Ljava/lang/Object;)Z
+.method public static ۢ۟۠ۡ(Ljava/lang/Object;)Z
+.method public static ۢ۟ۦ۠(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$g8;
+.method public static ۢ۟ۦۡ(Ljava/lang/Object;)Landroid/util/SparseArray;
+.method public static ۢ۠ۡۧ(Ljava/lang/Object;)Z
+.method public static ۢ۠ۤۧ(Ljava/lang/Object;)Ljava/lang/Runnable;
+.method public static ۢ۠ۨ(Ljava/lang/Object;)Lm2/g;
+.method public static ۢۡ۟ۥ(Ljava/lang/Object;)Z
+.method public static ۢۡۡۨ()Ljava/util/ArrayList;
+.method public static ۢۡۢ۠(Ljava/lang/Object;)I
+.method public static ۢۡۤۧ(Ljava/lang/Object;F)I
+.method public static ۢۡۨۨ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۢۢ۟ۧ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۣۢۢ۠(Ljava/lang/Object;)Lcom/nirenr/talkman/SpeechRecognitionListener;
+.method public static ۢۢۡۨ(Ljava/lang/Object;)Z
+.method public static ۢۢۤۦ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۢۢۥۤ(Ljava/lang/Object;)I
+.method public static ۣۢۡۦ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣۢۥ۟(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۢۤۢ۠(Ljava/lang/Object;)I
+.method public static ۢۤۤۤ(Ljava/lang/Object;)I
+.method public static ۢۤۥ۠(Ljava/lang/Object;)Z
+.method public static ۢۤۥۣ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۢۤۨۨ(Ljava/lang/Object;)I
+.method public static ۢۥ۠ۤ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۢۥۡ۟(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۢۥۡ۠(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۢۥۡۡ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۢۥۢۤ(Ljava/lang/Object;)Z
+.method public static ۢۥۤۧ(Ljava/lang/Object;)Z
+.method public static ۢۥۧ۟()Ljava/text/DateFormat;
+.method public static ۢۥۨ۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۢۦ۟ۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۢۦۢۦ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۢۦۣۦ(Ljava/lang/Object;)Z
+.method public static ۢۧ۟ۤ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۢۧ۠(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۢۧۡۦ(Ljava/lang/Object;)Z
+.method public static ۣۢۧۤ(Ljava/lang/Object;)Z
+.method public static ۣۢۧۤ(Ljava/lang/Object;)Z
+.method public static ۢۧۤۤ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۢۧۥ۟(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۢۧۥ۠(Ljava/lang/Object;)Z
+.method public static ۣۢۧۨ(Ljava/lang/Object;)Landroid/os/VibrationEffect;
+.method public static ۢۨ۟ۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۢۨ۟ۧ()Ljava/util/ArrayList;
+.method public static ۣۢۨ۠(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۣۢۨۥ()Ljava/text/SimpleDateFormat;
+.method public static ۣ۟۟ۢ(Ljava/lang/Object;)Z
+.method public static ۣ۟۟ۤ(Ljava/lang/Object;)Z
+.method public static ۣۣ۟۠(Ljava/lang/Object;)Landroid/os/PowerManager$WakeLock;
+.method public static ۣۣ۟ۥ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣ۟ۤۡ(Ljava/lang/Object;)Landroid/app/PendingIntent;
+.method public static ۣ۟ۨۦ(Ljava/lang/Object;I)Z
+.method public static ۣ۠۟(Ljava/lang/Object;)I
+.method public static ۣ۠۠ۦ(Ljava/lang/Object;)Z
+.method public static ۣۣ۠ۡ(Ljava/lang/Object;)Ln2/l;
+.method public static ۣ۠ۥ(Ljava/lang/Object;)Z
+.method public static ۣ۠ۧۤ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۣۡۤ۟(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۡۥۢ(Ljava/lang/Object;)Z
+.method public static ۣۡۧۥ(Ljava/lang/Object;)V
+.method public static ۣۢۡ۠(Ljava/lang/Object;)Z
+.method public static ۣۢۢۢ(Ljava/lang/Object;)Ljava/util/Set;
+.method public static ۣۢۧۥ(Ljava/lang/Object;)Z
+.method public static ۣۣۢ۟(Ljava/lang/Object;)V
+.method public static ۣۣۢۥ(Ljava/lang/Object;)V
+.method public static ۣۣۢۦ(Ljava/lang/Object;)V
+.method public static ۣۣۣ۟(Ljava/lang/Object;)Z
+.method public static ۣۣۨ۟(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۤ۟۟(Ljava/lang/Object;)Z
+.method public static ۣۤ۠ۡ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۤ۠ۤ(Ljava/lang/Object;)V
+.method public static ۣۤۢۧ(Ljava/lang/Object;)I
+.method public static ۣۣۤ۟(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۤۨۧ(Ljava/lang/Object;)I
+.method public static ۣۥۢۤ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣۥۢۧ(Ljava/lang/Object;)Landroid/content/SharedPreferences;
+.method public static ۣۥۥ(Ljava/lang/Object;)I
+.method public static ۣۥۦ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۥۧ(Ljava/lang/Object;)Landroid/net/ConnectivityManager;
+.method public static ۣۦ۟ۨ(Ljava/lang/Object;)I
+.method public static ۣۦۥۨ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۣۦۦ۟(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۣۦۦ۠(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۧۡۨ(Ljava/lang/Object;)Z
+.method public static ۣۣۧۧ(Ljava/lang/Object;)Ljava/util/Set;
+.method public static ۣۧۥۧ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۨ۟۠(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$y7;
+.method public static ۣۣۨ۠(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Z)Z
+.method public static ۣۣۨ۠(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$m8;
+.method public static ۣۨۥ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۨۥۤ(Ljava/lang/Object;)Ljava/lang/Runnable;
+.method public static ۣۨۧۢ(Ljava/lang/Object;)Z
+.method public static ۤ۟۠ۧ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۤ۟ۡۧ(Ljava/lang/Object;)Z
+.method public static ۤ۟ۡۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۤ۟ۢ(Ljava/lang/Object;)V
+.method public static ۤ۟ۤۢ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۤ۟ۥۢ(Ljava/lang/Object;Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo$CollectionItemInfo;
+.method public static ۤ۟ۦۢ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۤ۟ۧۧ(Ljava/lang/Object;)Landroid/media/AudioManager$AudioRecordingCallback;
+.method public static ۤ۠۠ۧ(Ljava/lang/Object;)Lcom/nirenr/talkman/util/b;
+.method public static ۤ۠ۡۢ(Ljava/lang/Object;)Z
+.method public static ۤۡ۟ۡ(Ljava/lang/Object;)J
+.method public static ۤۡۢۧ(Ljava/lang/Object;)Z
+.method public static ۤۡۧۥ(Ljava/lang/Object;)I
+.method public static ۤۢ۟ۢ(Ljava/lang/Object;)Landroid/media/MediaPlayer;
+.method public static ۤۢۧۢ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۤۡۦ(Ljava/lang/Object;)Z
+.method public static ۣۣۤ۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۣۣۤۦ(Ljava/lang/Object;)V
+.method public static ۣۤۧۡ(Ljava/lang/Object;)J
+.method public static ۣۤۧۨ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۤۤ۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۤۤ۠ۤ(Ljava/lang/Object;)I
+.method public static ۤۤۢۦ(Ljava/lang/Object;)I
+.method public static ۤۤۢۧ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۤۤۥۣ(Ljava/lang/Object;)Z
+.method public static ۤۤۦ(Ljava/lang/Object;)J
+.method public static ۤۤۨ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۤۤۨۢ(Ljava/lang/Object;)V
+.method public static ۤۥ۟ۡ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۤۥ۠ۧ(Ljava/lang/Object;)Landroid/os/PowerManager$WakeLock;
+.method public static ۤۥۡ(Ljava/lang/Object;)Z
+.method public static ۤۥۣۡ(Ljava/lang/Object;)I
+.method public static ۤۥۥ۟(Ljava/lang/Object;)Z
+.method public static ۤۥۥۡ(Ljava/lang/Object;)V
+.method public static ۤۦ۟ۢ(Ljava/lang/Object;)Ln2/g;
+.method public static ۤۦ۟ۦ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۤۦۡۨ(Ljava/lang/Object;)Z
+.method public static ۤۦۢۥ(Ljava/lang/Object;)Lcom/nirenr/talkman/ScreenshotObserver;
+.method public static ۤۦۣۥ(Ljava/lang/Object;)I
+.method public static ۤۦۥۥ(Ljava/lang/Object;)Landroid/util/SparseArray;
+.method public static ۤۦۧۨ(Ljava/lang/Object;)Z
+.method public static ۣۤۧ۠(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۤۧۡ۠(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۤۧۢۤ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۣۤۧۡ(Ljava/lang/Object;)Z
+.method public static ۤۧۤۤ(Ljava/lang/Object;)Z
+.method public static ۤۨۡۤ(Ljava/lang/Object;)Z
+.method public static ۤۨۡۦ(Ljava/lang/Object;)Ljava/util/ArrayList;
+.method public static ۥ۟ۤ(Ljava/lang/Object;)Z
+.method public static ۥ۠۠ۥ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;ZZ)Z
+.method public static ۥ۠ۢۡ(Ljava/lang/Object;)Z
+.method public static ۥۣ۠ۤ(Ljava/lang/Object;)Landroid/app/PendingIntent;
+.method public static ۥ۠ۨ۟(Ljava/lang/Object;)Z
+.method public static ۥ۠ۨۨ(Ljava/lang/Object;)V
+.method public static ۥۡ۟۟(Ljava/lang/Object;)V
+.method public static ۥۡ۟ۢ(Ljava/lang/Object;)I
+.method public static ۥۡ۟ۤ(Ljava/lang/Object;)Z
+.method public static ۥۡۤۦ(Ljava/lang/Object;)I
+.method public static ۥۡۥۧ(Ljava/lang/Object;)I
+.method public static ۥۡۦ۟(Ljava/lang/Object;)J
+.method public static ۥۣ۟ۤ(Ljava/lang/Object;)Z
+.method public static ۥۣ۟ۦ(Ljava/lang/Object;)Z
+.method public static ۥۣۣ۠(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۥۣۡ(Ljava/lang/Object;)Z
+.method public static ۥۣۢۥ(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۥۣۢۦ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۥۣۣۤ(Ljava/lang/Object;)Ljava/util/List;
+.method public static ۥۣۦۧ(Ljava/lang/Object;)Z
+.method public static ۥۣۧۡ(Ljava/lang/Object;)Z
+.method public static ۥۣۨۥ(Ljava/lang/Object;)J
+.method public static ۥۤۡ۟(Ljava/lang/Object;)Z
+.method public static ۥۤۢۥ(Ljava/lang/Object;)Z
+.method public static ۥۤۤ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۥۤۧۢ(Ljava/lang/Object;)Z
+.method public static ۥۤۨۤ(Ljava/lang/Object;Z)Z
+.method public static ۥۦ۟ۡ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۥۦ۟ۦ(Ljava/lang/Object;)Z
+.method public static ۥۦ۟ۧ(Ljava/lang/Object;)Z
+.method public static ۥۦۡۦ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۥۦۥۨ(Ljava/lang/Object;)Z
+.method public static ۥۧۡ۠(Ljava/lang/Object;)I
+.method public static ۥۧۥۥ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۥۧۦ۠(Ljava/lang/Object;)I
+.method public static ۥۧۨ۠(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$l8;
+.method public static ۥۨ۠ۨ(Ljava/lang/Object;)J
+.method public static ۥۣۨۢ(Ljava/lang/Object;)Ln2/c0;
+.method public static ۥۨۤۥ(Ljava/lang/Object;)Z
+.method public static ۥۨۧۨ(Ljava/lang/Object;)Z
+.method public static ۦ۟ۡ(Ljava/lang/Object;)I
+.method public static ۦ۟ۡ۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۦ۟ۢ۠(Ljava/lang/Object;)Z
+.method public static ۦ۟ۢۢ(Ljava/lang/Object;)V
+.method public static ۦ۟ۤۢ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۦ۟ۥ(Ljava/lang/Object;)Z
+.method public static ۦ۟ۦۢ(Ljava/lang/Object;ILjava/lang/Object;)Z
+.method public static ۦۣ۠۟(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۦ۠ۢۡ(Ljava/lang/Object;)Landroid/graphics/Rect;
+.method public static ۦ۠ۦۣ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۦ۠ۧۤ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$k8;
+.method public static ۦ۠ۧۧ(Ljava/lang/Object;)Z
+.method public static ۦۡۡۨ(Ljava/lang/Object;)I
+.method public static ۦۣۡۡ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۦۡۤۤ(Ljava/lang/Object;)Z
+.method public static ۦۡۧۤ(Ljava/lang/Object;)Z
+.method public static ۦۡۨ۟(Ljava/lang/Object;)Landroid/accessibilityservice/FingerprintGestureController$FingerprintGestureCallback;
+.method public static ۦۢ۟۠(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۦۢ۟ۢ(Ljava/lang/Object;)I
+.method public static ۦۢۢ۟(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۦۣۢۢ(Ljava/lang/Object;)Ljava/lang/Runnable;
+.method public static ۦۢۢۦ(Ljava/lang/Object;)Z
+.method public static ۦۣۢ(Ljava/lang/Object;)Z
+.method public static ۦۣۢۦ(Ljava/lang/Object;)Z
+.method public static ۦۣۢۤ(Ljava/lang/Object;)Landroid/os/Handler;
+.method public static ۦۢۤۦ(Ljava/lang/Object;)Z
+.method public static ۦۣۢۧ(Ljava/lang/Object;)Landroid/os/Vibrator;
+.method public static ۦۣ۟ۧ(Ljava/lang/Object;)Z
+.method public static ۦۣۢ(Ljava/lang/Object;)Lcom/nirenr/talkman/VolumeReceiver;
+.method public static ۦۣۣۤ(Ljava/lang/Object;)Z
+.method public static ۦۣۨۢ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۦۤ۠ۧ(Ljava/lang/Object;)Z
+.method public static ۦۤۢ۠(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۦۤۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۦۤۥۥ(Ljava/lang/Object;)Landroid/telephony/TelephonyCallback;
+.method public static ۦۤۦۣ(Ljava/lang/Object;Z)V
+.method public static ۦۤۧ(Ljava/lang/Object;)Lcom/nirenr/talkman/a;
+.method public static ۦۤۨ(Ljava/lang/Object;)Landroid/util/SparseArray;
+.method public static ۦۥ۠ۤ(Ljava/lang/Object;)Z
+.method public static ۦۥۢۨ(Ljava/lang/Object;)I
+.method public static ۦۥۣۨ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۦۥۨۤ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۦۦۢۡ(Ljava/lang/Object;)Z
+.method public static ۦۦۥ۠(Ljava/lang/Object;)I
+.method public static ۦۦۦۥ(Ljava/lang/Object;)I
+.method public static ۦۧۢۢ(Ljava/lang/Object;)Ljava/util/HashMap;
+.method public static ۦۣۧ(Ljava/lang/Object;)V
+.method public static ۦۣۣۧ(Ljava/lang/Object;)V
+.method public static ۦۧۨۥ(Ljava/lang/Object;)I
+.method public static ۦۧۨۧ(Ljava/lang/Object;)Z
+.method public static ۦۨ۠ۤ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۦۣۨۤ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$f8;
+.method public static ۦۨۥ۟(Ljava/lang/Object;)J
+.method public static ۦۨۧۡ(Ljava/lang/Object;)Landroid/os/PowerManager$WakeLock;
+.method public static ۦۨۨ۟(Ljava/lang/Object;)I
+.method public static ۧ۟ۤۦ(Ljava/lang/Object;)Z
+.method public static ۧ۟ۦۥ(Ljava/lang/Object;)Landroid/app/AlarmManager;
+.method public static ۧ۟ۦۧ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۧ۟ۧ(Ljava/lang/Object;)I
+.method public static ۣۧ۠ۧ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۧۡ۠ۥ(Ljava/lang/Object;)V
+.method public static ۧۡۤ۟(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۧۡۥۦ(Ljava/lang/Object;)Z
+.method public static ۧۢۡ۟(Ljava/lang/Object;)I
+.method public static ۧۢۡ۠(Ljava/lang/Object;)Z
+.method public static ۧۢۢ۠(Ljava/lang/Object;)Z
+.method public static ۣۧۢۨ(Ljava/lang/Object;I)V
+.method public static ۧۢۤۧ(Ljava/lang/Object;)Z
+.method public static ۧۢۨۢ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public static ۣۧۦۡ(Ljava/lang/Object;)Z
+.method public static ۣۧۦۦ(Ljava/lang/Object;)Z
+.method public static ۧۤ۠ۧ(Ljava/lang/Object;)Z
+.method public static ۧۤۤۢ(Ljava/lang/Object;)Z
+.method public static ۧۤۦۤ()Ljava/util/ArrayList;
+.method public static ۧۤۧۡ(Ljava/lang/Object;)Z
+.method public static ۧۤۨ(Ljava/lang/Object;)Z
+.method public static ۧۥۣ۠(Ljava/lang/Object;)I
+.method public static ۧۥۣۦ(Ljava/lang/Object;)Z
+.method public static ۧۥۥ۠(Ljava/lang/Object;)Landroid/os/PowerManager;
+.method public static ۧۥۨ(Ljava/lang/Object;I)Z
+.method public static ۧۦۢۢ(Ljava/lang/Object;)Z
+.method public static ۧۦۢۧ(Ljava/lang/Object;)Landroid/app/KeyguardManager$KeyguardLock;
+.method public static ۧۦۢۨ(Ljava/lang/Object;)Z
+.method public static ۧۦۤۥ(Ljava/lang/Object;)V
+.method public static ۧۧۤۡ(Ljava/lang/Object;)Z
+.method public static ۧۧۧۡ(Ljava/lang/Object;)Landroid/app/KeyguardManager;
+.method public static ۧۧۨ۠(Ljava/lang/Object;Z)Z
+.method public static ۧۨ۠ۡ(Ljava/lang/Object;)Z
+.method public static ۧۨۤۤ(Ljava/lang/Object;)I
+.method public static ۣۨ۟ۧ(Ljava/lang/Object;)I
+.method public static ۨ۟ۥ۟(Ljava/lang/Object;)V
+.method public static ۨ۟ۥۢ(Ljava/lang/Object;)Z
+.method public static ۨ۟ۥۣ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۨ۟ۦۣ(Ljava/lang/Object;)Ln2/f0;
+.method public static ۨ۠۟ۥ(Ljava/lang/Object;)Z
+.method public static ۨ۠۠ۨ(Ljava/lang/Object;)Landroid/media/AudioDeviceCallback;
+.method public static ۨ۠ۥ۟()Ljava/text/DateFormat;
+.method public static ۨ۠ۦۢ(Ljava/lang/Object;)J
+.method public static ۨۡ۟ۧ(Ljava/lang/Object;)Z
+.method public static ۣۨۡۢ(Ljava/lang/Object;)Z
+.method public static ۣۨۡۦ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۨۡۦۥ()J
+.method public static ۨۢ۟ۡ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$b8;
+.method public static ۨۢ۠ۡ(Ljava/lang/Object;)I
+.method public static ۨۢ۠ۦ(Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۨۢۢۡ(Ljava/lang/Object;Ljava/lang/Object;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public static ۨۢۥۤ(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۨۢۥۧ(Ljava/lang/Object;)Z
+.method public static ۣۨۢۧ(Ljava/lang/Object;)Z
+.method public static ۣۨۦۣ(Ljava/lang/Object;)Z
+.method public static ۣۨۧۢ(Ljava/lang/Object;)Z
+.method public static ۨۤ۠۠(Ljava/lang/Object;)I
+.method public static ۨۤۡۦ(Ljava/lang/Object;)Z
+.method public static ۨۤۥ(Ljava/lang/Object;)Z
+.method public static ۨۤۧۥ(Ljava/lang/Object;)Z
+.method public static ۣۨۤۨ(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+.method public static ۨۤۨۧ(Ljava/lang/Object;)Z
+.method public static ۨۥۥ(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۨۥۨ۟(Ljava/lang/Object;)Landroid/accessibilityservice/InputMethod$AccessibilityInputConnection;
+.method public static ۨۦۣ۠(Ljava/lang/Object;)V
+.method public static ۨۦ۠ۥ(Ljava/lang/Object;)Landroid/telecom/TelecomManager;
+.method public static ۨۦۡۡ(Ljava/lang/Object;)I
+.method public static ۨۦۡۦ(Ljava/lang/Object;)J
+.method public static ۨۦۣ۟(Ljava/lang/Object;)Ln2/h0;
+.method public static ۨۦۧ۟(Ljava/lang/Object;)Ljava/lang/String;
+.method public static ۣۨۧۦ(Ljava/lang/Object;)Z
+.method public static ۨۧۥ(Ljava/lang/Object;)Ljava/util/List;
+.method public static ۨۨ۠ۢ(Ljava/lang/Object;)Ljava/util/regex/Pattern;
+.method public static ۨۨۡۧ(Ljava/lang/Object;)Ljava/util/Set;
+.method public static ۨۨۢ(Ljava/lang/Object;)Lcom/nirenr/talkman/TalkManAccessibilityService$i8;
+.method public static ۨۨۤۦ(Ljava/lang/Object;Ljava/lang/Object;)Z
+.method public acceptCall()Z
+.method public acceptRingingCall()Z
+.method public accessibilityFocus(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public accessibilityFocus(Landroid/view/accessibility/AccessibilityNodeInfo;Z)Z
+.method public accessibilityFocus2(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public addAutoSpeakCache(Ljava/lang/String;)V
+.method public addClipboard()Z
+.method public addContentBlacklist(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public addFavorites(Ljava/lang/String;)Z
+.method public addNodeChangedList(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public addTimer()Z
+.method public addTimer(Ljava/util/ArrayList;)Z
+.method public allStop()V
+.method public announcementNotificationBox()V
+.method public appendCopy()Z
+.method public appendCopy(Ljava/lang/CharSequence;)Z
+.method public appendSpeak(ILjava/lang/String;)V
+.method public appendSpeak(Ljava/lang/String;)V
+.method public appendSpeak2(Ljava/lang/String;)V
+.method public asyncAppendSpeak(ILjava/lang/String;)V
+.method public asyncGetAllApp()V
+.method public asyncSpeak(I)V
+.method public asyncSpeak(ILjava/lang/String;)V
+.method public asyncSpeak(Ljava/lang/String;)V
+.method public asyncStop()V
+.method public asyncTrans(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public beep()V
+.method public bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+.method public canAddLabel(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public cancelAll()V
+.method public cancelAll(Z)V
+.method public check(Ljava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkAction(Landroid/view/accessibility/AccessibilityNodeInfo;Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;)Z
+.method public checkBlackList(Ljava/lang/String;Ljava/util/List;)Z
+.method public checkBound2(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkBound3(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkBound4(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkClassName(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public checkGoogleNumber(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkId(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public checkId2(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public checkNetwork()Z
+.method public checkNetworkWiFi()Z
+.method public checkNode(Landroid/view/accessibility/AccessibilityEvent;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkNode(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkNumber(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkOneNode(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkPackageName(Landroid/view/accessibility/AccessibilityEvent;Ljava/lang/String;)Z
+.method public checkPackageName(Landroid/view/accessibility/AccessibilityEvent;Ljava/lang/String;Ljava/lang/String;)Z
+.method public checkPackageName(Landroid/view/accessibility/AccessibilityEvent;[Ljava/lang/String;)Z
+.method public checkPackageName(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public checkPackageName(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;Ljava/lang/String;)Z
+.method public varargs checkPackageName(Landroid/view/accessibility/AccessibilityNodeInfo;[Ljava/lang/String;)Z
+.method public checkParent(Landroid/view/accessibility/AccessibilityEvent;Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public checkParent(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public checkSamsungNumber(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public checkSelfPermission(Ljava/lang/String;)I
+.method public checkTalkback()Z
+.method public checkWeixinVer()Z
+.method public clear(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public clearAccessibilityFocus(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public click(DD)V
+.method public click(II)Z
+.method public click(Landroid/graphics/Point;)Z
+.method public click(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public click(Lcom/luajava/LuaTable;)Z
+.method public click(Lcom/luajava/LuaTable;Lcom/luajava/LuaFunction;)Z
+.method public click(Ljava/lang/String;Ljava/lang/String;[I)Z
+.method public click2(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public click3(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public cmd(Ljava/lang/String;)Ljava/lang/Object;
+.method public cmd(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+.method public colorClick(DDDDIIII)V
+.method public commitText(Ljava/lang/String;)Z
+.method public copy()Z
+.method public copy(Ljava/lang/CharSequence;)Z
+.method public create()V
+.method public deleteApp(Ljava/lang/String;)Z
+.method public destroy()V
+.method public doBooleanFile(Ljava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public doBooleanFile(Ljava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public doBooleanFunction(Ljava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public doCmd(Ljava/lang/String;)Ljava/lang/Object;
+.method public doGestureFile(ILandroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public doubleClick(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public doubleSwipe(DDDDI)Z
+.method public doubleSwipe(IIIII)Z
+.method public down(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public downPage()Z
+.method public editDict(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public editNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public editNodeName(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public endCall()Z
+.method public endRingingCall()Z
+.method public execute(Ljava/lang/String;)Z
+.method public execute(Ljava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public execute_action(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public findAccessibilityNodeInfo(Ljava/lang/String;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public findAccessibilityNodeInfoById(Ljava/lang/String;)Ljava/util/List;
+.method public findAccessibilityNodeInfoByPinyin(Ljava/lang/String;)Ljava/util/List;
+.method public findAccessibilityNodeInfoByText(Ljava/lang/String;I)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public findAccessibilityNodeInfoByText(Ljava/lang/String;)Ljava/util/List;
+.method public findCheckView(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public findClick(Ljava/lang/String;)Z
+.method public findClick([Ljava/lang/String;)Z
+.method public findFocus([Ljava/lang/String;)Z
+.method public findFocusView()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public findFocusView(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public findListView(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public findView(Landroid/view/accessibility/AccessibilityNodeInfo;Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public focusHtml()V
+.method public focusSound(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public getAlarmInterval()I
+.method public getAllAppList()Ljava/util/ArrayList;
+.method public getAllEditTextList()Ljava/util/ArrayList;
+.method public getAllEditTextList(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/util/ArrayList;
+.method public getAllText(I)Ljava/lang/String;
+.method public getAllTextList()Ljava/util/ArrayList;
+.method public getAllTextList(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/util/ArrayList;
+.method public getAllTextSplitList(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/util/ArrayList;
+.method public getAppName()Ljava/lang/String;
+.method public getAppName(Landroid/app/Notification;)Ljava/lang/String;
+.method public getAppName(Landroid/view/accessibility/AccessibilityEvent;)Ljava/lang/String;
+.method public getAppName(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getAppName(Ljava/lang/String;)Ljava/lang/String;
+.method public getAppNameAndVer(Ljava/lang/String;)Ljava/lang/String;
+.method public getAudioMode()I
+.method public getAutoSpeakBlacklist()Ljava/util/List;
+.method public getBatteryLevel()I
+.method public getButton1()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getButton2()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getClickList(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/util/ArrayList;
+.method public getClipboardList()Ljava/util/ArrayList;
+.method public getCloudNodeInfoLabel(Ljava/lang/String;Ljava/lang/String;)V
+.method public getCustomActions(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/util/ArrayList;
+.method public getDescriptionFromConfig(Ljava/lang/String;)Z
+.method public getDurationFromFilePath(Ljava/lang/String;)J
+.method public getEdgeGestures()Lcom/nirenr/talkman/j;
+.method public getEditText()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getEditText(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/util/ArrayList;)V
+.method public getEventFunc(Ljava/lang/String;)Lcom/luajava/LuaFunction;
+.method public getEventText(Landroid/view/accessibility/AccessibilityEvent;)Ljava/lang/String;
+.method public getExtActions(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/util/ArrayList;
+.method public getFavoritesList()Ljava/util/ArrayList;
+.method public getFocusView()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getGesturePackage()Ljava/lang/String;
+.method public getHandler()Landroid/os/Handler;
+.method public getHintText(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/CharSequence;
+.method public getIndexLabel(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getIndexLabel2(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getInputMethodManager()Landroid/view/inputmethod/InputMethodManager;
+.method public getInputWindowNode()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getLastEdittext()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getLastScrollIndex()I
+.method public getLastSetFocusViewTime()J
+.method public getLastSpeakText()Ljava/lang/String;
+.method public getLeftButton()Ljava/lang/String;
+.method public getLight()F
+.method public getListView(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getListView2(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getListViewItem(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getMessage()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getMobileLevel()Ljava/lang/String;
+.method public getMode()I
+.method public getNavigationGestureWidth()I
+.method public getNextChapterKeyword()[Ljava/lang/String;
+.method public getNodeIndexId(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getNodeIndexId2(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getNodeInfoLabel(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getNodeInfoLabelExt(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getNodeInfoResId(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getNodeInfoText(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getNodeInfoText(Ljava/lang/StringBuilder;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public getNodeTree()Ljava/util/ArrayList;
+.method public getNowTime()J
+.method public getOrientation()I
+.method public getPackageName(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getPreviousChapterKeyword()[Ljava/lang/String;
+.method public getRawMode()I
+.method public getRawNodeInfoText(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getRawNodeInfoText(Ljava/lang/StringBuilder;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public getRawNodeInfoText2(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getRawNodeInfoText3(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getRawSpeakSourceText(Landroid/view/accessibility/AccessibilityEvent;Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getRecordNode()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getRightButton()Ljava/lang/String;
+.method public getRoleDescription(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/CharSequence;
+.method public getRoleDescription(Ljava/lang/StringBuilder;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public getRootInActiveWindow()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getRootInActiveWindow(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getRootNode(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getRootNodeInfo()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getScreenShot(Landroid/graphics/Rect;Lcom/nirenr/screencapture/ScreenCaptureListener;)V
+.method public getScreenShot(Landroid/view/accessibility/AccessibilityNodeInfo;Lcom/nirenr/screencapture/ScreenCaptureListener;)V
+.method public getScreenShot(Lcom/nirenr/screencapture/ScreenCaptureListener;)V
+.method public getScreenShot2(Lcom/nirenr/screencapture/ScreenCaptureListener;)V
+.method public getSelectionEnd()I
+.method public getSelectionStart()I
+.method public getSelectionText()Ljava/lang/String;
+.method public getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+.method public getSoundClockTime()J
+.method public getSoundTickTime()J
+.method public getSourceText(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getSpeakSourceText(Landroid/view/accessibility/AccessibilityEvent;Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getSpeechRecognizer()Lcom/nirenr/talkman/d;
+.method public getSplitContext(Ljava/lang/String;)Ljava/util/List;
+.method public getStatusBarHeight()I
+.method public getStatusBarWindowHeight()I
+.method public getStreamVolume()I
+.method public getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+.method public getTTS()Lcom/nirenr/talkman/a;
+.method public getText(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getText3(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getText4(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getTextFormatter()Ln2/f0;
+.method public getTextMove()Ln2/h0;
+.method public getTimerInterval()I
+.method public getTimerModePauseTime()J
+.method public getTimerTags()[Ljava/lang/String;
+.method public getTtsScale()F
+.method public getUserName()Ljava/lang/String;
+.method public getVibrateIntensity()I
+.method public getViewIdResourceName(Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/String;
+.method public getViewName(Ljava/lang/StringBuilder;Landroid/view/accessibility/AccessibilityNodeInfo;Z)V
+.method public getViewName2(Ljava/lang/StringBuilder;Landroid/view/accessibility/AccessibilityNodeInfo;Z)Z
+.method public getWebAllText(I)Ljava/lang/String;
+.method public getWebAllTextList()Ljava/util/ArrayList;
+.method public getWebScrollView(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getWifiLevel()Ljava/lang/String;
+.method public getWindows()Ljava/util/List;
+.method public getWtNode()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public getWxNode()Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public hasChildNodeInfoAllClick(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public hasChildNodeInfoClick(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public hasChildNodeInfoNoneClick(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public hasChildNodeInfoText(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public hasChildNodeInfoText(Landroid/view/accessibility/AccessibilityNodeInfo;Z)Z
+.method public hasChildNodeInfoTextAux(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public hasClickSpan(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public hasNavigationBar(Landroid/content/Context;)Z
+.method public hasNodeInfoText(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public init()V
+.method public insert(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public insertText(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public installApp(Ljava/lang/String;)Z
+.method public isAccessibilityFocusable(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isAccessibilityVolume()Z
+.method public isAsyncSpeakEnabled()Z
+.method public isAsyncUseProixmitySensor()Z
+.method public isAutoEnabled()Z
+.method public isAutoNext()Z
+.method public isAutoPrevious()Z
+.method public isAutoRead()Z
+.method public isAutoReadEnabled()Z
+.method public isAutoSpeech()Z
+.method public isAutoSpeechEnabled()Z
+.method public isAutoTrans()Z
+.method public isBatteryConnected()Z
+.method public isCN()Z
+.method public isCharMode()Z
+.method public isCharModeGesture()Z
+.method public isClickable(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isDebug()Z
+.method public isDimmed()Z
+.method public isEditMode()Z
+.method public isEditView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isEditable(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isEnabled()Z
+.method public isInCalling()Z
+.method public isInGestureDetectionPassthroughRegion(II)Z
+.method public isInInputWindow(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isInListView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isInLongSpeak()Z
+.method public isInScrollView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isInWebView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isInWebView2(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isIncallMode()Z
+.method public isInputWindowOnScreen()Z
+.method public isLandscape()Z
+.method public isListView(Landroid/view/accessibility/AccessibilityEvent;)Z
+.method public isListView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isListView2(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isLoad()Z
+.method public isLock()Z
+.method public isLongCopy()Z
+.method public isMenuUpTap()Z
+.method public isNear()Z
+.method public isNoneFocusView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isOcring()Z
+.method public isPartialWakeLock()Z
+.method public isPauseGesture()Z
+.method public isQuickView()Z
+.method public isQuickView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isRawClick()Z
+.method public isRingMode()Z
+.method public isRinging()Z
+.method public isScreenOn()Z
+.method public isScrollView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isSeekBar(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isSelectionMode()Z
+.method public isShowIME()Z
+.method public isShowInputWindow()Z
+.method public isSpeakListViewItem()Z
+.method public isSpeaking()Z
+.method public isSpeaking2()Z
+.method public isSpeeching()Z
+.method public isSupperMode()Z
+.method public isTTSEnabled()Z
+.method public isTapMode()Z
+.method public isTatansIme()Z
+.method public isTimerMode()Z
+.method public isTouch()Z
+.method public isTouchMode()Z
+.method public isUpTap()Z
+.method public isUpTapEnabled()Z
+.method public isUseAccessibilityVolume()Z
+.method public isUseAccessibilityVolumeFix()Z
+.method public isUseAlarm()Z
+.method public isUseAsyncAccessibilityVolume()Z
+.method public isUseAutoViewType()Z
+.method public isUseCloudLabel()Z
+.method public isUseDpadKey()Z
+.method public isUseEdgeGesture()Z
+.method public isUseEffectPro()Z
+.method public isUseFastMode()Z
+.method public isUseFloatMenu()Z
+.method public isUseForeground()Z
+.method public isUseHotkey()Z
+.method public isUseImageToText()Z
+.method public isUseInputMethodNoGesture()Z
+.method public isUseKeepType()Z
+.method public isUseLoopMove()Z
+.method public isUseLoopMoveSpace()Z
+.method public isUseMoreNode()Z
+.method public isUseMoveListViewItem()Z
+.method public isUseMoveWindow()Z
+.method public isUseNavigationGesture()Z
+.method public isUseNewWebMove()Z
+.method public isUseNode()Z
+.method public isUseOCR()Z
+.method public isUseOldPrevious()Z
+.method public isUseProixmitySensor()Z
+.method public isUseProximityFalseTouchPrevention()Z
+.method public isUseRawClick()Z
+.method public isUseRawTap()Z
+.method public isUseScrollListContent()Z
+.method public isUseScrollListIndex()Z
+.method public isUseShowDisabledQuickMenu()Z
+.method public isUseSingleTTS()Z
+.method public isUseSlowSpeed()Z
+.method public isUseTextFormatCharUpper()Z
+.method public isUseTextFormatFirst()Z
+.method public isUseTextFormatReadWord()Z
+.method public isUseUseTextFormatCharNumber()Z
+.method public isUseViewMove()Z
+.method public isUseViewTypeMoveMode()Z
+.method public isUseVolumeKeyEnabled()Z
+.method public isUseWebMove()Z
+.method public isVoiceInputAppendMode()Z
+.method public isVolumeKeyEnabled()Z
+.method public isWakeLock()Z
+.method public isWebView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public isWindowStateChanged()Z
+.method public keyLock()V
+.method public left(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public leftPage()Z
+.method public loadAllTimerRun()V
+.method public loadAutoSpeakBlacklist(Ljava/lang/String;)V
+.method public loadContentBlacklist(Ljava/lang/String;)V
+.method public loadGesturePackage(Ljava/util/Set;)V
+.method public loadGesturePackage(Ljava/lang/String;)Z
+.method public loadHotKey()V
+.method public loadHotKeyPackage(Ljava/lang/String;)V
+.method public loadHotKeyPackage(Ljava/util/Set;)V
+.method public loadNotificationBlackList(Ljava/lang/String;)V
+.method public loadNotificationWhiteList(Ljava/lang/String;)V
+.method public loadSound()V
+.method public loadSoundPackage(Ljava/lang/String;)Z
+.method public lock()V
+.method public longClick(II)Z
+.method public longClick(Landroid/graphics/Point;)Z
+.method public longClick(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public longCopy()V
+.method public longHold(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public loopClick(JILcom/luajava/LuaTable;)Lcom/nirenr/talkman/util/LoopClickRunnable;
+.method public lowerVolume()V
+.method public lowerVolume2()V
+.method public navigation(Ljava/lang/String;)Z
+.method public navigation(Ljava/lang/String;Ljava/lang/String;)Z
+.method public nextAlarm()V
+.method public nextRun(Ljava/lang/String;[I)V
+.method public nextTimer()V
+.method public nodeChangedListManager()V
+.method public nodeInfoEquals(Landroid/view/accessibility/AccessibilityNodeInfo;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public noneFocus(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public noneFocusView(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public notificationBox()V
+.method public ocr(Landroid/graphics/Rect;Lcom/nirenr/talkman/ai/OcrResult$OCRListener;)V
+.method public ocr3(Landroid/graphics/Rect;Lcom/nirenr/talkman/ai/OcrResult$OCRListener;)V
+.method public ocrClick([Ljava/lang/String;)V
+.method public ocrScreen(Lcom/nirenr/talkman/ai/OcrResult$OCRListener;)V
+.method public ocrScreen()Z
+.method public ocrScreen2()Z
+.method public ocrToLayout2(Lcom/nirenr/talkman/ai/BaiduAI$AipTaskCallback;)V
+.method public onASREnd(Ljava/lang/String;)Z
+.method public onASRStart()V
+.method public onASRStop()V
+.method public onAccessibilityEvent(Landroid/view/accessibility/AccessibilityEvent;)V
+.method public onAsyncSpeak(Ljava/lang/String;)V
+.method public onAsyncSpeak2(Ljava/lang/String;)V
+.method public onConfigurationChanged(Landroid/content/res/Configuration;)V
+.method public onCreate()V
+.method public onDestroy()V
+.method public onGesture(Landroid/accessibilityservice/AccessibilityGestureEvent;)Z
+.method public onGestureDetectionStarted()V
+.method public onHoverEnter(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public onIncall(Landroid/view/accessibility/AccessibilityEvent;)V
+.method public onInterrupt()V
+.method public onLockedBootCompleted()V
+.method public onNotificationBar(Landroid/app/Notification;)Z
+.method public onScreenOff()V
+.method public onScreenOn()V
+.method public onScreenOn2()V
+.method public onSpeak(Ljava/lang/String;)V
+.method public onSpeak2(Ljava/lang/String;)V
+.method public onTTSEnd()V
+.method public onTTSEnd(I)V
+.method public onTTSStart()V
+.method public onTTSStart(I)V
+.method public onTTSStop()V
+.method public onTTSStop(I)V
+.method public onToast(Landroid/view/accessibility/AccessibilityEvent;)V
+.method public onUnlockedBootCompleted()V
+.method public openActivity(Ljava/lang/String;)V
+.method public openUrl(Ljava/lang/String;)V
+.method public paste()Z
+.method public paste(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public paste(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/CharSequence;)Z
+.method public paste(Ljava/lang/CharSequence;)Z
+.method public pasteText(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public pauseTouchMode(J)V
+.method public play(Ljava/lang/String;)V
+.method public playSoundActionItem()V
+.method public playSoundClock()V
+.method public playSoundClock(I)V
+.method public playSoundGestureBegin()V
+.method public playSoundGestureEnd()V
+.method public playSoundScroll()V
+.method public playSoundScroll(F)V
+.method public playSoundTick()V
+.method public playSoundTick(I)V
+.method public plugin(Ljava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/Object;
+.method public plugin(Ljava/lang/String;Ljava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;)Ljava/lang/Object;
+.method public postClick(JLcom/luajava/LuaTable;)V
+.method public postClick(JLcom/luajava/LuaTable;Lcom/luajava/LuaFunction;)V
+.method public postExecute(JLjava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public postExecute(JLjava/lang/String;Landroid/view/accessibility/AccessibilityNodeInfo;Lcom/luajava/LuaFunction;)V
+.method public postSpeak(JLjava/lang/String;)V
+.method public press(DDI)V
+.method public press(III)Z
+.method public press(Landroid/graphics/Point;I)Z
+.method public press(Landroid/view/accessibility/AccessibilityNodeInfo;I)Z
+.method public print(Ljava/lang/String;)V
+.method public print(Ljava/lang/String;Ljava/lang/Object;)V
+.method public raiseVolume()V
+.method public raiseVolume2()V
+.method public rawClick([I)V
+.method public rawDoubleClick(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public rawSpeak(Ljava/lang/String;)V
+.method public reAccessibilityFocus(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public reCreate()V
+.method public reLoad()V
+.method public reLoadTTS()V
+.method public regEvent(Ljava/lang/String;Lcom/luajava/LuaFunction;)V
+.method public registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+.method public registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
+.method public registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
+.method public registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;I)Landroid/content/Intent;
+.method public registerReceiver(Lcom/androlua/LuaBroadcastReceiver$OnReceiveListerer;Landroid/content/IntentFilter;)Landroid/content/Intent;
+.method public registerReceiver(Lcom/androlua/LuaBroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+.method public requestPermissions(Ljava/lang/String;)V
+.method public requestPermissions([Ljava/lang/String;)V
+.method public resetStreamVolume()V
+.method public right(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public rightPage()Z
+.method public scrollBackward(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public scrollBackward(Landroid/view/accessibility/AccessibilityNodeInfo;Lcom/nirenr/talkman/OnScrolledListener;)Z
+.method public scrollBackwardFind(Landroid/view/accessibility/AccessibilityNodeInfo;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public scrollForward(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public scrollForward(Landroid/view/accessibility/AccessibilityNodeInfo;Lcom/nirenr/talkman/OnScrolledListener;)Z
+.method public scrollForwardFind(Landroid/view/accessibility/AccessibilityNodeInfo;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public select(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public sendKey(Ljava/lang/String;)V
+.method public sendKeyEvent(I)Z
+.method public sendKeyEvent(II)Z
+.method public sendText(Ljava/lang/String;)V
+.method public setAccessibilityFocus(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public setAccessibilityFocus2(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public setAccessibilityVolume(Z)Z
+.method public setAcquireWakeLock(Z)V
+.method public setAlarmEndHour(Ljava/lang/Integer;)V
+.method public setAlarmHours(Ljava/util/Set;)V
+.method public setAlarmInterval(I)V
+.method public setAlarmStartHour(Ljava/lang/Integer;)V
+.method public setAsyncAudioFocus(Z)V
+.method public setAsyncSpeakEnabled(Z)V
+.method public setAsyncTTSSpeed(I)V
+.method public setAsyncTTSVolume(F)V
+.method public setAsyncTtsEngine()V
+.method public setAsyncTtsPitch(I)V
+.method public setAsyncTtsScale(F)V
+.method public setAsyncUseAccessibilityVolume(Z)V
+.method public setAsyncUseProixmitySensor(Z)V
+.method public setAsyncUseTouchStop(Z)V
+.method public setAsyncUseWakeLock(Z)V
+.method public setAudioFocus(Z)V
+.method public setAutoNext(Z)V
+.method public setAutoPrevious(Z)V
+.method public setAutoRead(Z)V
+.method public setAutoReadEnabled(Z)V
+.method public setAutoShowVirtualScreen()V
+.method public setAutoSpeak(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public setAutoSpeakApps(Ljava/util/Set;)V
+.method public setAutoSpeech(Z)V
+.method public setAutoSpeechEnabled(Z)V
+.method public setAutoTrans(Z)V
+.method public setCharMode(Z)V
+.method public setCharModeGesture(Z)V
+.method public setClearNode(Z)V
+.method public setCloudNodeInfoLabel(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+.method public setContentBlacklist(Ljava/lang/String;)V
+.method public setDimmed(Z)V
+.method public setDimmedEnabled(Z)V
+.method public setDoubleFling(Z)V
+.method public setDoubleFlingTime(I)V
+.method public setDoubleTapUserIntentTimeout(I)V
+.method public setEdgeGesture(Z)V
+.method public setEdgeGestureWidth(Ljava/lang/Integer;)V
+.method public setEnabled(Z)V
+.method public setFalseTouchPrevention(Z)V
+.method public setFalseTouchPreventionEnabled(Z)V
+.method public setFocusView(Landroid/view/accessibility/AccessibilityNodeInfo;)Landroid/view/accessibility/AccessibilityNodeInfo;
+.method public setForeground2(Z)V
+.method public setGameMode(Z)V
+.method public setGameModeList(Ljava/util/Set;)V
+.method public setInEdgeGesture(Z)V
+.method public setIncallMode()V
+.method public setIncallMode(Z)V
+.method public setInputMode(Z)V
+.method public setKeepFocusPosition(Z)V
+.method public setLeftButton(Ljava/lang/String;)V
+.method public setLongClickTime(I)V
+.method public setLongCopy(Z)V
+.method public setMenuUpTap(Z)V
+.method public setModeAudio(I)V
+.method public setMultiFingerGesturesEnabled(Z)V
+.method public setNaviUpTap(Z)V
+.method public setNavigationGestureWidth(I)V
+.method public setNoKeyList(Ljava/util/Set;)V
+.method public setNoTouch(Z)V
+.method public setNodeLabel(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public setNodeLabel(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;Z)Z
+.method public setNodeLabel(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Z
+.method public setNotificationAnnouncementSpeak(Z)V
+.method public setNotificationAppNameSpeak(Z)V
+.method public setNotificationBarSpeak(Z)V
+.method public setNotificationBlackList(Ljava/lang/String;)V
+.method public setNotificationInAutoReadNoSpeak(Z)V
+.method public setNotificationInCallNoSpeak(Z)V
+.method public setNotificationInTouchNoSpeak(Z)V
+.method public setNotificationSpeak(Z)V
+.method public setNotificationSummary(Z)V
+.method public setNotificationToastSpeak(Z)V
+.method public setNotificationWhiteList(Ljava/lang/String;)V
+.method public setOnAccessibilityFocusedListener(Lcom/nirenr/talkman/OnAccessibilityFocusedListener;)V
+.method public setOnScrolledListener(Lcom/nirenr/talkman/OnScrolledListener;)V
+.method public setOnlyNotification(Z)V
+.method public setPartialWakeLock(Z)V
+.method public setPauseGesture(Z)Z
+.method public setPauseGestureDetection(Z)V
+.method public setProfiles()V
+.method public setProfiles(Ljava/lang/String;)V
+.method public setRawSpeak(Z)V
+.method public setRightButton(Ljava/lang/String;)V
+.method public setScreenOffSpeak(Z)V
+.method public setSelection(Landroid/view/accessibility/AccessibilityNodeInfo;I)V
+.method public setSelectionMode(Z)V
+.method public setSensor(Z)V
+.method public setServiceHandlesDoubleTap(Z)V
+.method public setSingleTap(Z)V
+.method public setSound(Z)V
+.method public setSoundVolume(F)V
+.method public setSpeakListViewItem(Z)V
+.method public setSpeaking(Z)V
+.method public setSpeechRecognitionListener(Lcom/nirenr/talkman/SpeechRecognitionListener;)V
+.method public setSpeechRecognitionListener(Lcom/nirenr/talkman/SpeechRecognitionListener;I)V
+.method public setSpeeching(Z)V
+.method public setStreamVolume(I)V
+.method public setSupperMode(Z)V
+.method public setSupperModeAux(Z)V
+.method public setTTSEnabled(Z)V
+.method public setTTSSpeaker(Ljava/lang/String;)V
+.method public setTTSSpeed(I)V
+.method public setTTSSpeed(Z)V
+.method public setTTSVolume(F)V
+.method public setTapMode(Z)V
+.method public setText(Landroid/view/accessibility/AccessibilityNodeInfo;Ljava/lang/String;)Z
+.method public setText(Ljava/lang/String;)Z
+.method public setTextToSpeechListener(Lcom/nirenr/talkman/TextToSpeechListener;)V
+.method public setTimerInterval(I)V
+.method public setTimerMode(Z)V
+.method public setTimerModeAux(Z)V
+.method public setTimerModePause(Z)V
+.method public setTouchExplorationMode(Z)Z
+.method public setTouchExplorationModeRunnable(Ljava/lang/Runnable;J)V
+.method public setTouchFocusUserIntentTimeout(I)V
+.method public setTouchMode(Z)V
+.method public setTtsEngine()V
+.method public setTtsEngine(Ljava/lang/String;)V
+.method public setTtsPitch(I)V
+.method public setTtsScale(F)V
+.method public setTypingFocusUserIntentTimeout(I)V
+.method public setUnknownIndex(Z)V
+.method public setUnknownLabel(Z)V
+.method public setUpTap(Z)V
+.method public setUpTapEnabled(Z)V
+.method public setUsageHints(Z)V
+.method public setUseAccessibilityVolume(Z)V
+.method public setUseAccessibilityVolumeFix(Z)V
+.method public setUseAlarm(Z)V
+.method public setUseAppTTS(Z)V
+.method public setUseAutoFocus(Z)V
+.method public setUseAutoViewType(Z)V
+.method public setUseBottomMenuEdgeGesture(Z)V
+.method public setUseCloudLabel(Z)V
+.method public setUseContentChanged(Z)V
+.method public setUseContentTreeChanged(Z)V
+.method public setUseCustomDictRegex(Z)V
+.method public setUseCustomDictSpeak(Z)V
+.method public setUseCustomNodeName(Z)V
+.method public setUseCustomSpeakClear(Z)V
+.method public setUseCustomSpeakSymbolNumber(Z)V
+.method public setUseCustomSymbolSpeak(Z)V
+.method public setUseDpadKey(Z)V
+.method public setUseEdgeGesture(Z)V
+.method public setUseEditHint(Z)V
+.method public setUseEffectPro(Z)V
+.method public setUseEmojiSpeak(Z)V
+.method public setUseEmojiSpeakClear(Z)V
+.method public setUseFastMode(Z)V
+.method public setUseFingerprintGesture(Z)V
+.method public setUseFloatMenu(Z)V
+.method public setUseForeground(Z)V
+.method public setUseForegroundPro(Z)V
+.method public setUseGameModeNoEdge(Z)V
+.method public setUseGameModeNoSpeak(Z)V
+.method public setUseGestureDetection(Z)V
+.method public setUseHeadSetKey(Z)V
+.method public setUseHotkey(Z)V
+.method public setUseImageFilter(Z)V
+.method public setUseImageToText(Z)V
+.method public setUseInputMethodDoubleTap(Z)V
+.method public setUseInputMethodGesture(Z)V
+.method public setUseInputMethodNoGesture(Z)V
+.method public setUseInputMethodNoTouch(Z)V
+.method public setUseInputMethodSpeakCandidate(Z)V
+.method public setUseInputMethodSpeakCommit(Z)V
+.method public setUseInputMethodSpeakCommitSpace(Z)V
+.method public setUseInputMethodSpeakKey(Z)V
+.method public setUseInputMethodSpeakPassword(Z)V
+.method public setUseInputMethodSpeakWord(Z)V
+.method public setUseKeepType(Z)V
+.method public setUseLeftRight(Z)V
+.method public setUseListIndex(Z)V
+.method public setUseListItemIndex(Z)V
+.method public setUseListItemIndexRealTime(Z)V
+.method public setUseLog(Z)V
+.method public setUseLongClickVoiceImage(Z)V
+.method public setUseLongClickVoiceInput(Z)V
+.method public setUseLoopMove(Z)V
+.method public setUseLoopMoveSpace(Z)V
+.method public setUseMoreNode(Z)V
+.method public setUseMoveListViewItem(Z)V
+.method public setUseMoveWindow(Z)V
+.method public setUseMultiTouchMode(Z)V
+.method public setUseNavigationGesture(Z)V
+.method public setUseNewTextMoveType(Z)V
+.method public setUseNewWebMove(Z)V
+.method public setUseNoBluetooth(Z)V
+.method public setUseNode(Z)V
+.method public setUseNodeInfo(Z)V
+.method public setUseOCR(Z)V
+.method public setUseOfflineTTS(Z)V
+.method public setUseOldPrevious(Z)V
+.method public setUsePagerScroll(Z)V
+.method public setUsePinyinSpeak(Z)V
+.method public setUsePowerSave(Z)V
+.method public setUseProgress(Z)V
+.method public setUseProixmitySensor(Z)V
+.method public setUseProximityFalseTouchPrevention(Z)V
+.method public setUseProximityFalseTouchPreventionOnlyLock(Z)V
+.method public setUseRawClick(Z)V
+.method public setUseRawTap(Z)V
+.method public setUseRingtoneVolume(Z)V
+.method public setUseScreenOffSpeak(Z)V
+.method public setUseScreenOnSpeak(Z)V
+.method public setUseScreenOnSpeakBattery(Z)V
+.method public setUseScreenOnSpeakNotification(Z)V
+.method public setUseScrollListContent(Z)V
+.method public setUseScrollListIndex(Z)V
+.method public setUseScrollListKeepPosition(Z)V
+.method public setUseShowDisabledQuickMenu(Z)V
+.method public setUseShowText(Z)V
+.method public setUseSingleTTS(Z)V
+.method public setUseSlowSpeed(Z)V
+.method public setUseSmallFilter(Z)V
+.method public setUseSpeakKey(Z)V
+.method public setUseSpeakQqChanged(Z)V
+.method public setUseSpeakState(Z)V
+.method public setUseSpeakWindowAllChanged(Z)V
+.method public setUseSupperFilter(Z)V
+.method public setUseTextFormatCharNumber(Z)V
+.method public setUseTextFormatCharUpper(Z)V
+.method public setUseTextFormatFirst(Z)V
+.method public setUseTextFormatReadWord(Z)V
+.method public setUseTouchMode(Z)V
+.method public setUseTouchStop(Z)V
+.method public setUseUpLongClick(Z)V
+.method public setUseUpLongQuickMenu(Z)V
+.method public setUseViewMove(Z)V
+.method public setUseViewName(Z)V
+.method public setUseViewTypeMoveMode(Z)V
+.method public setUseVolumeKeyEnabled(Z)V
+.method public setUseVolumeKeyMoveText(Z)V
+.method public setUseWakeLock(Z)V
+.method public setUseWakeLockPro(Z)V
+.method public setUseWebMove(Z)V
+.method public setUseWebViewName(Z)V
+.method public setUseWindowTitleChanged(Z)V
+.method public setVibrate(Z)V
+.method public setVibrateIntensity(I)V
+.method public setVoiceHelperMediaMuteMode(Z)V
+.method public setVoiceInputAppendMode(Z)V
+.method public setVolumeKeyEnabled(Z)V
+.method public setWakeLock(J)V
+.method public setWakeLock(Z)V
+.method public setWakeLock_aux(Z)V
+.method public setup(Ljava/lang/String;)V
+.method public showAllNode()V
+.method public showAllNode(Ljava/lang/String;)V
+.method public showAutoSpeakCache()V
+.method public showGrid()V
+.method public showNodeInfo(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public showNotificationBox()V
+.method public showOnScreen(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public showOnScreen2(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public showQuickView(Z)V
+.method public showText2(Ljava/lang/String;)V
+.method public showVirtualScreen()V
+.method public showVirtualTableScreen()V
+.method public speak(I)V
+.method public speak(Ljava/lang/String;)V
+.method public speakAllNotification()V
+.method public speakAllText()V
+.method public speakAllText(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public speakLight()V
+.method public speakNetInfo()V
+.method public speakNowTime()V
+.method public speakOnScreen()V
+.method public speakSourceText(Landroid/view/accessibility/AccessibilityEvent;Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public speakTime()V
+.method public speakTimeInfo()V
+.method public speakTimer(J)Z
+.method public speakTimer(JJLjava/util/Set;)Z
+.method public speak_aux(Ljava/lang/String;)V
+.method public splitRow(Ljava/lang/String;)Ljava/util/ArrayList;
+.method public splitRow2(Ljava/lang/String;)Ljava/util/ArrayList;
+.method public splitRow3(Ljava/lang/String;)Ljava/util/ArrayList;
+.method public splitSpeak(Ljava/lang/String;)V
+.method public splitSpeak(Ljava/lang/String;Z)V
+.method public startApp(Ljava/lang/String;)Z
+.method public startApp2(Ljava/lang/String;)Z
+.method public startAppExtend(Ljava/lang/String;)Z
+.method public startDebug(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public startInput()V
+.method public startInput(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public startInputting()V
+.method public startInputting(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public startListening()V
+.method public startReadMode()Z
+.method public stop()V
+.method public stopDebug()V
+.method public stopInputting()V
+.method public swipe(DDDDII)V
+.method public swipe(DDDDIILjava/lang/String;)V
+.method public swipe(DDDDI)Z
+.method public swipe(IIIII)Z
+.method public swipe(IIIIII)Z
+.method public swipe(IIIIIILjava/lang/String;)Z
+.method public swipe(Landroid/graphics/Point;Landroid/graphics/Point;I)Z
+.method public swipe(Landroid/view/accessibility/AccessibilityNodeInfo;III)Z
+.method public swipe2(DDDDI)Z
+.method public swipe2(IIIII)Z
+.method public tap(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toBack()V
+.method public toChild()V
+.method public toClick()V
+.method public toClick(II)Z
+.method public toClick(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toClick1(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toClick2(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public toClick3(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public toClick4(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toClick5(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toClick6(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public toEnd()Z
+.method public toHeadsetHook()V
+.method public toHome()V
+.method public toListViewEnd(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toListViewStart(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toLockScreen()V
+.method public toLongClick()V
+.method public toLongClick(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public toMulti()V
+.method public toNext()Z
+.method public toNext(Landroid/view/accessibility/AccessibilityNodeInfo;Z)Z
+.method public toNextChar()Z
+.method public toNextLine()Z
+.method public toNextPage()Z
+.method public toNextParagraph()Z
+.method public toNextRow()Z
+.method public toNextWindow(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toNextWord()Z
+.method public toNotifications()V
+.method public toParent()V
+.method public toPinyin(Ljava/lang/String;)Ljava/lang/String;
+.method public toPowerDialog()V
+.method public toPrevious()Z
+.method public toPrevious(Landroid/view/accessibility/AccessibilityNodeInfo;Z)Z
+.method public toPreviousChar()Z
+.method public toPreviousLine()Z
+.method public toPreviousPage()Z
+.method public toPreviousParagraph()Z
+.method public toPreviousRow()Z
+.method public toPreviousWindow(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public toPreviousWord()Z
+.method public toQuickSettings()V
+.method public toRawClick(II)Z
+.method public toRecents()V
+.method public toSelect(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public toSplitScreen()V
+.method public toStart()Z
+.method public toTakeScreenshot()V
+.method public toTakeScreenshot(Landroid/view/accessibility/AccessibilityNodeInfo;)V
+.method public toTakeScreenshot3()V
+.method public toTextEnd()Z
+.method public toTextStart()Z
+.method public toastNotificationBox()V
+.method public tool(Ljava/lang/String;)Z
+.method public tool(Ljava/lang/String;Ljava/lang/String;)Z
+.method public ttsSpeak(Ljava/lang/String;)V
+.method public unbindService(Landroid/content/ServiceConnection;)V
+.method public unlock()V
+.method public unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+.method public up(Landroid/view/accessibility/AccessibilityNodeInfo;)Z
+.method public upPage()Z
+.method public vibrate()V
+.method public vibrate(I)V
+.method public vibrate(Z)V
+.method public vibrate_aux()V
+.method public windowsNotificationBox()V
+.method public youTu(ILandroid/view/accessibility/AccessibilityNodeInfo;Lcom/nirenr/talkman/ai/OcrResult$OCRListener;)V
+.method public youTu(ILcom/nirenr/talkman/ai/OcrResult$OCRListener;)V

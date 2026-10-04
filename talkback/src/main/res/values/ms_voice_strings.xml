@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="ms_voice_opening_app">Opening <xliff:g id="app" example="Play Store">%1$s</xliff:g></string>
+  <string name="ms_voice_app_not_found">No app found named <xliff:g id="app" example="Play Store">%1$s</xliff:g></string>
+</resources>

@@ -34,3 +34,56 @@ Rules from user: replicate Jieshuo's whole "Feedback settings" EXCEPT "download 
 - Triggers wired (`soundtheme/ExtraEventSounds`, fed from `TalkBackService.onAccessibilityEvent`): talkman_start/stop, feedback_paused/resume, power_disconnected, power_low, unlock, raise/lower_volume, dialog, toast, edit_box, check_box, seek_bar, progress, has_action, scroll_top/bottom/page, inputmethod_show/hide, copy, paste (TextEditActor), to_back, screenshot (SystemActionPerformer), auto_ocr/_done/_error (OcrTool), auto_trans (TranslateEngine).
 - NOT wired (no matching feature/event in this TalkBack yet): focus0, focus4, beep, cancel, tick, clock, camera_click, action_item, page_up/down, progress_up/down, progress_100, timer_start/end, recognition_*, previous_text/next_text, append_copy, clear, clear_notification. They can be assigned and previewed, but nothing plays them.
 - NOT DONE: first GitHub Actions build + fixing compile errors.
+
+## Session notes: making our Lua extension system match Jieshuo's (UNFINISHED — continue here)
+User goal (Mobeen): Jieshuo's extension (plugin) system and ours must have the SAME structure and the SAME `service.*` API; add all Jieshuo services; error margin ~zero because the whole screen reader rests on it. Reference zip: cSr.zip = Jieshuo Max 20260626 decompiled (smali, obfuscated; do NOT try to copy smali).
+
+### What was found (done)
+- Jieshuo's official extension API doc is inside its resources: `res/values-zh-rCN/arrays.xml`, array `code_help_items` (108 items). Saved here as **JX_API_REFERENCE_zh.txt** (Chinese; 103 items = full API + auto-click mini-language). Earlier note "service API designed by us" is now outdated: the real API is known.
+- Full `service.execute()` command list (173 commands) saved as **JX_EXECUTE_COMMANDS.txt**.
+- Jieshuo folders: Plugins (Extensions), Tools, Custom voice commands (cmd), Timer, Profiles. Hook names Jieshuo calls in scripts include: onAccessibilityEvent, onNotification*, onKeyEvent, onGestureDetected, onWindowStateChanged, onViewLongClicked(1-4), onVolumeChanged, onScrolled, onTransResult, onScreenCaptureDone (from smali strings; verify before relying).
+- Our current `editor/LuaServiceApi.java` only has: execute (10 English names), click(text), startApp, plugin, tool, speak, toast, log, loadDex. It does NOT match Jieshuo yet.
+
+### Jieshuo service API to implement (from JX_API_REFERENCE_zh.txt)
+execute(cmd,node), postExecute(ms,cmd,node), getText(node), setText(node,text)/setText(text), copy()/copy(text), appendCopy()/appendCopy(text), paste()/paste(node), toNext()/toNext(node,bool), toPrevious()/toPrevious(node,bool), toNextChar/toPreviousChar/toNextLine/toPreviousLine/toTextStart/toTextEnd/toListViewStart/toListViewEnd, getRootNodeInfo(), ocr(node), setTimerMode(bool), setAutoReadEnabled(bool), setAutoNext(bool), isEditView/isSeekBar/isListView/isInListView/isInWebView/isClick(node), toClick()/toClick(node), toLongClick()/(node), toBack, toHome, toNotification, toParent (doc says recents), scrollBackward(node), scrollForward(node), loadGesturePackage(name), click(x,y), longClick(x,y), press(x,y,t), swipe(x1,y1,x2,y2,t), click({button list}) with the whole mini-language (`*` wildcard, `#n` index, leading `#` = custom label, `|` or, `&` and / `&!` not / `&type`, `$ms` wait, `<n` repeat, leading `<` locate only, `>n` wait count, leading `>app` open app, `%cmd` run command or Lua function, `[...]` direct tap/swipe forms, nested `{}` branches), postClick(ms,{list}), plugin(name,node) (must return the plugin's value, ours returns boolean now).
+- Return rule: a gesture/plugin script returns true = consumed, false = fall to next layer (per-app gesture -> global gesture -> default).
+
+### Code added this session (all UNVERIFIED, not compiled)
+- Earlier in the same chat (shipped in MSScreenReader_fix.zip): voice command "open <app>" (MsAppLauncher) and screen-wake announcement using MS Advanced settings (time+date+year+battery, chosen voice).
+- `TalkBackService`: new helpers `msFocusFeedback(FocusDirection.Builder)`, `msPartFeedback(Part.Builder)`, `msStartReading(boolean fromTop)`, `msStopReading()` (for toNext/toPrevious/scroll/read-all in the Lua API).
+- `editor/JxGesture.java`: tap / long-press / swipe through `dispatchGesture` (for service.click(x,y), longClick, press, swipe). Not yet called from LuaServiceApi.
+
+### Next steps (in order)
+1. Rewrite `LuaServiceApi` so every function above exists with Jieshuo's exact name and argument forms (Lua passes tables as `com.luajava.LuaTable`; numbers arrive as Long/Double — accept both). Keep old methods (speak, toast, log, startApp, tool) as extras.
+2. Implement `execute()` for all 173 names in JX_EXECUTE_COMMANDS.txt; where our app has no feature yet, return false (never throw).
+3. Implement the auto-click mini-language parser as its own class (unit-testable, pure Java).
+4. Hook functions: call the script's onAccessibilityEvent/onKeyEvent/etc. like Jieshuo; keep our header-comment events working.
+5. Folder structure same as Jieshuo (Plugins/Tools/Custom voice commands/Timer/Profiles) — check what we use now (`Extensions`, `Tools`) and add aliases so Jieshuo extensions copy over unchanged. Plugin folder layout: `NAME/main.lua` (+ init.lua for project config, as AndroLua).
+6. Compile on GitHub Actions and fix errors (nothing in this session has been compiled).
+- Earlier unclear request "extension and tool must be the same" = this goal: same structure/API as Jieshuo's. User confirmed.
+
+## zip 14 (this build) — step 1a of the Jieshuo-compatible API  [UNVERIFIED, not compiled]
+New file JX_SERVICE_SIGNATURES.txt = every public method of Jieshuo's TalkManAccessibilityService with real smali signatures (names + argument types are reliable; method BODIES are control-flow obfuscated and cannot be read, so behaviour comes from JX_API_REFERENCE_zh.txt).
+Added to LuaServiceApi: execute(cmd,node), postExecute, getText, setText (2 forms), copy/appendCopy/paste (all forms), toNext/toPrevious (+node forms), getRootNodeInfo, isEditView/isSeekBar/isListView/isInListView/isInWebView/isClick, click(x,y)/longClick(x,y)/press/swipe (5 and 6 args), toClick/toLongClick (+node), toBack/toHome/toNotification/toRecents/toParent, scrollForward/scrollBackward.
+Rules learned: luajava mis-converts a Lua integer to boxed Double (returns Long), so the API uses PRIMITIVE double/int params only, never Double/Number. Absolute vs relative coordinates: value strictly between 0 and 1 = share of screen, else pixels (cannot keep Jieshuo's separate int/double overloads: luajava cannot tell them apart).
+Known differences: toNext(node,bool) ignores the bool; toParent follows Jieshuo's doc (recents) - doc may be wrong, check on device; plugin() still returns boolean.
+
+## zip 15+16 (one build) — auto-click language + all 173 execute commands  [Android side UNVERIFIED, not compiled]
+NEW files in editor/: JxClickScript.java (pure-Java parser/runner, NO Android imports), JxClickEnv.java (phone side: find/click nodes), JxCommands.java (173-command table + executor). LuaServiceApi now has click(table), click(table,function), postClick(ms,table[,function]), callLuaFunction (for %func), execute(cmd[,node]) routed to JxCommands.
+VERIFIED on a computer: JxClickScript passes 40 checks with a fake screen (devtools/jx_parser_test, see README.txt there). All new Java files pass a syntax check. NOT verified: anything that touches Android (JxClickEnv, JxCommands, LuaServiceApi) - never compiled.
+Language rules implemented (from JX_API_REFERENCE_zh.txt): top list = alternatives; list inside it = sequence (stops at first missing item); list inside a sequence = optional branch; item symbols * # (index, negative from end; leading # = label) | & &! (also &type: 可编辑 可点击 列表 列表项目 编辑框) $ms < (repeat n; leading = locate only) > (wait n seconds; leading = open app) @app % (Lua function first, else command; function returning false halts everything) and all [..] forms except the 8-number colour search (returns false + message).
+Choices NOT stated in Jieshuo's docs (tune on the phone): SETTLE 350 ms after each step, later sequence steps wait up to 1000 ms for the item, optional branch steps wait 300 ms, text match is whole-text, case-insensitive, on text or description; a function that returns nothing counts as "continue"; click(table,function) calls the function with the true/false result (guess); postClick ignores its function.
+Custom labels (#label) are NOT supported yet (always "not found"). Colour search not supported.
+execute(): every command is known by id (command_click), English name and Chinese name (all from Jieshuo's resources). Names "Tools" and "Timer" are used by two commands each (both unimplemented). Old names back/home/recents/copy/paste still work.
+Commands that really work now (~60): settings, time/battery, back/home/recents/notifications/quick settings/screenshot/lock screen/power dialog/split screen, input method picker, voice assistant, answer/end call, click/long click/raw click/raw long click/double tap, 4 raw swipes, copy/append/paste/select all, next/previous focus, to top/end, next/previous granularity, read whole screen, scroll forward/back, slider +/-, 4 directional scrolls, media play/prev/next/ff/rewind, volume (media + accessibility). All other known commands return false (never throw).
+
+## REMAINING WORK (in order)
+1. plugin(name,node)/tool(name) must return the script's own return value (Object); plugin(a,b,node) form.
+2. Remaining execute() commands: character/word/sentence/paragraph/heading/link/control navigation, previous/next window, selection mode, suspend/disable toggles (touch, feedback, hotkeys, gestures, main/secondary TTS), TTS engine selection, speech rate, clipboard history/favorites/cloud clipboard, OCR/describe/translate commands, camera, timer commands, network info, location, light, URL, virtual screen/navigation, focus monitor, dictionary, node alias/labels (#label), chat reading modes, quick/list/char/node modes.
+3. toNextChar/toPreviousChar/Line/Word/Row/Paragraph/Window/Page, toTextStart/End, toListViewStart/End, startReadMode, setTimerMode/setAutoReadEnabled/setAutoNext, ocr(node), loadGesturePackage (need TalkBack granularity actors).
+4. Make `service` a real ContextWrapper that forwards AccessibilityService methods (startActivity, performGlobalAction, getRootInActiveWindow...), because Jieshuo scripts call them on service.
+5. Copy AndroLua task/thread/timer/ticker (LuaThread, LuaAsyncTask, LuaTimer, LuaTimerTask, Ticker are in AndroLua_pro-master.zip) + their Lua globals.
+6. The ~200 setUseXxx/setXxx setters (see JX_SERVICE_SIGNATURES.txt): map to our settings where they exist, else return false silently.
+7. Hook functions called by the service (onAccessibilityEvent, onKeyEvent, onGestureDetected, onNotification*, onWindowStateChanged, onViewLongClicked, onVolumeChanged, onScrolled ...) with the return-true-consumes rule.
+8. Jieshuo folder layout (Plugins, Tools, Custom voice commands, Timer, Profiles) with aliases so Jieshuo extensions copy over unchanged.
+9. FIRST GitHub Actions compile and fixing errors (nothing since the Lua engine step has ever been compiled).

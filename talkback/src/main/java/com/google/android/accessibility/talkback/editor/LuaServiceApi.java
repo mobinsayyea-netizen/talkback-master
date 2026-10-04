@@ -13,7 +13,9 @@ import android.widget.Toast;
 import com.androlua.LuaContext;
 import com.androlua.LuaEnhancer;
 import com.androlua.LuaGcable;
+import com.google.android.accessibility.talkback.Feedback;
 import com.google.android.accessibility.talkback.TalkBackService;
+import com.google.android.accessibility.utils.traversal.TraversalStrategy;
 import com.google.android.accessibility.utils.Performance;
 import com.google.android.accessibility.utils.output.SpeechController.SpeakOptions;
 import com.luajava.LuaState;
@@ -46,6 +48,7 @@ public class LuaServiceApi implements LuaContext {
   private final HashMap<String, String> libs = new HashMap<>();
   private final StringBuilder log = new StringBuilder();
   private String luaExtDir;
+  private volatile boolean closed;
 
   /** Runs a script. Returns null on success, or an error text. Always call from a worker thread. */
   public static String run(Context ctx, File script, AccessibilityNodeInfo node) {
@@ -171,6 +174,7 @@ public class LuaServiceApi implements LuaContext {
   }
 
   private void close() {
+    closed = true;
     try {
       L.close();
     } catch (Throwable ignored) {
@@ -179,43 +183,9 @@ public class LuaServiceApi implements LuaContext {
 
   // ---------------------------------------------------------------- service.* for scripts
 
-  /** service.execute("Notification bar") etc. */
+  /** service.execute("Click") etc.: any English, Chinese or id spelling of Jieshuo's 173 commands. */
   public boolean execute(String name) {
-    TalkBackService s = TalkBackService.getInstance();
-    if (s == null || name == null) {
-      return false;
-    }
-    switch (name.trim().toLowerCase()) {
-      case "speak time and battery level":
-        BatteryManager bm = (BatteryManager) ctx.getSystemService(Context.BATTERY_SERVICE);
-        int pct = bm == null ? -1 : bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-        String time = DateFormat.getTimeInstance(DateFormat.SHORT).format(new Date());
-        speak(time + (pct >= 0 ? ", battery " + pct + "%" : ""));
-        return true;
-      case "screen reader settings":
-        Intent i = new Intent(s, com.android.talkback.TalkBackPreferencesActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        s.startActivity(i);
-        return true;
-      case "notification bar":
-        return s.performGlobalAction(AccessibilityService.GLOBAL_ACTION_NOTIFICATIONS);
-      case "quick settings":
-        return s.performGlobalAction(AccessibilityService.GLOBAL_ACTION_QUICK_SETTINGS);
-      case "take a screenshot":
-        return s.performGlobalAction(AccessibilityService.GLOBAL_ACTION_TAKE_SCREENSHOT);
-      case "back":
-        return s.performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
-      case "home":
-        return s.performGlobalAction(AccessibilityService.GLOBAL_ACTION_HOME);
-      case "recents":
-        return s.performGlobalAction(AccessibilityService.GLOBAL_ACTION_RECENTS);
-      case "copy":
-        return focusedAction(s, AccessibilityNodeInfo.ACTION_COPY);
-      case "paste":
-        return focusedAction(s, AccessibilityNodeInfo.ACTION_PASTE);
-      default:
-        return false;
-    }
+    return name != null && JxCommands.run(this, ctx, name, null);
   }
 
   private boolean focusedAction(TalkBackService s, int action) {
@@ -295,6 +265,470 @@ public class LuaServiceApi implements LuaContext {
       log(err);
     }
     return err == null;
+  }
+
+  // ======================================================================================
+  // Jieshuo-compatible API (zip 14). Names and argument forms follow Jieshuo's service class.
+  // Numbers: Lua integers >= 1 are pixels; a fractional value between 0 and 1 is a share of the
+  // screen (Jieshuo doc: "integer = absolute, decimal = relative"). UNVERIFIED: not compiled.
+  // ======================================================================================
+
+  private static final int FOCUS_BACKWARD = 1; // View.FOCUS_BACKWARD
+  private static final int FOCUS_FORWARD = 2; // View.FOCUS_FORWARD
+
+  private float px(double v, boolean horizontal) {
+    int size = horizontal ? getWidth() : getHeight();
+    if (v > 0 && v < 1) {
+      return (float) (v * size);
+    }
+    return (float) v;
+  }
+
+  private static android.graphics.Rect boundsOf(AccessibilityNodeInfo n) {
+    android.graphics.Rect r = new android.graphics.Rect();
+    n.getBoundsInScreen(r);
+    return r;
+  }
+
+  AccessibilityNodeInfo focusedNode() {
+    TalkBackService s = TalkBackService.getInstance();
+    return s == null ? null : s.msFocusedNode();
+  }
+
+  AccessibilityNodeInfo inputNode() {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s == null) {
+      return null;
+    }
+    AccessibilityNodeInfo root = s.getRootInActiveWindow();
+    if (root == null) {
+      return null;
+    }
+    AccessibilityNodeInfo f = root.findFocus(AccessibilityNodeInfo.FOCUS_INPUT);
+    if (f == null) {
+      AccessibilityNodeInfo a = root.findFocus(AccessibilityNodeInfo.FOCUS_ACCESSIBILITY);
+      if (a != null && a.isEditable()) {
+        f = a;
+      }
+    }
+    return f;
+  }
+
+  /** service.execute(cmd, node): the node is accepted for compatibility. */
+  public boolean execute(String name, AccessibilityNodeInfo node) {
+    return name != null && JxCommands.run(this, ctx, name, node);
+  }
+
+  /** service.postExecute(ms, cmd, node). */
+  public void postExecute(long ms, final String name, final AccessibilityNodeInfo node) {
+    ui.postDelayed(() -> execute(name, node), Math.max(0L, ms));
+  }
+
+  public String getText(AccessibilityNodeInfo n) {
+    if (n == null) {
+      return "";
+    }
+    CharSequence t = n.getText();
+    if (t == null || t.length() == 0) {
+      t = n.getContentDescription();
+    }
+    return t == null ? "" : t.toString();
+  }
+
+  public boolean setText(AccessibilityNodeInfo n, String text) {
+    if (n == null || text == null) {
+      return false;
+    }
+    android.os.Bundle args = new android.os.Bundle();
+    args.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, text);
+    return n.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, args);
+  }
+
+  public boolean setText(String text) {
+    return setText(inputNode(), text);
+  }
+
+  private android.content.ClipboardManager clipboard() {
+    return (android.content.ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
+  }
+
+  private String clipText() {
+    android.content.ClipboardManager cm = clipboard();
+    if (cm == null || !cm.hasPrimaryClip() || cm.getPrimaryClip().getItemCount() == 0) {
+      return "";
+    }
+    CharSequence t = cm.getPrimaryClip().getItemAt(0).coerceToText(ctx);
+    return t == null ? "" : t.toString();
+  }
+
+  public boolean copy(CharSequence text) {
+    android.content.ClipboardManager cm = clipboard();
+    if (cm == null || text == null) {
+      return false;
+    }
+    cm.setPrimaryClip(android.content.ClipData.newPlainText("text", text));
+    return true;
+  }
+
+  public boolean copy() {
+    String t = getText(focusedNode());
+    return t.length() > 0 && copy(t);
+  }
+
+  public boolean appendCopy(CharSequence text) {
+    return text != null && copy(clipText() + text);
+  }
+
+  public boolean appendCopy() {
+    String t = getText(focusedNode());
+    return t.length() > 0 && appendCopy(t);
+  }
+
+  public boolean paste(AccessibilityNodeInfo n) {
+    return n != null && n.performAction(AccessibilityNodeInfo.ACTION_PASTE);
+  }
+
+  public boolean paste() {
+    return paste(inputNode());
+  }
+
+  public boolean paste(CharSequence text) {
+    return copy(text) && paste();
+  }
+
+  public boolean paste(AccessibilityNodeInfo n, CharSequence text) {
+    return copy(text) && paste(n);
+  }
+
+  private boolean moveFocus(final int direction) {
+    final TalkBackService s = TalkBackService.getInstance();
+    if (s == null) {
+      return false;
+    }
+    ui.post(() -> s.msFocusFeedback(Feedback.focusDirection(direction)));
+    return true;
+  }
+
+  public boolean toNext() {
+    return moveFocus(TraversalStrategy.SEARCH_FOCUS_FORWARD);
+  }
+
+  public boolean toPrevious() {
+    return moveFocus(TraversalStrategy.SEARCH_FOCUS_BACKWARD);
+  }
+
+  /** Focus moves relative to the given node. The "include children" flag is accepted only. */
+  private boolean moveFrom(AccessibilityNodeInfo n, int viewDirection) {
+    if (n == null) {
+      return false;
+    }
+    AccessibilityNodeInfo t = n.focusSearch(viewDirection);
+    return t != null && t.performAction(AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS);
+  }
+
+  public boolean toNext(AccessibilityNodeInfo n, boolean withChildren) {
+    return moveFrom(n, FOCUS_FORWARD);
+  }
+
+  public boolean toPrevious(AccessibilityNodeInfo n, boolean withChildren) {
+    return moveFrom(n, FOCUS_BACKWARD);
+  }
+
+  public AccessibilityNodeInfo getRootNodeInfo() {
+    TalkBackService s = TalkBackService.getInstance();
+    return s == null ? null : s.getRootInActiveWindow();
+  }
+
+  private static String cls(AccessibilityNodeInfo n) {
+    CharSequence c = n == null ? null : n.getClassName();
+    return c == null ? "" : c.toString();
+  }
+
+  public boolean isEditView(AccessibilityNodeInfo n) {
+    return n != null && (n.isEditable() || cls(n).contains("EditText"));
+  }
+
+  public boolean isSeekBar(AccessibilityNodeInfo n) {
+    return n != null && (cls(n).contains("SeekBar") || n.getRangeInfo() != null);
+  }
+
+  public boolean isListView(AccessibilityNodeInfo n) {
+    String c = cls(n);
+    return n != null
+        && (c.contains("ListView")
+            || c.contains("RecyclerView")
+            || c.contains("GridView")
+            || n.getCollectionInfo() != null);
+  }
+
+  public boolean isInListView(AccessibilityNodeInfo n) {
+    AccessibilityNodeInfo p = n == null ? null : n.getParent();
+    int guard = 0;
+    while (p != null && guard++ < 50) {
+      if (isListView(p)) {
+        return true;
+      }
+      p = p.getParent();
+    }
+    return false;
+  }
+
+  public boolean isInWebView(AccessibilityNodeInfo n) {
+    AccessibilityNodeInfo p = n;
+    int guard = 0;
+    while (p != null && guard++ < 50) {
+      if (cls(p).contains("WebView")) {
+        return true;
+      }
+      p = p.getParent();
+    }
+    return false;
+  }
+
+  public boolean isClick(AccessibilityNodeInfo n) {
+    return n != null && n.isClickable();
+  }
+
+  // ---- touch simulation (Android 7+ dispatchGesture)
+
+  public boolean click(double x, double y) {
+    return JxGesture.tap(TalkBackService.getInstance(), px(x, true), px(y, false), 50);
+  }
+
+  public boolean longClick(double x, double y) {
+    return JxGesture.tap(
+        TalkBackService.getInstance(),
+        px(x, true),
+        px(y, false),
+        android.view.ViewConfiguration.getLongPressTimeout() + 150L);
+  }
+
+  public boolean press(double x, double y, int ms) {
+    return JxGesture.tap(TalkBackService.getInstance(), px(x, true), px(y, false), ms);
+  }
+
+  public boolean swipe(double x1, double y1, double x2, double y2, int ms) {
+    return JxGesture.swipe(
+        TalkBackService.getInstance(), px(x1, true), px(y1, false), px(x2, true), px(y2, false), ms);
+  }
+
+  public boolean swipe(double x1, double y1, double x2, double y2, int ms, int times) {
+    boolean ok = true;
+    for (int i = 0; i < Math.max(1, times); i++) {
+      ok = swipe(x1, y1, x2, y2, ms) && ok;
+    }
+    return ok;
+  }
+
+  boolean tapNode(AccessibilityNodeInfo n, long ms) {
+    android.graphics.Rect r = boundsOf(n);
+    if (r.isEmpty() || r.centerX() < 0 || r.centerY() < 0
+        || r.centerX() > getWidth() || r.centerY() > getHeight()) {
+      return false;
+    }
+    return JxGesture.tap(TalkBackService.getInstance(), r.centerX(), r.centerY(), ms);
+  }
+
+  /** Real tap at the centre first (Jieshuo doc), then the accessibility click as fallback. */
+  public boolean toClick(AccessibilityNodeInfo n) {
+    if (n == null) {
+      return false;
+    }
+    if (tapNode(n, 50)) {
+      return true;
+    }
+    AccessibilityNodeInfo p = n;
+    int guard = 0;
+    while (p != null && guard++ < 20) {
+      if (p.isClickable() && p.performAction(AccessibilityNodeInfo.ACTION_CLICK)) {
+        return true;
+      }
+      p = p.getParent();
+    }
+    return false;
+  }
+
+  public boolean toClick() {
+    return toClick(focusedNode());
+  }
+
+  public boolean toClick(double x, double y) {
+    return click(x, y);
+  }
+
+  public boolean toLongClick(AccessibilityNodeInfo n) {
+    if (n == null) {
+      return false;
+    }
+    if (tapNode(n, android.view.ViewConfiguration.getLongPressTimeout() + 150L)) {
+      return true;
+    }
+    return n.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
+  }
+
+  public boolean toLongClick() {
+    return toLongClick(focusedNode());
+  }
+
+  public boolean longClick(AccessibilityNodeInfo n) {
+    return toLongClick(n);
+  }
+
+  public boolean toBack() {
+    return execute("back");
+  }
+
+  public boolean toHome() {
+    return execute("home");
+  }
+
+  public boolean toNotification() {
+    return execute("notification bar");
+  }
+
+  public boolean toRecents() {
+    return execute("recents");
+  }
+
+  /** Jieshuo's own doc says toParent opens the recent-apps list; kept the same. */
+  public boolean toParent() {
+    return execute("recents");
+  }
+
+  private boolean scroll(AccessibilityNodeInfo n, int action) {
+    AccessibilityNodeInfo p = n;
+    int guard = 0;
+    while (p != null && guard++ < 20) {
+      if (p.isScrollable() && p.performAction(action)) {
+        return true;
+      }
+      p = p.getParent();
+    }
+    return false;
+  }
+
+  public boolean scrollForward(AccessibilityNodeInfo n) {
+    return scroll(n, AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
+  }
+
+  public boolean scrollBackward(AccessibilityNodeInfo n) {
+    return scroll(n, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);
+  }
+
+  void postToUi(Runnable r) {
+    ui.post(r);
+  }
+
+  /** Calls a global Lua function by name. Null = no such function (or the script already ended). */
+  Boolean callLuaFunction(String name, String args) {
+    if (closed || name == null) {
+      return null;
+    }
+    synchronized (L) {
+      int top = L.getTop();
+      try {
+        L.getGlobal(name);
+        if (!L.isFunction(-1)) {
+          L.setTop(top);
+          return null;
+        }
+        int n = 0;
+        if (args != null && !args.trim().isEmpty()) {
+          for (String a : args.split(",")) {
+            String t = a.trim();
+            try {
+              L.pushNumber(Double.parseDouble(t));
+            } catch (NumberFormatException e) {
+              L.pushString(t);
+            }
+            n++;
+          }
+        }
+        int rc = L.pcall(n, 1, 0);
+        if (rc != 0) {
+          String err = L.toString(-1);
+          L.setTop(top);
+          log("Error in " + name + ": " + err);
+          return Boolean.FALSE;
+        }
+        boolean r = L.isNil(-1) || L.toBoolean(-1); // a function that returns nothing = continue
+        L.setTop(top);
+        return r;
+      } catch (Throwable t) {
+        try {
+          L.setTop(top);
+        } catch (Throwable ignored) {
+        }
+        log("Error in " + name + ": " + t);
+        return Boolean.FALSE;
+      }
+    }
+  }
+
+  /** Lua table -> nested Java lists of strings (what JxClickScript reads). */
+  @SuppressWarnings({"rawtypes", "unchecked"})
+  private static List<Object> toList(Object o) {
+    List<Object> out = new ArrayList<>();
+    if (!(o instanceof com.luajava.LuaTable)) {
+      return out;
+    }
+    com.luajava.LuaTable t = (com.luajava.LuaTable) o;
+    int n = t.length();
+    for (int i = 1; i <= n; i++) {
+      Object v = t.get(Long.valueOf(i));
+      if (v instanceof com.luajava.LuaTable) {
+        out.add(toList(v));
+      } else {
+        out.add(v == null ? "" : String.valueOf(v));
+      }
+    }
+    return out;
+  }
+
+  /** service.click({...}): the auto-click language. True when a chain of steps finished. */
+  public boolean click(com.luajava.LuaTable list) {
+    JxClickScript script = new JxClickScript(new JxClickEnv(this, ctx));
+    boolean ok = script.run(toList(list));
+    if (script.getError() != null) {
+      log(script.getError());
+    }
+    return ok;
+  }
+
+  /** service.click({...}, function(result) ... end): same, then calls the function with the result. */
+  public boolean click(com.luajava.LuaTable list, com.luajava.LuaFunction done) {
+    boolean ok = click(list);
+    if (done != null) {
+      try {
+        done.call(ok);
+      } catch (Throwable t) {
+        log("Error in click callback: " + t);
+      }
+    }
+    return ok;
+  }
+
+  /** service.postClick(ms, {...}): runs the click list later, on its own thread. */
+  public void postClick(final long ms, com.luajava.LuaTable list) {
+    final List<Object> parsed = toList(list);
+    Thread th =
+        new Thread(
+            () -> {
+              try {
+                Thread.sleep(Math.max(0L, ms));
+              } catch (InterruptedException e) {
+                return;
+              }
+              JxClickScript script = new JxClickScript(new JxClickEnv(this, ctx));
+              script.run(parsed);
+            },
+            "lua-postClick");
+    th.setDaemon(true);
+    th.start();
+  }
+
+  public void postClick(long ms, com.luajava.LuaTable list, com.luajava.LuaFunction done) {
+    postClick(ms, list);
   }
 
   public void speak(String text) {

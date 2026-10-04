@@ -825,6 +825,58 @@ public class TalkBackService extends AccessibilityServiceCompat
     }
   }
 
+  /** MS Screen Reader (Lua API): moves screen reader focus. Returns false when not ready. */
+  public boolean msFocusFeedback(Feedback.FocusDirection.Builder direction) {
+    if (pipeline == null || direction == null) {
+      return false;
+    }
+    return pipeline.getFeedbackReturner().returnFeedback(EVENT_ID_UNTRACKED, direction);
+  }
+
+  /** MS Screen Reader (Lua API): sends a ready feedback part through the pipeline. */
+  public boolean msPartFeedback(Feedback.Part.Builder part) {
+    if (pipeline == null || part == null) {
+      return false;
+    }
+    return pipeline.getFeedbackReturner().returnFeedback(EVENT_ID_UNTRACKED, part);
+  }
+
+  /** MS Screen Reader (Lua API): starts reading from the first item, or from the focus. */
+  public void msStartReading(boolean fromTop) {
+    if (fullScreenReadActor == null) {
+      return;
+    }
+    if (fromTop) {
+      fullScreenReadActor.startReadingFromBeginning(EVENT_ID_UNTRACKED);
+    } else {
+      fullScreenReadActor.startReadingFromFocusedNode(EVENT_ID_UNTRACKED);
+    }
+  }
+
+  /** MS Screen Reader (Lua API): stops continuous reading. */
+  public void msStopReading() {
+    if (fullScreenReadActor != null) {
+      fullScreenReadActor.stopContinuousReadingMode();
+    }
+  }
+
+  /** MS Screen Reader: the time/date/year/battery sentence built from Advanced settings, or null. */
+  public @Nullable String msComposeWakeAnnouncement() {
+    return msTimer == null ? null : msTimer.composeForWake();
+  }
+
+  /** MS Screen Reader: true when the Advanced settings voice is the secondary voice. */
+  public boolean msAnnouncementUsesSecondary() {
+    return msTimer != null && msTimer.usesSecondaryVoice();
+  }
+
+  /** MS Screen Reader: speaks an announcement with the voice chosen in Advanced settings. */
+  public void msSpeakAnnouncement(String text) {
+    if (msTimer != null) {
+      msTimer.speakAnnouncement(text);
+    }
+  }
+
   /** MS Screen Reader: speaks text with the main TTS voice through the normal pipeline. */
   public void msSpeakMain(CharSequence text, boolean queue) {
     if (pipeline == null) {

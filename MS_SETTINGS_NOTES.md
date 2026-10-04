@@ -107,3 +107,8 @@ The normal TalkBack menu (same gesture as before) now shows three groups, like J
 - New extensions created in the editor start with a header template.
 - Not done: screen_on/off, key and gesture events, long-press Delete/Edit on an extension, many service.execute() names.
 - UNVERIFIED: not compiled or run here. Lua engine itself (NDK) was never built yet.
+
+## Fix zip (voice commands + screen-on announcement)
+- Voice commands: NEW "open <app name>" (actor/voicecommands/MsAppLauncher). English ("open play store") and Hindi ("प्ले स्टोर खोलो", "ओपन व्हाट्सएप"). Matches the launcher label (exact > no-spaces > starts with > contains > all words). Runs first in VoiceCommandProcessor.handleSpeechCommand; waits for the final result (not partial). Cause of the old bug: TalkBack's command list has no "open app" command at all.
+- Screen-on announcement (RingerModeAndScreenMonitor.speakForDisplayOn) now uses MsTimerController.composeForWake(): time + date + year + battery from MS Advanced settings, in the voice chosen there (main or secondary). The old TalkBack path spoke only time + "Battery N%" with the system TTS. The "speak after unlock" receiver skips if the wake announcement spoke in the last 20 s (no double speech).
+- UNVERIFIED: not compiled or run here.

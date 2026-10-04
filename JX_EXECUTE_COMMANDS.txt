@@ -1,0 +1,174 @@
+# Jieshuo service.execute() command list (index | string id | English name)
+0 | command_nothing | No command
+1 | directory_plugins | Plugins
+2 | directory_cmd | Custom voice commands
+3 | directory_tools | Tools
+4 | directory_timer | Timer
+5 | app | Application
+6 | profiles_title | Profiles
+7 | plugin_title | Extensions
+8 | tool_title | Tools
+9 | main_menu | Main menu
+10 | advanced_menu_title | Recognition menu
+11 | quick_menu_title | Current per-app gestures menu
+12 | action_menu_title | Functions menu
+13 | main_setting | Screen reader settings
+14 | command_start_log | Enable logging
+15 | command_gesture_help | Gesture scheme description
+16 | command_disable_touch | Suspend browse by touch
+17 | command_disable_feedback | Suspend speech feedback and browse by touch
+18 | command_disable_hotkey | Disable hotkeys
+19 | command_false_touch_prevention | Lock touch
+20 | command_enable_dim_screen | Enable curtain
+21 | command_disable_edge_gesture_title | Suspend edge gestures
+22 | command_disable_main_tts | Suspend main TTS engine
+23 | command_disable_async_tts | Suspend secondary TTS engine
+24 | command_incall_mode | Earpiece mode
+25 | switch_multi_finger_gestures | Toggle multi-finger gestures
+26 | command_set_tts_engine | Select TTS engine
+27 | command_toggle_tts_engine | Switch the currently used TTS engine
+28 | command_raise_scr_volume | Increase accessibility volume
+29 | command_lower_scr_volume | Decrease accessibility volume
+30 | command_speed_to_fast | Increase speech rate
+31 | command_speed_to_slow | Decrease speech rate
+32 | command_raise_volume | Increase media volume
+33 | command_lower_volume | Decrease media volume
+34 | command_voice_helper | Voice assistant
+35 | command_voice_input | Voice dictation
+36 | actions | Actions
+37 | url_menu_title | Open an URL
+38 | add_node_changed_list | Monitor the currently focused element
+39 | node_changed_list_manager | Focus monitor manager
+40 | edit_dict | Edit dictionary
+41 | command_edit_node_name | Edit node alias
+42 | command_add_content_blacklist | Add content blacklist
+43 | command_verbatim_speak2 | Spell current focus
+44 | split_menu_title | Granular browsing mode
+45 | command_gestures_edit | Edit current Per-App gesture scheme
+46 | command_auto_trans | Automatic translation
+47 | command_recognition_caption | Recognize subtitles
+48 | use_ocr_title | Automatically use OCR
+49 | command_virtual_screen | Virtual screen
+50 | command_virtual_table | Identify form
+51 | command_ocr_text | Recognize text on the current screen
+52 | command_ocr_focus | Recognize text of the current focused element
+53 | command_verification | Get CAPTCHA
+54 | command_trans | Translation
+55 | camera_title | Jieshuo Camera
+56 | command_now_time | Current time
+57 | command_timer_mode | Timer
+58 | command_pasue_timer | Pause timer
+59 | command_current_location | Current location
+60 | command_speak_light | Speak current lighting
+61 | command_speak_time | Speak time and battery level
+62 | command_speak_net | Speak network information
+63 | command_to_head_set_key | Play or pause
+64 | command_media_previous | Previous media
+65 | command_media_next | Next media
+66 | clipboard_menu_title | Clipboard history
+67 | favorites_menu_title | Favorites
+68 | command_paste | Paste
+69 | command_copy | Copy
+70 | command_append_copy | Append
+71 | command_long_copy | List copying
+72 | command_clean | Clear
+73 | split_edit_title | Granular editing mode
+74 | command_long_edit | edit current text
+75 | command_all_select | Full text selection
+76 | command_to_recents | Recent applications
+77 | command_to_home | Home screen
+78 | command_to_back | Go back
+79 | command_to_notifications | Notification bar
+80 | command_quick_settings | Quick settings
+81 | command_take_screenshot | Take a screenshot
+82 | command_off_screen2 | Screen lock
+83 | command_power_dialog | Power menu
+84 | command_to_split_screen | Split screen view
+85 | command_notification_box | Notification box
+86 | command_click | Click
+87 | command_long_click | Long press
+88 | raw_click | Direct click
+89 | raw_long_click | Direct long press
+90 | command_raw_double_tap | [Double tap]
+91 | raw_swipe_left | Direct swipe left
+92 | raw_swipe_right | Direct swipe right
+93 | raw_swipe_up | Direct swipe up
+94 | raw_swipe_down | direct swipe down
+95 | command_virtual_navigation | Virtual navigation
+96 | char_mode | Character by character browsing mode
+97 | list_mode_title | List browsing
+98 | all_text_title | Full text editing
+99 | command_node_mode | Node browsing mode
+100 | command_all_speak | Read the whole screen
+101 | command_supper_mode | Enhanced detailed focusing mode
+102 | command_raw_tap | Passthrough mode
+103 | command_up_tap | Lift to activate
+104 | command_tap_mode | Tapping to move focus mode
+105 | command_read_mode | Reading mode
+106 | command_auto_next | Automatic browsing
+107 | auto_previous | Backwards automatic browsing
+108 | input_method | Input
+109 | command_show_input_method_picker | Change input method
+110 | command_speak_all_notification | Read all notifications
+111 | command_left_shortcut | Left shortcut
+112 | command_right_shortcut | Right shortcut
+113 | command_start | To top
+114 | command_end | To end
+115 | select_granularity_mode | Select navigation type
+116 | to_previous_granularity | Previous navigation type
+117 | to_next_granularity | Next navigation type
+118 | to_previous_granularity_item | Previous element of the specified type
+119 | to_next_granularity_item | Next element of the specified type
+120 | command_previous_window | Previous screen area
+121 | command_next_window | Next screen area
+122 | command_to_previous_focus | Previous focusable element
+123 | command_to_next_focus | Next focusable element
+124 | command_to_previous_scroll | Scroll back
+125 | command_to_next_scroll | Scroll forward
+126 | command_to_previous_progress | Decrease slider value
+127 | command_to_next_progress | Increase slider value
+128 | command_to_previous_section | Previous heading
+129 | command_to_next_section | Next heading
+130 | command_to_previous_link | Previous link
+131 | command_to_next_link | Next link
+132 | command_to_previous_control | Previous control
+133 | command_to_next_control | Next control
+134 | command_to_previous_char | Previous character
+135 | command_to_next_char | Next character
+136 | command_to_previous_word | Previous word
+137 | command_to_next_word | Next word
+138 | command_to_previous_row | Previous sentence
+139 | command_to_next_row | Next sentence
+140 | command_to_previous_paragraph | Previous paragraph
+141 | command_to_next_paragraph | Next paragraph
+142 | command_copy_to_cloud | Copy to cloud clipboard
+143 | command_paste_from_cloud | Paste from cloud clipboard
+144 | command_up_page | Direct scroll up
+145 | command_down_page | Direct scroll down
+146 | command_left_page | Direct scroll left
+147 | command_right_page | Direct scroll right
+148 | command_media_fast_forward | Fast forward
+149 | command_media_rewind | Rewind
+150 | command_selection_mode | Selection mode
+151 | command_image_to_text | Describe currently focused item
+152 | command_image_to_text2 | Describe entire screen
+153 | picture_description | Detailed description of focused item
+154 | picture_description2 | Detailed description of entire screen
+155 | command_auto_list_speak | Automatically read chat messages
+156 | command_auto_list_speak_history | Automatic chat messages history
+157 | command_quick_mode | Quick browsing
+158 | command_accept_call | Answer call
+159 | command_end_call | End call
+160 | command_pause_a11y_volume | Suspend the use of accessibility volume
+161 | chat_history | Chat history
+162 | command_long_hold | Long press and hold
+163 | command_recognition_icon | Recognize the focused icon
+164 | voice_picture_description | Inquire by voice about current focus
+165 | voice_picture_description2 | Inquire by Voice About the Entire Screen
+166 | video_description | Video description
+167 | command_all_node | Show all nodes
+168 | command_node_menu | Focus menu
+169 | command_take_screenshot2 | Take a screenshot of current focus
+170 | voice_input_mode | continuous voice dictation
+171 | command_pause_gesture | Suspend screen reader gestures
+172 | command_grid_mode | Screen Grid mode

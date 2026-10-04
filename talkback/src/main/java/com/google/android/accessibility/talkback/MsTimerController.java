@@ -26,6 +26,7 @@ public final class MsTimerController {
   private final MsSecondaryTts secondary;
   private final Handler handler = new Handler(Looper.getMainLooper());
   private final Runnable tick = this::onTick;
+  private long lastWakeSpokenMs;
 
   private final SharedPreferences.OnSharedPreferenceChangeListener listener =
       (p, key) -> {
@@ -38,7 +39,9 @@ public final class MsTimerController {
       new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-          if (prefs.getBoolean(P + "unlock_announce", false)) {
+          // The screen-on announcement already spoke time/date/battery a moment ago.
+          boolean justSpoken = System.currentTimeMillis() - lastWakeSpokenMs < 20_000L;
+          if (prefs.getBoolean(P + "unlock_announce", false) && !justSpoken) {
             speak(compose());
           }
         }
@@ -108,6 +111,22 @@ public final class MsTimerController {
       }
     }
     return sb.toString().trim();
+  }
+
+  /** True when time/date/battery announcements should use the secondary voice. */
+  public boolean usesSecondaryVoice() {
+    return "secondary".equals(prefs.getString(P + "announce_voice", "main"));
+  }
+
+  /** Text for the screen-on announcement (same settings as the timer). Marks it as spoken. */
+  public String composeForWake() {
+    lastWakeSpokenMs = System.currentTimeMillis();
+    return compose();
+  }
+
+  /** Speaks an announcement with the voice chosen in Advanced settings. */
+  public void speakAnnouncement(String text) {
+    speak(text);
   }
 
   private void speak(String text) {

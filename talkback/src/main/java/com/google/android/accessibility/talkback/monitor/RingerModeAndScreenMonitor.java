@@ -349,8 +349,21 @@ public class RingerModeAndScreenMonitor extends SameThreadBroadcastReceiver
       if (Settings.Secure.getInt(
               service.getContentResolver(), Settings.Secure.DEVICE_PROVISIONED, 0)
           != 0) {
-        appendCurrentTimeAnnouncementIfNeeded(ttsText);
-        appendBatteryLevelIfNeeded(ttsText);
+        String msText = enabledTellingTime ? service.msComposeWakeAnnouncement() : null;
+        if (msText != null) {
+          // MS Screen Reader: time, date, year and battery from Advanced settings.
+          if (service.msAnnouncementUsesSecondary()) {
+            pipeline.returnFeedback(
+                eventId,
+                Feedback.part().setSound(Feedback.Sound.create(R.raw.screen_on, 1.0f, 1.0f)));
+            service.msSpeakAnnouncement(msText);
+            return;
+          }
+          StringBuilderUtils.appendWithSeparator(ttsText, msText);
+        } else {
+          appendCurrentTimeAnnouncementIfNeeded(ttsText);
+          appendBatteryLevelIfNeeded(ttsText);
+        }
       } else {
         // Device is not ready, just speak screen on
         ttsText.append(service.getString(R.string.value_screen_on));
