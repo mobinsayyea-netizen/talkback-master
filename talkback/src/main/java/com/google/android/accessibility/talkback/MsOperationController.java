@@ -81,6 +81,9 @@ public final class MsOperationController {
 
   /** Returns true if the key event was consumed. */
   public boolean onKeyEvent(KeyEvent e) {
+    if (prefs.getBoolean("ms_cmd_disable_hotkey", false)) {
+      return false; // Jieshuo command "Disable hotkeys"
+    }
     int code = e.getKeyCode();
     if (code == KeyEvent.KEYCODE_HEADSETHOOK || code == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE) {
       if (!prefs.getBoolean(P + "headset_key", false)) {

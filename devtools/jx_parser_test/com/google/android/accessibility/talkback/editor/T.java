@@ -34,7 +34,7 @@ public class T {
   }
   static List<Object> L(Object... a){ return new ArrayList<>(Arrays.asList(a)); }
   public static void main(String[] x){
-    screen.addAll(Arrays.asList("完成","群资料卡","文件","确定","确定","下一曲","解说读屏交流群 99条未读","退出确定吗"));
+    screen.addAll(Arrays.asList("完成","群资料卡","文件","确定","确定","下一曲","解说读屏交流群 99条未读","退出确定吗","Send","Play","Button One","add to list"));
     t("simple", L("确定"), true, "click:确定");
     t("alt first missing", L("取消","完成"), true, "click:完成");
     t("or-bar", L("取消|完成"), true, "click:完成");
@@ -77,6 +77,15 @@ public class T {
     t("only app no", L("确定@抖音"), false, "");
     t("only app yes", L("确定@QQ"), true, "click:确定");
     t("wait count timeout", L("不存在>2"), false, "");
+    // Mobeen's own example lines (English labels)
+    t("ex Send$1", L("Send$1"), true, "click:Send");
+    t("ex <Play", L("<Play"), true, "locate:Play");
+    t("ex Button*$1", L("Button*$1"), true, "click:Button One");
+    t("ex %Direct swipe up$800", L("%Direct swipe up$800"), true, "cmd:Direct swipe up");
+    t("ex rem*|add to*", L("rem*|add to*"), true, "click:add to list");
+    t("ex >whatsapp", L(">whatsapp"), true, "open:whatsapp");
+    t("ex whatsapp then Send", L(L(">whatsapp","Send$1")), true, "open:whatsapp click:Send");
+    t("ex direct swipe up in sequence", L(L("%Direct swipe up$800","Play")), true, "cmd:Direct swipe up click:Play");
     System.out.println(clock);
     System.out.println(fails==0?"ALL PASS":"FAILS="+fails);
   }

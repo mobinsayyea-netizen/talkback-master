@@ -1,0 +1,2 @@
+Done: 173 / 173 commands have a handler (Step 14 added the last 30, see STEP14_NOTES.md).
+Remaining: none in the table. Open items: compile + phone tests, a settings screen for left/right shortcut, real cloud clipboard server, drawn screen grid, Jieshuo camera screen.

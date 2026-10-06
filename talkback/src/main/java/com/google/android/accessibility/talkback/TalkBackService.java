@@ -778,6 +778,17 @@ public class TalkBackService extends AccessibilityServiceCompat
     return true;
   }
 
+  /** MS Screen Reader: sends a question and a picture to Gemini (answer is spoken by TalkBack). */
+  public boolean msGeminiAsk(String prompt, android.graphics.Bitmap image) {
+    if (pipeline == null) {
+      return false;
+    }
+    pipeline
+        .getFeedbackReturner()
+        .returnFeedback(EVENT_ID_UNTRACKED, Feedback.geminiRequest(/* requestId= */ -1, prompt, image));
+    return true;
+  }
+
   private final android.os.Handler msBackupHandler =
       new android.os.Handler(android.os.Looper.getMainLooper());
   private boolean msBackupRunning;
@@ -858,6 +869,274 @@ public class TalkBackService extends AccessibilityServiceCompat
     if (fullScreenReadActor != null) {
       fullScreenReadActor.stopContinuousReadingMode();
     }
+  }
+
+  /** MS Screen Reader (Lua API): makes speech faster or slower by one step. */
+  public boolean msChangeSpeechRate(boolean faster) {
+    return speechRateAndPitchActor != null && speechRateAndPitchActor.changeSpeechRate(faster);
+  }
+
+  private static final long MS_TOUCH_SUSPEND_MAX_MS = 2 * 60 * 1000L;
+  private final Runnable msTouchRestore =
+      () -> {
+        if (supportsTouchScreen) {
+          requestTouchExploration(true);
+        }
+      };
+
+  /**
+   * MS Screen Reader (Lua API, "Suspend browse by touch"): switches touch exploration off, or back
+   * on when it is already off. Safety: a suspended state is undone by itself after two minutes, so a
+   * blind user cannot be locked out of the phone if no other command resumes it.
+   */
+  public boolean msToggleTouchBrowse() {
+    if (!supportsTouchScreen) {
+      return false;
+    }
+    // Service flags are changed on the main thread (Lua commands run on a worker thread).
+    msBackupHandler.post(
+        () -> {
+          Boolean now = isTouchExplorationEnabled();
+          if (now == null) {
+            return;
+          }
+          msBackupHandler.removeCallbacks(msTouchRestore);
+          Boolean after = requestTouchExploration(!now);
+          if (after != null && !after) {
+            msBackupHandler.postDelayed(msTouchRestore, MS_TOUCH_SUSPEND_MAX_MS);
+          }
+        });
+    return true;
+  }
+
+  private static final long MS_SUSPEND_MAX_MS = 5 * 60 * 1000L;
+  private boolean msGesturesPaused;
+  private boolean msFeedbackSuspended;
+
+  private void msSay(String text) {
+    try {
+      getSpeechController()
+          .speak(
+              text,
+              Performance.EVENT_ID_UNTRACKED,
+              com.google.android.accessibility.utils.output.SpeechController.SpeakOptions.create());
+    } catch (RuntimeException ignored) {
+      // speech not ready
+    }
+  }
+
+  private final Runnable msGestureRestore =
+      () -> {
+        if (msGesturesPaused) {
+          msGesturesPaused = false;
+          msSay("Gestures on again");
+        }
+      };
+
+  private final Runnable msMainTtsRestore =
+      () -> {
+        if (getSpeechController().isMute() && !msFeedbackSuspended) {
+          getSpeechController().setMute(false);
+          msSay("Main speech on again");
+        }
+      };
+
+  private final Runnable msFeedbackRestore =
+      () -> {
+        if (msFeedbackSuspended) {
+          msFeedbackSuspended = false;
+          getSpeechController().setMute(false);
+          if (supportsTouchScreen) {
+            requestTouchExploration(true);
+          }
+          msSay("Feedback on again");
+        }
+      };
+
+  /**
+   * MS Screen Reader: "Suspend screen reader gestures". While suspended, TalkBack ignores its
+   * gestures. Safety: they come back by themselves after five minutes.
+   */
+  public boolean msToggleGesturesPaused() {
+    msBackupHandler.post(
+        () -> {
+          msBackupHandler.removeCallbacks(msGestureRestore);
+          msGesturesPaused = !msGesturesPaused;
+          if (msGesturesPaused) {
+            msSay("Gestures suspended");
+            msBackupHandler.postDelayed(msGestureRestore, MS_SUSPEND_MAX_MS);
+          } else {
+            msSay("Gestures on");
+          }
+        });
+    return true;
+  }
+
+  /**
+   * MS Screen Reader: "Suspend main TTS engine". The main voice is muted (other voices such as the
+   * second TTS are not). Back by itself after five minutes.
+   */
+  public boolean msToggleMainTts() {
+    msBackupHandler.post(
+        () -> {
+          msBackupHandler.removeCallbacks(msMainTtsRestore);
+          if (getSpeechController().isMute()) {
+            getSpeechController().setMute(false);
+            msSay("Main speech on");
+          } else {
+            msSay("Main speech suspended");
+            getSpeechController().setMute(true);
+            msBackupHandler.postDelayed(msMainTtsRestore, MS_SUSPEND_MAX_MS);
+          }
+        });
+    return true;
+  }
+
+  /**
+   * MS Screen Reader: "Suspend speech feedback and browse by touch": speech muted and touch
+   * exploration off together. Back by itself after five minutes.
+   */
+  public boolean msToggleFeedbackSuspend() {
+    msBackupHandler.post(
+        () -> {
+          msBackupHandler.removeCallbacks(msFeedbackRestore);
+          if (msFeedbackSuspended) {
+            msFeedbackRestore.run();
+          } else {
+            msSay("Speech feedback and browse by touch suspended");
+            msFeedbackSuspended = true;
+            getSpeechController().setMute(true);
+            if (supportsTouchScreen) {
+              requestTouchExploration(false);
+            }
+            msBackupHandler.postDelayed(msFeedbackRestore, MS_SUSPEND_MAX_MS);
+          }
+        });
+    return true;
+  }
+
+  /** MS Screen Reader (Lua API): turns the curtain (dim screen) on. */
+  public boolean msDimScreen() {
+    if (dimScreenController == null || !DimScreenActor.isSupported(this)) {
+      return false;
+    }
+    dimScreenController.makeScreenDim();
+    return true;
+  }
+
+  /** MS Screen Reader (Lua API): shows TalkBack's menu (the actions menu when actions is true). */
+  public boolean msShowMenu(boolean actions) {
+    if (menuManager == null) {
+      return false;
+    }
+    return menuManager.showMenu(
+        actions ? ListMenuManager.MenuId.CUSTOM_ACTION : ListMenuManager.MenuId.CONTEXT,
+        com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED);
+  }
+
+  /** MS Screen Reader (Lua API): opens the settings, directly on one fragment when a name is given. */
+  public boolean msOpenSettings(@Nullable String fragmentClassName) {
+    try {
+      android.content.Intent i =
+          new android.content.Intent(this, com.android.talkback.TalkBackPreferencesActivity.class);
+      i.addFlags(
+          android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+              | android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK);
+      if (fragmentClassName != null) {
+        i.putExtra(
+            com.google.android.accessibility.utils.preference.PreferencesActivity.FRAGMENT_NAME,
+            fragmentClassName);
+      }
+      startActivity(i);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  /** MS Screen Reader (Lua API): Gemini description of the focused item or of the whole screen. */
+  public boolean msDescribe(boolean wholeScreen) {
+    if (pipeline == null) {
+      return false;
+    }
+    try {
+      androidx.core.view.accessibility.AccessibilityNodeInfoCompat node;
+      if (wholeScreen) {
+        android.view.accessibility.AccessibilityNodeInfo root = getRootInActiveWindow();
+        node = root == null ? null : androidx.core.view.accessibility.AccessibilityNodeInfoCompat.wrap(root);
+      } else {
+        node =
+            accessibilityFocusMonitor == null
+                ? null
+                : accessibilityFocusMonitor.getAccessibilityFocus(/* useInputFocusIfEmpty= */ false);
+      }
+      if (node == null) {
+        return false;
+      }
+      Feedback.Part.Builder fb =
+          wholeScreen
+              ? com.google.android.accessibility.talkback.actor.gemini.GeminiFunctionUtils
+                  .getPreferredScreenOverviewFeedback(this, node)
+              : com.google.android.accessibility.talkback.actor.gemini.GeminiFunctionUtils
+                  .getPreferredImageDescriptionFeedback(this, pipeline.getActorState(), node);
+      return fb != null
+          && pipeline
+              .getFeedbackReturner()
+              .returnFeedback(com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED, fb);
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  /** MS Screen Reader (Lua API): lets the next touches go straight to the app (pass-through). */
+  public boolean msPassThrough() {
+    if (pipeline == null) {
+      return false;
+    }
+    return pipeline
+        .getFeedbackReturner()
+        .returnFeedback(
+            com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED,
+            Feedback.passThroughMode(Feedback.PassThroughMode.Action.ENABLE_PASSTHROUGH));
+  }
+
+  /** MS Screen Reader (Lua API): text selection mode on the focused item (on) or off. */
+  public boolean msSelectionMode(boolean on) {
+    if (pipeline == null) {
+      return false;
+    }
+    Feedback.Part.Builder fb;
+    if (on) {
+      androidx.core.view.accessibility.AccessibilityNodeInfoCompat node =
+          accessibilityFocusMonitor == null
+              ? null
+              : accessibilityFocusMonitor.getAccessibilityFocus(/* useInputFocusIfEmpty= */ true);
+      if (node == null) {
+        return false;
+      }
+      fb = Feedback.selectionModeOn(node);
+    } else {
+      fb = Feedback.selectionModeOff();
+    }
+    return pipeline
+        .getFeedbackReturner()
+        .returnFeedback(com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED, fb);
+  }
+
+  /** MS Screen Reader (Lua API): sets the reading unit (character, word, line, paragraph, default). */
+  public boolean msSetGranularity(
+      com.google.android.accessibility.utils.input.CursorGranularity granularity) {
+    return msFocusFeedback(Feedback.granularity(granularity));
+  }
+
+  /** MS Screen Reader (Lua API): starts video description. */
+  public boolean msStartVideoDescription() {
+    if (pipeline == null) {
+      return false;
+    }
+    com.google.android.accessibility.talkback.actor.video.VideoDescriber.start(
+        this, pipeline.getFeedbackReturner());
+    return true;
   }
 
   /** MS Screen Reader: the time/date/year/battery sentence built from Advanced settings, or null. */
@@ -1203,6 +1482,8 @@ public class TalkBackService extends AccessibilityServiceCompat
     }
     com.google.android.accessibility.talkback.editor.LuaExtensionManager.onAccessibilityEvent(
         this, event);
+    com.google.android.accessibility.talkback.editor.MsFocusMonitor.onEvent(this, event);
+    com.google.android.accessibility.talkback.editor.MsExtras.onEvent(this, event);
     if (eventType == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED
         && msNotification != null
         && msNotification.handle(event, isTouchInteracting)) {
@@ -1495,7 +1776,9 @@ public class TalkBackService extends AccessibilityServiceCompat
   }
 
   private boolean handleOnGestureById(int displayId, int gestureId) {
-    if (!isServiceActive()) {
+    if (!isServiceActive()
+        || msGesturesPaused
+        || com.google.android.accessibility.talkback.editor.MsExtras.gestureBlocked(this, gestureId)) {
       return false;
     }
     Performance perf = Performance.getInstance();

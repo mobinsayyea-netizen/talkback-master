@@ -478,7 +478,11 @@ final class JxCommands {
             && volume(ctx, AudioManager.STREAM_ACCESSIBILITY, AudioManager.ADJUST_LOWER);
 
       default:
-        return false; // known Jieshuo command, but this app has no matching feature yet
+        Boolean more = JxCommandsNav.run(api, ctx, s, id, n);
+        if (more == null) {
+          more = JxCommandTable.run(api, ctx, s, id, n);
+        }
+        return more != null && more; // other known commands: no matching feature yet
     }
   }
 }

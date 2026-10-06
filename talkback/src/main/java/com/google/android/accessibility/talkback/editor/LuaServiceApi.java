@@ -36,6 +36,18 @@ import java.util.Map;
  * that AndroLua's import.lua expects. One instance = one Lua state = one script run.
  */
 public class LuaServiceApi implements LuaContext {
+  private static final int MAX_PENDING_TASKS = 200;
+  private static final long MAX_TASK_DELAY_MS = 10 * 60 * 1000L;
+  private static final java.util.concurrent.ScheduledExecutorService TASKS =
+      java.util.concurrent.Executors.newScheduledThreadPool(2);
+
+  /** Lua is single threaded: the main script and every task take this lock one at a time. */
+  private final Object luaLock = new Object();
+
+  private final java.util.concurrent.atomic.AtomicInteger pending =
+      new java.util.concurrent.atomic.AtomicInteger();
+  private volatile boolean mainDone;
+
   private static final int MAX_DEPTH = 4;
   private static int depth = 0;
 
@@ -85,13 +97,15 @@ public class LuaServiceApi implements LuaContext {
           api.L.setGlobal(e.getKey());
         }
       }
-      return api.runFile(script, node);
+      synchronized (api.luaLock) {
+        return api.runFile(script, node);
+      }
     } catch (Throwable t) {
       return "Error: " + t;
     } finally {
       depth--;
       if (api != null) {
-        api.close();
+        api.finishMain();
       }
     }
   }
@@ -106,6 +120,8 @@ public class LuaServiceApi implements LuaContext {
     L.openLibs();
     L.pushJavaObject(this);
     L.setGlobal("service");
+    L.pushJavaObject(this);
+    L.setGlobal("this"); // Jieshuo scripts call this.speak(...) like service.speak(...)
     L.pushContext(this);
     L.getGlobal("luajava");
     L.pushString(luaExtDir);
@@ -127,6 +143,33 @@ public class LuaServiceApi implements LuaContext {
             + "  local t={}\n"
             + "  for i=1,select('#',...) do t[#t+1]=tostring((select(i,...))) end\n"
             + "  service.log(concat(t,'\\t'))\n"
+            + "end\n"
+            + "__jx_tasks={}\n"
+            + "__jx_id=0\n"
+            + "local function reg(fn,...)\n"
+            + "  __jx_id=__jx_id+1\n"
+            + "  __jx_tasks[__jx_id]={fn,table.pack(...)}\n"
+            + "  return __jx_id\n"
+            + "end\n"
+            + "function __jx_run(id)\n"
+            + "  local t=__jx_tasks[id]\n"
+            + "  __jx_tasks[id]=nil\n"
+            + "  if t then return t[1](table.unpack(t[2],1,t[2].n)) end\n"
+            + "end\n"
+            + "function thread(fn,...)\n"
+            + "  service.scheduleTask(reg(fn,...),0)\n"
+            + "end\n"
+            + "function task(a,b,...)\n"
+            + "  if type(a)=='function' and type(b)=='number' then a,b=b,a end\n"
+            + "  if type(a)=='number' then\n"
+            + "    service.scheduleTask(reg(b,...),a)\n"
+            + "  else\n"
+            + "    local cb=b\n"
+            + "    service.scheduleTask(reg(function(...)\n"
+            + "      local r=table.pack(a(...))\n"
+            + "      if cb then cb(table.unpack(r,1,r.n)) end\n"
+            + "    end,...),0)\n"
+            + "  end\n"
             + "end\n");
   }
 
@@ -174,10 +217,64 @@ public class LuaServiceApi implements LuaContext {
   }
 
   private void close() {
-    closed = true;
+    synchronized (luaLock) {
+      if (closed) {
+        return;
+      }
+      closed = true;
+      try {
+        L.close();
+      } catch (Throwable ignored) {
+      }
+    }
+  }
+
+  /** Main script ended: close the Lua state now, or later when the last task has run. */
+  private void finishMain() {
+    mainDone = true;
+    if (pending.get() == 0) {
+      close();
+    }
+  }
+
+  /** Used by Lua thread(...) / task(...) (see the prelude): run task {@code id} after ms. */
+  public void scheduleTask(double id, double ms) {
+    if (closed || pending.get() >= MAX_PENDING_TASKS) {
+      log("task refused (closed or too many)");
+      return;
+    }
+    long delay = Math.max(0L, Math.min((long) ms, MAX_TASK_DELAY_MS));
+    final int taskId = (int) id;
+    pending.incrementAndGet();
     try {
-      L.close();
-    } catch (Throwable ignored) {
+      TASKS.schedule(() -> runTask(taskId), delay, java.util.concurrent.TimeUnit.MILLISECONDS);
+    } catch (RuntimeException e) {
+      pending.decrementAndGet();
+      log("task not scheduled: " + e);
+    }
+  }
+
+  private void runTask(int id) {
+    try {
+      synchronized (luaLock) {
+        if (closed) {
+          return;
+        }
+        int top = L.getTop();
+        L.getGlobal("__jx_run");
+        L.pushNumber(id);
+        int rc = L.pcall(1, 0, 0);
+        if (rc != 0) {
+          log("Error in task: " + L.toString(-1));
+        }
+        L.setTop(top);
+      }
+    } catch (Throwable t) {
+      log("Error in task: " + t);
+    } finally {
+      if (pending.decrementAndGet() == 0 && mainDone) {
+        close();
+      }
     }
   }
 
@@ -736,6 +833,53 @@ public class LuaServiceApi implements LuaContext {
     if (s != null && text != null) {
       s.getSpeechController().speak(text, Performance.EVENT_ID_UNTRACKED, SpeakOptions.create());
     }
+  }
+
+  /** Jieshuo: speaks without interrupting the main queue. Here: queued speech on the main voice. */
+  public void asyncSpeak(String text) {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s != null && text != null) {
+      s.msSpeakMain(text, true);
+    }
+  }
+
+  /** Jieshuo: the edit box that is focused, or null. */
+  public AccessibilityNodeInfo getEditText() {
+    return inputNode();
+  }
+
+  /** Jieshuo: inserts text at the cursor of an edit box (replaces the selection). */
+  public boolean insertText(AccessibilityNodeInfo node, String text) {
+    if (node == null || text == null) {
+      return false;
+    }
+    CharSequence old = node.getText();
+    String cur = old == null ? "" : old.toString();
+    if (node.isShowingHintText()) {
+      cur = "";
+    }
+    int a = Math.max(0, node.getTextSelectionStart());
+    int b = Math.max(0, node.getTextSelectionEnd());
+    int from = Math.min(Math.min(a, b), cur.length());
+    int to = Math.min(Math.max(a, b), cur.length());
+    String merged = cur.substring(0, from) + text + cur.substring(to);
+    Bundle args = new Bundle();
+    args.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, merged);
+    if (!node.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, args)) {
+      return false;
+    }
+    Bundle sel = new Bundle();
+    int pos = from + text.length();
+    sel.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_START_INT, pos);
+    sel.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_END_INT, pos);
+    node.performAction(AccessibilityNodeInfo.ACTION_SET_SELECTION, sel);
+    return true;
+  }
+
+  /** Jieshuo: short tick sound on the accessibility audio stream. */
+  public void playSoundTick() {
+    com.google.android.accessibility.talkback.ExtraSounds.play(
+        ctx, com.google.android.accessibility.talkback.R.raw.jx_tick);
   }
 
   public void toast(final String text) {

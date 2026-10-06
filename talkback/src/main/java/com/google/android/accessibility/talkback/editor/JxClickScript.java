@@ -53,6 +53,15 @@ final class JxClickScript {
     void sleep(long ms) throws InterruptedException;
 
     long now();
+
+    /**
+     * Finds colour r,g,b (tolerance tol per channel) inside the rectangle and taps its centre.
+     * Rectangle values below 1 are fractions of the screen. False = colour not found.
+     */
+    default boolean clickColor(
+        double x1, double y1, double x2, double y2, int r, int g, int b, int tol) {
+      return false;
+    }
   }
 
   // Timing choices that Jieshuo's documentation does not state. Tune after testing on a phone.
@@ -286,6 +295,15 @@ final class JxClickScript {
       fn = m.group(1);
       args = m.group(2);
     }
+    if ("speak".equalsIgnoreCase(fn) && args != null) { // Step 14: %speak(text) speaks and goes on
+      String say = args.trim();
+      if (say.length() >= 2 && (say.startsWith("\"") || say.startsWith("'"))
+          && say.charAt(say.length() - 1) == say.charAt(0)) {
+        say = say.substring(1, say.length() - 1);
+      }
+      com.google.android.accessibility.talkback.editor.LuaServiceApi.speakStatic(say);
+      return OK;
+    }
     Boolean r = env.callFunction(fn, args);
     if (r != null) {
       if (!r) {
@@ -379,8 +397,11 @@ final class JxClickScript {
       return OK;
     }
     if (n == 8 && numbers(t, 8)) {
-      error = "colour search [x1,y1,x2,y2,r,g,b,d] is not supported";
-      return FAILED;
+      boolean hit =
+          env.clickColor(
+              d(t, 0), d(t, 1), d(t, 2), d(t, 3), (int) d(t, 4), (int) d(t, 5), (int) d(t, 6),
+              (int) d(t, 7));
+      return hit ? OK : NOT_FOUND; // colour not there yet: the item may wait and retry
     }
     error = "unknown [..] form: [" + a.name + "]";
     return FAILED;
@@ -400,6 +421,16 @@ final class JxClickScript {
   }
 
   // ------------------------------------------------------------------ parsing
+
+  /** Returns a problem text when the step line cannot be understood, otherwise null. */
+  static String checkItem(String text) {
+    for (Alt a : parseItem(text)) {
+      if (a.error != null) {
+        return a.error;
+      }
+    }
+    return null;
+  }
 
   /** Splits "a|b|c" (not inside [..]) and parses every part. */
   static List<Alt> parseItem(String text) {

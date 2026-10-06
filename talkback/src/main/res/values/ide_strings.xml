@@ -17,4 +17,7 @@
     <string name="insert_app">Insert Application</string>
     <string name="insert_auto_click">Insert Automatic click</string>
     <string name="dialog_auto_click_hint">Enter buttons to click (one per line)</string>
+    <string name="menu_create_autoclick">Create automatic click function</string>
+    <string name="menu_custom_voice_commands">Custom voice commands</string>
+    <string name="menu_manage_extensions">Manage extensions and tools</string>
 </resources>

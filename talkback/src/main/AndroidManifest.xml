@@ -40,6 +40,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
 
+    <!-- First-launch permission screen: ask to be exempt from battery optimisation. -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
     <!-- Required for sending data to Google Analytics. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
@@ -57,6 +60,8 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <!-- Required for posting notifications, beginning in Android T. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <!-- Required for binding AICore service for on-device AI features. -->
@@ -202,9 +207,55 @@
             android:label="Clipboard"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.settingssearch.MsSettingsSearchActivity"
+            android:exported="false"
+            android:label="Search settings"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.AutoClickBuilderActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.ExtensionManagerActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.TextViewerActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.MsListActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.FocusMonitorsActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.VoiceCommandsActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.JxPickerActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <!-- First-launch screen: asks for all permissions in one flow, then opens the settings. -->
+        <activity
+            android:name="com.google.android.accessibility.talkback.permission.MsPermissionsActivity"
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault" />
         <activity-alias
             android:name="com.android.talkback.MsLauncherEntry"
-            android:targetActivity="com.android.talkback.TalkBackPreferencesActivity"
+            android:targetActivity="com.google.android.accessibility.talkback.permission.MsPermissionsActivity"
             android:exported="true"
             android:label="@string/talkback_title"
             android:icon="@drawable/icon">

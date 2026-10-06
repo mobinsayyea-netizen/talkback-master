@@ -97,6 +97,9 @@ public final class MsSecondaryTts {
     if (TextUtils.isEmpty(text)) {
       return;
     }
+    if (prefs.getBoolean("ms_cmd_disable_async_tts", false)) {
+      return; // Jieshuo command "Suspend secondary TTS engine"
+    }
     ensureLoaded();
     if (!ready) {
       pending.add(text.toString());

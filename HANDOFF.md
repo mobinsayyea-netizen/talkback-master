@@ -2,6 +2,8 @@
 
 **हिंदी सार (for Mobeen):** यह फ़ाइल नई चैट के लिए है। इसमें बताया है कि MS Screen Reader क्या है, अब तक क्या बना, आपने क्या-क्या तय किया, और आगे क्या करना है (क्रम से)। नई चैट में बस लिखिए: "MS Screen Reader का काम आगे बढ़ाओ, रेपो talkback-master की HANDOFF.md पढ़ो"।
 
+> **Step 14 (all 173 commands have handlers): see `STEP14_NOTES.md`; next job is the first GitHub build + error fixing.**
+
 > **Lua extension system (AndroLua + editor):** see `LUA_IDE_PROGRESS.md` for status and remaining steps.
 
 ---
@@ -121,3 +123,13 @@ Raw resources are in `talkback/src/main/res/raw`, `braille/common/src/phone/res/
 
 ## Package name changed (build 28)
 After a phone security update, APKs named `com.android.talkback` stopped installing on the user's Moto G45 (silent "Installing..." then exit; other APKs fine). Test build uses applicationId `com.mobeen.msscreenreader` (set once in shared.gradle; Java classes/namespace unchanged). It installs as a NEW app: old settings do not carry over. Signing key unchanged.
+
+## 9. Settings restructure (zip 17) — DONE, UNVERIFIED (not compiled)
+- New root `preferences.xml` = "Search settings" + 9 groups from `MS_Screen_Reader_Settings_Structure.txt`: TTS, Feedback, Display, Reading & Verbosity, Shortcut, Typing, Date & Time, Notification, Other.
+- Group screens: `res/xml/ms_group_{1_tts,3_display,4_reading,5_shortcuts,6_typing,7_datetime,8_notifications,9_other}.xml` + fragments `MsGroup*Fragment` (package `...preference.base`). Group 2 (Feedback) is the existing `SoundAndVibrationFragment`.
+- Items were copied from the old XMLs with the SAME keys (saved values unchanged); only titles/places changed. Generator script idea: pull element by key, set English title. Each key appears once.
+- Linked old sub-screens (kept because they hold code): Verbosity, Focus indicator, Delays (latency), Gestures, Keyboard shortcuts, Customize menus, On-screen keyboard, Automatic descriptions, Gemini.
+- Search: `settingssearch/MsSettingsSearchActivity` (reads the group XMLs, filters by title/summary, opens the owning screen).
+- Removed from menu: Braille keyboard, Braille display, Play Store, TalkBack tutorial, Terms of Service, both duplicate "Advanced settings", survey. Braille code/module itself is untouched.
+- Not built: Language (main voice), Screen button (Android blocks power key), Register commands, OpenAI/OpenRouter assistants, caller-ID voice choice. "Share feedback" opens the GitHub issues page. "Own volume level" is greyed out (not hidden) while "follow accessibility volume" is on.
+- Same function in two places was resolved: audio ducking = "Use audio focus" (TTS group); time format = `ms_rd_time_format`; single tap/lift/direct click = `ms_op_*` versions; custom labels = `ms_rd_labels_manage`.

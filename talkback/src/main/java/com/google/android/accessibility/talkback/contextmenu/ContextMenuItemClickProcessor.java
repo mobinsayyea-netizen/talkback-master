@@ -113,7 +113,10 @@ public class ContextMenuItemClickProcessor {
         || (itemId == R.id.ms_menu_ocr)
         || (itemId == R.id.ms_menu_ocr_translate)
         || (itemId == R.id.lua_create_extension)
-        || (itemId == R.id.lua_create_tool);
+        || (itemId == R.id.lua_create_tool)
+        || (itemId == R.id.lua_create_autoclick)
+        || (itemId == R.id.lua_voice_commands)
+        || (itemId == R.id.lua_manage);
   }
 
   public boolean onMenuItemClicked(MenuItem menuItem) {
@@ -211,6 +214,12 @@ public class ContextMenuItemClickProcessor {
       com.google.android.accessibility.talkback.editor.ProjectCreateDialog.show(service, true);
     } else if (itemId == R.id.lua_create_tool) {
       com.google.android.accessibility.talkback.editor.ProjectCreateDialog.show(service, false);
+    } else if (itemId == R.id.lua_create_autoclick) {
+      com.google.android.accessibility.talkback.editor.AutoClickBuilderActivity.show(service, null);
+    } else if (itemId == R.id.lua_voice_commands) {
+      com.google.android.accessibility.talkback.editor.VoiceCommandsActivity.show(service);
+    } else if (itemId == R.id.lua_manage) {
+      com.google.android.accessibility.talkback.editor.ExtensionManagerActivity.show(service);
     }
 
     return true;

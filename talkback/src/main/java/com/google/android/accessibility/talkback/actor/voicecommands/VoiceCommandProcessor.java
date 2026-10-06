@@ -323,6 +323,20 @@ public class VoiceCommandProcessor {
       return true;
     }
 
+    // MS Screen Reader: custom voice commands made in "Custom voice commands" start an extension or
+    // a tool. Only a final result counts, so half-heard words never start anything.
+    if (!isPartialResult) {
+      com.google.android.accessibility.talkback.editor.CustomVoiceCommands.Entry msCustom =
+          com.google.android.accessibility.talkback.editor.CustomVoiceCommands.match(
+              service, command);
+      if (msCustom != null) {
+        com.google.android.accessibility.talkback.editor.CustomVoiceCommands.run(service, msCustom);
+        pipeline.returnFeedback(eventId, Feedback.sound(R.raw.complete));
+        handleVoiceCommandRecognized(VOICE_COMMAND_TYPE_ASSISTANT);
+        return true;
+      }
+    }
+
     // MS Screen Reader: "open <app name>" (English or Hindi). Checked first so that words inside
     // the app name (play, store, settings, home...) do not trigger other commands.
     String msAppName = MsAppLauncher.parse(command);

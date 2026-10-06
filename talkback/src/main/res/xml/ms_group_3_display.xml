@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g3_focus" android:title="Focus indicator">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g3_focus_link" android:title="Focus indicator" android:summary="Thick borders and color" android:fragment="com.google.android.accessibility.talkback.preference.base.FocusIndicatorPrefFragment"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g3_speechout" android:title="Display speech output">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:defaultValue="@bool/pref_tts_overlay_default" android:key="@string/pref_tts_overlay_key" android:title="Display speech output"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g3_delays" android:title="Delays">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g3_delay_link" android:title="Focus delay and other delays" android:summary="Focus delay, typing focus delay, reset all delays" android:fragment="com.google.android.accessibility.talkback.preference.base.TalkBackLatencyReductionPreferenceFragment"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:defaultValue="@bool/pref_reduce_window_delay_default" android:key="@string/pref_reduce_window_delay_key" android:title="Window announcement delay (reduce)"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+</PreferenceScreen>

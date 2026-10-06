@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_verb" android:title="Verbosity">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g4_verb_link" android:title="Verbosity preset and details" android:summary="Preset, element type, usage hints, container info, element IDs, list positions, window names, progress updates, text formatting, pitch changes, punctuation, repeated symbols, capital letters, letters with examples, typing echo" android:fragment="com.google.android.accessibility.talkback.preference.base.VerbosityPrefFragment"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_elements" android:title="Elements and windows">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_window_all" android:title="Read whole window on change" android:summary="@string/ms_rd_window_all_sum" android:defaultValue="false"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_window_title" android:title="Window names" android:summary="@string/ms_rd_window_title_sum" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_volume" android:title="Read volume when changing" android:summary="@string/ms_rd_volume_sum" android:defaultValue="true"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_changes" android:title="Changes">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_focus_content_changed" android:title="Focused item changes" android:summary="@string/ms_rd_focus_changed_sum" android:defaultValue="true"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_pron" android:title="Pronunciation">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_chars_first" android:title="Read text first when explaining" android:summary="@string/ms_rd_chars_first_sum" android:defaultValue="false"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_chars_index" android:title="Latin letter index" android:summary="@string/ms_rd_chars_index_sum" android:defaultValue="false"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_screen" android:title="Screen state">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_screen_off" android:title="Say Locked" android:summary="@string/ms_rd_screen_off_sum" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_screen_on" android:title="Say Unlocked" android:summary="@string/ms_rd_screen_on_sum" android:defaultValue="true"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_dict" android:title="Dictionary &amp; Labels">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_rd_labels_manage" android:title="Custom label manager" android:summary="@string/ms_rd_labels_manage_sum">
+      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.labeling.LabelManagerSummaryActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_dict_use" android:title="User dictionary" android:summary="@string/ms_rd_dict_use_sum" android:defaultValue="false"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_dict_regex" android:title="Use regular expressions in user dictionary" android:summary="@string/ms_rd_dict_regex_sum" android:defaultValue="false"/>
+    <EditTextPreference android:key="ms_rd_dict_text" android:title="User dictionary entries" android:summary="@string/ms_rd_dict_edit_sum" android:dialogTitle="@string/ms_rd_dict_edit" android:defaultValue=""/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_alias_use" android:title="Node aliases" android:summary="@string/ms_rd_alias_use_sum" android:defaultValue="false"/>
+    <EditTextPreference android:key="ms_rd_alias_text" android:title="Node aliases list" android:summary="@string/ms_rd_alias_edit_sum" android:dialogTitle="@string/ms_rd_alias_edit" android:defaultValue=""/>
+    <EditTextPreference android:key="ms_rd_filter_blacklist" android:title="Content blacklist" android:summary="@string/ms_rd_filter_blacklist_sum" android:dialogTitle="@string/ms_rd_filter_blacklist" android:defaultValue=""/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_filter_small" android:title="Filter unwanted controls" android:summary="@string/ms_rd_filter_small_sum" android:defaultValue="false"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+</PreferenceScreen>

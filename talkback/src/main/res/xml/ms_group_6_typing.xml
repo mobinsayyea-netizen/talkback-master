@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g6_typing" android:title="Typing">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g6_osk" android:title="On-screen keyboard" android:summary="Typing method" android:fragment="com.google.android.accessibility.talkback.preference.base.OnScreenKeyboardFragment"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="@string/pref_physical_keyboard_key" android:title="Physical keyboard"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+</PreferenceScreen>

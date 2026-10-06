@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g8_notif" android:title="Notifications">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_notif_auto_read" android:title="Auto read mode" android:dialogTitle="@string/ms_notif_auto_read" android:entries="@array/ms_notif_mode_entries" android:entryValues="@array/ms_notif_mode_values" android:defaultValue="both" android:summary="%s"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_read_toast" android:title="Toasts" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_summary_only" android:title="Summary only" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_read_source" android:title="Source app name" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_queue" android:title="Queue instead of interrupting" android:defaultValue="false"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_no_read_touching" android:title="Not while finger on screen" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_notif_no_read_in_call" android:title="Not during calls" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_screen_notif" android:title="Unread notification count" android:summary="@string/ms_rd_screen_notif_sum" android:defaultValue="false"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g8_chat" android:title="Chat Messages">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_scn_chat_read" android:title="Auto read" android:defaultValue="true"/>
+    <EditTextPreference android:key="ms_scn_chat_apps" android:title="Chat apps" android:defaultValue="org.telegram.messenger,com.whatsapp,com.whatsapp.w4b" android:summary="%s"/>
+    <EditTextPreference android:key="ms_rd_auto_blacklist" android:title="Blacklist" android:summary="@string/ms_rd_auto_blacklist_sum" android:dialogTitle="@string/ms_rd_auto_blacklist" android:defaultValue=""/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g8_calls" android:title="Calls">
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_call_announce" android:title="Caller ID" android:summary="@string/ms_rd_call_announce_sum" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteListPreference android:key="ms_rd_call_repeat" android:title="Repeat caller ID" android:dialogTitle="@string/ms_rd_call_repeat" android:entries="@array/ms_rd_call_repeat_entries" android:entryValues="@array/ms_rd_call_repeat_values" android:defaultValue="2" android:summary="%s"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_call_ringvol" android:title="Use ringtone volume" android:summary="@string/ms_rd_call_ringvol_sum" android:defaultValue="false"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_call_time" android:title="Call duration" android:summary="@string/ms_rd_call_time_sum" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_rd_call_perm" android:title="Phone permissions" android:summary="@string/ms_rd_call_perm_sum">
+      <intent android:action="android.settings.APPLICATION_DETAILS_SETTINGS" android:data="package:com.mobeen.msscreenreader"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+</PreferenceScreen>

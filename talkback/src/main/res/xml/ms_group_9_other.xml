@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_assistant" android:title="Voice Assistant">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_gemini_key" android:title="Gemini: key and model" android:summary="Used for image, screen and video descriptions">
+      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.actor.gemini.GeminiSettingsActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_gemini_cmd" android:title="Gemini voice command" android:fragment="com.google.android.accessibility.talkback.preference.base.GeminiSettingsFragment"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_desc" android:title="Image &amp; Screen Description">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_auto_desc" android:title="Automatic descriptions" android:summary="Image, icon, text in images, detailed" android:fragment="com.google.android.accessibility.talkback.preference.base.AutomaticDescriptionsFragment"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_tools" android:title="Tools">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_translate" android:title="Translate &amp; OCR" android:summary="Text reading, languages and language packs">
+      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_clipboard" android:title="Clipboard" android:summary="Copied text history, favorites and paste">
+      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.clipboard.ClipboardActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_check_permissions" android:title="Check permissions" android:summary="See which permissions are granted and grant the missing ones">
+      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.permission.MsPermissionsActivity">
+        <extra android:name="from_settings" android:value="true"/>
+      </intent>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_adv_battery_opt" android:title="Battery optimization">
+      <intent android:action="android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_backup" android:title="Backup and restore" android:summary="Back up everything to Google Drive or a file and restore it">
+      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.backup.SettingsBackupActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_about" android:title="About">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_update" android:title="Check for updates" android:summary="See if a newer build is available and install it">
+      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.updater.CheckForUpdatesActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="@string/pref_new_feature_in_talkback_entry_point_key" android:title="What's new"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_feedback" android:title="Share feedback"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference xmlns:app="http://schemas.android.com/apk/res-auto" android:fragment="com.google.android.accessibility.talkback.preference.base.DeveloperPrefFragment" android:key="@string/pref_category_developer_key" android:title="Developer settings" app:allowDividerAbove="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="@string/pref_policy_key" android:title="Privacy policy"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+</PreferenceScreen>

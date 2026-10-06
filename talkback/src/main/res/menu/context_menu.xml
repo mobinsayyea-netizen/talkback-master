@@ -69,4 +69,16 @@
       android:id="@+id/lua_create_tool"
       android:orderInCategory="24"
       android:title="@string/menu_create_tool" />
+  <item
+      android:id="@+id/lua_create_autoclick"
+      android:orderInCategory="26"
+      android:title="@string/menu_create_autoclick" />
+  <item
+      android:id="@+id/lua_voice_commands"
+      android:orderInCategory="27"
+      android:title="@string/menu_custom_voice_commands" />
+  <item
+      android:id="@+id/lua_manage"
+      android:orderInCategory="28"
+      android:title="@string/menu_manage_extensions" />
 </menu>

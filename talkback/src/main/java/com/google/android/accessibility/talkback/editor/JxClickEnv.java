@@ -7,18 +7,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.SystemClock;
 import android.view.accessibility.AccessibilityNodeInfo;
 import com.google.android.accessibility.talkback.TalkBackService;
+import com.google.android.accessibility.talkback.labeling.TalkBackLabelManager;
+import com.google.android.accessibility.utils.labeling.Label;
+import com.google.android.accessibility.utils.screencapture.ScreenshotCapture;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 /** Phone side of the auto-click language: finds and presses items on the real screen. */
 final class JxClickEnv implements JxClickScript.Env {
   private static final int MAX_NODES = 6000;
   private static final long OPEN_APP_WAIT_MS = 5000;
+
+  private static final Executor SHOT_EXECUTOR = Executors.newSingleThreadExecutor();
+  private static final long SHOT_WAIT_MS = 4000;
 
   private final LuaServiceApi api;
   private final Context ctx;
@@ -71,14 +83,48 @@ final class JxClickEnv implements JxClickScript.Env {
     }
   }
 
+  /** Text of the user's own label (saved with the label feature) for this node, or null. */
+  private static String customLabelOf(AccessibilityNodeInfo n) {
+    try {
+      TalkBackService s = TalkBackService.getInstance();
+      String id = n.getViewIdResourceName();
+      if (s == null || id == null) {
+        return null;
+      }
+      TalkBackLabelManager m = s.getLabelManager();
+      Label l = m == null ? null : m.getLabelForViewIdFromCache(id);
+      return l == null ? null : l.getText();
+    } catch (RuntimeException e) {
+      return null; // label manager not ready: treat as "no label"
+    }
+  }
+
+  private static void collectByLabel(
+      AccessibilityNodeInfo n, Pattern p, List<Object> out, int[] count) {
+    if (n == null || count[0]++ > MAX_NODES) {
+      return;
+    }
+    if (n.isVisibleToUser()) {
+      String t = customLabelOf(n);
+      if (t != null && p.matcher(t.trim()).matches()) {
+        out.add(n);
+      }
+    }
+    for (int i = 0; i < n.getChildCount(); i++) {
+      collectByLabel(n.getChild(i), p, out, count);
+    }
+  }
+
   @Override
   public List<Object> findAll(String pattern, boolean byLabel) {
     List<Object> out = new ArrayList<>();
-    if (byLabel) {
-      return out; // custom labels do not exist in this app yet
-    }
     AccessibilityNodeInfo r = root();
-    if (r != null) {
+    if (r == null) {
+      return out;
+    }
+    if (byLabel) {
+      collectByLabel(r, wildcard(pattern), out, new int[1]); // "#name": user's own label
+    } else {
       collect(r, wildcard(pattern), false, out, new int[1]);
     }
     return out;
@@ -233,6 +279,66 @@ final class JxClickEnv implements JxClickScript.Env {
   public boolean tapFocus(long ms) {
     AccessibilityNodeInfo f = api.focusedNode();
     return f != null && api.tapNode(f, ms);
+  }
+
+  /** Fraction (0 < v < 1) of the size, otherwise already pixels. */
+  private static int px(double v, int size) {
+    int p = (int) Math.round(v > 0 && v < 1 ? v * size : v);
+    return Math.max(0, Math.min(size - 1, p));
+  }
+
+  @Override
+  public boolean clickColor(
+      double x1, double y1, double x2, double y2, int r, int g, int b, int tol) {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s == null || Build.VERSION.SDK_INT < 30) {
+      return false; // taking a screenshot from the service needs Android 11
+    }
+    final Bitmap[] shot = new Bitmap[1];
+    final CountDownLatch done = new CountDownLatch(1);
+    try {
+      ScreenshotCapture.takeScreenshot(
+          s,
+          (bitmap, supported) -> {
+            shot[0] = bitmap;
+            done.countDown();
+          },
+          SHOT_EXECUTOR);
+      if (!done.await(SHOT_WAIT_MS, TimeUnit.MILLISECONDS)) {
+        return false;
+      }
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      return false;
+    } catch (RuntimeException e) {
+      return false;
+    }
+    if (shot[0] == null) {
+      return false;
+    }
+    Bitmap bmp = shot[0].copy(Bitmap.Config.ARGB_8888, false); // screenshots may be hardware bitmaps
+    if (bmp == null) {
+      return false;
+    }
+    int w = bmp.getWidth();
+    int h = bmp.getHeight();
+    int left = Math.min(px(x1, w), px(x2, w));
+    int right = Math.max(px(x1, w), px(x2, w));
+    int top = Math.min(px(y1, h), px(y2, h));
+    int bottom = Math.max(px(y1, h), px(y2, h));
+    int rw = right - left + 1;
+    int rh = bottom - top + 1;
+    int[] pixels = new int[rw * rh];
+    bmp.getPixels(pixels, 0, rw, left, top, rw, rh);
+    for (int i = 0; i < pixels.length; i++) {
+      int c = pixels[i];
+      if (Math.abs(((c >> 16) & 0xFF) - r) <= tol
+          && Math.abs(((c >> 8) & 0xFF) - g) <= tol
+          && Math.abs((c & 0xFF) - b) <= tol) {
+        return tap(left + (i % rw), top + (i / rw), 50);
+      }
+    }
+    return false;
   }
 
   @Override
