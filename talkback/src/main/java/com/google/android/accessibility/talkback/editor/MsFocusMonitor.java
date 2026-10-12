@@ -21,7 +21,7 @@ import java.util.List;
  * survive a restart; elements without an id are watched by their place on the screen until the
  * service restarts. Not compiled yet.
  */
-final class MsFocusMonitor {
+public final class MsFocusMonitor {
   private MsFocusMonitor() {}
 
   /** One watched element. */
@@ -127,7 +127,7 @@ final class MsFocusMonitor {
   }
 
   /** Called for every accessibility event. Cheap when nothing is watched. */
-  static void onEvent(Context c, AccessibilityEvent e) {
+  public static void onEvent(Context c, AccessibilityEvent e) {
     try {
       int type = e.getEventType();
       if (type != AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED
