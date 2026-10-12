@@ -25,6 +25,7 @@ public class JieshuoRestoreActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    com.google.android.accessibility.talkback.MsErrorLog.init(this);
     setTitle("Restore from Jieshuo backup");
     LinearLayout root = new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
@@ -87,6 +88,7 @@ public class JieshuoRestoreActivity extends Activity {
               try {
                 text = "Done.\n\n" + JieshuoRestore.restore(getApplicationContext(), uri).toText();
               } catch (Exception e) {
+                com.google.android.accessibility.talkback.MsErrorLog.log("Jieshuo restore", e);
                 text = "Could not restore: " + e.getMessage();
               }
               final String out = text;

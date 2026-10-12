@@ -24,6 +24,8 @@ public final class CrashReporter {
 
   /** Called from the crash handler. Must never throw. */
   public static void save(Context context, Thread thread, Throwable error) {
+    MsErrorLog.init(context);
+    MsErrorLog.logCrash(thread, error);
     try {
       StringWriter sw = new StringWriter();
       error.printStackTrace(new PrintWriter(sw));

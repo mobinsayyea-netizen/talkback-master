@@ -1207,6 +1207,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     this.setTheme(R.style.TalkbackBaseTheme);
 
     instance = this;
+    MsErrorLog.init(this);
     setServiceState(ServiceStateListener.SERVICE_STATE_INACTIVE);
 
     systemUeh = Thread.getDefaultUncaughtExceptionHandler();
@@ -2065,6 +2066,7 @@ public class TalkBackService extends AccessibilityServiceCompat
   protected void onServiceConnected() {
     super.onServiceConnected();
     CrashReporter.deliverIfAny(this);
+    MsErrorLog.onServiceStart(this);
     EventId talkbackOnEventId =
         Performance.getInstance().onHintEventReceived(Performance.HINT_SUB_TYPE_TALKBACK_ON);
 

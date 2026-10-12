@@ -15,4 +15,7 @@
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_jx_restore_from_jieshuo" android:title="Restore from Jieshuo backup" android:summary="Bring in sounds, clipboard, favorites, labels, extensions and tools from a Jieshuo backup zip">
     <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.backup.JieshuoRestoreActivity"/>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_jx_error_log" android:title="Error log" android:summary="Problems the app found. Copy, save to Downloads or share">
+    <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.ErrorLogActivity"/>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
 </PreferenceScreen>

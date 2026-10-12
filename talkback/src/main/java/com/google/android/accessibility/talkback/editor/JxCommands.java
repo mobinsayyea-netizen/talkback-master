@@ -299,11 +299,17 @@ final class JxCommands {
   static boolean run(LuaServiceApi api, Context ctx, String name, AccessibilityNodeInfo node) {
     String id = idOf(name);
     if (id == null) {
+      com.google.android.accessibility.talkback.MsErrorLog.log("Command", "Unknown command name: " + name);
       return false;
     }
     try {
-      return dispatch(api, ctx, id, node);
+      boolean ok = dispatch(api, ctx, id, node);
+      if (!ok) {
+        com.google.android.accessibility.talkback.MsErrorLog.log("Command " + name, "Did not run (returned false: not supported, or nothing to act on).");
+      }
+      return ok;
     } catch (Throwable t) {
+      com.google.android.accessibility.talkback.MsErrorLog.log("Command " + name, t);
       return false;
     }
   }

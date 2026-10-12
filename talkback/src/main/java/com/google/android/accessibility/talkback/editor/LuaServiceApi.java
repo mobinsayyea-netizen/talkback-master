@@ -88,6 +88,7 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
       api = new LuaServiceApi(ctx.getApplicationContext(), LuaPaths.base(ctx));
       return name != null && JxCommands.run(api, api.ctx, name, null);
     } catch (Throwable t) {
+      com.google.android.accessibility.talkback.MsErrorLog.log("Command " + name, t);
       return false;
     } finally {
       if (api != null) {
@@ -119,9 +120,14 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
         }
       }
       synchronized (api.L) {
-        return api.runFile(script, node);
+        String runErr = api.runFile(script, node);
+        if (runErr != null) {
+          com.google.android.accessibility.talkback.MsErrorLog.log("Lua script " + script.getParentFile().getName(), runErr);
+        }
+        return runErr;
       }
     } catch (Throwable t) {
+      com.google.android.accessibility.talkback.MsErrorLog.log("Lua script " + script.getParentFile().getName(), t);
       return "Error: " + t;
     } finally {
       depth--;
@@ -149,11 +155,17 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
       synchronized (api.L) {
         String err = api.runFile(script, null);
         if (err != null) {
+          com.google.android.accessibility.talkback.MsErrorLog.log("Lua hook " + hook + " in " + script.getParentFile().getName(), err);
           return err;
         }
-        return api.callHook(hook, pkg, text);
+        String hookErr = api.callHook(hook, pkg, text);
+        if (hookErr != null) {
+          com.google.android.accessibility.talkback.MsErrorLog.log("Lua hook " + hook + " in " + script.getParentFile().getName(), hookErr);
+        }
+        return hookErr;
       }
     } catch (Throwable t) {
+      com.google.android.accessibility.talkback.MsErrorLog.log("Lua hook " + hook + " in " + script.getParentFile().getName(), t);
       return "Error: " + t;
     } finally {
       depth--;

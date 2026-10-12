@@ -249,6 +249,10 @@
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@android:style/Theme.DeviceDefault" />
         <activity
+            android:name="com.google.android.accessibility.talkback.ErrorLogActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
             android:name="com.google.android.accessibility.talkback.backup.JieshuoRestoreActivity"
             android:exported="false"
             android:theme="@android:style/Theme.DeviceDefault" />

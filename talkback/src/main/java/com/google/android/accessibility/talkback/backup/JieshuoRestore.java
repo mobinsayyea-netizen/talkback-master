@@ -383,6 +383,7 @@ public final class JieshuoRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not read sound config", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not read sound config", e);
       result.notes.add("Could not read the sound config of \"" + themeName + "\".");
       return;
     }
@@ -412,6 +413,7 @@ public final class JieshuoRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not read settings file", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not read settings file", e);
       result.notes.add("Could not read which sound theme you had on.");
     }
     return null;
@@ -454,6 +456,7 @@ public final class JieshuoRestore {
           copied++;
         } catch (IOException e) {
           Log.w(TAG, "Could not copy " + k.getName(), e);
+          com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not copy " + k.getName(), e);
         }
       }
     }
@@ -484,6 +487,7 @@ public final class JieshuoRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not read clipboard", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not read clipboard", e);
       result.notes.add("Could not read the clipboard file; skipped.");
     }
   }
@@ -546,6 +550,7 @@ public final class JieshuoRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not read favorites", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not read favorites", e);
       result.notes.add("Could not read the favorites file; skipped.");
     }
     return out;
@@ -641,6 +646,7 @@ public final class JieshuoRestore {
           o = new JSONObject(readText(e.getValue()));
         } catch (Exception ex) {
           Log.w(TAG, "Bad label file " + app, ex);
+          com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Bad label file " + app, ex);
           continue;
         }
         int before = found.size();
@@ -692,6 +698,7 @@ public final class JieshuoRestore {
           }
         } catch (Exception ex) {
           Log.w(TAG, "Bad alias file " + f.getName(), ex);
+          com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Bad alias file " + f.getName(), ex);
         }
       }
     }
@@ -755,6 +762,7 @@ public final class JieshuoRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not list installed apps", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not list installed apps", e);
     }
     return map;
   }
@@ -861,6 +869,7 @@ public final class JieshuoRestore {
       return 1;
     } catch (IOException e) {
       Log.w(TAG, "Could not copy " + src.getName(), e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not copy " + src.getName(), e);
       return 0;
     }
   }

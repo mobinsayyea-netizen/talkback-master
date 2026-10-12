@@ -228,7 +228,7 @@ public final class LuaExtensionManager {
       if (!ext.hooks.contains("onKeyEvent")) continue;
       try {
         if (LuaServiceApi.runHookBoolean(context, ext.main, "onKeyEvent", event)) return true;
-      } catch (Throwable ignored) { }
+      } catch (Throwable ignored) { com.google.android.accessibility.talkback.MsErrorLog.log("Extension hook", ignored); }
     }
     return false;
   }
@@ -242,7 +242,7 @@ public final class LuaExtensionManager {
       if (!ext.hooks.contains("onVolumeChanged")) continue;
       WORKER.execute(() -> {
         try { LuaServiceApi.runHookBoolean(context, ext.main, "onVolumeChanged", type, value, previous, percent); }
-        catch (Throwable ignored) { }
+        catch (Throwable ignored) { com.google.android.accessibility.talkback.MsErrorLog.log("Extension hook", ignored); }
       });
     }
   }
@@ -256,7 +256,7 @@ public final class LuaExtensionManager {
       if (!ext.hooks.contains("onGestureDetected")) continue;
       try {
         if (LuaServiceApi.runHookBoolean(context, ext.main, "onGestureDetected", gestureId)) return true;
-      } catch (Throwable ignored) { }
+      } catch (Throwable ignored) { com.google.android.accessibility.talkback.MsErrorLog.log("Extension hook", ignored); }
     }
     return false;
   }

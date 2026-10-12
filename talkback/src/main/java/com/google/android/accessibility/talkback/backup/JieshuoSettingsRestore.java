@@ -48,6 +48,7 @@ final class JieshuoSettingsRestore {
       result.notes.add("The full list of what was restored and what was left out: " + f.getPath());
     } catch (Exception e) {
       Log.w(TAG, "Could not write the report", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not write the report", e);
     }
   }
 
@@ -64,6 +65,7 @@ final class JieshuoSettingsRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not read the settings file", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not read the settings file", e);
       result.notes.add("Could not read the settings file; settings and gestures were skipped.");
     }
     return null;
@@ -221,6 +223,7 @@ final class JieshuoSettingsRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not read a gesture config", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not read a gesture config", e);
     }
     return out;
   }
@@ -244,6 +247,7 @@ final class JieshuoSettingsRestore {
       }
     } catch (Exception e) {
       Log.w(TAG, "Could not list installed apps", e);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Restore: " + "Could not list installed apps", e);
     }
     return map;
   }
