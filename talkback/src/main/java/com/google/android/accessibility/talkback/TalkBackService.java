@@ -1279,6 +1279,7 @@ public class TalkBackService extends AccessibilityServiceCompat
   @Override
   public boolean onUnbind(Intent intent) {
     LogUtils.d(TAG, "onUnbind start");
+    com.google.android.accessibility.talkback.editor.MsMultiPartGestures.reset(this);
     final long turningOffTime = System.currentTimeMillis();
     interruptAllFeedback(/* stopTtsSpeechCompletely= */ false);
     storeTalkBackUserUsage();
@@ -1600,6 +1601,9 @@ public class TalkBackService extends AccessibilityServiceCompat
 
   /** Handles a key event and returns whether it should be considered consumed. */
   protected boolean onKeyEventInternal(KeyEvent keyEvent) {
+    if (com.google.android.accessibility.talkback.editor.LuaExtensionManager.handleKeyEvent(this, keyEvent)) {
+      return true;
+    }
     if (brailleDisplay.onKeyEvent(keyEvent)) {
       return true;
     }
@@ -1780,6 +1784,36 @@ public class TalkBackService extends AccessibilityServiceCompat
         || msGesturesPaused
         || com.google.android.accessibility.talkback.editor.MsExtras.gestureBlocked(this, gestureId)) {
       return false;
+    }
+    // Multi-part gestures (Step 26): part 1 waits for part 2; may take the gesture.
+    if (com.google.android.accessibility.talkback.editor.MsMultiPartGestures.intercept(
+        this, displayId, gestureId)) {
+      return true;
+    }
+    return handleGestureAfterMultiPart(displayId, gestureId);
+  }
+
+  /** Runs a gesture without multi-part: part 1 uses this when part 2 does not come. */
+  public void msRunGestureNormally(int displayId, int gestureId) {
+    if (!isServiceActive()) {
+      return;
+    }
+    handleGestureAfterMultiPart(displayId, gestureId);
+  }
+
+  /** Runs a TalkBack shortcut action (a value like shortcut_value_next) for multi-part part 2. */
+  public void msRunTalkbackAction(String actionKey) {
+    if (isServiceActive() && gestureController != null && actionKey != null) {
+      gestureController.performAction(actionKey, EVENT_ID_UNTRACKED);
+    }
+  }
+
+  private boolean handleGestureAfterMultiPart(int displayId, int gestureId) {
+    if (com.google.android.accessibility.talkback.editor.LuaExtensionManager.handleGesture(this, gestureId)) {
+      return true;
+    }
+    if (com.google.android.accessibility.talkback.editor.ExtensionGestures.handle(this, gestureId)) {
+      return true;
     }
     Performance perf = Performance.getInstance();
     EventId eventId = perf.onGestureEventReceived(gestureId);
@@ -2216,7 +2250,10 @@ public class TalkBackService extends AccessibilityServiceCompat
               // TODO: Check if we should dismiss radial menu.
               feedbackController.playAuditory(R.raw.gesture_end, eventId);
 
-              gestureController.onFingerprintGesture(gesture, eventId);
+              if (!com.google.android.accessibility.talkback.editor.MsFingerprintGestures.handle(
+                  TalkBackService.this, gesture)) {
+                gestureController.onFingerprintGesture(gesture, eventId);
+              }
 
               // Measure latency.
               // Preceding event handling frequently initiates a framework action, which in turn

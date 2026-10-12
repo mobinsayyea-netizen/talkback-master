@@ -93,6 +93,46 @@ public class GestureManifold implements GestureMatcher.StateChangeListener {
     }
   }
 
+  private static android.content.SharedPreferences.OnSharedPreferenceChangeListener msSpeedListener;
+
+  /**
+   * MobinSR: swipe length and hold time chosen in Settings > Operation > Gestures. Read at start and
+   * again, live, whenever either setting changes. Defaults are the faster values.
+   */
+  private static void loadMsGestureSpeed(Context context) {
+    try {
+      android.content.SharedPreferences p =
+          com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(context);
+      readMsGestureSpeed(p);
+      if (msSpeedListener == null) {
+        msSpeedListener =
+            (prefs, key) -> {
+              if ("ms_gesture_swipe_cm".equals(key) || "ms_gesture_hold_percent".equals(key)) {
+                readMsGestureSpeed(prefs);
+                Swipe.refreshAll();
+              }
+            };
+        p.registerOnSharedPreferenceChangeListener(msSpeedListener);
+      }
+    } catch (RuntimeException e) {
+      GestureConfiguration.swipeConfirmCm = -1f;
+      GestureConfiguration.holdPercent = 100;
+    }
+  }
+
+  private static void readMsGestureSpeed(android.content.SharedPreferences p) {
+    GestureConfiguration.swipeConfirmCm = parseFloat(p.getString("ms_gesture_swipe_cm", "0.6"), 0.6f, 0.4f, 1.0f);
+    GestureConfiguration.holdPercent = (int) parseFloat(p.getString("ms_gesture_hold_percent", "65"), 65f, 40f, 100f);
+  }
+
+  private static float parseFloat(String v, float def, float min, float max) {
+    try {
+      return Math.max(min, Math.min(max, Float.parseFloat(v)));
+    } catch (RuntimeException e) {
+      return def;
+    }
+  }
+
   public GestureManifold(
       Context context,
       Listener listener,
@@ -102,6 +142,7 @@ public class GestureManifold implements GestureMatcher.StateChangeListener {
       ImmutableList<String> supportGestureList) {
     this.listener = listener;
     this.displayId = displayId;
+    loadMsGestureSpeed(context);
     multiFingerGesturesEnabled = false;
     twoFingerPassthroughEnabled = false;
 

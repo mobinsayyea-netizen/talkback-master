@@ -42,7 +42,14 @@ public final class OcrTool {
           }
           Bitmap target = crop(bitmap, region);
           InputImage image = InputImage.fromBitmap(target, 0);
-          runDevanagari(image, cb);
+          String lang =
+              com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(service)
+                  .getString("ms_jx_ocr_lang", "auto");
+          if ("latin".equals(lang)) {
+            runLatin(image, cb, false);
+          } else {
+            runDevanagari(image, cb);
+          }
         });
   }
 

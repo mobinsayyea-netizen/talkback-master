@@ -70,7 +70,7 @@ final class JxCommandsNav {
         return move(n, AccessibilityNodeInfo.MOVEMENT_GRANULARITY_PARAGRAPH, true);
 
       case "command_clean":
-        return clearClipboard(ctx);
+        return MsMenus.clearText(api, s, n);
       case "command_speak_net":
         return speakNetwork(api, ctx);
       default:

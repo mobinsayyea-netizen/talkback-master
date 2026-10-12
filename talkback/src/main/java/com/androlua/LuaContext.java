@@ -60,4 +60,7 @@ public interface LuaContext {
 
     public void regGc(LuaGcable obj);
 
+    /** Release a previously registered asynchronous Lua object when it has finished. */
+    public void unregGc(LuaGcable obj);
+
 }

@@ -209,8 +209,17 @@ public class TalkbackMenuProcessor {
     menu.add(0, R.id.ms_menu_translate, 1, R.string.ms_menu_translate_title);
     menu.add(0, R.id.ms_menu_ocr, 2, R.string.ms_menu_ocr_title);
     menu.add(0, R.id.ms_menu_ocr_translate, 3, R.string.ms_menu_ocr_translate_title);
-    menu.add(0, R.id.ms_menu_copy, 1, R.string.ms_menu_copy_title);
-    menu.add(0, R.id.ms_menu_append, 2, R.string.ms_menu_append_title);
+    menu.add(0, R.id.ms_menu_copy, 3, R.string.ms_menu_copy_title);
+    menu.add(0, R.id.ms_menu_append, 4, R.string.ms_menu_append_title);
+    // Step 21: the entries of Jieshuo's Functions menu that were missing.
+    int[] fnOrder = {1, 2, 5, 6, 7, 8, 9, 10};
+    for (int i = 0; i < com.google.android.accessibility.talkback.editor.MsMenus.FN_IDS.length; i++) {
+      menu.add(
+          0,
+          com.google.android.accessibility.talkback.editor.MsMenus.FN_IDS[i],
+          fnOrder[i],
+          com.google.android.accessibility.talkback.editor.MsMenus.FN_LABELS[i]);
+    }
 
     moveIntoGroup(
         menu,
@@ -240,8 +249,16 @@ public class TalkbackMenuProcessor {
         ORDER_MS_FUNCTIONS,
         R.string.ms_menu_functions_title,
         new int[] {
+          R.id.ms_fn_clear,
+          R.id.ms_fn_select,
           R.id.ms_menu_copy,
           R.id.ms_menu_append,
+          R.id.ms_fn_paste,
+          R.id.ms_fn_clipboard,
+          R.id.ms_fn_favorites,
+          R.id.ms_fn_granular,
+          R.id.ms_fn_list_copy,
+          R.id.ms_fn_keyboard,
           R.id.copy_last_utterance_to_clipboard,
           R.id.spell_last_utterance,
           R.id.repeat_last_utterance,

@@ -50,6 +50,9 @@ public final class MsOperationController {
         if (key != null && key.startsWith(P + "shake")) {
           updateShake();
         }
+        if ("ms_jx_use_float_menu".equals(key) || "ms_jx_float_menu_items".equals(key)) {
+          com.google.android.accessibility.talkback.editor.MsFloatingMenu.refresh(service);
+        }
       };
 
   public MsOperationController(TalkBackService service) {
@@ -61,10 +64,12 @@ public final class MsOperationController {
   public void start() {
     prefs.registerOnSharedPreferenceChangeListener(prefListener);
     updateShake();
+    com.google.android.accessibility.talkback.editor.MsFloatingMenu.refresh(service);
   }
 
   public void stop() {
     prefs.unregisterOnSharedPreferenceChangeListener(prefListener);
+    com.google.android.accessibility.talkback.editor.MsFloatingMenu.hide(service);
     handler.removeCallbacksAndMessages(null);
     if (sensorManager != null) {
       sensorManager.unregisterListener(shakeListener);

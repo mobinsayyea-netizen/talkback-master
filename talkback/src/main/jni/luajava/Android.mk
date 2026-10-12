@@ -7,5 +7,6 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../lua
 LOCAL_SRC_FILES := luajava.c
 LOCAL_LDLIBS := -llog -ldl
 LOCAL_LDFLAGS += -Wl,-z,max-page-size=16384
-LOCAL_STATIC_LIBRARIES := lua
+# whole-archive: export the complete Lua C API from libluajava.so so native modules (bson, cjson, crypt, regex) can resolve lua_* symbols
+LOCAL_WHOLE_STATIC_LIBRARIES := lua
 include $(BUILD_SHARED_LIBRARY)

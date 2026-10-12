@@ -201,6 +201,7 @@ public final class MsReadingController {
 
   /** Called for every accessibility event. Starts "read the whole window" after a window change. */
   public void onEvent(AccessibilityEvent event) {
+    MsReadingExtras.onWindowChanged(service, event);
     if (event.getEventType() == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED && screenIsOff) {
       Parcelable data = event.getParcelableData();
       if (data instanceof Notification) {

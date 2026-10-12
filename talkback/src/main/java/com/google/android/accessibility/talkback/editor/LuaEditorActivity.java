@@ -37,10 +37,17 @@ public class LuaEditorActivity extends Activity {
   private int historyPos = -1;
   private boolean applyingHistory = false;
 
-  private static final String[] FUNCTIONS_LIST = {
-    "Speak time and battery level", "Screen reader settings", "Notification bar",
-    "Quick settings", "Take a screenshot", "Back", "Home", "Recents", "Copy", "Paste"
-  };
+  /** Insert function: every default function of Jieshuo (the 172 names of JxCommands.TABLE, minus "No command"). */
+  private static final String[] FUNCTIONS_LIST = buildFunctionsList();
+
+  private static String[] buildFunctionsList() {
+    String[][] t = JxCommands.TABLE;
+    String[] a = new String[t.length - 1];
+    for (int i = 1; i < t.length; i++) {
+      a[i - 1] = t[i][1];
+    }
+    return a;
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,20 @@ public class LuaEditorActivity extends Activity {
 
     ((Button) findViewById(R.id.btn_save)).setOnClickListener(v -> save(true));
     ((Button) findViewById(R.id.btn_insert)).setOnClickListener(v -> showInsertDialog());
-    ((Button) findViewById(R.id.btn_granular)).setOnClickListener(v -> showGranularDialog());
+    ((Button) findViewById(R.id.btn_tools)).setOnClickListener(v -> showCodeToolsDialog());
+    ((Button) findViewById(R.id.btn_full)).setOnClickListener(v -> selectUnit(0));
+    ((Button) findViewById(R.id.btn_para)).setOnClickListener(v -> selectUnit(1));
+    ((Button) findViewById(R.id.btn_lines)).setOnClickListener(v -> selectUnit(2));
+    ((Button) findViewById(R.id.btn_chars)).setOnClickListener(v -> selectUnit(3));
+    ((Button) findViewById(R.id.btn_custom)).setOnClickListener(v -> askCustomSeparator());
+    ((Button) findViewById(R.id.btn_ok))
+        .setOnClickListener(
+            v -> {
+              if (save(true)) {
+                finish();
+              }
+            });
+    ((Button) findViewById(R.id.btn_cancel)).setOnClickListener(v -> finish());
     ((Button) findViewById(R.id.btn_execute)).setOnClickListener(v -> execute());
     ((Button) findViewById(R.id.btn_undo)).setOnClickListener(v -> stepHistory(-1));
     ((Button) findViewById(R.id.btn_redo)).setOnClickListener(v -> stepHistory(1));
@@ -115,14 +135,6 @@ public class LuaEditorActivity extends Activity {
       } catch (IOException e) {
         Toast.makeText(this, "Error loading file", Toast.LENGTH_SHORT).show();
       }
-    } else if ("Extensions".equals(f.getParentFile().getParentFile().getName())) {
-      // New extension: start with the header lines that connect it to the menu and to events.
-      sb.append("-- title: ").append(f.getParentFile().getName()).append('\n');
-      sb.append("-- menu: on\n");
-      sb.append("-- event: \n");
-      sb.append("-- events: window_changed, app_opened, notification, service_started\n");
-      sb.append("-- From the menu the focused item is the global node.\n");
-      sb.append("-- From an event the globals event_type, event_package, event_text are set.\n\n");
     }
     applyingHistory = true;
     editor.setText(sb.toString());
@@ -219,6 +231,89 @@ public class LuaEditorActivity extends Activity {
         .show();
   }
 
+  // ------------------------------------------------------------------ code tools (Step 17)
+
+  private void showCodeToolsDialog() {
+    String[] options = {
+      "Format source code", "Analyze java package for imports", "Insert service function", "API help"
+    };
+    new AlertDialog.Builder(this)
+        .setTitle(R.string.ide_code_tools)
+        .setItems(options, (d, which) -> {
+          switch (which) {
+            case 0: formatCode(); break;
+            case 1: analyzeImports(); break;
+            case 2: showServiceFunctions(); break;
+            case 3: showApiHelp(); break;
+            default: break;
+          }
+        })
+        .setNegativeButton(android.R.string.cancel, null)
+        .show();
+  }
+
+  private void formatCode() {
+    String before = editor.getText().toString();
+    String after = LuaFormatter.format(before);
+    if (after.equals(before)) {
+      android.widget.Toast.makeText(this, "Already formatted", android.widget.Toast.LENGTH_SHORT).show();
+      return;
+    }
+    pushHistory(before);
+    int cursor = Math.min(editor.getSelectionStart(), after.length());
+    editor.setText(after);
+    editor.setSelection(Math.max(cursor, 0));
+    android.widget.Toast.makeText(this, "Code formatted", android.widget.Toast.LENGTH_SHORT).show();
+  }
+
+  private void analyzeImports() {
+    final String code = editor.getText().toString();
+    final java.util.List<String> lines = LuaImportAnalyzer.missing(code);
+    if (lines.isEmpty()) {
+      android.widget.Toast.makeText(this, "No missing imports found", android.widget.Toast.LENGTH_LONG).show();
+      return;
+    }
+    StringBuilder sb = new StringBuilder();
+    for (String l : lines) {
+      sb.append(l).append('\n');
+    }
+    new AlertDialog.Builder(this)
+        .setTitle("Add these imports?")
+        .setMessage(sb.toString())
+        .setPositiveButton(android.R.string.ok, (d, w) -> {
+          pushHistory(code);
+          editor.setText(LuaImportAnalyzer.insert(code, lines));
+        })
+        .setNegativeButton(android.R.string.cancel, null)
+        .show();
+  }
+
+  private void showServiceFunctions() {
+    FilterPicker.show(this, "service.", ServiceApiList.serviceMethods(),
+        item -> insertSnippet(ServiceApiList.snippet(item)));
+  }
+
+  private void showApiHelp() {
+    final java.util.List<ServiceApiList.Help> help = ServiceApiList.apiHelp(this);
+    if (help.isEmpty()) {
+      android.widget.Toast.makeText(this, "The help file is missing", android.widget.Toast.LENGTH_LONG).show();
+      return;
+    }
+    java.util.List<String> titles = new java.util.ArrayList<>();
+    for (ServiceApiList.Help h : help) {
+      titles.add(h.title);
+    }
+    FilterPicker.show(this, "API help", titles, item -> {
+      for (ServiceApiList.Help h : help) {
+        if (h.title.equals(item)) {
+          new AlertDialog.Builder(this).setTitle(item).setMessage(h.text)
+              .setPositiveButton(android.R.string.ok, null).show();
+          return;
+        }
+      }
+    });
+  }
+
   private static String q(String s) {
     return "\"" + s.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", " ") + "\"";
   }
@@ -289,12 +384,24 @@ public class LuaEditorActivity extends Activity {
         .setTitle(R.string.insert_auto_click)
         .setView(input)
         .setPositiveButton(android.R.string.ok, (d, w) -> {
-          StringBuilder sb = new StringBuilder("\n");
-          for (String b : input.getText().toString().split("\n")) {
-            if (!b.trim().isEmpty()) {
-              sb.append("service.click(").append(q(b.trim())).append(")\n");
+          List<String> steps = new ArrayList<>();
+          for (String line : input.getText().toString().split("\n")) {
+            String step = line.trim();
+            if (!step.isEmpty()) {
+              steps.add(q(step));
             }
           }
+          if (steps.isEmpty()) {
+            Toast.makeText(this, "Enter at least one click step", Toast.LENGTH_SHORT).show();
+            return;
+          }
+          // Jieshuo's auto-click format is one Lua table containing the entire sequence.
+          StringBuilder sb = new StringBuilder("\nif service.click{{");
+          for (int i = 0; i < steps.size(); i++) {
+            if (i > 0) sb.append(", ");
+            sb.append(steps.get(i));
+          }
+          sb.append("}} then\n    return true\nend\n");
           insertSnippet(sb.toString());
         })
         .show();
@@ -308,38 +415,63 @@ public class LuaEditorActivity extends Activity {
 
   // ------------------------------------------------------------------ granular mode
 
-  private void showGranularDialog() {
-    final String[] modes = {"Full text", "Paragraphs", "Lines", "Characters"};
+  /** 0 = full text, 1 = paragraph, 2 = line, 3 = character: selects that unit around the cursor. */
+  private void selectUnit(int which) {
+    String[] names = {"Full text", "Paragraphs", "Lines", "Characters"};
+    String t = editor.getText().toString();
+    int pos = Math.max(0, Math.min(editor.getSelectionStart(), t.length()));
+    int s = 0;
+    int e = t.length();
+    switch (which) {
+      case 1:
+        s = t.lastIndexOf("\n\n", Math.max(0, pos - 1));
+        s = s < 0 ? 0 : s + 2;
+        e = t.indexOf("\n\n", pos);
+        e = e < 0 ? t.length() : e;
+        break;
+      case 2:
+        s = t.lastIndexOf('\n', Math.max(0, pos - 1));
+        s = s < 0 ? 0 : s + 1;
+        e = t.indexOf('\n', pos);
+        e = e < 0 ? t.length() : e;
+        break;
+      case 3:
+        s = Math.min(pos, t.length());
+        e = Math.min(pos + 1, t.length());
+        break;
+      default:
+        break;
+    }
+    editor.requestFocus();
+    editor.setSelection(Math.min(s, e), Math.max(s, e));
+    Toast.makeText(this, "Selected: " + names[which], Toast.LENGTH_SHORT).show();
+  }
+
+  /** Custom: you type the separator (for example a comma or a bracket); the piece around the cursor is selected. */
+  private void askCustomSeparator() {
+    final EditText input = new EditText(this);
+    input.setHint("Separator, for example , or )");
     new AlertDialog.Builder(this)
-        .setTitle("Granular editing mode")
-        .setItems(modes, (d, which) -> {
-          String t = editor.getText().toString();
-          int pos = Math.max(0, Math.min(editor.getSelectionStart(), t.length()));
-          int s = 0;
-          int e = t.length();
-          switch (which) {
-            case 1:
-              s = t.lastIndexOf("\n\n", Math.max(0, pos - 1));
-              s = s < 0 ? 0 : s + 2;
-              e = t.indexOf("\n\n", pos);
+        .setTitle("Custom")
+        .setView(input)
+        .setPositiveButton(
+            android.R.string.ok,
+            (d, w) -> {
+              String sep = input.getText().toString();
+              if (sep.isEmpty()) {
+                return;
+              }
+              String t = editor.getText().toString();
+              int pos = Math.max(0, Math.min(editor.getSelectionStart(), t.length()));
+              int s = t.lastIndexOf(sep, Math.max(0, pos - 1));
+              s = s < 0 ? 0 : s + sep.length();
+              int e = t.indexOf(sep, pos);
               e = e < 0 ? t.length() : e;
-              break;
-            case 2:
-              s = t.lastIndexOf('\n', Math.max(0, pos - 1));
-              s = s < 0 ? 0 : s + 1;
-              e = t.indexOf('\n', pos);
-              e = e < 0 ? t.length() : e;
-              break;
-            case 3:
-              s = Math.min(pos, t.length());
-              e = Math.min(pos + 1, t.length());
-              break;
-            default:
-              break;
-          }
-          editor.setSelection(Math.min(s, e), Math.max(s, e));
-          Toast.makeText(this, "Selected: " + modes[which], Toast.LENGTH_SHORT).show();
-        })
+              editor.requestFocus();
+              editor.setSelection(Math.min(s, e), Math.max(s, e));
+              Toast.makeText(this, "Selected: Custom", Toast.LENGTH_SHORT).show();
+            })
+        .setNegativeButton(android.R.string.cancel, null)
         .show();
   }
 

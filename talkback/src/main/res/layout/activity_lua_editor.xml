@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Same arrangement as the Jieshuo text editor: Save on top, the big text box in the middle,
+     below it the selection units with OK, and under that Execute and Insert. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,9 +19,6 @@
             android:orientation="horizontal">
 
             <Button android:id="@+id/btn_save" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_save" android:textColor="#FFFFFF" />
-            <Button android:id="@+id/btn_insert" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_insert" android:textColor="#FFFFFF" />
-            <Button android:id="@+id/btn_granular" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_granular" android:textColor="#FFFFFF" />
-            <Button android:id="@+id/btn_execute" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_execute" android:textColor="#4CAF50" />
             <Button android:id="@+id/btn_undo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_undo" android:textColor="#FFFFFF" />
             <Button android:id="@+id/btn_redo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_redo" android:textColor="#FFFFFF" />
         </LinearLayout>
@@ -28,7 +27,8 @@
     <EditText
         android:id="@+id/editor_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="top|start"
         android:background="@null"
         android:hint="@string/ide_editor_hint"
@@ -39,4 +39,42 @@
         android:padding="12dp"
         android:inputType="textMultiLine|textNoSuggestions"
         android:scrollbars="vertical" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#252526"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button android:id="@+id/btn_full" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Full text" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_para" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Paragraphs" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_lines" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lines" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_custom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Custom" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_chars" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Characters" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@android:string/ok" android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#252526"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button android:id="@+id/btn_execute" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_execute" android:textColor="#4CAF50" />
+            <Button android:id="@+id/btn_insert" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_insert" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_tools" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ide_code_tools" android:textColor="#FFFFFF" />
+            <Button android:id="@+id/btn_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@android:string/cancel" android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </HorizontalScrollView>
 </LinearLayout>

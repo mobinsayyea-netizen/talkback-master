@@ -27,5 +27,20 @@ public final class GestureConfiguration {
    */
   public static final int DOUBLE_TAP_TIMEOUT_MS = ViewConfiguration.getDoubleTapTimeout() - 50;
 
+  /**
+   * MobinSR: minimum swipe length in cm. Values <= 0 mean "use the config_gesture_confirm_distance_cm
+   * resource". Read when the gesture matchers are created (GestureManifold constructor).
+   */
+  public static volatile float swipeConfirmCm = -1f;
+
+  /** MobinSR: percent (40..100) of the system touch-and-hold delay used by the hold gestures. */
+  public static volatile int holdPercent = 100;
+
+  /** Hold time of the "and hold" gestures: the system long-press timeout scaled by {@link #holdPercent}. */
+  public static int longPressTimeoutMs() {
+    int pct = Math.max(40, Math.min(100, holdPercent));
+    return Math.max(100, ViewConfiguration.getLongPressTimeout() * pct / 100);
+  }
+
   private GestureConfiguration() {}
 }

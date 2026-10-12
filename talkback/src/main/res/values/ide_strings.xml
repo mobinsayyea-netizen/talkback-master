@@ -5,6 +5,7 @@
     <string name="dialog_enter_name">Enter keyword</string>
     <string name="ide_save">Save</string>
     <string name="ide_insert">Insert</string>
+    <string name="ide_code_tools">Code tools</string>
     <string name="ide_granular">Granular Mode</string>
     <string name="ide_execute">Execute</string>
     <string name="ide_undo">Undo</string>

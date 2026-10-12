@@ -339,6 +339,53 @@ public final class SoundThemeManager implements FeedbackController.SoundOverride
     return themeId;
   }
 
+  /** Creates an empty theme (its pool folder exists, no sounds yet) and returns its id. A theme
+   *  of the same name that was added earlier is removed first, so importing twice does not
+   *  leave two copies. */
+  public @Nullable String createEmptyTheme(String themeName) {
+    for (Theme theme : getThemes()) {
+      if (!theme.builtin && theme.name.equals(themeName)) {
+        deleteTheme(theme.id);
+      }
+    }
+    String themeId = "theme_" + System.currentTimeMillis();
+    File pool = poolDir(themeId);
+    if (!pool.mkdirs() && !pool.isDirectory()) {
+      return null;
+    }
+    List<Theme> themes = new ArrayList<>(getThemes());
+    themes.add(new Theme(themeId, themeName, /* builtin= */ false));
+    saveThemes(themes);
+    return themeId;
+  }
+
+  /** Copies one file from the app's own storage into a theme's pool. Returns the pool file name,
+   *  or null if copying failed. */
+  public @Nullable String addPoolFileFromFile(String themeId, File source) {
+    File pool = poolDir(themeId);
+    if (!pool.mkdirs() && !pool.isDirectory()) {
+      return null;
+    }
+    File dest = uniqueFile(pool, sanitizeFileName(source.getName()));
+    try (InputStream in = new java.io.FileInputStream(source);
+        OutputStream out = new FileOutputStream(dest)) {
+      byte[] chunk = new byte[8192];
+      int n;
+      while ((n = in.read(chunk)) > 0) {
+        out.write(chunk, 0, n);
+      }
+      return dest.getName();
+    } catch (IOException e) {
+      Log.w(TAG, "Could not copy sound file", e);
+      return null;
+    }
+  }
+
+  /** The folder that belongs to one theme (for extra files such as spoken clock sounds). */
+  public File themeFolder(String themeId) {
+    return themeDir(themeId);
+  }
+
   /** Deletes an added (non-Default) theme and all its files. */
   public void deleteTheme(String themeId) {
     if (DEFAULT_THEME_ID.equals(themeId)) {

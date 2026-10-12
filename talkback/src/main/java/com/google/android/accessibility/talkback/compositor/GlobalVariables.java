@@ -503,7 +503,8 @@ public class GlobalVariables extends TimedFlags implements ParseTree.VariableDel
 
   /** Returns if TalkBack speaks collection info. */
   public boolean getSpeakCollectionInfo() {
-    return speakCollectionInfo;
+    return speakCollectionInfo
+        && com.google.android.accessibility.talkback.MsReadingExtras.listAllowed(mContext);
   }
 
   /** Sets if TalkBack speaks collection info. */
@@ -541,6 +542,10 @@ public class GlobalVariables extends TimedFlags implements ParseTree.VariableDel
 
   /** Returns description order of TalkBack feedback. */
   public int getDescriptionOrder() {
+    if (com.google.android.accessibility.talkback.MsReadingExtras.stateFirst(mContext)) {
+      return com.google.android.accessibility.talkback.compositor.roledescription
+          .RoleDescriptionExtractor.DESC_ORDER_STATE_NAME_ROLE_POSITION;
+    }
     return descriptionOrder;
   }
 

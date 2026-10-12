@@ -132,6 +132,8 @@ public class VolumeMonitor extends SameThreadBroadcastReceiver {
   }
 
   private void notifyVolumeChangedListener(int type, int value, int prevValue, int percent) {
+    com.google.android.accessibility.talkback.editor.LuaExtensionManager.onVolumeChanged(
+        context, type, value, prevValue, percent);
     for (VolumeChangedListener listener : listeners) {
       listener.onVolumeChanged(type, value, prevValue, percent);
     }

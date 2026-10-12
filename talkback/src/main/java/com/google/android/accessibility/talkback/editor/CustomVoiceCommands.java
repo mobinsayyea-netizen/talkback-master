@@ -24,7 +24,7 @@ public final class CustomVoiceCommands {
   /** One saved command. */
   public static final class Entry {
     public final String phrase;
-    public final String kind; // "ext" or "tool"
+    public final String kind; // "ext", "tool" or "cmd" (an execute() command, only from gesture schemes)
     public final String name; // folder name of the extension or tool
 
     public Entry(String phrase, String kind, String name) {
@@ -88,7 +88,7 @@ public final class CustomVoiceCommands {
     }
     for (Entry e : load(c)) {
       if (normalize(e.phrase).equals(said)) {
-        return e;
+        return MsExtSettings.voiceMayRun(c, e.kind) ? e : null;
       }
     }
     return null;
@@ -133,6 +133,10 @@ public final class CustomVoiceCommands {
     final Context app = c.getApplicationContext();
     new Thread(
             () -> {
+              if ("cmd".equals(e.kind)) {
+                LuaServiceApi.executeStatic(app, e.name);
+                return;
+              }
               File base = "tool".equals(e.kind) ? LuaPaths.tools(app) : LuaPaths.extensions(app);
               File main = new File(new File(base, e.name), "main.lua");
               if (!main.isFile()) {

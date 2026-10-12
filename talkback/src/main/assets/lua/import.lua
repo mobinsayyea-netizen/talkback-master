@@ -378,10 +378,29 @@ function _M.getids()
     return luajava.ids
 end
 
-local LuaAsyncTask = luajava.bindClass("com.androlua.LuaAsyncTask")
-local LuaThread = luajava.bindClass("com.androlua.LuaThread")
-local LuaTimer = luajava.bindClass("com.androlua.LuaTimer")
-local Object = luajava.bindClass("java.lang.Object")
+-- AndroLua normally provides these Java helpers. MobinSR currently uses a
+-- single LuaState with its own guarded scheduler, so gracefully fall back to
+-- that scheduler when the optional AndroLua helper classes are not packaged.
+local hasAsyncTask, LuaAsyncTask = pcall(luajava.bindClass, "com.androlua.LuaAsyncTask")
+local hasLuaThread, LuaThread = pcall(luajava.bindClass, "com.androlua.LuaThread")
+local hasLuaTimer, LuaTimer = pcall(luajava.bindClass, "com.androlua.LuaTimer")
+local hasJavaObject, Object = pcall(luajava.bindClass, "java.lang.Object")
+if not hasAsyncTask then LuaAsyncTask = nil end
+if not hasLuaThread then LuaThread = nil end
+if not hasLuaTimer then LuaTimer = nil end
+if not hasJavaObject then Object = nil end
+
+local function scheduleFallback(fn, delay)
+    if type(fn) ~= "function" then return nil end
+    if service == nil or type(__jx_tasks) ~= "table" then
+        error("Lua task/thread/timer helpers are unavailable in this runtime", 2)
+    end
+    __jx_id = (__jx_id or 0) + 1
+    local id = __jx_id
+    __jx_tasks[id] = { fn, table.pack() }
+    service.scheduleTask(id, math.max(0, tonumber(delay) or 0))
+    return id
+end
 
 
 local function setmetamethod(t, k, v)
@@ -393,7 +412,7 @@ local function getmetamethod(t, k, v)
 end
 
 
-local getjavamethod = getmetamethod(LuaThread, "__index")
+local getjavamethod = LuaThread and getmetamethod(LuaThread, "__index") or function() error("Java LuaThread is not available") end
 local function __call(t, k)
     return function(...)
         if ... then
@@ -420,48 +439,134 @@ end
 
 local function checkPath(path)
     if path:find("^[^/][%w%./_%-]+$") then
-        if not path:find("%.lua$") then
-            path = string.format("%s/%s.lua", activity.luaDir, path)
+        local base
+        if activity and activity.luaDir then
+            base = activity.luaDir
         else
-            path = string.format("%s/%s", activity.luaDir, path)
+            local ok, dir = pcall(function() return luacontext.getLuaDir() end)
+            base = ok and dir or "."
+        end
+        if not path:find("%.lua$") then
+            path = string.format("%s/%s.lua", base, path)
+        else
+            path = string.format("%s/%s", base, path)
         end
     end
     return path
 end
 
 function _M.thread(src, ...)
-    if type(src) == "string" then
-        src = checkPath(src)
+    if type(src) == "string" then src = checkPath(src) end
+    if LuaThread then
+        local luaThread
+        if ... and Object then
+            luaThread = LuaThread(activity or service, src, true, Object { ... })
+        else
+            luaThread = LuaThread(activity or service, src, true)
+        end
+        luaThread.start()
+        return luaThread
     end
-    local luaThread
-    if ... then
-        luaThread = LuaThread(activity or service, src, true, Object { ... })
-    else
-        luaThread = LuaThread(activity or service, src, true)
+    -- Compatibility fallback: schedule on MobinSR's serialized LuaState.
+    local args = table.pack(...)
+    local stopped = false
+    local handle = { isFallback = true }
+    function handle.start()
+        scheduleFallback(function()
+            if stopped then return end
+            if type(src) == "function" then
+                src(table.unpack(args, 1, args.n))
+            elseif type(src) == "string" then
+                luacontext.doFile(src, table.unpack(args, 1, args.n))
+            end
+        end, 0)
     end
-    luaThread.start()
-    --setmetamethod(luaThread,"__index",__index)\
-    --setmetamethod(luaThread,"__newindex",__newindex)
-    return luaThread
+    function handle.quit() stopped = true end
+    function handle.stop() stopped = true end
+    function handle.call(name, callArgs)
+        if type(name) ~= "string" then return nil end
+        local fn = _G[name]
+        if type(fn) ~= "function" then return nil end
+        if callArgs == nil then return fn() end
+        if type(callArgs) == "table" then return fn(table.unpack(callArgs)) end
+        return fn(callArgs)
+    end
+    function handle.set(name, value) _G[name] = value end
+    setmetatable(handle, {
+        __index = function(t, name)
+            return function(...)
+                local fn = _G[name]
+                if type(fn) == "function" then return fn(...) end
+                return nil
+            end
+        end,
+        __newindex = function(t, name, value) _G[name] = value end
+    })
+    handle.start()
+    return handle
 end
 
 function _M.task(src, ...)
     local args = { ... }
     local callback = args[select("#", ...)]
     args[select("#", ...)] = nil
-    local luaAsyncTask = LuaAsyncTask(activity or service, src, callback)
-    luaAsyncTask.executeOnExecutor(LuaAsyncTask.THREAD_POOL_EXECUTOR, args)
-    return luaAsyncTask
+    if LuaAsyncTask and Object then
+        local luaAsyncTask = LuaAsyncTask(activity or service, src, callback)
+        luaAsyncTask.executeOnExecutor(LuaAsyncTask.THREAD_POOL_EXECUTOR, args)
+        return luaAsyncTask
+    end
+    local stopped = false
+    local handle = { isFallback = true }
+    function handle.cancel() stopped = true end
+    scheduleFallback(function()
+        if stopped then return end
+        local result
+        if type(src) == "function" then
+            result = src(table.unpack(args))
+        elseif type(src) == "string" then
+            result = luacontext.doFile(src, table.unpack(args))
+        end
+        if type(callback) == "function" then callback(result) end
+    end, 0)
+    return handle
 end
 
 function _M.timer(f, d, p, ...)
-    local luaTimer = LuaTimer(activity or service, f, Object { ... })
-    if p == 0 then
-        luaTimer.start(d)
-    else
-        luaTimer.start(d, p)
+    if LuaTimer and Object then
+        local luaTimer = LuaTimer(activity or service, f, Object { ... })
+        if p == 0 then luaTimer.start(d) else luaTimer.start(d, p) end
+        return luaTimer
     end
-    return luaTimer
+    local args = table.pack(...)
+    local delay = math.max(0, tonumber(d) or 0)
+    local period = math.max(0, tonumber(p) or 0)
+    local stopped = false
+    local handle = { isFallback = true }
+    local function scheduleNext(wait)
+        if stopped then return end
+        scheduleFallback(function()
+            if stopped then return end
+            if type(f) == "function" then f(table.unpack(args, 1, args.n)) end
+            if period > 0 and not stopped then scheduleNext(period) end
+        end, wait)
+    end
+    function handle.start(firstDelay, interval)
+        if firstDelay ~= nil then delay = math.max(0, tonumber(firstDelay) or 0) end
+        if interval ~= nil then period = math.max(0, tonumber(interval) or 0) end
+        stopped = false
+        scheduleNext(delay)
+    end
+    function handle.stop() stopped = true end
+    function handle.cancel() stopped = true end
+    function handle.setEnabled(enabled)
+        if enabled then
+            if stopped then stopped = false; scheduleNext(delay) end
+        else
+            stopped = true
+        end
+    end
+    handle.start(delay, period)
+    return handle
 end
 
 local os_mt = {}

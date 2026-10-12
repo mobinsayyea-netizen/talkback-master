@@ -108,6 +108,7 @@ public class ContextMenuItemClickProcessor {
         || (itemId == R.id.braille_display_settings)
         || (itemId == R.id.show_keyboard_shortcuts)
         || (itemId == R.id.ms_menu_copy)
+        || com.google.android.accessibility.talkback.editor.MsMenus.isFunctionId(itemId)
         || (itemId == R.id.ms_menu_append)
         || (itemId == R.id.ms_menu_translate)
         || (itemId == R.id.ms_menu_ocr)
@@ -200,6 +201,8 @@ public class ContextMenuItemClickProcessor {
           prefs, service.getResources(), R.string.pref_speak_time_key, false);
     } else if (itemId == R.id.show_keyboard_shortcuts) {
       pipeline.returnFeedback(eventId, Feedback.keyboard(SHOW_KEYBOARD_SHORTCUTS_DIALOG));
+    } else if (com.google.android.accessibility.talkback.editor.MsMenus.isFunctionId(itemId)) {
+      com.google.android.accessibility.talkback.editor.MsMenus.runFunctionId(service, itemId);
     } else if (itemId == R.id.ms_menu_copy) {
       service.msRunTextAction(0);
     } else if (itemId == R.id.ms_menu_append) {

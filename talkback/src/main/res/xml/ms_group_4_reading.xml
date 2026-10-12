@@ -7,9 +7,13 @@
     <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_window_all" android:title="Read whole window on change" android:summary="@string/ms_rd_window_all_sum" android:defaultValue="false"/>
     <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_window_title" android:title="Window names" android:summary="@string/ms_rd_window_title_sum" android:defaultValue="true"/>
     <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_volume" android:title="Read volume when changing" android:summary="@string/ms_rd_volume_sum" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_list_allow" android:title="Allow reading of element indexes and display range in lists" android:defaultValue="true" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_list_scroll_content" android:title="Read all visible content of the list when scrolling using the commands" android:defaultValue="true" />
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_state_first" android:title="Read the state of the focused item first" android:defaultValue="false" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_changes" android:title="Changes">
     <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_focus_content_changed" android:title="Focused item changes" android:summary="@string/ms_rd_focus_changed_sum" android:defaultValue="true"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_window_changes" android:title="Automatically read changes of the current window" android:defaultValue="false" />
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g4_pron" android:title="Pronunciation">
     <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_rd_chars_first" android:title="Read text first when explaining" android:summary="@string/ms_rd_chars_first_sum" android:defaultValue="false"/>

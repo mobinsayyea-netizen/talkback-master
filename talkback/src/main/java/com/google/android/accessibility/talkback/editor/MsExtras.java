@@ -789,22 +789,30 @@ public final class MsExtras {
     return MsNavModes.step(api, c, s, n, !right); // default: previous / next of the chosen type
   }
 
-  private static boolean earpiece(LuaServiceApi api, Context c) {
-    android.media.AudioManager am = (android.media.AudioManager) c.getSystemService(Context.AUDIO_SERVICE);
+  /** Applies the actual earpiece mode, shared by the command and Lua service setters. */
+  static boolean setEarpieceMode(Context c, boolean enabled) {
+    android.media.AudioManager am =
+        (android.media.AudioManager) c.getSystemService(Context.AUDIO_SERVICE);
     if (am == null) {
       return false;
     }
-    SharedPreferences p = prefs(c);
-    boolean now = !p.getBoolean(K_EARPIECE, false);
-    p.edit().putBoolean(K_EARPIECE, now).apply();
     try {
-      if (now) {
+      if (enabled) {
         am.setMode(android.media.AudioManager.MODE_IN_COMMUNICATION);
         am.setSpeakerphoneOn(false);
       } else {
         am.setMode(android.media.AudioManager.MODE_NORMAL);
       }
+      prefs(c).edit().putBoolean(K_EARPIECE, enabled).apply();
+      return true;
     } catch (RuntimeException e) {
+      return false;
+    }
+  }
+
+  private static boolean earpiece(LuaServiceApi api, Context c) {
+    boolean now = !prefs(c).getBoolean(K_EARPIECE, false);
+    if (!setEarpieceMode(c, now)) {
       api.speak("This phone does not allow it");
       return false;
     }

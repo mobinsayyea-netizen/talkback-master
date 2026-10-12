@@ -1,488 +1,191 @@
 -----------------------------------------------------------------------------
--- HTTP/1.1 client support for the Lua language.
--- LuaSocket toolkit.
--- Author: Diego Nehab
+-- MobinSR HTTP module
+-- Replaces the LuaSocket implementation for this runtime: Jieshuo uses Java
+-- networking and this project does not bundle LuaSocket/ltn12/mime.
+-- API compatibility: get/post -> body,cookie,status,headers; download -> status,headers.
 -----------------------------------------------------------------------------
+local URL = luajava.bindClass("java.net.URL")
+local File = luajava.bindClass("java.io.File")
+local FileOutputStream = luajava.bindClass("java.io.FileOutputStream")
+local ByteArrayOutputStream = luajava.bindClass("java.io.ByteArrayOutputStream")
+local URLEncoder = luajava.bindClass("java.net.URLEncoder")
+local _M = { TIMEOUT = 15000, USERAGENT = "MobinSR-Lua/1.0" }
 
------------------------------------------------------------------------------
--- Declare module and import dependencies
--------------------------------------------------------------------------------
-local socket = require("socket")
-local url = require("socket.url")
-local ltn12 = require("ltn12")
-local mime = require("mime")
-local string = require("string")
-local headers = require("socket.headers")
-local base = _G
-local table = require("table")
-socket.http = {}
-local _M = socket.http
-
------------------------------------------------------------------------------
--- Program constants
------------------------------------------------------------------------------
--- connection timeout in seconds
-_M.TIMEOUT = 60
--- default port for document retrieval
-_M.PORT = 80
--- user agent field sent in request
-_M.USERAGENT = socket._VERSION
-
------------------------------------------------------------------------------
--- Reads MIME headers from a connection, unfolding where needed
------------------------------------------------------------------------------
-local function receiveheaders(sock, headers)
-    local line, name, value, err
-    headers = headers or {}
-    -- get first line
-    line, err = sock:receive()
-    if err then return nil, err end
-    -- headers go until a blank line is found
-    while line ~= "" do
-        -- get field-name and value
-        name, value = socket.skip(2, string.find(line, "^(.-):%s*(.*)"))
-        if not (name and value) then return nil, "malformed reponse headers" end
-        name = string.lower(name)
-        -- get next line (value might be folded)
-        line, err  = sock:receive()
-        if err then return nil, err end
-        -- unfold any folded values
-        while string.find(line, "^%s") do
-            value = value .. line
-            line = sock:receive()
-            if err then return nil, err end
-        end
-        -- save pair in table
-        if headers[name] then headers[name] = headers[name] .. ", " .. value
-        else headers[name] = value end
-    end
-    return headers
-end
-
------------------------------------------------------------------------------
--- Extra sources and sinks
------------------------------------------------------------------------------
-socket.sourcet["http-chunked"] = function(sock, headers)
-    return base.setmetatable({
-        getfd = function() return sock:getfd() end,
-        dirty = function() return sock:dirty() end
-    }, {
-        __call = function()
-            -- get chunk size, skip extention
-            local line, err = sock:receive()
-            if err then return nil, err end
-            local size = base.tonumber(string.gsub(line, ";.*", ""), 16)
-            if not size then return nil, "invalid chunk size" end
-            -- was it the last chunk?
-            if size > 0 then
-                -- if not, get chunk and skip terminating CRLF
-                local chunk, err, part = sock:receive(size)
-                if chunk then sock:receive() end
-                return chunk, err
-            else
-                -- if it was, read trailers into headers table
-                headers, err = receiveheaders(sock, headers)
-                if not headers then return nil, err end
-            end
-        end
-    })
-end
-
-socket.sinkt["http-chunked"] = function(sock)
-    return base.setmetatable({
-        getfd = function() return sock:getfd() end,
-        dirty = function() return sock:dirty() end
-    }, {
-        __call = function(self, chunk, err)
-            if not chunk then return sock:send("0\r\n\r\n") end
-            local size = string.format("%X\r\n", string.len(chunk))
-            return sock:send(size ..  chunk .. "\r\n")
-        end
-    })
-end
-
------------------------------------------------------------------------------
--- Low level HTTP API
------------------------------------------------------------------------------
-local metat = { __index = {} }
-
-function _M.open(host, port, create)
-    -- create socket with user connect function, or with default
-    local c = socket.try((create or socket.tcp)())
-    local h = base.setmetatable({ c = c }, metat)
-    -- create finalized try
-    h.try = socket.newtry(function() h:close() end)
-    -- set timeout before connecting
-    h.try(c:settimeout(_M.TIMEOUT))
-    h.try(c:connect(host, port or _M.PORT))
-    -- here everything worked
-    return h
-end
-
-function metat.__index:sendrequestline(method, uri)
-    local reqline = string.format("%s %s HTTP/1.1\r\n", method or "GET", uri)
-    return self.try(self.c:send(reqline))
-end
-
-function metat.__index:sendheaders(tosend)
-    local canonic = headers.canonic
-    local h = "\r\n"
-    for f, v in base.pairs(tosend) do
-        h = (canonic[f] or f) .. ": " .. v .. "\r\n" .. h
-    end
-    self.try(self.c:send(h))
-    return 1
-end
-
-function metat.__index:sendbody(headers, source, step)
-    source = source or ltn12.source.empty()
-    step = step or ltn12.pump.step
-    -- if we don't know the size in advance, send chunked and hope for the best
-    local mode = "http-chunked"
-    if headers["content-length"] then mode = "keep-open" end
-    return self.try(ltn12.pump.all(source, socket.sink(mode, self.c), step))
-end
-
-function metat.__index:receivestatusline()
-    local status = self.try(self.c:receive(5))
-    -- identify HTTP/0.9 responses, which do not contain a status line
-    -- this is just a heuristic, but is what the RFC recommends
-    if status ~= "HTTP/" then return nil, status end
-    -- otherwise proceed reading a status line
-    status = self.try(self.c:receive("*l", status))
-    local code = socket.skip(2, string.find(status, "HTTP/%d*%.%d* (%d%d%d)"))
-    return self.try(base.tonumber(code), status)
-end
-
-function metat.__index:receiveheaders()
-    return self.try(receiveheaders(self.c))
-end
-
-function metat.__index:receivebody(headers, sink, step)
-    sink = sink or ltn12.sink.null()
-    step = step or ltn12.pump.step
-    local length = base.tonumber(headers["content-length"])
-    local t = headers["transfer-encoding"] -- shortcut
-    local mode = "default" -- connection close
-    if t and t ~= "identity" then mode = "http-chunked"
-    elseif base.tonumber(headers["content-length"]) then mode = "by-length" end
-    return self.try(ltn12.pump.all(socket.source(mode, self.c, length),
-        sink, step))
-end
-
-function metat.__index:receive09body(status, sink, step)
-    local source = ltn12.source.rewind(socket.source("until-closed", self.c))
-    source(status)
-    return self.try(ltn12.pump.all(source, sink, step))
-end
-
-function metat.__index:close()
-    return self.c:close()
-end
-
------------------------------------------------------------------------------
--- High level HTTP API
------------------------------------------------------------------------------
-local function adjusturi(reqt)
-    local u = reqt
-    -- if there is a proxy, we need the full url. otherwise, just a part.
-    if not reqt.proxy and not _M.PROXY then
-        u = {
-           path = socket.try(reqt.path, "invalid path 'nil'"),
-           params = reqt.params,
-           query = reqt.query,
-           fragment = reqt.fragment
-        }
-    end
-    return url.build(u)
-end
-
-local function adjustproxy(reqt)
-    local proxy = reqt.proxy or _M.PROXY
-    if proxy then
-        proxy = url.parse(proxy)
-        return proxy.host, proxy.port or 3128
-    else
-        return reqt.host, reqt.port
-    end
-end
-
-local function adjustheaders(reqt)
-    -- default headers
-    local host = string.gsub(reqt.authority, "^.-@", "")
-    local lower = {
-        ["user-agent"] = _M.USERAGENT,
-        ["host"] = host,
-        ["connection"] = "close, TE",
-        ["te"] = "trailers"
-    }
-    -- if we have authentication information, pass it along
-    if reqt.user and reqt.password then
-        lower["authorization"] = 
-            "Basic " ..  (mime.b64(reqt.user .. ":" .. reqt.password))
-    end
-    -- override with user headers
-    for i,v in base.pairs(reqt.headers or lower) do
-        lower[string.lower(i)] = v
-    end
-    return lower
-end
-
--- default url parts
-local default_parts = {
-    host = "",
-    port = _M.PORT,
-    path ="/",
-    scheme = "http"
-}
-
-local function adjustrequest(reqt)
-    -- parse url if provided
-    local nreqt = reqt.url and url.parse(reqt.url, default_parts) or {}
-    -- explicit components override url
-    for i,v in base.pairs(reqt) do nreqt[i] = v end
-    if nreqt.port == "" then nreqt.port = 80 end
-    socket.try(nreqt.host and nreqt.host ~= "", 
-        "invalid host '" .. base.tostring(nreqt.host) .. "'")
-    -- compute uri if user hasn't overriden
-    nreqt.uri = reqt.uri or adjusturi(nreqt)
-    -- ajust host and port if there is a proxy
-    nreqt.host, nreqt.port = adjustproxy(nreqt)
-    -- adjust headers in request
-    nreqt.headers = adjustheaders(nreqt)
-    return nreqt
-end
-
-local function shouldredirect(reqt, code, headers)
-    return headers.location and
-           string.gsub(headers.location, "%s", "") ~= "" and
-           (reqt.redirect ~= false) and
-           (code == 301 or code == 302 or code == 303 or code == 307) and
-           (not reqt.method or reqt.method == "GET" or reqt.method == "HEAD")
-           and (not reqt.nredirects or reqt.nredirects < 5)
-end
-
-local function shouldreceivebody(reqt, code)
-    if reqt.method == "HEAD" then return nil end
-    if code == 204 or code == 304 then return nil end
-    if code >= 100 and code < 200 then return nil end
-    return 1
-end
-
--- forward declarations
-local trequest, tredirect
-
---[[local]] function tredirect(reqt, location)
-    local result, code, headers, status = trequest {
-        -- the RFC says the redirect URL has to be absolute, but some
-        -- servers do not respect that
-        url = url.absolute(reqt.url, location),
-        source = reqt.source,
-        sink = reqt.sink,
-        headers = reqt.headers,
-        proxy = reqt.proxy, 
-        nredirects = (reqt.nredirects or 0) + 1,
-        create = reqt.create
-    }   
-    -- pass location header back as a hint we redirected
-    headers = headers or {}
-    headers.location = headers.location or location
-    return result, code, headers, status
-end
-
---[[local]] function trequest(reqt)
-    -- we loop until we get what we want, or
-    -- until we are sure there is no way to get it
-    local nreqt = adjustrequest(reqt)
-    local h = _M.open(nreqt.host, nreqt.port, nreqt.create)
-    -- send request line and headers
-    h:sendrequestline(nreqt.method, nreqt.uri)
-    h:sendheaders(nreqt.headers)
-    -- if there is a body, send it
-    if nreqt.source then
-        h:sendbody(nreqt.headers, nreqt.source, nreqt.step) 
-    end
-    local code, status = h:receivestatusline()
-    -- if it is an HTTP/0.9 server, simply get the body and we are done
-    if not code then
-        h:receive09body(status, nreqt.sink, nreqt.step)
-        return 1, 200
-    end
-    local headers
-    -- ignore any 100-continue messages
-    while code == 100 do 
-        headers = h:receiveheaders()
-        code, status = h:receivestatusline()
-    end
-    headers = h:receiveheaders()
-    -- at this point we should have a honest reply from the server
-    -- we can't redirect if we already used the source, so we report the error 
-    if shouldredirect(nreqt, code, headers) and not nreqt.source then
-        h:close()
-        return tredirect(reqt, headers.location)
-    end
-    -- here we are finally done
-    if shouldreceivebody(nreqt, code) then
-        h:receivebody(headers, nreqt.sink, nreqt.step)
-    end
-    h:close()
-    return 1, code, headers, status
-end
-
-local function srequest(u, b)
-    local t = {}
-    local reqt = {
-        url = u,
-        sink = ltn12.sink.table(t)
-    }
-    if b then
-        reqt.source = ltn12.source.string(b)
-        reqt.headers = {
-            ["content-length"] = string.len(b),
-            ["content-type"] = "application/x-www-form-urlencoded"
-        }
-        reqt.method = "POST"
-    end
-    local code, headers, status = socket.skip(1, trequest(reqt))
-    return table.concat(t), code, headers, status
-end
-
-_M.request = socket.protect(function(reqt, body)
-    if base.type(reqt) == "string" then return srequest(reqt, body)
-    else return trequest(reqt) end
-end)
-
-
-local function formatdata(t)
-  local buf={}
-  for k,v in pairs(t) do
-    if type(k)=="number" then
-      table.insert(buf,v)
-    else
-      table.insert(buf,string.format("%s=%s",k,v))
+local function headersOf(conn)
+  local out = {}
+  local fields = conn:getHeaderFields()
+  if fields == nil then return out end
+  local it = fields:keySet():iterator()
+  while it:hasNext() do
+    local key = it:next()
+    if key ~= nil then
+      local values = fields:get(key)
+      if values ~= nil and values:size() > 0 then out[tostring(key):lower()] = tostring(values:get(0)) end
     end
   end
-  return table.concat(buf,"&")
+  return out
 end
 
-local function checkcookie(headers)
-  if not  headers then
-      return nil
+local function responseStream(conn, status)
+  if status >= 400 then return conn:getErrorStream() end
+  return conn:getInputStream()
+end
+
+local function readAll(stream)
+  if stream == nil then return "" end
+  local out = ByteArrayOutputStream()
+  local buf = luajava.newArray("byte", 8192)
+  local n = stream:read(buf)
+  while n ~= -1 do
+    if n > 0 then out:write(buf, 0, n) end
+    n = stream:read(buf)
+  end
+  stream:close()
+  return tostring(out:toString("UTF-8"))
+end
+
+local function encodeForm(data)
+  if type(data) == "string" then return data end
+  if type(data) ~= "table" then return "" end
+  local out = {}
+  for k, v in pairs(data) do
+    out[#out + 1] = tostring(URLEncoder:encode(tostring(k), "UTF-8")) .. "=" .. tostring(URLEncoder:encode(tostring(v), "UTF-8"))
+  end
+  return table.concat(out, "&")
+end
+
+local function open(url, method, cookie, body, contentType)
+  local conn = URL(tostring(url)):openConnection()
+  conn:setConnectTimeout(_M.TIMEOUT)
+  conn:setReadTimeout(_M.TIMEOUT)
+  conn:setRequestMethod(method)
+  conn:setRequestProperty("User-Agent", _M.USERAGENT)
+  conn:setRequestProperty("Accept", "*/*")
+  if cookie ~= nil and tostring(cookie) ~= "" then conn:setRequestProperty("Cookie", tostring(cookie)) end
+  if body ~= nil then
+    conn:setDoOutput(true)
+    conn:setRequestProperty("Content-Type", contentType or "application/x-www-form-urlencoded; charset=UTF-8")
+    local os = conn:getOutputStream()
+    os:write(tostring(body):getBytes("UTF-8"))
+    os:flush()
+    os:close()
+  end
+  local status = conn:getResponseCode()
+  local headers = headersOf(conn)
+  local cookies = headers["set-cookie"] or cookie or ""
+  return conn, status, headers, cookies
+end
+
+local function getImpl(url, cookie)
+  local conn, status, headers, cookies = open(url, "GET", cookie)
+  local ok, body = pcall(readAll, responseStream(conn, status))
+  pcall(function() conn:disconnect() end)
+  if not ok then return nil, cookies, status, headers, tostring(body) end
+  return body, cookies, status, headers
+end
+
+function _M.get(url, cookie)
+  local ok, a, b, c, d, e = pcall(getImpl, url, cookie)
+  if not ok then return nil, cookie or "", nil, {}, tostring(a) end
+  return a, b, c, d, e
+end
+
+local function postImpl(url, data, cookie)
+  local conn, status, headers, cookies = open(url, "POST", cookie, encodeForm(data))
+  local ok, body = pcall(readAll, responseStream(conn, status))
+  pcall(function() conn:disconnect() end)
+  if not ok then return nil, cookies, status, headers, tostring(body) end
+  return body, cookies, status, headers
+end
+
+function _M.post(url, data, cookie)
+  local ok, a, b, c, d, e = pcall(postImpl, url, data, cookie)
+  if not ok then return nil, cookie or "", nil, {}, tostring(a) end
+  return a, b, c, d, e
+end
+
+local function downloadImpl(url, path, cookie)
+  local conn, status, headers = open(url, "GET", cookie)
+  local stream = responseStream(conn, status)
+  if status >= 400 or stream == nil then
+    if stream ~= nil then stream:close() end
+    conn:disconnect()
+    return status, headers
+  end
+  local file = File(tostring(path))
+  local parent = file:getParentFile()
+  if parent ~= nil then parent:mkdirs() end
+  local os = FileOutputStream(file)
+  local buf = luajava.newArray("byte", 8192)
+  local n = stream:read(buf)
+  while n ~= -1 do
+    if n > 0 then os:write(buf, 0, n) end
+    n = stream:read(buf)
+  end
+  stream:close()
+  os:flush()
+  os:close()
+  pcall(function() conn:disconnect() end)
+  return status, headers
+end
+
+function _M.download(url, path, cookie)
+  local ok, a, b, c, d = pcall(downloadImpl, url, path, cookie)
+  if not ok then return nil, {}, tostring(a) end
+  return a, b, c, d
+end
+
+-- Multipart upload compatible with AndroLua's http.upload(url, fields, files, cookie).
+local function uploadImpl(url, fields, files, cookie)
+  local boundary = "----MobinSR" .. tostring(os.time()) .. tostring(math.random(100000, 999999))
+  local conn = URL(tostring(url)):openConnection()
+  conn:setConnectTimeout(_M.TIMEOUT)
+  conn:setReadTimeout(_M.TIMEOUT)
+  conn:setRequestMethod("POST")
+  conn:setDoOutput(true)
+  conn:setRequestProperty("User-Agent", _M.USERAGENT)
+  conn:setRequestProperty("Content-Type", "multipart/form-data; boundary=" .. boundary)
+  if cookie ~= nil and tostring(cookie) ~= "" then conn:setRequestProperty("Cookie", tostring(cookie)) end
+  local os = conn:getOutputStream()
+  local function write(s) os:write(tostring(s):getBytes("UTF-8")) end
+  if type(fields) == "table" then
+    for k, v in pairs(fields) do
+      write("--" .. boundary .. "\r\nContent-Disposition: form-data; name=\"" .. tostring(k) .. "\"\r\n\r\n" .. tostring(v) .. "\r\n")
+    end
+  end
+  if type(files) == "table" then
+    for k, v in pairs(files) do
+      local path = tostring(v)
+      local f = File(path)
+      write("--" .. boundary .. "\r\nContent-Disposition: form-data; name=\"" .. tostring(k) .. "\"; filename=\"" .. f:getName() .. "\"\r\nContent-Type: application/octet-stream\r\n\r\n")
+      local fis = luajava.bindClass("java.io.FileInputStream")(f)
+      local buf = luajava.newArray("byte", 8192)
+      local n = fis:read(buf)
+      while n ~= -1 do
+        if n > 0 then os:write(buf, 0, n) end
+        n = fis:read(buf)
       end
-  local cok=headers['set-cookie'] or headers['Set-Cookie']
-  if cok then
-    local t={}
-    for k,v in string.gmatch(cok,'([^=,; ]+)=([^=,; ]+)') do
-      table.insert(t,string.format('%s=%s; ',k,v))
-      end
-      cok=table.concat(t)
-    end
-  return cok
-end
-
-local function copy(t,...)
-  for _,f in pairs{...} do
-    for k,v in pairs(f) do
-      t[k]=v
+      fis:close()
+      write("\r\n")
     end
   end
-return t
+  write("--" .. boundary .. "--\r\n")
+  os:flush()
+  os:close()
+  local status = conn:getResponseCode()
+  local headers = headersOf(conn)
+  local cookies = headers["set-cookie"] or cookie or ""
+  local stream = responseStream(conn, status)
+  local ok, body = pcall(readAll, stream)
+  pcall(function() conn:disconnect() end)
+  if not ok then return nil, cookies, status, headers, tostring(body) end
+  return body, cookies, status, headers
 end
 
-
-_M.cookie=""
-_M.header={}
-_M.ua=""
-
-function _M.post(u,d,cok,ua,hdr)
-  local t = {}
-  d=d or ""
-  if type(d)=="table" then
-    d=formatdata(d)
-    end
-  local r, c, h = _M.request{
-   url = u,
-   method = "POST",
-   headers = copy({
-    ["Content-Type"] = "application/x-www-form-urlencoded",
-    ["Accept-Language"] = "zh-cn,zh;q=0.5",
-    ["Accept-Charset"] = "utf-8",
-    ["Content-Length"] = #d,
-    ['Cookie']=cok or _M.cookie,
-   },hdr or _M.header),
-   source = ltn12.source.string(d),
-   sink = ltn12.sink.table(t)}
-  return table.concat(t),checkcookie(h), c, h
- end
-
-local boundary="----qwertyuiopasdfghjklzxcvbnm"
-
-local function formatmultidata(d,t)
-  local buf={}
-  for k,v in pairs(d or {}) do
-    table.insert(buf,string.format('--%s\r\nContent-Disposition:form-data;name="%s"\r\n\r\n%s\r\n',boundary,k,v))
-  end
-  for k,v in pairs(t or {}) do
-    local f=io.open(v,"r")
-    local s=f:read("*all")
-    f:close()
-    table.insert(buf,string.format('--%s\r\nContent-Disposition:form-data;name="%s";filename="%s"\r\nContent-Type:application/octet-stream\r\n\r\n%s\r\n',boundary,k,v,s))
-  end
-  table.insert(buf,string.format("--%s--\r\n",boundary))
-  return table.concat(buf)
+function _M.upload(url, fields, files, cookie)
+  local ok, a, b, c, d, e = pcall(uploadImpl, url, fields, files, cookie)
+  if not ok then return nil, cookie or "", nil, {}, tostring(a) end
+  return a, b, c, d, e
 end
-
-function _M.upload(u,d,f,cok,ua,hdr)
-  local t = {}
-  local data=formatmultidata(d,f)
-  local r, c, h = _M.request{
-    url = u,
-    method = "POST",
-    headers = copy({
-      ["Content-Type"] = "multipart/form-data;boundary="..boundary,
-      ["Accept-Language"] = "zh-cn,zh;q=0.5",
-      ["Accept-Charset"] = "utf-8",
-      ["Content-Length"] = #data,
-      ['Cookie']=cok or _M.cookie,
-      ["User-Agent"]=ua or _M.ua,
-    },hdr or _M.header),
-    source = ltn12.source.string(data),
-    sink = ltn12.sink.table(t)}
-  return table.concat(t),checkcookie(h), c, h
-end
-
-function _M.get(u,cok,ua,hdr)
-  local t = {}
-  local r, c, h = _M.request{
-   url = u,
-   method = "GET",
-   headers = copy({
-    ["Content-Type"] = "application/x-www-form-urlencoded",
-    ["Accept-Language"] = "zh-cn,zh;q=0.5",
-    ["Accept-Charset"] = "utf-8",
-    ['Cookie']=cok or _M.cookie,
-    ["User-Agent"]=ua or _M.ua,
-  },hdr or _M.header),
-   sink = ltn12.sink.table(t)}
-  return table.concat(t),checkcookie(h), c, h
- end
-
-function _M.download(u,p,cok,ua,ref,hdr)
-  local f = io.open(p,"w")
-  local r, c, h = _M.request{
-   url = u,
-   method = "GET",
-   headers = copy({
-    ["Content-Type"] = "application/x-download",
-    --["Accept-Language"] = "zh-cn,zh;q=0.5",
-    --["Accept-Charset"] = "utf-8",
-    --["Range:bytes"]=range or "0-",
-    ["Referer"]=ref or u:find('(http://[^/]+)'),
-    ['Cookie']=cok or _M.cookie,
-    ["User-Agent"]=ua or _M.ua,
-   },hdr or _M.header),
-   sink = ltn12.sink.file(f)}
-  return c, h
- end
 
 return _M

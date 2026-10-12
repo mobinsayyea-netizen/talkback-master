@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_assistant" android:title="Voice Assistant">
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_gemini_key" android:title="Gemini: key and model" android:summary="Used for image, screen and video descriptions">
-      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.actor.gemini.GeminiSettingsActivity"/>
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.actor.gemini.GeminiSettingsActivity"/>
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_gemini_cmd" android:title="Gemini voice command" android:fragment="com.google.android.accessibility.talkback.preference.base.GeminiSettingsFragment"/>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
@@ -11,13 +11,13 @@
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_tools" android:title="Tools">
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_translate" android:title="Translate &amp; OCR" android:summary="Text reading, languages and language packs">
-      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity"/>
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.translate.TranslateSettingsActivity"/>
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_clipboard" android:title="Clipboard" android:summary="Copied text history, favorites and paste">
-      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.clipboard.ClipboardActivity"/>
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.clipboard.ClipboardActivity"/>
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_check_permissions" android:title="Check permissions" android:summary="See which permissions are granted and grant the missing ones">
-      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.permission.MsPermissionsActivity">
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.permission.MsPermissionsActivity">
         <extra android:name="from_settings" android:value="true"/>
       </intent>
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
@@ -25,12 +25,32 @@
       <intent android:action="android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS"/>
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_backup" android:title="Backup and restore" android:summary="Back up everything to Google Drive or a file and restore it">
-      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.backup.SettingsBackupActivity"/>
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.backup.SettingsBackupActivity"/>
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+  </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
+  <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_extensions" android:title="Extensions">
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_ext_list" android:title="Extensions" android:summary="Create, edit and run Lua extensions">
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.editor.ExtensionListActivity"><extra android:name="kind" android:value="ext"/></intent>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_tool_list" android:title="Tools" android:summary="Create, edit and run Lua tools">
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.editor.ExtensionListActivity"><extra android:name="kind" android:value="tool"/></intent>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_ext_resources" android:title="Resource manager" android:summary="Import .ppk / .xpk, save and restore extensions">
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.editor.ResourceManagerActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_ext_gestures" android:title="Extension gestures" android:summary="Run an extension or tool with a swipe gesture">
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.editor.ExtensionGesturesActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_ext_voice" android:title="Custom voice commands" android:summary="Say a phrase to run an extension or tool">
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.editor.VoiceCommandsActivity"/>
+    </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:defaultValue="true" android:key="ms_ext_autostart" android:title="Autostart extensions" android:summary="Run extensions that listen for service_started when the screen reader starts"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:defaultValue="true" android:key="ms_ext_voice_allow_ext" android:title="Voice assistant may run extensions" android:summary="Allow custom voice commands to start extensions"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:defaultValue="true" android:key="ms_ext_voice_allow_tool" android:title="Voice assistant may run tools" android:summary="Allow custom voice commands to start tools"/>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g9_about" android:title="About">
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_update" android:title="Check for updates" android:summary="See if a newer build is available and install it">
-      <intent android:targetPackage="@string/app_id" android:targetClass="com.google.android.accessibility.talkback.updater.CheckForUpdatesActivity"/>
+      <intent android:targetPackage="com.mobeen.msscreenreader" android:targetClass="com.google.android.accessibility.talkback.updater.CheckForUpdatesActivity"/>
     </com.google.android.accessibility.material.preference.AccessibilitySuitePreference>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="@string/pref_new_feature_in_talkback_entry_point_key" android:title="What's new"/>
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g9_feedback" android:title="Share feedback"/>

@@ -415,7 +415,7 @@ public abstract class GestureMatcher {
    * that there is no conflict with another gesture or for gestures that explicitly require a hold.
    */
   protected final void completeAfterLongPressTimeout(EventId eventId, MotionEvent event) {
-    completeAfter(ViewConfiguration.getLongPressTimeout(), eventId, event);
+    completeAfter(GestureConfiguration.longPressTimeoutMs(), eventId, event);
   }
 
   /**

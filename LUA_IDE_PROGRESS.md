@@ -115,3 +115,54 @@ STILL NOT DONE (REMAINING_COMMANDS.txt lists them; they return false, never thro
 - Needs a design decision: suspend browse by touch, suspend speech feedback + touch, lock touch, suspend edge gestures, suspend screen-reader gestures, toggle multi-finger gestures, suspend main TTS, accessibility volume suspend, earpiece mode, switch TTS engine (TalkBack here has no real suspend; each needs a flag read in the right place).
 - Settings flags missing: automatic translation, automatic OCR, lift to activate, tap to move focus (no saved switch exists to toggle).
 - Modes with no counterpart yet: list browsing, enhanced detail, quick browsing, screen grid, granular browsing/editing, list copying, full text editing, edit current text, long press and hold, left/right shortcut, select navigation type, previous/next element of a type, backwards automatic browsing.
+
+## Step 17 (2026-10-10) - see STEP17_NOTES.md
+Done (unverified, not compiled): packages .ppk/.xpk, Resource manager, Extension dialog, autostart + voice switches, extension on gesture, opt-in hooks (4 of ~10), editor Code tools. REMAINING: GitHub build first; other hooks; per-app gesture schemes.
+
+
+## Step 28 (2026-10-11)
+- Updated Lua Editor automatic-click insertion to generate a single Jieshuo-style table sequence and `return true` guard.
+- Added `LuaServiceApi.openUrl(String)` and sound API methods for clock, scroll, gesture begin/end, action item, plus signature-compatible overloads. The legacy overload arguments are currently ignored pending verification of their exact semantics.
+- Confirmed ExtensionListActivity already implements keyword filtering and long-press Delete/Rename/Send (Android share chooser), so no duplicate controls were added.
+- Blocked: the archive does not actually contain `reference/androlua/` or the planned Java sources for LuaAsyncTask/LuaThread/LuaTimer/Http/Download. Engine repair and native-library work must wait for those source files; no fake replacement classes were added.
+- Not build-tested; user runs GitHub Actions.
+
+
+## Step 29 (2026-10-11) — guarded import fallback [UNVERIFIED]
+- `assets/lua/import.lua` no longer assumes `LuaAsyncTask`, `LuaThread`, and `LuaTimer` always exist: class binding is guarded with `pcall`. When absent, task/thread/timer calls register work with the existing serialized `service.scheduleTask()` + `__jx_run` scheduler. The fallback is deliberately not claimed as full AndroLua parity; thread object behavior and timer cancellation need runtime tests.
+- `LuaServiceApi.doFile(path, args...)` now pushes positional arguments before calling the loaded Lua chunk, instead of silently discarding them.
+- Source archive inspection confirmed `reference/androlua/`, `LuaAsyncTask.java`, `LuaThread.java`, `LuaTimer.java`, `Http.java`, `Download.java`, and the planned native libraries are not present in the supplied ZIP. No Java stubs or native binaries were invented.
+- Not compiled; no Lua runtime or Android build available in this environment. User must run GitHub Actions and report build logs.
+
+
+## Step 30 (2026-10-11) — upstream source audit [UNVERIFIED]
+- Confirmed public upstream source pages for the missing AndroLua helper classes. The source archive is not present in this project ZIP and the current environment could not clone/download GitHub into the working directory.
+- Added a source map and a static verification script; no pretend Java replacements were added.
+- No Android build or device test was run.
+
+
+## Step 31 (2026-10-11) — HTTP fallback + decompiled API references [UNVERIFIED]
+- Replaced the runtime `assets/lua/http.lua` implementation that required missing `socket`, `socket.url`, `ltn12`, `mime`, and `socket.headers` modules with a Java `URL`/`URLConnection` implementation. It exposes `get`, `post`, `download`, and multipart `upload` with the documented AndroLua-style return shapes. This is a compatibility implementation, not the original `com.androlua.Http` Java class; runtime behavior still needs testing.
+- Preserved the old LuaSocket implementation in `reference/legacy_http_luasocket.lua` for license/history reference only; it is not loaded by the app.
+- Extracted Jieshuo `LuaAsyncTask`, `LuaThread`, `LuaTimer`, `LuaTimerTask`, `Http`, `Download`, and `Ticker` smali files from the user-provided `cSr.zip` to `reference/jieshuo_smali/`. These are reference-only decompiled files, not build inputs and not Java source.
+- Added `devtools/step31/verify_step31.py`; 6/6 static checks passed. No Lua interpreter, Android build, or phone test was run. `LuaAsyncTask`/`LuaThread`/`LuaTimer` Java implementations and native `bson`/`cjson`/`crypt`/`regex` modules remain outstanding. Package ID, signing, and keys were not changed.
+
+
+## Step 33 (2026-10-11) — service hooks and aliases
+- Added `runHookBoolean` and integrated opt-in `onKeyEvent`, `onGestureDetected`, and `onVolumeChanged` hooks. Key/gesture `true` return is used to consume the event; volume hook runs asynchronously.
+- Added common AccessibilityService forwarding methods and Jieshuo-style folder path aliases.
+- Static source-marker checks pass. Full setter API, native libraries, remaining commands/features, real package import, Android build and device validation are still open. See `STEP33_NOTES.md`.
+
+## Step 35 — asynchronous Lua object lifecycle (2026-10-11)
+- Fixed `LuaServiceApi.regGc()` previously being empty by tracking `LuaGcable` objects and adding `unregGc()` to the LuaContext lifecycle contract.
+- Prevented normal script completion from closing the Lua state while registered asynchronous tasks/threads/timers still need it; state closes when scheduled work and registered objects are idle.
+- Added unregister paths for async task completion/cancellation, Lua thread termination, and one-shot timer callbacks.
+- Added `devtools/step35/verify_step35.py`; static checks only. Android build/device behavior is unverified.
+- Still open: native modules, exact API/setter parity, unsupported commands needing new features/design, real .ppk package tests, and GitHub Actions build.
+
+## Step 37 (2026-10-11) — fix live setter mappings + guard HTTP errors
+- Fixed a Step 36 bug: real settings mappings were writing into the separate `jx_compat_settings` preference file, while MobinSR features read TalkBack's normal preference store. Real mappings now write to `SharedPreferencesUtils` preferences.
+- Added actual mappings for `setUseLog`, `setAutoTrans`, `setUseHotkey` (inverted flag), and `setIncallMode` / earpiece mode. Earpiece command and direct API setter share the same helper.
+- HTTP `get`, `post`, `download`, and multipart `upload` now guard top-level network/file exceptions and attempt connection cleanup. Success return shapes remain unchanged; failures can return an extra error string.
+- Added `devtools/step37/verify_step37.py`; all Step 30–37 static scripts passed.
+- Still not done: native `bson/cjson/crypt/regex` integration, real behavior for stored-only setter placeholders, remaining command features, Android build, Lua runtime tests, phone tests, real `.ppk` compatibility. Do not claim full Jieshuo parity.

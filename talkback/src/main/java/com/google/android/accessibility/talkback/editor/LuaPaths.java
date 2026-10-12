@@ -50,6 +50,26 @@ public final class LuaPaths {
     return f;
   }
 
+  /** Resolves common Jieshuo directory names to MobinSR's canonical storage folders. */
+  public static File alias(Context c, String name) {
+    if (name == null) return base(c);
+    String n = name.trim().replace('\\', '/');
+    while (n.startsWith("/")) n = n.substring(1);
+    String lower = n.toLowerCase(java.util.Locale.ROOT);
+    if (lower.equals("plugins") || lower.equals("plugin") || lower.equals("extensions") || lower.equals("extension")) return extensions(c);
+    if (lower.equals("tools") || lower.equals("tool")) return tools(c);
+    if (lower.equals("custom voice commands") || lower.equals("customvoicecommands") || lower.equals("voicecommands") || lower.equals("voice commands")) {
+      File f = new File(base(c), "Custom voice commands"); f.mkdirs(); return f;
+    }
+    if (lower.equals("timer") || lower.equals("timers")) {
+      File f = new File(base(c), "Timer"); f.mkdirs(); return f;
+    }
+    if (lower.equals("profiles") || lower.equals("profile")) {
+      File f = new File(base(c), "Profiles"); f.mkdirs(); return f;
+    }
+    return new File(base(c), n);
+  }
+
   public static void requestAllFilesAccess(Activity a) {
     try {
       if (Build.VERSION.SDK_INT >= 30) {

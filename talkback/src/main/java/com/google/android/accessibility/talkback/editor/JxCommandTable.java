@@ -44,6 +44,9 @@ final class JxCommandTable {
     // ---- switches (Step 8): suspend / resume browse by touch (auto-resumes after 2 minutes)
     MAP.put("command_disable_touch", (api, ctx, s, n) -> s.msToggleTouchBrowse());
 
+    // Step 18: opens the gesture scheme of the app in the foreground (creates it if missing)
+    MAP.put("ms_edit_app_gestures", (api, ctx, s, n) -> editCurrentAppGestures(s));
+
     // Step 9: switch to the next installed TTS engine (the setting is read by FailoverTextToSpeech).
     MAP.put("command_toggle_tts_engine", (api, ctx, s, n) -> nextTtsEngine(api, ctx));
     // Step 9: "Custom voice commands" folder and the automatic click builder
@@ -109,10 +112,11 @@ final class JxCommandTable {
     MAP.put("app", (api, ctx, s, n) -> JxPickerActivity.show(ctx, JxPickerActivity.KIND_APPS));
     // Jieshuo has separate main / recognition / functions / per-app menus; here they are all
     // TalkBack's grouped menu (Recognition, Navigation, Functions, Extensions groups).
-    for (String id :
-        new String[] {
-          "main_menu", "advanced_menu_title", "quick_menu_title", "action_menu_title", "command_node_menu"
-        }) {
+    // Step 21: Main, Recognition and Functions menus are now separate windows (MsMenus).
+    MAP.put("main_menu", (api, ctx, s, n) -> MsMenus.showMain(s));
+    MAP.put("advanced_menu_title", (api, ctx, s, n) -> MsMenus.showRecognition(s));
+    MAP.put("action_menu_title", (api, ctx, s, n) -> MsMenus.showFunctions(s, n));
+    for (String id : new String[] {"quick_menu_title", "command_node_menu"}) {
       MAP.put(id, (api, ctx, s, n) -> s.msShowMenu(false));
     }
     MAP.put("actions", (api, ctx, s, n) -> s.msShowMenu(true));
@@ -150,6 +154,7 @@ final class JxCommandTable {
 
     // Step 14: the last 30 commands (notifications, chat, node lists, switches, location ...)
     MsExtras.register(MAP);
+    MsNavCommands.register(MAP);
   }
 
   /** Returns null when the id is not in the table. */
@@ -312,6 +317,22 @@ final class JxCommandTable {
     return true;
   }
 
+  /** service.setTimerMode(bool): true starts or resumes the stopwatch, false stops and resets it. */
+  static void timerSet(LuaServiceApi api, boolean on) {
+    if (on) {
+      if (!timerRunning) {
+        boolean fresh = timerElapsedBefore == 0;
+        timerStartedAt = android.os.SystemClock.elapsedRealtime();
+        timerRunning = true;
+        api.speak(fresh ? "Timer started" : "Timer resumed");
+      }
+    } else if (timerRunning || timerElapsedBefore > 0) {
+      timerRunning = false;
+      timerElapsedBefore = 0;
+      api.speak("Timer stopped");
+    }
+  }
+
   private static boolean timerPauseOrResume(LuaServiceApi api) {
     if (timerRunning) {
       timerElapsedBefore = timerNow();
@@ -375,5 +396,15 @@ final class JxCommandTable {
     }
     m.showInputMethodPicker();
     return true;
+  }
+
+  private static boolean editCurrentAppGestures(TalkBackService s) {
+    String pkg = AppGestureSchemes.foregroundPackage(s);
+    if (pkg == null) {
+      LuaServiceApi.speakStatic("No application in front");
+      return false;
+    }
+    AppGestureSchemes.create(s, pkg);
+    return ExtensionGesturesActivity.showForApp(s, pkg);
   }
 }

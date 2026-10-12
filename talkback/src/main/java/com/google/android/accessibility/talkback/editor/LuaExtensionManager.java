@@ -26,7 +26,14 @@ import java.util.concurrent.Executors;
  * -- title: My extension          (name shown in the menu; default = folder name)
  * -- menu: off                    (do not show in the menu)
  * -- event: app_opened, notification
+ * -- hook: onNotification, onWindowStateChanged
  * </pre>
+ *
+ * Hooks (opt-in with the "-- hook:" line): the script is run, then the Lua function with that name
+ * is called with (package, text). The top-level code of main.lua runs every time too, so guard it
+ * with {@code if service_hook == nil then ... end}. Names: onWindowStateChanged, onNotification,
+ * onScrolled, onViewLongClicked, onKeyEvent, onGestureDetected, onVolumeChanged. Key and gesture hooks run synchronously; returning true consumes the event. Their arguments and the "return true = consumed" rule of Jieshuo
+ * are NOT confirmed (Jieshuo's real signatures cannot be read from its obfuscated code).
  *
  * Events: window_changed, app_opened, notification, service_started. When an extension runs from
  * an event, the Lua globals event_type, event_package and event_text are set. When it runs from the
@@ -47,13 +54,16 @@ public final class LuaExtensionManager {
     public final String title;
     public final boolean inMenu;
     public final Set<String> events;
+    public final Set<String> hooks;
     public final File main;
 
-    Extension(String folder, String title, boolean inMenu, Set<String> events, File main) {
+    Extension(
+        String folder, String title, boolean inMenu, Set<String> events, Set<String> hooks, File main) {
       this.folder = folder;
       this.title = title;
       this.inMenu = inMenu;
       this.events = events;
+      this.hooks = hooks;
       this.main = main;
     }
   }
@@ -61,9 +71,21 @@ public final class LuaExtensionManager {
   private static final ExecutorService WORKER = Executors.newSingleThreadExecutor();
   private static final Map<String, Long> lastRun = new HashMap<>();
   private static List<Extension> menuList = new ArrayList<>();
+  private static List<Extension> cachedList = new ArrayList<>();
+  private static long cachedAt = 0L;
   private static String lastPackage = "";
 
   private LuaExtensionManager() {}
+
+  /** Same as list() but remembered for 3 seconds, for frequent events. Call on the worker thread. */
+  private static synchronized List<Extension> cached(Context context) {
+    long now = System.currentTimeMillis();
+    if (now - cachedAt > 3000L) {
+      cachedList = list(context);
+      cachedAt = now;
+    }
+    return cachedList;
+  }
 
   public static boolean isMenuId(int id) {
     return id >= MENU_ID_BASE && id < MENU_ID_MAX;
@@ -88,8 +110,9 @@ public final class LuaExtensionManager {
         continue;
       }
       String title = dir.getName();
-      boolean inMenu = true;
+      boolean inMenu = false; // only extensions with "-- menu: on" appear in the screen reader menu
       Set<String> events = new HashSet<>();
+      Set<String> hooks = new HashSet<>();
       try (BufferedReader r = new BufferedReader(new FileReader(main))) {
         String line;
         int n = 0;
@@ -108,7 +131,13 @@ public final class LuaExtensionManager {
           if (key.equals("title") && !value.isEmpty()) {
             title = value;
           } else if (key.equals("menu")) {
-            inMenu = !value.equalsIgnoreCase("off");
+            inMenu = !value.equalsIgnoreCase("off") && !value.equalsIgnoreCase("no");
+          } else if (key.equals("hook")) {
+            for (String h : value.split("[,\\s]+")) {
+              if (!h.isEmpty()) {
+                hooks.add(h);
+              }
+            }
           } else if (key.equals("event")) {
             for (String e : value.split("[,\\s]+")) {
               if (!e.isEmpty()) {
@@ -120,7 +149,7 @@ public final class LuaExtensionManager {
       } catch (Exception ignored) {
         // Unreadable header: still list the extension with defaults.
       }
-      result.add(new Extension(dir.getName(), title, inMenu, events, main));
+      result.add(new Extension(dir.getName(), title, inMenu, events, hooks, main));
     }
     return result;
   }
@@ -175,9 +204,99 @@ public final class LuaExtensionManager {
     } else if (type == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED) {
       dispatch(context, "notification", pkg, describe(event));
     }
+    String hook = null;
+    if (type == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+      hook = "onWindowStateChanged";
+    } else if (type == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED) {
+      hook = "onNotification";
+    } else if (type == AccessibilityEvent.TYPE_VIEW_SCROLLED) {
+      hook = "onScrolled";
+    } else if (type == AccessibilityEvent.TYPE_VIEW_LONG_CLICKED) {
+      hook = "onViewLongClicked";
+    }
+    if (hook != null) {
+      dispatchHook(context, hook, pkg, describe(event));
+    }
+  }
+
+  /** Synchronous opt-in key hook. Returning true from Lua consumes the key event. */
+  public static boolean handleKeyEvent(Context context, android.view.KeyEvent event) {
+    if (event == null || context == null) return false;
+    List<Extension> all;
+    try { all = cached(context.getApplicationContext()); } catch (Throwable t) { return false; }
+    for (Extension ext : all) {
+      if (!ext.hooks.contains("onKeyEvent")) continue;
+      try {
+        if (LuaServiceApi.runHookBoolean(context, ext.main, "onKeyEvent", event)) return true;
+      } catch (Throwable ignored) { }
+    }
+    return false;
+  }
+
+  /** Dispatches an opt-in volume hook with (streamType, current, previous, percent). */
+  public static void onVolumeChanged(Context context, int type, int value, int previous, int percent) {
+    if (context == null) return;
+    List<Extension> all;
+    try { all = cached(context.getApplicationContext()); } catch (Throwable t) { return; }
+    for (Extension ext : all) {
+      if (!ext.hooks.contains("onVolumeChanged")) continue;
+      WORKER.execute(() -> {
+        try { LuaServiceApi.runHookBoolean(context, ext.main, "onVolumeChanged", type, value, previous, percent); }
+        catch (Throwable ignored) { }
+      });
+    }
+  }
+
+  /** Synchronous opt-in gesture hook. Returning true from Lua consumes the gesture. */
+  public static boolean handleGesture(Context context, int gestureId) {
+    if (context == null) return false;
+    List<Extension> all;
+    try { all = cached(context.getApplicationContext()); } catch (Throwable t) { return false; }
+    for (Extension ext : all) {
+      if (!ext.hooks.contains("onGestureDetected")) continue;
+      try {
+        if (LuaServiceApi.runHookBoolean(context, ext.main, "onGestureDetected", gestureId)) return true;
+      } catch (Throwable ignored) { }
+    }
+    return false;
+  }
+
+  private static void dispatchHook(
+      Context context, final String hook, final String pkg, final String text) {
+    final Context app = context.getApplicationContext();
+    final long now = System.currentTimeMillis();
+    WORKER.execute(
+        () -> {
+          List<Extension> all;
+          try {
+            all = cached(app);
+          } catch (Throwable t) {
+            return;
+          }
+          for (Extension ext : all) {
+            if (!ext.hooks.contains(hook)) {
+              continue;
+            }
+            String key = ext.folder + "|hook|" + hook;
+            synchronized (lastRun) {
+              Long last = lastRun.get(key);
+              if (last != null && now - last < 500L) {
+                continue;
+              }
+              lastRun.put(key, now);
+            }
+            String err = LuaServiceApi.runHook(app, ext.main, hook, pkg, text);
+            if (err != null) {
+              LuaServiceApi.speakStatic("Extension " + ext.title + ": " + err);
+            }
+          }
+        });
   }
 
   public static void onServiceStarted(Context context) {
+    if (!MsExtSettings.autostart(context)) {
+      return;
+    }
     dispatch(context, "service_started", "", "");
   }
 

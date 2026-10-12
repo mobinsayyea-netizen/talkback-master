@@ -3,6 +3,7 @@ package com.google.android.accessibility.talkback.editor;
 import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.BatteryManager;
@@ -36,14 +37,14 @@ import java.util.Map;
  * The Lua "service" object: Lua scripts see it as the global `service`. It is also the LuaContext
  * that AndroLua's import.lua expects. One instance = one Lua state = one script run.
  */
-public class LuaServiceApi implements LuaContext {
+public class LuaServiceApi extends android.content.ContextWrapper implements LuaContext {
   private static final int MAX_PENDING_TASKS = 200;
   private static final long MAX_TASK_DELAY_MS = 10 * 60 * 1000L;
   private static final java.util.concurrent.ScheduledExecutorService TASKS =
       java.util.concurrent.Executors.newScheduledThreadPool(2);
 
-  /** Lua is single threaded: the main script and every task take this lock one at a time. */
-  private final Object luaLock = new Object();
+  // Lua is single threaded: the main script, every callback and every task take the LuaState itself as the lock, one at a time
+  // (com.androlua.* classes synchronize on getLuaState() too).
 
   private final java.util.concurrent.atomic.AtomicInteger pending =
       new java.util.concurrent.atomic.AtomicInteger();
@@ -55,9 +56,13 @@ public class LuaServiceApi implements LuaContext {
   private final Context ctx;
   private final File scriptDir;
   private final LuaState L;
+  private File luaLibDir;
   private final Handler ui = new Handler(Looper.getMainLooper());
   private final Map<String, Object> globalData = new HashMap<>();
   private final ArrayList<ClassLoader> loaders = new ArrayList<>();
+  // Keep Lua alive while LuaAsyncTask/LuaThread/LuaTimerTask objects still depend on its state.
+  private final java.util.Set<LuaGcable> gcables =
+      java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<LuaGcable, Boolean>());
   private final HashMap<String, String> libs = new HashMap<>();
   private final StringBuilder log = new StringBuilder();
   private String luaExtDir;
@@ -73,6 +78,21 @@ public class LuaServiceApi implements LuaContext {
     TalkBackService s = TalkBackService.getInstance();
     if (s != null && text != null) {
       s.getSpeechController().speak(text, Performance.EVENT_ID_UNTRACKED, SpeakOptions.create());
+    }
+  }
+
+  /** Runs one execute() command by name, no script needed (used by gesture schemes). Worker thread. */
+  public static boolean executeStatic(Context ctx, String name) {
+    LuaServiceApi api = null;
+    try {
+      api = new LuaServiceApi(ctx.getApplicationContext(), LuaPaths.base(ctx));
+      return name != null && JxCommands.run(api, api.ctx, name, null);
+    } catch (Throwable t) {
+      return false;
+    } finally {
+      if (api != null) {
+        api.finishMain();
+      }
     }
   }
 
@@ -98,7 +118,7 @@ public class LuaServiceApi implements LuaContext {
           api.L.setGlobal(e.getKey());
         }
       }
-      synchronized (api.luaLock) {
+      synchronized (api.L) {
         return api.runFile(script, node);
       }
     } catch (Throwable t) {
@@ -111,12 +131,98 @@ public class LuaServiceApi implements LuaContext {
     }
   }
 
+  /**
+   * Runs a script for a hook: the script runs once (so its functions exist), then the global Lua
+   * function {@code hook} is called with (package, text). Returns null on success or an error text.
+   * The global service_hook holds the hook name while the script runs. Worker thread only.
+   */
+  public static String runHook(Context ctx, File script, String hook, String pkg, String text) {
+    if (depth >= MAX_DEPTH) {
+      return "Too many nested scripts";
+    }
+    depth++;
+    LuaServiceApi api = null;
+    try {
+      api = new LuaServiceApi(ctx.getApplicationContext(), script.getParentFile());
+      api.L.pushString(hook);
+      api.L.setGlobal("service_hook");
+      synchronized (api.L) {
+        String err = api.runFile(script, null);
+        if (err != null) {
+          return err;
+        }
+        return api.callHook(hook, pkg, text);
+      }
+    } catch (Throwable t) {
+      return "Error: " + t;
+    } finally {
+      depth--;
+      if (api != null) {
+        api.finishMain();
+      }
+    }
+  }
+
+  /** Runs an opt-in hook and returns true only when its Lua function explicitly returns true. */
+  public static boolean runHookBoolean(Context ctx, File script, String hook, Object... args) {
+    if (depth >= MAX_DEPTH || script == null || !script.isFile() || hook == null) return false;
+    depth++;
+    LuaServiceApi api = null;
+    try {
+      api = new LuaServiceApi(ctx.getApplicationContext(), script.getParentFile());
+      api.L.pushString(hook);
+      api.L.setGlobal("service_hook");
+      synchronized (api.L) {
+        String err = api.runFile(script, null);
+        if (err != null) return false;
+        int top = api.L.getTop();
+        api.L.getGlobal(hook);
+        if (!api.L.isFunction(-1)) { api.L.setTop(top); return false; }
+        int count = args == null ? 0 : args.length;
+        if (args != null) for (Object arg : args) api.L.pushObjectValue(arg);
+        int rc = api.L.pcall(count, 1, 0);
+        boolean consumed = rc == 0 && api.L.isBoolean(-1) && api.L.toBoolean(-1);
+        if (rc != 0) api.log("Error in " + hook + ": " + api.L.toString(-1));
+        api.L.setTop(top);
+        return consumed;
+      }
+    } catch (Throwable t) {
+      return false;
+    } finally {
+      depth--;
+      if (api != null) api.finishMain();
+    }
+  }
+
+  private String callHook(String name, String pkg, String text) {
+    int top = L.getTop();
+    L.getGlobal(name);
+    if (!L.isFunction(-1)) {
+      L.setTop(top);
+      return null;
+    }
+    L.pushString(pkg == null ? "" : pkg);
+    L.pushString(text == null ? "" : text);
+    int rc = L.pcall(2, 1, 0);
+    if (rc != 0) {
+      String err = L.toString(-1);
+      L.setTop(top);
+      return "Error in " + name + ": " + err;
+    }
+    L.setTop(top);
+    return null;
+  }
+
   private LuaServiceApi(Context c, File dir) throws Exception {
+    // Step 42: the Lua `service` is now a real Context (wrapping the accessibility service), so scripts can
+    // pass it where Android needs a Context: LinearLayout(service), AlertDialog.Builder(service), ArrayAdapter(service, ...).
+    super(c);
     ctx = c;
     scriptDir = dir;
     luaExtDir = LuaPaths.base(c).getAbsolutePath();
     LuaEnhancer.sContext = c;
     File luaLib = prepareLuaAssets();
+    luaLibDir = luaLib;
     L = LuaStateFactory.newLuaState();
     L.openLibs();
     L.pushJavaObject(this);
@@ -200,6 +306,11 @@ public class LuaServiceApi implements LuaContext {
   }
 
   private String runFile(File script, AccessibilityNodeInfo node) {
+    return runFileWithArgs(script, node, new Object[0]);
+  }
+
+  /** Runs a Lua file with positional arguments, as expected by AndroLua's doFile API. */
+  private String runFileWithArgs(File script, AccessibilityNodeInfo node, Object... args) {
     if (node != null) {
       L.pushJavaObject(node);
       L.setGlobal("node");
@@ -207,18 +318,29 @@ public class LuaServiceApi implements LuaContext {
     int top = L.getTop();
     int ok = L.LloadFile(script.getAbsolutePath());
     if (ok == 0) {
-      ok = L.pcall(0, 0, 0);
+      try {
+        if (args != null) {
+          for (Object arg : args) {
+            L.pushObjectValue(arg);
+          }
+        }
+        ok = L.pcall(args == null ? 0 : args.length, 0, 0);
+      } catch (Throwable t) {
+        L.setTop(top);
+        return "Error: " + t;
+      }
     }
     if (ok != 0) {
       String err = L.toString(-1);
       L.setTop(top);
       return "Error: " + err;
     }
+    L.setTop(top);
     return null;
   }
 
   private void close() {
-    synchronized (luaLock) {
+    synchronized (L) {
       if (closed) {
         return;
       }
@@ -230,12 +352,18 @@ public class LuaServiceApi implements LuaContext {
     }
   }
 
-  /** Main script ended: close the Lua state now, or later when the last task has run. */
+  /** Main script ended: close only after scheduled tasks and registered Lua objects finish. */
   private void finishMain() {
     mainDone = true;
-    if (pending.get() == 0) {
-      close();
+    closeIfIdle();
+  }
+
+  private void closeIfIdle() {
+    boolean idle;
+    synchronized (gcables) {
+      idle = mainDone && pending.get() == 0 && gcables.isEmpty();
     }
+    if (idle) close();
   }
 
   /** Used by Lua thread(...) / task(...) (see the prelude): run task {@code id} after ms. */
@@ -257,7 +385,7 @@ public class LuaServiceApi implements LuaContext {
 
   private void runTask(int id) {
     try {
-      synchronized (luaLock) {
+      synchronized (L) {
         if (closed) {
           return;
         }
@@ -280,6 +408,52 @@ public class LuaServiceApi implements LuaContext {
   }
 
   // ---------------------------------------------------------------- service.* for scripts
+
+  // AccessibilityService methods exposed directly to Lua scripts for Jieshuo-style compatibility.
+  // These forward to the live TalkBack service when available and fail safely otherwise.
+  public boolean performGlobalAction(int action) {
+    TalkBackService service = TalkBackService.getInstance();
+    return service != null && service.performGlobalAction(action);
+  }
+
+  public AccessibilityNodeInfo getRootInActiveWindow() {
+    TalkBackService service = TalkBackService.getInstance();
+    return service == null ? null : service.getRootInActiveWindow();
+  }
+
+  public List<android.view.accessibility.AccessibilityWindowInfo> getWindows() {
+    TalkBackService service = TalkBackService.getInstance();
+    return service == null ? java.util.Collections.emptyList() : service.getWindows();
+  }
+
+  public android.accessibilityservice.AccessibilityServiceInfo getServiceInfo() {
+    TalkBackService service = TalkBackService.getInstance();
+    return service == null ? null : service.getServiceInfo();
+  }
+
+  public void setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo info) {
+    TalkBackService service = TalkBackService.getInstance();
+    if (service != null && info != null) service.setServiceInfo(info);
+  }
+
+  public void startActivity(Intent intent) {
+    if (intent == null) return;
+    Intent safe = new Intent(intent);
+    safe.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    try { ctx.startActivity(safe); } catch (Throwable t) { log("startActivity: " + t); }
+  }
+
+  public void startActivity(String action) {
+    if (action == null || action.trim().isEmpty()) return;
+    try { startActivity(new Intent(action)); } catch (Throwable t) { log("startActivity: " + t); }
+  }
+
+  public Context getApplicationContext() { return ctx.getApplicationContext(); }
+  public String getPackageName() { return ctx.getPackageName(); }
+  public PackageManager getPackageManager() { return ctx.getPackageManager(); }
+  public android.content.res.Resources getResources() { return ctx.getResources(); }
+  public Object getSystemService(String name) { return name == null ? null : ctx.getSystemService(name); }
+  public android.content.ContentResolver getContentResolver() { return ctx.getContentResolver(); }
 
   /** service.execute("Click") etc.: any English, Chinese or id spelling of Jieshuo's 173 commands. */
   public boolean execute(String name) {
@@ -532,6 +706,161 @@ public class LuaServiceApi implements LuaContext {
     return moveFrom(n, FOCUS_BACKWARD);
   }
 
+  // ---- Step 16a: the last Jieshuo functions of the official API list (JX_API_REFERENCE_zh.txt)
+
+  public boolean toNextChar() {
+    return execute("command_to_next_char");
+  }
+
+  public boolean toPreviousChar() {
+    return execute("command_to_previous_char");
+  }
+
+  public boolean toNextLine() {
+    return execute("command_to_next_row");
+  }
+
+  public boolean toPreviousLine() {
+    return execute("command_to_previous_row");
+  }
+
+  /** In a text box: cursor to the beginning. Elsewhere: first visible item of the list. */
+  public boolean toTextStart() {
+    return textEdge(false);
+  }
+
+  /** In a text box: cursor to the end. Elsewhere: last visible item of the list. */
+  public boolean toTextEnd() {
+    return textEdge(true);
+  }
+
+  public boolean toListViewStart() {
+    return listEdge(false);
+  }
+
+  public boolean toListViewEnd() {
+    return listEdge(true);
+  }
+
+  private AccessibilityNodeInfo focusedOrInputNode() {
+    TalkBackService s = TalkBackService.getInstance();
+    AccessibilityNodeInfo root = s == null ? null : s.getRootInActiveWindow();
+    if (root == null) {
+      return null;
+    }
+    AccessibilityNodeInfo f = root.findFocus(AccessibilityNodeInfo.FOCUS_INPUT);
+    return f != null ? f : root.findFocus(AccessibilityNodeInfo.FOCUS_ACCESSIBILITY);
+  }
+
+  private boolean textEdge(boolean end) {
+    AccessibilityNodeInfo f = focusedOrInputNode();
+    if (f == null) {
+      return false;
+    }
+    if (f.isEditable()) {
+      CharSequence t = f.getText();
+      int pos = end && t != null ? t.length() : 0;
+      android.os.Bundle sel = new android.os.Bundle();
+      sel.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_START_INT, pos);
+      sel.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_END_INT, pos);
+      return f.performAction(AccessibilityNodeInfo.ACTION_SET_SELECTION, sel);
+    }
+    return listEdge(end);
+  }
+
+  /** Focus goes to the first (or last) visible child of the nearest scrollable parent. */
+  private boolean listEdge(boolean end) {
+    AccessibilityNodeInfo list = focusedOrInputNode();
+    int guard = 0;
+    while (list != null && guard++ < 25 && !(list.isScrollable() && list.getChildCount() > 0)) {
+      list = list.getParent();
+    }
+    if (list == null) {
+      return false;
+    }
+    int n = list.getChildCount();
+    for (int k = 0; k < n; k++) {
+      AccessibilityNodeInfo c = list.getChild(end ? n - 1 - k : k);
+      if (c != null && c.isVisibleToUser()) {
+        return c.performAction(AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS);
+      }
+    }
+    return false;
+  }
+
+  /**
+   * service.ocr(node): text of that node's area read on the phone. Off the main thread it waits
+   * (up to 12 s) and returns the text; on the main thread it cannot wait, so it speaks the result
+   * and returns null. Needs Android 11+.
+   */
+  public String ocr(AccessibilityNodeInfo node) {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s == null || node == null) {
+      return null;
+    }
+    android.graphics.Rect r = new android.graphics.Rect();
+    node.getBoundsInScreen(r);
+    if (r.isEmpty()) {
+      return null;
+    }
+    final boolean onMain = Looper.myLooper() == Looper.getMainLooper();
+    final String[] out = new String[1];
+    final java.util.concurrent.CountDownLatch done = new java.util.concurrent.CountDownLatch(1);
+    com.google.android.accessibility.talkback.translate.OcrTool.recognize(
+        s,
+        r,
+        (text, message) -> {
+          out[0] = text;
+          if (onMain) {
+            speak(text != null ? text : message);
+          }
+          done.countDown();
+        });
+    if (onMain) {
+      return null;
+    }
+    try {
+      done.await(12, java.util.concurrent.TimeUnit.SECONDS);
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+    }
+    return out[0];
+  }
+
+  public void setTimerMode(boolean on) {
+    JxCommandTable.timerSet(this, on);
+  }
+
+  /** Reading mode: true starts reading from the top, false stops. */
+  public void setAutoReadEnabled(boolean on) {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s != null) {
+      if (on) {
+        s.msStartReading(true);
+      } else {
+        s.msStopReading();
+      }
+    }
+  }
+
+  /** Automatic browsing: true starts reading from the focus, false stops. */
+  public void setAutoNext(boolean on) {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s != null) {
+      if (on) {
+        s.msStartReading(false);
+      } else {
+        s.msStopReading();
+      }
+    }
+  }
+
+  /** Gesture packages (.gpk) do not exist in this app yet, so this only says so. */
+  public boolean loadGesturePackage(String name) {
+    log("loadGesturePackage: gesture packages are not supported yet (" + name + ")");
+    return false;
+  }
+
   public AccessibilityNodeInfo getRootNodeInfo() {
     TalkBackService s = TalkBackService.getInstance();
     return s == null ? null : s.getRootInActiveWindow();
@@ -598,7 +927,7 @@ public class LuaServiceApi implements LuaContext {
         TalkBackService.getInstance(),
         px(x, true),
         px(y, false),
-        android.view.ViewConfiguration.getLongPressTimeout() + 150L);
+        MsGestureTiming.longClickMs(ctx));
   }
 
   public boolean press(double x, double y, int ms) {
@@ -658,7 +987,7 @@ public class LuaServiceApi implements LuaContext {
     if (n == null) {
       return false;
     }
-    if (tapNode(n, android.view.ViewConfiguration.getLongPressTimeout() + 150L)) {
+    if (tapNode(n, MsGestureTiming.longClickMs(ctx))) {
       return true;
     }
     return n.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
@@ -877,11 +1206,55 @@ public class LuaServiceApi implements LuaContext {
     return true;
   }
 
+  /** Opens a web address using Android's default handler. */
+  public void openUrl(String url) {
+    if (url == null || url.trim().isEmpty()) return;
+    try {
+      String value = url.trim();
+      if (!value.matches("(?i)^[a-z][a-z0-9+.-]*:.*")) value = "https://" + value;
+      Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(value));
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      ctx.startActivity(intent);
+    } catch (RuntimeException e) {
+      log("openUrl failed: " + e.getMessage());
+    }
+  }
+
+  /** Jieshuo-compatible sound slots backed by TalkBack's configurable sound theme. */
+  public void playSoundClock() {
+    com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("clock");
+  }
+
+  /** Compatibility overload; the legacy argument has no mapped TalkBack setting. */
+  public void playSoundClock(int ignored) { playSoundClock(); }
+
+  public void playSoundScroll() {
+    com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("scroll");
+  }
+
+  /** Compatibility overload; the legacy argument has no mapped TalkBack setting. */
+  public void playSoundScroll(float ignored) { playSoundScroll(); }
+
+  public void playSoundGestureBegin() {
+    com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("gesture_begin");
+  }
+
+  public void playSoundGestureEnd() {
+    com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("gesture_end");
+  }
+
+  public void playSoundActionItem() {
+    com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds.fire("action_item");
+  }
+
   /** Jieshuo: short tick sound on the accessibility audio stream. */
   public void playSoundTick() {
     com.google.android.accessibility.talkback.ExtraSounds.play(
         ctx, com.google.android.accessibility.talkback.R.raw.jx_tick);
   }
+
+  /** Compatibility overload; the legacy argument has no mapped TalkBack setting. */
+  public void playSoundTick(int ignored) { playSoundTick(); }
 
   public void toast(final String text) {
     ui.post(() -> Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show());
@@ -905,15 +1278,348 @@ public class LuaServiceApi implements LuaContext {
     return libs;
   }
 
+  // ---------------------------------------------------------------- Jieshuo setter compatibility (Step 36)
+  // Settings with an equivalent MobinSR feature are mapped below. Other values are retained
+  // separately so imported scripts can call the API without crashing; retaining a value does
+  // NOT claim that an unsupported Jieshuo feature has been implemented.
+  private android.content.SharedPreferences jxCompatPrefs() {
+    return ctx.getSharedPreferences("jx_compat_settings", Context.MODE_PRIVATE);
+  }
+
+  private void rememberCompatSetting(String name, Object value) {
+    if (name == null) return;
+    android.content.SharedPreferences p = jxCompatPrefs();
+    android.content.SharedPreferences.Editor e = p.edit();
+    String key = "api." + name;
+    if (value == null) {
+      e.remove(key);
+    } else if (value instanceof Boolean) {
+      e.putBoolean(key, (Boolean) value);
+    } else if (value instanceof Integer) {
+      e.putInt(key, (Integer) value);
+    } else if (value instanceof Long) {
+      e.putLong(key, (Long) value);
+    } else if (value instanceof Float) {
+      e.putFloat(key, (Float) value);
+    } else if (value instanceof Double) {
+      e.putFloat(key, ((Double) value).floatValue());
+    } else if (value instanceof String) {
+      e.putString(key, (String) value);
+    } else {
+      e.putString(key, String.valueOf(value));
+    }
+    e.apply();
+
+    // Apply only settings with an existing MobinSR behavior. Do not silently treat a stored
+    // compatibility placeholder as an implemented feature.
+    if ("setDoubleFlingTime".equals(name) && value instanceof Integer) {
+      // Multi-part gestures recognition time: the settings list stores it as a string (ms).
+      com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(ctx)
+          .edit().putString(MsMultiPartGestures.PREF_TIME, String.valueOf(value)).apply();
+      return;
+    }
+    if (!(value instanceof Boolean)) {
+      return;
+    }
+    boolean enabled = (Boolean) value;
+    android.content.SharedPreferences featurePrefs =
+        com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(ctx);
+    if ("setUseOCR".equals(name)) {
+      featurePrefs.edit().putBoolean(MsExtras.K_AUTO_OCR, enabled).apply();
+    } else if ("setUseEdgeGesture".equals(name)) {
+      featurePrefs.edit().putBoolean(MsExtras.K_NO_EDGE, !enabled).apply();
+    } else if ("setUseMultiTouchMode".equals(name)) {
+      featurePrefs.edit().putBoolean(MsExtras.K_NO_MULTI, !enabled).apply();
+    } else if ("setUseAccessibilityVolume".equals(name)
+        || "setAsyncUseAccessibilityVolume".equals(name)) {
+      featurePrefs.edit().putBoolean("ms_async_tts_accessibility_volume", enabled).apply();
+    } else if ("setUseLog".equals(name)) {
+      featurePrefs.edit().putBoolean(MsExtras.K_LOG, enabled).apply();
+    } else if ("setAutoTrans".equals(name)) {
+      featurePrefs.edit().putBoolean(MsExtras.K_AUTO_TRANS, enabled).apply();
+    } else if ("setUseHotkey".equals(name)) {
+      // MobinSR stores the inverse: true means hotkeys are disabled.
+      featurePrefs.edit().putBoolean("ms_cmd_disable_hotkey", !enabled).apply();
+    } else if ("setIncallMode".equals(name)) {
+      MsExtras.setEarpieceMode(ctx, enabled);
+    } else if ("setUseFingerprintGesture".equals(name)) {
+      featurePrefs.edit().putBoolean("ms_jx_use_fingerprint_gesture", enabled).apply();
+    } else if ("setUseFloatMenu".equals(name)) {
+      featurePrefs.edit().putBoolean("ms_jx_use_float_menu", enabled).apply();
+    }
+  }
+
+  /** Returns the stored compatibility value, or null if no value was recorded. */
+  public Object getCompatibilitySetting(String name) {
+    if (name == null) return null;
+    return jxCompatPrefs().getAll().get("api." + name);
+  }
+
+  public void setAcquireWakeLock(boolean arg0) { rememberCompatSetting("setAcquireWakeLock", arg0); }
+  public void setAlarmEndHour(java.lang.Integer arg0) { rememberCompatSetting("setAlarmEndHour", arg0); }
+  public void setAlarmInterval(int arg0) { rememberCompatSetting("setAlarmInterval", arg0); }
+  public void setAlarmStartHour(java.lang.Integer arg0) { rememberCompatSetting("setAlarmStartHour", arg0); }
+  public void setAsyncAudioFocus(boolean arg0) { rememberCompatSetting("setAsyncAudioFocus", arg0); }
+  public void setAsyncSpeakEnabled(boolean arg0) { rememberCompatSetting("setAsyncSpeakEnabled", arg0); }
+  public void setAsyncTTSSpeed(int arg0) { rememberCompatSetting("setAsyncTTSSpeed", arg0); }
+  public void setAsyncTTSVolume(float arg0) { rememberCompatSetting("setAsyncTTSVolume", arg0); }
+  public void setAsyncTtsEngine() { rememberCompatSetting("setAsyncTtsEngine", Boolean.TRUE); }
+  public void setAsyncTtsPitch(int arg0) { rememberCompatSetting("setAsyncTtsPitch", arg0); }
+  public void setAsyncTtsScale(float arg0) { rememberCompatSetting("setAsyncTtsScale", arg0); }
+  public void setAsyncUseAccessibilityVolume(boolean arg0) { rememberCompatSetting("setAsyncUseAccessibilityVolume", arg0); }
+  public void setAsyncUseProixmitySensor(boolean arg0) { rememberCompatSetting("setAsyncUseProixmitySensor", arg0); }
+  public void setAsyncUseTouchStop(boolean arg0) { rememberCompatSetting("setAsyncUseTouchStop", arg0); }
+  public void setAsyncUseWakeLock(boolean arg0) { rememberCompatSetting("setAsyncUseWakeLock", arg0); }
+  public void setAudioFocus(boolean arg0) { rememberCompatSetting("setAudioFocus", arg0); }
+  public void setAutoPrevious(boolean arg0) { rememberCompatSetting("setAutoPrevious", arg0); }
+  public void setAutoRead(boolean arg0) { rememberCompatSetting("setAutoRead", arg0); }
+  public void setAutoShowVirtualScreen() { rememberCompatSetting("setAutoShowVirtualScreen", Boolean.TRUE); }
+  public void setAutoSpeech(boolean arg0) { rememberCompatSetting("setAutoSpeech", arg0); }
+  public void setAutoSpeechEnabled(boolean arg0) { rememberCompatSetting("setAutoSpeechEnabled", arg0); }
+  public void setAutoTrans(boolean arg0) { rememberCompatSetting("setAutoTrans", arg0); }
+  public void setCharMode(boolean arg0) { rememberCompatSetting("setCharMode", arg0); }
+  public void setCharModeGesture(boolean arg0) { rememberCompatSetting("setCharModeGesture", arg0); }
+  public void setClearNode(boolean arg0) { rememberCompatSetting("setClearNode", arg0); }
+  public void setCloudNodeInfoLabel(java.lang.String arg0, java.lang.String arg1, java.lang.String arg2) { rememberCompatSetting("setCloudNodeInfoLabel", java.util.Arrays.asList(arg0, arg1, arg2)); }
+  public void setContentBlacklist(java.lang.String arg0) { rememberCompatSetting("setContentBlacklist", arg0); }
+  public void setDimmed(boolean arg0) { rememberCompatSetting("setDimmed", arg0); }
+  public void setDimmedEnabled(boolean arg0) { rememberCompatSetting("setDimmedEnabled", arg0); }
+  public void setDoubleFling(boolean arg0) { rememberCompatSetting("setDoubleFling", arg0); }
+  public void setDoubleFlingTime(int arg0) { rememberCompatSetting("setDoubleFlingTime", arg0); }
+  public void setDoubleTapUserIntentTimeout(int arg0) { rememberCompatSetting("setDoubleTapUserIntentTimeout", arg0); }
+  public void setEdgeGesture(boolean arg0) { rememberCompatSetting("setEdgeGesture", arg0); }
+  public void setEdgeGestureWidth(java.lang.Integer arg0) { rememberCompatSetting("setEdgeGestureWidth", arg0); }
+  public void setEnabled(boolean arg0) { rememberCompatSetting("setEnabled", arg0); }
+  public void setFalseTouchPrevention(boolean arg0) { rememberCompatSetting("setFalseTouchPrevention", arg0); }
+  public void setFalseTouchPreventionEnabled(boolean arg0) { rememberCompatSetting("setFalseTouchPreventionEnabled", arg0); }
+  public void setForeground2(boolean arg0) { rememberCompatSetting("setForeground2", arg0); }
+  public void setGameMode(boolean arg0) { rememberCompatSetting("setGameMode", arg0); }
+  public void setInEdgeGesture(boolean arg0) { rememberCompatSetting("setInEdgeGesture", arg0); }
+  public void setIncallMode() {
+    rememberCompatSetting("setIncallMode", Boolean.TRUE);
+    MsExtras.setEarpieceMode(ctx, true);
+  }
+  public void setIncallMode(boolean arg0) {
+    rememberCompatSetting("setIncallMode", arg0);
+    MsExtras.setEarpieceMode(ctx, arg0);
+  }
+  public void setInputMode(boolean arg0) { rememberCompatSetting("setInputMode", arg0); }
+  public void setKeepFocusPosition(boolean arg0) { rememberCompatSetting("setKeepFocusPosition", arg0); }
+  public void setLeftButton(java.lang.String arg0) { rememberCompatSetting("setLeftButton", arg0); }
+  public void setLongClickTime(int arg0) { rememberCompatSetting("setLongClickTime", arg0); }
+  public void setLongCopy(boolean arg0) { rememberCompatSetting("setLongCopy", arg0); }
+  public void setMenuUpTap(boolean arg0) { rememberCompatSetting("setMenuUpTap", arg0); }
+  public void setModeAudio(int arg0) { rememberCompatSetting("setModeAudio", arg0); }
+  public void setMultiFingerGesturesEnabled(boolean arg0) { rememberCompatSetting("setMultiFingerGesturesEnabled", arg0); }
+  public void setNaviUpTap(boolean arg0) { rememberCompatSetting("setNaviUpTap", arg0); }
+  public void setNavigationGestureWidth(int arg0) { rememberCompatSetting("setNavigationGestureWidth", arg0); }
+  public void setNoTouch(boolean arg0) { rememberCompatSetting("setNoTouch", arg0); }
+  public void setNotificationAnnouncementSpeak(boolean arg0) { rememberCompatSetting("setNotificationAnnouncementSpeak", arg0); }
+  public void setNotificationAppNameSpeak(boolean arg0) { rememberCompatSetting("setNotificationAppNameSpeak", arg0); }
+  public void setNotificationBarSpeak(boolean arg0) { rememberCompatSetting("setNotificationBarSpeak", arg0); }
+  public void setNotificationBlackList(java.lang.String arg0) { rememberCompatSetting("setNotificationBlackList", arg0); }
+  public void setNotificationInAutoReadNoSpeak(boolean arg0) { rememberCompatSetting("setNotificationInAutoReadNoSpeak", arg0); }
+  public void setNotificationInCallNoSpeak(boolean arg0) { rememberCompatSetting("setNotificationInCallNoSpeak", arg0); }
+  public void setNotificationInTouchNoSpeak(boolean arg0) { rememberCompatSetting("setNotificationInTouchNoSpeak", arg0); }
+  public void setNotificationSpeak(boolean arg0) { rememberCompatSetting("setNotificationSpeak", arg0); }
+  public void setNotificationSummary(boolean arg0) { rememberCompatSetting("setNotificationSummary", arg0); }
+  public void setNotificationToastSpeak(boolean arg0) { rememberCompatSetting("setNotificationToastSpeak", arg0); }
+  public void setNotificationWhiteList(java.lang.String arg0) { rememberCompatSetting("setNotificationWhiteList", arg0); }
+  public void setOnlyNotification(boolean arg0) { rememberCompatSetting("setOnlyNotification", arg0); }
+  public void setPartialWakeLock(boolean arg0) { rememberCompatSetting("setPartialWakeLock", arg0); }
+  public void setPauseGestureDetection(boolean arg0) { rememberCompatSetting("setPauseGestureDetection", arg0); }
+  public void setProfiles() { rememberCompatSetting("setProfiles", Boolean.TRUE); }
+  public void setProfiles(java.lang.String arg0) { rememberCompatSetting("setProfiles", arg0); }
+  public void setRawSpeak(boolean arg0) { rememberCompatSetting("setRawSpeak", arg0); }
+  public void setRightButton(java.lang.String arg0) { rememberCompatSetting("setRightButton", arg0); }
+  public void setScreenOffSpeak(boolean arg0) { rememberCompatSetting("setScreenOffSpeak", arg0); }
+  public void setSelectionMode(boolean arg0) { rememberCompatSetting("setSelectionMode", arg0); }
+  public void setSensor(boolean arg0) { rememberCompatSetting("setSensor", arg0); }
+  public void setServiceHandlesDoubleTap(boolean arg0) { rememberCompatSetting("setServiceHandlesDoubleTap", arg0); }
+  public void setSingleTap(boolean arg0) { rememberCompatSetting("setSingleTap", arg0); }
+  public void setSound(boolean arg0) { rememberCompatSetting("setSound", arg0); }
+  public void setSoundVolume(float arg0) { rememberCompatSetting("setSoundVolume", arg0); }
+  public void setSpeakListViewItem(boolean arg0) { rememberCompatSetting("setSpeakListViewItem", arg0); }
+  public void setSpeaking(boolean arg0) { rememberCompatSetting("setSpeaking", arg0); }
+  public void setSpeeching(boolean arg0) { rememberCompatSetting("setSpeeching", arg0); }
+  public void setStreamVolume(int arg0) { rememberCompatSetting("setStreamVolume", arg0); }
+  public void setSupperMode(boolean arg0) { rememberCompatSetting("setSupperMode", arg0); }
+  public void setSupperModeAux(boolean arg0) { rememberCompatSetting("setSupperModeAux", arg0); }
+  public void setTTSEnabled(boolean arg0) { rememberCompatSetting("setTTSEnabled", arg0); }
+  public void setTTSSpeaker(java.lang.String arg0) { rememberCompatSetting("setTTSSpeaker", arg0); }
+  public void setTTSSpeed(boolean arg0) { rememberCompatSetting("setTTSSpeed", arg0); }
+  public void setTTSSpeed(int arg0) { rememberCompatSetting("setTTSSpeed", arg0); }
+  public void setTTSVolume(float arg0) { rememberCompatSetting("setTTSVolume", arg0); }
+  public void setTapMode(boolean arg0) { rememberCompatSetting("setTapMode", arg0); }
+  public void setTimerInterval(int arg0) { rememberCompatSetting("setTimerInterval", arg0); }
+  public void setTimerModeAux(boolean arg0) { rememberCompatSetting("setTimerModeAux", arg0); }
+  public void setTimerModePause(boolean arg0) { rememberCompatSetting("setTimerModePause", arg0); }
+  public void setTouchFocusUserIntentTimeout(int arg0) { rememberCompatSetting("setTouchFocusUserIntentTimeout", arg0); }
+  public void setTouchMode(boolean arg0) { rememberCompatSetting("setTouchMode", arg0); }
+  public void setTtsEngine() { rememberCompatSetting("setTtsEngine", Boolean.TRUE); }
+  public void setTtsEngine(java.lang.String arg0) { rememberCompatSetting("setTtsEngine", arg0); }
+  public void setTtsPitch(int arg0) { rememberCompatSetting("setTtsPitch", arg0); }
+  public void setTtsScale(float arg0) { rememberCompatSetting("setTtsScale", arg0); }
+  public void setTypingFocusUserIntentTimeout(int arg0) { rememberCompatSetting("setTypingFocusUserIntentTimeout", arg0); }
+  public void setUnknownIndex(boolean arg0) { rememberCompatSetting("setUnknownIndex", arg0); }
+  public void setUnknownLabel(boolean arg0) { rememberCompatSetting("setUnknownLabel", arg0); }
+  public void setUpTap(boolean arg0) { rememberCompatSetting("setUpTap", arg0); }
+  public void setUpTapEnabled(boolean arg0) { rememberCompatSetting("setUpTapEnabled", arg0); }
+  public void setUsageHints(boolean arg0) { rememberCompatSetting("setUsageHints", arg0); }
+  public void setUseAccessibilityVolume(boolean arg0) { rememberCompatSetting("setUseAccessibilityVolume", arg0); }
+  public void setUseAccessibilityVolumeFix(boolean arg0) { rememberCompatSetting("setUseAccessibilityVolumeFix", arg0); }
+  public void setUseAlarm(boolean arg0) { rememberCompatSetting("setUseAlarm", arg0); }
+  public void setUseAppTTS(boolean arg0) { rememberCompatSetting("setUseAppTTS", arg0); }
+  public void setUseAutoFocus(boolean arg0) { rememberCompatSetting("setUseAutoFocus", arg0); }
+  public void setUseAutoViewType(boolean arg0) { rememberCompatSetting("setUseAutoViewType", arg0); }
+  public void setUseBottomMenuEdgeGesture(boolean arg0) { rememberCompatSetting("setUseBottomMenuEdgeGesture", arg0); }
+  public void setUseCloudLabel(boolean arg0) { rememberCompatSetting("setUseCloudLabel", arg0); }
+  public void setUseContentChanged(boolean arg0) { rememberCompatSetting("setUseContentChanged", arg0); }
+  public void setUseContentTreeChanged(boolean arg0) { rememberCompatSetting("setUseContentTreeChanged", arg0); }
+  public void setUseCustomDictRegex(boolean arg0) { rememberCompatSetting("setUseCustomDictRegex", arg0); }
+  public void setUseCustomDictSpeak(boolean arg0) { rememberCompatSetting("setUseCustomDictSpeak", arg0); }
+  public void setUseCustomNodeName(boolean arg0) { rememberCompatSetting("setUseCustomNodeName", arg0); }
+  public void setUseCustomSpeakClear(boolean arg0) { rememberCompatSetting("setUseCustomSpeakClear", arg0); }
+  public void setUseCustomSpeakSymbolNumber(boolean arg0) { rememberCompatSetting("setUseCustomSpeakSymbolNumber", arg0); }
+  public void setUseCustomSymbolSpeak(boolean arg0) { rememberCompatSetting("setUseCustomSymbolSpeak", arg0); }
+  public void setUseDpadKey(boolean arg0) { rememberCompatSetting("setUseDpadKey", arg0); }
+  public void setUseEdgeGesture(boolean arg0) { rememberCompatSetting("setUseEdgeGesture", arg0); }
+  public void setUseEditHint(boolean arg0) { rememberCompatSetting("setUseEditHint", arg0); }
+  public void setUseEffectPro(boolean arg0) { rememberCompatSetting("setUseEffectPro", arg0); }
+  public void setUseEmojiSpeak(boolean arg0) { rememberCompatSetting("setUseEmojiSpeak", arg0); }
+  public void setUseEmojiSpeakClear(boolean arg0) { rememberCompatSetting("setUseEmojiSpeakClear", arg0); }
+  public void setUseFastMode(boolean arg0) { rememberCompatSetting("setUseFastMode", arg0); }
+  public void setUseFingerprintGesture(boolean arg0) { rememberCompatSetting("setUseFingerprintGesture", arg0); }
+  public void setUseFloatMenu(boolean arg0) { rememberCompatSetting("setUseFloatMenu", arg0); }
+  public void setUseForeground(boolean arg0) { rememberCompatSetting("setUseForeground", arg0); }
+  public void setUseForegroundPro(boolean arg0) { rememberCompatSetting("setUseForegroundPro", arg0); }
+  public void setUseGameModeNoEdge(boolean arg0) { rememberCompatSetting("setUseGameModeNoEdge", arg0); }
+  public void setUseGameModeNoSpeak(boolean arg0) { rememberCompatSetting("setUseGameModeNoSpeak", arg0); }
+  public void setUseGestureDetection(boolean arg0) { rememberCompatSetting("setUseGestureDetection", arg0); }
+  public void setUseHeadSetKey(boolean arg0) { rememberCompatSetting("setUseHeadSetKey", arg0); }
+  public void setUseHotkey(boolean arg0) { rememberCompatSetting("setUseHotkey", arg0); }
+  public void setUseImageFilter(boolean arg0) { rememberCompatSetting("setUseImageFilter", arg0); }
+  public void setUseImageToText(boolean arg0) { rememberCompatSetting("setUseImageToText", arg0); }
+  public void setUseInputMethodDoubleTap(boolean arg0) { rememberCompatSetting("setUseInputMethodDoubleTap", arg0); }
+  public void setUseInputMethodGesture(boolean arg0) { rememberCompatSetting("setUseInputMethodGesture", arg0); }
+  public void setUseInputMethodNoGesture(boolean arg0) { rememberCompatSetting("setUseInputMethodNoGesture", arg0); }
+  public void setUseInputMethodNoTouch(boolean arg0) { rememberCompatSetting("setUseInputMethodNoTouch", arg0); }
+  public void setUseInputMethodSpeakCandidate(boolean arg0) { rememberCompatSetting("setUseInputMethodSpeakCandidate", arg0); }
+  public void setUseInputMethodSpeakCommit(boolean arg0) { rememberCompatSetting("setUseInputMethodSpeakCommit", arg0); }
+  public void setUseInputMethodSpeakCommitSpace(boolean arg0) { rememberCompatSetting("setUseInputMethodSpeakCommitSpace", arg0); }
+  public void setUseInputMethodSpeakKey(boolean arg0) { rememberCompatSetting("setUseInputMethodSpeakKey", arg0); }
+  public void setUseInputMethodSpeakPassword(boolean arg0) { rememberCompatSetting("setUseInputMethodSpeakPassword", arg0); }
+  public void setUseInputMethodSpeakWord(boolean arg0) { rememberCompatSetting("setUseInputMethodSpeakWord", arg0); }
+  public void setUseKeepType(boolean arg0) { rememberCompatSetting("setUseKeepType", arg0); }
+  public void setUseLeftRight(boolean arg0) { rememberCompatSetting("setUseLeftRight", arg0); }
+  public void setUseListIndex(boolean arg0) { rememberCompatSetting("setUseListIndex", arg0); }
+  public void setUseListItemIndex(boolean arg0) { rememberCompatSetting("setUseListItemIndex", arg0); }
+  public void setUseListItemIndexRealTime(boolean arg0) { rememberCompatSetting("setUseListItemIndexRealTime", arg0); }
+  public void setUseLog(boolean arg0) { rememberCompatSetting("setUseLog", arg0); }
+  public void setUseLongClickVoiceImage(boolean arg0) { rememberCompatSetting("setUseLongClickVoiceImage", arg0); }
+  public void setUseLongClickVoiceInput(boolean arg0) { rememberCompatSetting("setUseLongClickVoiceInput", arg0); }
+  public void setUseLoopMove(boolean arg0) { rememberCompatSetting("setUseLoopMove", arg0); }
+  public void setUseLoopMoveSpace(boolean arg0) { rememberCompatSetting("setUseLoopMoveSpace", arg0); }
+  public void setUseMoreNode(boolean arg0) { rememberCompatSetting("setUseMoreNode", arg0); }
+  public void setUseMoveListViewItem(boolean arg0) { rememberCompatSetting("setUseMoveListViewItem", arg0); }
+  public void setUseMoveWindow(boolean arg0) { rememberCompatSetting("setUseMoveWindow", arg0); }
+  public void setUseMultiTouchMode(boolean arg0) { rememberCompatSetting("setUseMultiTouchMode", arg0); }
+  public void setUseNavigationGesture(boolean arg0) { rememberCompatSetting("setUseNavigationGesture", arg0); }
+  public void setUseNewTextMoveType(boolean arg0) { rememberCompatSetting("setUseNewTextMoveType", arg0); }
+  public void setUseNewWebMove(boolean arg0) { rememberCompatSetting("setUseNewWebMove", arg0); }
+  public void setUseNoBluetooth(boolean arg0) { rememberCompatSetting("setUseNoBluetooth", arg0); }
+  public void setUseNode(boolean arg0) { rememberCompatSetting("setUseNode", arg0); }
+  public void setUseNodeInfo(boolean arg0) { rememberCompatSetting("setUseNodeInfo", arg0); }
+  public void setUseOCR(boolean arg0) { rememberCompatSetting("setUseOCR", arg0); }
+  public void setUseOfflineTTS(boolean arg0) { rememberCompatSetting("setUseOfflineTTS", arg0); }
+  public void setUseOldPrevious(boolean arg0) { rememberCompatSetting("setUseOldPrevious", arg0); }
+  public void setUsePagerScroll(boolean arg0) { rememberCompatSetting("setUsePagerScroll", arg0); }
+  public void setUsePinyinSpeak(boolean arg0) { rememberCompatSetting("setUsePinyinSpeak", arg0); }
+  public void setUsePowerSave(boolean arg0) { rememberCompatSetting("setUsePowerSave", arg0); }
+  public void setUseProgress(boolean arg0) { rememberCompatSetting("setUseProgress", arg0); }
+  public void setUseProixmitySensor(boolean arg0) { rememberCompatSetting("setUseProixmitySensor", arg0); }
+  public void setUseProximityFalseTouchPrevention(boolean arg0) { rememberCompatSetting("setUseProximityFalseTouchPrevention", arg0); }
+  public void setUseProximityFalseTouchPreventionOnlyLock(boolean arg0) { rememberCompatSetting("setUseProximityFalseTouchPreventionOnlyLock", arg0); }
+  public void setUseRawClick(boolean arg0) { rememberCompatSetting("setUseRawClick", arg0); }
+  public void setUseRawTap(boolean arg0) { rememberCompatSetting("setUseRawTap", arg0); }
+  public void setUseRingtoneVolume(boolean arg0) { rememberCompatSetting("setUseRingtoneVolume", arg0); }
+  public void setUseScreenOffSpeak(boolean arg0) { rememberCompatSetting("setUseScreenOffSpeak", arg0); }
+  public void setUseScreenOnSpeak(boolean arg0) { rememberCompatSetting("setUseScreenOnSpeak", arg0); }
+  public void setUseScreenOnSpeakBattery(boolean arg0) { rememberCompatSetting("setUseScreenOnSpeakBattery", arg0); }
+  public void setUseScreenOnSpeakNotification(boolean arg0) { rememberCompatSetting("setUseScreenOnSpeakNotification", arg0); }
+  public void setUseScrollListContent(boolean arg0) { rememberCompatSetting("setUseScrollListContent", arg0); }
+  public void setUseScrollListIndex(boolean arg0) { rememberCompatSetting("setUseScrollListIndex", arg0); }
+  public void setUseScrollListKeepPosition(boolean arg0) { rememberCompatSetting("setUseScrollListKeepPosition", arg0); }
+  public void setUseShowDisabledQuickMenu(boolean arg0) { rememberCompatSetting("setUseShowDisabledQuickMenu", arg0); }
+  public void setUseShowText(boolean arg0) { rememberCompatSetting("setUseShowText", arg0); }
+  public void setUseSingleTTS(boolean arg0) { rememberCompatSetting("setUseSingleTTS", arg0); }
+  public void setUseSlowSpeed(boolean arg0) { rememberCompatSetting("setUseSlowSpeed", arg0); }
+  public void setUseSmallFilter(boolean arg0) { rememberCompatSetting("setUseSmallFilter", arg0); }
+  public void setUseSpeakKey(boolean arg0) { rememberCompatSetting("setUseSpeakKey", arg0); }
+  public void setUseSpeakQqChanged(boolean arg0) { rememberCompatSetting("setUseSpeakQqChanged", arg0); }
+  public void setUseSpeakState(boolean arg0) { rememberCompatSetting("setUseSpeakState", arg0); }
+  public void setUseSpeakWindowAllChanged(boolean arg0) { rememberCompatSetting("setUseSpeakWindowAllChanged", arg0); }
+  public void setUseSupperFilter(boolean arg0) { rememberCompatSetting("setUseSupperFilter", arg0); }
+  public void setUseTextFormatCharNumber(boolean arg0) { rememberCompatSetting("setUseTextFormatCharNumber", arg0); }
+  public void setUseTextFormatCharUpper(boolean arg0) { rememberCompatSetting("setUseTextFormatCharUpper", arg0); }
+  public void setUseTextFormatFirst(boolean arg0) { rememberCompatSetting("setUseTextFormatFirst", arg0); }
+  public void setUseTextFormatReadWord(boolean arg0) { rememberCompatSetting("setUseTextFormatReadWord", arg0); }
+  public void setUseTouchMode(boolean arg0) { rememberCompatSetting("setUseTouchMode", arg0); }
+  public void setUseTouchStop(boolean arg0) { rememberCompatSetting("setUseTouchStop", arg0); }
+  public void setUseUpLongClick(boolean arg0) { rememberCompatSetting("setUseUpLongClick", arg0); }
+  public void setUseUpLongQuickMenu(boolean arg0) { rememberCompatSetting("setUseUpLongQuickMenu", arg0); }
+  public void setUseViewMove(boolean arg0) { rememberCompatSetting("setUseViewMove", arg0); }
+  public void setUseViewName(boolean arg0) { rememberCompatSetting("setUseViewName", arg0); }
+  public void setUseViewTypeMoveMode(boolean arg0) { rememberCompatSetting("setUseViewTypeMoveMode", arg0); }
+  public void setUseVolumeKeyEnabled(boolean arg0) { rememberCompatSetting("setUseVolumeKeyEnabled", arg0); }
+  public void setUseVolumeKeyMoveText(boolean arg0) { rememberCompatSetting("setUseVolumeKeyMoveText", arg0); }
+  public void setUseWakeLock(boolean arg0) { rememberCompatSetting("setUseWakeLock", arg0); }
+  public void setUseWakeLockPro(boolean arg0) { rememberCompatSetting("setUseWakeLockPro", arg0); }
+  public void setUseWebMove(boolean arg0) { rememberCompatSetting("setUseWebMove", arg0); }
+  public void setUseWebViewName(boolean arg0) { rememberCompatSetting("setUseWebViewName", arg0); }
+  public void setUseWindowTitleChanged(boolean arg0) { rememberCompatSetting("setUseWindowTitleChanged", arg0); }
+  public void setVibrate(boolean arg0) { rememberCompatSetting("setVibrate", arg0); }
+  public void setVibrateIntensity(int arg0) { rememberCompatSetting("setVibrateIntensity", arg0); }
+  public void setVoiceHelperMediaMuteMode(boolean arg0) { rememberCompatSetting("setVoiceHelperMediaMuteMode", arg0); }
+  public void setVoiceInputAppendMode(boolean arg0) { rememberCompatSetting("setVoiceInputAppendMode", arg0); }
+  public void setVolumeKeyEnabled(boolean arg0) { rememberCompatSetting("setVolumeKeyEnabled", arg0); }
+  public void setWakeLock(boolean arg0) { rememberCompatSetting("setWakeLock", arg0); }
+  public void setWakeLock(long arg0) { rememberCompatSetting("setWakeLock", arg0); }
+  public void setWakeLock_aux(boolean arg0) { rememberCompatSetting("setWakeLock_aux", arg0); }
+  public void setup(java.lang.String arg0) { rememberCompatSetting("setup", arg0); }
+
   // ---------------------------------------------------------------- LuaContext
 
   @Override public ArrayList<ClassLoader> getClassLoaders() { return loaders; }
-  @Override public void call(String func, Object... args) {}
+  @Override public void call(String func, Object... args) {
+    if (func == null || func.isEmpty()) return;
+    synchronized (L) {
+      if (closed) return;
+      int top = L.getTop();
+      try {
+        L.getGlobal(func);
+        if (!L.isFunction(-1)) return;
+        if (args != null) {
+          for (Object arg : args) L.pushObjectValue(arg);
+        }
+        int rc = L.pcall(args == null ? 0 : args.length, 0, 0);
+        if (rc != 0) log("Lua callback " + func + ": " + L.toString(-1));
+      } catch (Throwable t) {
+        log("Lua callback " + func + ": " + t);
+      } finally {
+        L.setTop(top);
+      }
+    }
+  }
   @Override public void set(String name, Object value) {
-    try {
-      L.pushObjectValue(value);
-      L.setGlobal(name);
-    } catch (Exception ignored) {
+    if (name == null || name.isEmpty()) return;
+    synchronized (L) {
+      if (closed) return;
+      try {
+        L.pushObjectValue(value);
+        L.setGlobal(name);
+      } catch (Exception ignored) {
+      }
     }
   }
   @Override public String getLuaPath() { return scriptDir.getAbsolutePath(); }
@@ -922,19 +1628,31 @@ public class LuaServiceApi implements LuaContext {
   @Override public String getLuaDir() { return scriptDir.getAbsolutePath(); }
   @Override public String getLuaDir(String dir) { return new File(scriptDir, dir).getAbsolutePath(); }
   @Override public String getLuaExtDir() { return luaExtDir; }
-  @Override public String getLuaExtDir(String dir) { return new File(luaExtDir, dir).getAbsolutePath(); }
+  @Override public String getLuaExtDir(String dir) { return LuaPaths.alias(ctx, dir).getAbsolutePath(); }
   @Override public void setLuaExtDir(String dir) { luaExtDir = dir; }
-  @Override public String getLuaExtPath(String path) { return new File(luaExtDir, path).getAbsolutePath(); }
-  @Override public String getLuaExtPath(String dir, String name) { return new File(new File(luaExtDir, dir), name).getAbsolutePath(); }
-  @Override public String getLuaLpath() { return scriptDir.getAbsolutePath() + "/?.lua"; }
+  @Override public String getLuaExtPath(String path) {
+    if (path == null || path.isEmpty()) return luaExtDir;
+    String normalized = path.replace('\\', '/');
+    int slash = normalized.indexOf('/');
+    String first = slash < 0 ? normalized : normalized.substring(0, slash);
+    File base = LuaPaths.alias(ctx, first);
+    return (slash < 0 ? base : new File(base, normalized.substring(slash + 1))).getAbsolutePath();
+  }
+  @Override public String getLuaExtPath(String dir, String name) { return new File(LuaPaths.alias(ctx, dir), name == null ? "" : name).getAbsolutePath(); }
+  @Override public String getLuaLpath() {
+    // Same path as the main state, so a task/thread/timer state can require "import" and the other bundled modules.
+    return (luaLibDir != null ? luaLibDir.getAbsolutePath() + "/?.lua;" : "") + scriptDir.getAbsolutePath() + "/?.lua";
+  }
   @Override public String getLuaCpath() { return ctx.getApplicationInfo().nativeLibraryDir + "/lib?.so"; }
   @Override public Context getContext() { return ctx; }
   @Override public LuaState getLuaState() { return L; }
   @Override public Object doFile(String path, Object... arg) {
-    String err = runFile(new File(path), null);
-    if (err != null) {
-      log(err);
+    String err;
+    synchronized (L) {
+      if (closed) return null;
+      err = runFileWithArgs(new File(path), null, arg);
     }
+    if (err != null) log(err);
     return null;
   }
   @Override public void sendMsg(String msg) { log(msg); }
@@ -942,14 +1660,90 @@ public class LuaServiceApi implements LuaContext {
   @Override public int getWidth() { return ctx.getResources().getDisplayMetrics().widthPixels; }
   @Override public int getHeight() { return ctx.getResources().getDisplayMetrics().heightPixels; }
   @Override public Map getGlobalData() { return globalData; }
-  @Override public Object getSharedData(String key) { return globalData.get(key); }
+  // Step 42: service.setSharedData/getSharedData now survive script runs and app restarts.
+  // Strings, booleans and numbers go to SharedPreferences "lua_shared_data"; any other object (a Lua table,
+  // a Java object) cannot be saved, so it stays in memory for this script run only, as before.
+  private static final String SHARED_DATA_PREFS = "lua_shared_data";
+  private static final String DOUBLE_MARK = "\u0000d";
+
+  private android.content.SharedPreferences sharedDataPrefs() {
+    return ctx.getSharedPreferences(SHARED_DATA_PREFS, Context.MODE_PRIVATE);
+  }
+
+  @Override public Object getSharedData(String key) { return getSharedData(key, null); }
+
   @Override public Object getSharedData(String key, Object def) {
+    if (key == null) return def;
+    try {
+      Object saved = sharedDataPrefs().getAll().get(key);
+      if (saved instanceof String && ((String) saved).startsWith(DOUBLE_MARK)) {
+        try {
+          return Double.valueOf(((String) saved).substring(DOUBLE_MARK.length()));
+        } catch (NumberFormatException e) {
+          return def;
+        }
+      }
+      if (saved != null) return saved;
+    } catch (Throwable t) {
+      log("getSharedData: " + t);
+    }
     Object v = globalData.get(key);
     return v == null ? def : v;
   }
+
   @Override public boolean setSharedData(String key, Object value) {
-    globalData.put(key, value);
-    return true;
+    if (key == null) return false;
+    try {
+      android.content.SharedPreferences.Editor e = sharedDataPrefs().edit();
+      if (value == null) {
+        e.remove(key);
+        globalData.remove(key);
+      } else if (value instanceof String) {
+        e.putString(key, (String) value);
+        globalData.remove(key);
+      } else if (value instanceof Boolean) {
+        e.putBoolean(key, (Boolean) value);
+        globalData.remove(key);
+      } else if (value instanceof Byte || value instanceof Short
+          || value instanceof Integer || value instanceof Long) {
+        e.putLong(key, ((Number) value).longValue());
+        globalData.remove(key);
+      } else if (value instanceof Number) {
+        double d = ((Number) value).doubleValue();
+        if (!Double.isNaN(d) && !Double.isInfinite(d) && d == Math.rint(d) && Math.abs(d) < 9.0e15) {
+          e.putLong(key, (long) d);
+        } else {
+          e.putString(key, DOUBLE_MARK + Double.toString(d));
+        }
+        globalData.remove(key);
+      } else {
+        e.remove(key);
+        globalData.put(key, value);
+      }
+      e.apply();
+      return true;
+    } catch (Throwable t) {
+      log("setSharedData: " + t);
+      globalData.put(key, value);
+      return false;
+    }
   }
-  @Override public void regGc(LuaGcable obj) {}
+  @Override public void regGc(LuaGcable obj) {
+    if (obj == null) return;
+    boolean reject;
+    synchronized (gcables) {
+      reject = closed;
+      if (!reject) gcables.add(obj);
+    }
+    // Never leave a newly-created task holding a Lua state that has already closed.
+    if (reject) {
+      try { obj.gc(); } catch (Throwable ignored) { }
+    }
+  }
+
+  @Override public void unregGc(LuaGcable obj) {
+    if (obj == null) return;
+    synchronized (gcables) { gcables.remove(obj); }
+    closeIfIdle();
+  }
 }

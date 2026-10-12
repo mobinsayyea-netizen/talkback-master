@@ -203,7 +203,9 @@ final class JxCommands {
       {"command_take_screenshot2", "Take a screenshot of current focus", "焦点截屏"},
       {"voice_input_mode", "continuous voice dictation", "听写模式"},
       {"command_pause_gesture", "Suspend screen reader gestures", "暂停读屏手势"},
-      {"command_grid_mode", "Screen Grid mode", "网格模式"}
+      {"command_grid_mode", "Screen Grid mode", "网格模式"},
+      // MS Screen Reader own command (not in Jieshuo): the Chinese column repeats the English name.
+      {"ms_edit_app_gestures", "Edit gesture scheme of current app", "Edit gesture scheme of current app"}
   };
 
   /** Names used by earlier versions of our own scripts. */
@@ -285,6 +287,7 @@ final class JxCommands {
     int guard = 0;
     while (p != null && guard++ < 30) {
       if (p.performAction(actionId)) {
+        com.google.android.accessibility.talkback.MsReadingExtras.afterScroll(p);
         return true;
       }
       p = p.getParent();
@@ -391,7 +394,7 @@ final class JxCommands {
         return n != null && api.tapNode(n, 50);
       case "raw_long_click":
         return n != null
-            && api.tapNode(n, android.view.ViewConfiguration.getLongPressTimeout() + 150L);
+            && api.tapNode(n, MsGestureTiming.longClickMs(ctx));
       case "command_raw_double_tap":
         return n != null && api.tapNode(n, 50) && api.tapNode(n, 50);
       case "raw_swipe_left":

@@ -25,6 +25,12 @@ public class JxPickerActivity extends Activity {
   public static final String KIND_NAVTYPE = "navtype";
 
   static boolean show(Context context, String kind) {
+    if (KIND_EXTENSIONS.equals(kind)) {
+      return ExtensionDialogActivity.show(context);
+    }
+    if (KIND_TOOLS.equals(kind)) {
+      return ExtensionListActivity.show(context, "tool", false);
+    }
     try {
       Intent i = new Intent(context, JxPickerActivity.class);
       i.putExtra(EXTRA_KIND, kind);

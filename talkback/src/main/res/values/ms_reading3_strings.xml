@@ -49,6 +49,14 @@
     <item type="id" name="ms_menu_functions" />
     <item type="id" name="ms_menu_navigation" />
     <item type="id" name="ms_menu_copy" />
+    <item type="id" name="ms_fn_clear" />
+    <item type="id" name="ms_fn_select" />
+    <item type="id" name="ms_fn_paste" />
+    <item type="id" name="ms_fn_clipboard" />
+    <item type="id" name="ms_fn_favorites" />
+    <item type="id" name="ms_fn_granular" />
+    <item type="id" name="ms_fn_list_copy" />
+    <item type="id" name="ms_fn_keyboard" />
     <item type="id" name="ms_menu_append" />
     <item type="id" name="ms_menu_translate" />
     <item type="id" name="ms_menu_ocr" />

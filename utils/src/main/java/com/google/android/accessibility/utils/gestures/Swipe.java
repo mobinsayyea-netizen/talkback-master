@@ -49,7 +49,7 @@ class Swipe extends GestureMatcher {
   public static final int DOWN = 3;
   // This is the calculated movement threshold used track if the user is still
   // moving their finger.
-  private final float gestureDetectionThresholdPixels;
+  private float gestureDetectionThresholdPixels;
 
   // Buffer for storing points for gesture detection.
   private final ArrayList<PointF> strokeBuffer = new ArrayList<>(100);
@@ -67,9 +67,9 @@ class Swipe extends GestureMatcher {
   private final float minPixelsBetweenSamplesX;
   private final float minPixelsBetweenSamplesY;
   // Time threshold in millisecond to determine if an interaction is a gesture or not.
-  private final int maxStartThreshold;
+  private int maxStartThreshold;
   // Time threshold in millisecond to determine if a gesture should be cancelled.
-  private final int maxContinueThreshold;
+  private int maxContinueThreshold;
   // The minimum distance the finger must travel before we evaluate the initial direction of the
   // swipe.
   // Anything less is still considered a touch.
@@ -78,6 +78,31 @@ class Swipe extends GestureMatcher {
   // Constants for separating gesture segments
   private static final float ANGLE_THRESHOLD = 0.0f;
   private final boolean invalidSwipeGestureEarlyDetection;
+
+  // MobinSR: the swipe length can be changed in Settings while TalkBack runs, so the three values that
+  // depend on it are recomputed by applyConfirmDistance() and every Swipe is kept in a weak registry.
+  private static final java.util.Set<Swipe> LIVE =
+      java.util.Collections.newSetFromMap(new java.util.WeakHashMap<Swipe, Boolean>());
+  private final int msStartPerCm;
+  private final int msContinuePerCm;
+  private final float defaultConfirmCm;
+  private final DisplayMetrics metrics;
+
+  private void applyConfirmDistance(float cm) {
+    maxStartThreshold = (int) (msStartPerCm * cm);
+    maxContinueThreshold =
+        invalidSwipeGestureEarlyDetection ? (int) ((msContinuePerCm * cm) * 3) : (int) (msContinuePerCm * cm);
+    gestureDetectionThresholdPixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, MM_PER_CM, metrics) * cm;
+  }
+
+  /** Applies GestureConfiguration.swipeConfirmCm to every existing Swipe (called when the setting changes). */
+  static void refreshAll() {
+    synchronized (LIVE) {
+      for (Swipe s : LIVE) {
+        s.applyConfirmDistance(GestureConfiguration.swipeConfirmCm > 0f ? GestureConfiguration.swipeConfirmCm : s.defaultConfirmCm);
+      }
+    }
+  }
 
   Swipe(
       Context context,
@@ -109,27 +134,25 @@ class Swipe extends GestureMatcher {
       GestureMatcher.AnalyticsEventLogger logger) {
     super(gesture, new Handler(context.getMainLooper()), listener, logger);
     float gestureConfirmDistanceCm =
-        context.getResources().getFloat(R.dimen.config_gesture_confirm_distance_cm);
+        GestureConfiguration.swipeConfirmCm > 0f
+            ? GestureConfiguration.swipeConfirmCm
+            : context.getResources().getFloat(R.dimen.config_gesture_confirm_distance_cm);
     int maxTimeToStartSwipeMsPerCm =
         context.getResources().getInteger(R.integer.config_max_time_to_start_swipe_ms_per_cm);
     int maxTimeToContinueSwipeMsPerCm =
         context.getResources().getInteger(R.integer.config_max_time_to_continue_swipe_ms_per_cm);
     invalidSwipeGestureEarlyDetection = configProvider.invalidSwipeGestureEarlyDetection();
-    maxStartThreshold = (int) (maxTimeToStartSwipeMsPerCm * gestureConfirmDistanceCm);
-    maxContinueThreshold =
-        // The tolerance of gesture time was actually greater than this value. Considering the
-        // swiping
-        // distance in large screen devices (such as Tablet) could be quite long, and the value
-        // doesn't affect the detection time, we increase the value.
-        invalidSwipeGestureEarlyDetection
-            ? ((int) ((maxTimeToContinueSwipeMsPerCm * gestureConfirmDistanceCm) * 3))
-            : (int) (maxTimeToContinueSwipeMsPerCm * gestureConfirmDistanceCm);
+    msStartPerCm = maxTimeToStartSwipeMsPerCm;
+    msContinuePerCm = maxTimeToContinueSwipeMsPerCm;
+    defaultConfirmCm = context.getResources().getFloat(R.dimen.config_gesture_confirm_distance_cm);
 
     this.directions = directions;
     DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-    gestureDetectionThresholdPixels =
-        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, MM_PER_CM, displayMetrics)
-            * gestureConfirmDistanceCm;
+    metrics = displayMetrics;
+    applyConfirmDistance(gestureConfirmDistanceCm);
+    synchronized (LIVE) {
+      LIVE.add(this);
+    }
     // Calculate minimum gesture velocity
     final float pixelsPerCmX = displayMetrics.xdpi / 2.54f;
     final float pixelsPerCmY = displayMetrics.ydpi / 2.54f;
