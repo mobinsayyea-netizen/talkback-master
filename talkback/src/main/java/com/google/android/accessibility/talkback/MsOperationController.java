@@ -51,7 +51,7 @@ public final class MsOperationController {
           updateShake();
         }
         if ("ms_jx_use_float_menu".equals(key) || "ms_jx_float_menu_items".equals(key)) {
-          com.google.android.accessibility.talkback.editor.MsFloatingMenu.refresh(service);
+          com.google.android.accessibility.talkback.editor.MsFloatingMenu.refresh(MsOperationController.this.service);
         }
       };
 
