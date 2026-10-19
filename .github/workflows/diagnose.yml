@@ -1,6 +1,9 @@
 name: Diagnose APK on emulator
 
 on:
+  push:
+    branches: [ "merge-steps-43-46-47" ]
+    paths: [ ".github/workflows/diagnose.yml", "diag.sh" ]
   workflow_dispatch:
 
 jobs:
