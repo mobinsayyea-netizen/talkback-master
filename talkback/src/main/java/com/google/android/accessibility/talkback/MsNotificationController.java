@@ -42,6 +42,10 @@ public final class MsNotificationController {
     if (!(data instanceof Notification)) {
       return false;
     }
+    if (!com.google.android.accessibility.talkback.editor.MsAppProfiles.notificationAllowed(
+        service, event.getPackageName())) {
+      return true;
+    }
     Notification n = (Notification) data;
     if ((n.flags & (Notification.FLAG_ONGOING_EVENT | Notification.FLAG_GROUP_SUMMARY)) != 0) {
       return true;

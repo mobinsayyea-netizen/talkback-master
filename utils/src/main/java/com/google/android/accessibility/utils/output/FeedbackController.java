@@ -311,7 +311,11 @@ public class FeedbackController {
   }
 
   /** Plays a sound-theme override loaded straight from a file path, caching it by path. */
-  private void playAuditoryFromPath(String path, float rate, float adjustedVolume) {
+  private void playAuditoryFromPath(String originalPath, float rate, float adjustedVolume) {
+    // Step 47: the cache key includes size and time, so a replaced file (for example after a restore)
+    // is loaded again instead of playing the old sound.
+    java.io.File soundFile = new java.io.File(originalPath);
+    String path = originalPath + "|" + soundFile.lastModified() + "|" + soundFile.length();
     Integer boxedSoundId = mOverrideSoundIds.get(path);
     int soundId = (boxedSoundId == null) ? 0 : boxedSoundId;
     if (soundId != 0) {
@@ -325,7 +329,7 @@ public class FeedbackController {
           }
         });
     try {
-      mOverrideSoundIds.put(path, mSoundPool.load(path, 1));
+      mOverrideSoundIds.put(path, mSoundPool.load(originalPath, 1));
     } catch (RuntimeException e) {
       LogUtils.w(TAG, "Could not load sound-theme override %s: %s", path, e);
     }

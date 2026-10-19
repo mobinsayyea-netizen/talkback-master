@@ -69,4 +69,20 @@
     <string name="ms_menu_translate_title">Translation</string>
     <string name="ms_menu_ocr_title">Text recognition</string>
     <string name="ms_menu_ocr_translate_title">Text recognition and translation</string>
+    <item type="id" name="ms_menu_app" />
+    <item type="id" name="ms_app_scheme" />
+    <item type="id" name="ms_app_notif_read" />
+    <item type="id" name="ms_app_notif_white" />
+    <item type="id" name="ms_app_notif_black" />
+    <item type="id" name="ms_app_rate" />
+    <item type="id" name="ms_app_volume" />
+    <item type="id" name="ms_app_copy_pkg" />
+    <string name="ms_menu_app_title">App options</string>
+    <string name="ms_app_scheme_title">This app: gesture scheme</string>
+    <string name="ms_app_notif_read_title">This app: read or do not read notifications</string>
+    <string name="ms_app_notif_white_title">This app: notification whitelist (add or remove)</string>
+    <string name="ms_app_notif_black_title">This app: notification blacklist (add or remove)</string>
+    <string name="ms_app_rate_title">This app: speech rate (next value)</string>
+    <string name="ms_app_volume_title">This app: volume (next value)</string>
+    <string name="ms_app_copy_pkg_title">This app: copy package name</string>
 </resources>

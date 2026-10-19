@@ -199,6 +199,7 @@ public class TalkbackMenuProcessor {
   private static final int ORDER_MS_NAVIGATION = 7;
   private static final int ORDER_MS_FUNCTIONS = 8;
   private static final int ORDER_MS_EXTENSIONS = 9;
+  private static final int ORDER_MS_APP = 10;
 
   /**
    * MS Screen Reader: groups the menu into Recognition, Navigation and Functions menus (like the
@@ -221,6 +222,19 @@ public class TalkbackMenuProcessor {
           com.google.android.accessibility.talkback.editor.MsMenus.FN_LABELS[i]);
     }
 
+    menu.add(0, R.id.ms_app_scheme, 1, R.string.ms_app_scheme_title);
+    menu.add(0, R.id.ms_app_notif_read, 2, R.string.ms_app_notif_read_title);
+    menu.add(0, R.id.ms_app_notif_white, 3, R.string.ms_app_notif_white_title);
+    menu.add(0, R.id.ms_app_notif_black, 4, R.string.ms_app_notif_black_title);
+    menu.add(0, R.id.ms_app_rate, 5, R.string.ms_app_rate_title);
+    menu.add(0, R.id.ms_app_volume, 6, R.string.ms_app_volume_title);
+    menu.add(0, R.id.ms_app_copy_pkg, 7, R.string.ms_app_copy_pkg_title);
+    moveIntoGroup(
+        menu,
+        R.id.ms_menu_app,
+        ORDER_MS_APP,
+        R.string.ms_menu_app_title,
+        com.google.android.accessibility.talkback.editor.MsAppProfiles.IDS);
     moveIntoGroup(
         menu,
         R.id.ms_menu_recognition,

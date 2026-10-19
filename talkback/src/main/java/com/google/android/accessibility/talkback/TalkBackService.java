@@ -1486,6 +1486,7 @@ public class TalkBackService extends AccessibilityServiceCompat
         this, event);
     com.google.android.accessibility.talkback.editor.MsFocusMonitor.onEvent(this, event);
     com.google.android.accessibility.talkback.editor.MsExtras.onEvent(this, event);
+    com.google.android.accessibility.talkback.editor.MsAppProfiles.onEvent(this, event);
     if (eventType == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED
         && msNotification != null
         && msNotification.handle(event, isTouchInteracting)) {
@@ -2286,7 +2287,15 @@ public class TalkBackService extends AccessibilityServiceCompat
     displayMonitor = new DisplayMonitor(this);
     accessibilityEventProcessor = new AccessibilityEventProcessor(this, displayMonitor);
     feedbackController = new FeedbackController(this);
-    // Sound themes and extra event sounds were removed: TalkBack's normal sounds are used.
+    // Step 47: sound themes are connected again. The restored/chosen theme decides which file plays for
+    // each TalkBack sound, and ExtraEventSounds plays the theme's extra occasions (toast, dialog, ...).
+    com.google.android.accessibility.talkback.soundtheme.SoundThemeManager soundThemeManager =
+        new com.google.android.accessibility.talkback.soundtheme.SoundThemeManager(this);
+    feedbackController.setSoundOverrideProvider(soundThemeManager);
+    extraEventSounds =
+        new com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds(
+            this, soundThemeManager);
+    extraEventSounds.start();
     speechController =
         new SpeechControllerImpl(
             this,
