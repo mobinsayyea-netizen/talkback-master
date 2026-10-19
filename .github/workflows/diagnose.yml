@@ -1,0 +1,39 @@
+name: Diagnose APK on emulator
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Download latest APK
+        run: |
+          TAG=$(gh release list --limit 30 --json tagName -q '.[].tagName' | grep '^build-' | sort -t- -k2 -n | tail -1)
+          echo "Testing $TAG"
+          gh release download "$TAG" --pattern MSScreenReader-64bit.apk
+      - name: Run on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          disable-animations: true
+          script: bash ./diag.sh
+      - name: Upload logs
+        if: always()
+        run: |
+          gh release view diagnostics >/dev/null 2>&1 || gh release create diagnostics --title "Diagnostics" --notes "Emulator logs" --prerelease
+          gh release upload diagnostics diag_log.txt --clobber
