@@ -99,6 +99,11 @@ public class LuaTimerTask extends TimerTaskX
 		{
 			mLuaContext.sendError(this.toString(), e);
 		}
+		catch (Throwable t)
+		{
+			// Step 48: a timer task must never throw: that would end the timer thread and the app.
+			mLuaContext.sendError(this.toString(), t instanceof Exception ? (Exception) t : new RuntimeException(t));
+		}
 		if (L != null)
 			L.gc(LuaState.LUA_GCCOLLECT, 1);
 		System.gc();

@@ -101,6 +101,12 @@ local function append(t, v)
     insert(t, v)
 end
 
+-- Step 46: Jieshuo's own service class is not in MS Screen Reader. Scripts only import it by name,
+-- so `import "com.nirenr.talkman.TalkManAccessibilityService"` now gives this app's service class.
+local JX_CLASS_ALIAS = {
+    ["com.nirenr.talkman.TalkManAccessibilityService"] = "com.google.android.marvin.talkback.TalkBackService",
+}
+
 local function local_import(_env, packages, package)
     local j = package:find(':')
     if j then
@@ -119,7 +125,9 @@ local function local_import(_env, packages, package)
         return import_pacckage(package:sub(1, -2))
     else
         local classname = package:match('([^%.$]+)$')
-        local class = import_require(package) or import_class(package) or import_dex_class(package)
+        -- Step 46: Jieshuo class names that scripts import; map them to this app's own class.
+        local real = JX_CLASS_ALIAS[package] or package
+        local class = import_require(real) or import_class(real) or import_dex_class(real)
         if class then
             if class ~= true then
                 --findtable(package)=class

@@ -33,6 +33,7 @@ typedef struct {
   lua_State *L;
   ZIO *Z;
   const char *name;
+  int sizet;  /* Step 48: size of size_t in the chunk (4 from 32-bit devices, 8 from 64-bit) */
 } LoadState;
 
 
@@ -87,8 +88,17 @@ static lua_Integer LoadInteger (LoadState *S) {
 
 static TString *LoadString (LoadState *S) {
   size_t size = LoadByte(S);
-  if (size == 0xFF)
-    LoadVar(S, size);
+  if (size == 0xFF) {
+    if (S->sizet == (int)sizeof(size_t)) {
+      LoadVar(S, size);
+    } else if (S->sizet == 4) {  /* Step 48: chunk written by a 32-bit Lua */
+      unsigned int size32;
+      LoadVar(S, size32);
+      size = (size_t)size32;
+    } else {
+      error(S, "unsupported size_t in");
+    }
+  }
   if (size == 0)
     return NULL;
   else if (--size <= LUAI_MAXSHORTLEN) {  /* short string? */
@@ -241,7 +251,9 @@ static void checkHeader (LoadState *S) {
     error(S, "format mismatch in");
   checkliteral(S, LUAC_DATA, "corrupted");
   checksize(S, int);
-  checksize(S, size_t);
+  S->sizet = LoadByte(S);  /* Step 48: accept 4 or 8, so bytecode made on 32-bit phones also loads */
+  if (S->sizet != 4 && S->sizet != 8)
+    error(S, "size_t size mismatch in");
   checksize(S, Instruction);
   checksize(S, lua_Integer);
   checksize(S, lua_Number);

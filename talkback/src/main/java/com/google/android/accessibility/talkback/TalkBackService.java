@@ -2286,7 +2286,15 @@ public class TalkBackService extends AccessibilityServiceCompat
     displayMonitor = new DisplayMonitor(this);
     accessibilityEventProcessor = new AccessibilityEventProcessor(this, displayMonitor);
     feedbackController = new FeedbackController(this);
-    // Sound themes and extra event sounds were removed: TalkBack's normal sounds are used.
+    // Step 47: sound themes are connected again. The restored/chosen theme decides which file plays for
+    // each TalkBack sound, and ExtraEventSounds plays the theme's extra occasions (toast, dialog, ...).
+    com.google.android.accessibility.talkback.soundtheme.SoundThemeManager soundThemeManager =
+        new com.google.android.accessibility.talkback.soundtheme.SoundThemeManager(this);
+    feedbackController.setSoundOverrideProvider(soundThemeManager);
+    extraEventSounds =
+        new com.google.android.accessibility.talkback.soundtheme.ExtraEventSounds(
+            this, soundThemeManager);
+    extraEventSounds.start();
     speechController =
         new SpeechControllerImpl(
             this,
@@ -4160,6 +4168,19 @@ public class TalkBackService extends AccessibilityServiceCompat
 
   @Override
   public void uncaughtException(Thread thread, Throwable ex) {
+    // Step 48: a failure on a background thread of an extension/tool (Lua, its timers, tasks and
+    // threads) is written to the error log and does NOT end the screen reader. Jieshuo works the same
+    // way. Any other crash, and anything on the main thread, still goes to the system as before.
+    if (thread != null
+        && thread != android.os.Looper.getMainLooper().getThread()
+        && isExtensionFailure(ex)) {
+      try {
+        MsErrorLog.log("Extension thread " + thread.getName(), ex);
+      } catch (Throwable ignored) {
+        // Never let the error log end the handler.
+      }
+      return;
+    }
     CrashReporter.save(this, thread, ex);
     try {
       if (dimScreenController != null) {
@@ -4183,6 +4204,24 @@ public class TalkBackService extends AccessibilityServiceCompat
         LogUtils.e(TAG, "Received exception while shutting down.", ex);
       }
     }
+  }
+
+  /** True when the first frames of the error come from the Lua/extension code. */
+  private static boolean isExtensionFailure(Throwable ex) {
+    int depth = 0;
+    for (Throwable t = ex; t != null && depth < 8; t = t.getCause(), depth++) {
+      StackTraceElement[] frames = t.getStackTrace();
+      for (int i = 0; i < frames.length && i < 12; i++) {
+        String c = frames[i].getClassName();
+        if (c.startsWith("com.androlua.")
+            || c.startsWith("com.luajava.")
+            || c.startsWith("com.android.cglib.")
+            || c.contains(".talkback.editor.Lua")) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   public void setTestingListener(TalkBackListener testingListener) {

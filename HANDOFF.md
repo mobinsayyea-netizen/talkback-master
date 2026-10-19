@@ -2,7 +2,9 @@
 
 **हिंदी सार (for Mobeen):** यह फ़ाइल नई चैट के लिए है। इसमें बताया है कि MS Screen Reader क्या है, अब तक क्या बना, आपने क्या-क्या तय किया, और आगे क्या करना है (क्रम से)। नई चैट में बस लिखिए: "MS Screen Reader का काम आगे बढ़ाओ, रेपो talkback-master की HANDOFF.md पढ़ो"।
 
-> **Step 44 (latest): Jieshuo restore part 2 (labels, aliases, favorites, extensions, tools) — see `STEP44_NOTES.md` (not compiled yet; run the GitHub Actions build first). Next: part 3 = settings + gestures.**
+> **Step 48 (latest): extension compatibility from the real Jieshuo backup + crash shield (also contains Steps 46 and 47) — see `STEP48_NOTES.md`; not compiled yet, run the GitHub Actions build first. 10 author-locked scripts (start with `=`) cannot run.**
+
+> **Step 44 (previous): Jieshuo restore part 2 (labels, aliases, favorites, extensions, tools) — see `STEP44_NOTES.md` (not compiled yet; run the GitHub Actions build first). Next: part 3 = settings + gestures.**
 
 > **Step 43: Restore from a Jieshuo backup, part 1 (sounds + clipboard) — see `STEP43_NOTES.md` (not compiled yet; run the GitHub Actions build first).**
 

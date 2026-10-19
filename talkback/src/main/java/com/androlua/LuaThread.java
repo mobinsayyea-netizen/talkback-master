@@ -122,6 +122,22 @@ public class LuaThread extends Thread implements Runnable,LuaMetaTable,LuaGcable
 
 	@Override
 	public void run() {
+		// Step 48: an error in a script thread must never end the whole screen reader.
+		try {
+			runInner();
+		}
+		catch (Throwable t) {
+			isRun = false;
+			try {
+				mLuaContext.sendError(this.toString(), t instanceof Exception ? (Exception) t : new RuntimeException(t));
+				mLuaContext.unregGc(this);
+			}
+			catch (Throwable ignored) {
+			}
+		}
+	}
+
+	private void runInner() {
 		try {
 
 			if (L == null) {

@@ -357,6 +357,13 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
         return;
       }
       closed = true;
+      stopEventTimer();
+      events.clear();
+      synchronized (EVENT_OWNERS) {
+        if (EVENT_OWNERS.get(scriptDir.getAbsolutePath()) == this) {
+          EVENT_OWNERS.remove(scriptDir.getAbsolutePath());
+        }
+      }
       try {
         L.close();
       } catch (Throwable ignored) {
@@ -373,7 +380,7 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
   private void closeIfIdle() {
     boolean idle;
     synchronized (gcables) {
-      idle = mainDone && pending.get() == 0 && gcables.isEmpty();
+      idle = mainDone && pending.get() == 0 && gcables.isEmpty() && events.isEmpty();
     }
     if (idle) close();
   }
@@ -416,6 +423,338 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
       if (pending.decrementAndGet() == 0 && mainDone) {
         close();
       }
+    }
+  }
+
+  // ---------------------------------------------------------------- Step 48: functions Jieshuo scripts call
+  // Found by loading every extension and tool of the user's Jieshuo backup: these were missing, so the
+  // scripts stopped with "attempt to call a nil value". Written from how the scripts call them.
+
+  private static final java.util.Map<String, LuaServiceApi> EVENT_OWNERS = new HashMap<>();
+  private final java.util.Map<String, com.luajava.LuaFunction> events =
+      new java.util.concurrent.ConcurrentHashMap<>();
+  private java.util.concurrent.ScheduledFuture<?> timerFuture;
+  private volatile Boolean timerFlag; // null: the script never called setTimerMode
+  private int timerErrors;
+
+  /** Jieshuo: {@code service.handler.post(fn)} runs fn on the main thread. */
+  public final LuaHandler handler = new LuaHandler();
+
+  public final class LuaHandler {
+    public boolean post(com.luajava.LuaFunction f) {
+      return postDelayed(f, 0L);
+    }
+
+    public boolean postDelayed(com.luajava.LuaFunction f, long ms) {
+      if (f == null || closed || pending.get() >= MAX_PENDING_TASKS) {
+        return false;
+      }
+      pending.incrementAndGet();
+      ui.postDelayed(
+          new Runnable() {
+            @Override
+            public void run() {
+              try {
+                callFunction(f);
+              } finally {
+                pending.decrementAndGet();
+                closeIfIdle();
+              }
+            }
+          },
+          Math.max(0L, Math.min(ms, MAX_TASK_DELAY_MS)));
+      return true;
+    }
+
+    public boolean postDelayed(long ms, com.luajava.LuaFunction f) {
+      return postDelayed(f, ms);
+    }
+  }
+
+  /** Runs a Lua function of this state: one at a time, never throws. */
+  private void callFunction(com.luajava.LuaFunction f, Object... args) {
+    try {
+      synchronized (L) {
+        if (closed) {
+          return;
+        }
+        f.call(args);
+      }
+    } catch (Throwable t) {
+      log("Error in callback: " + t);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Lua callback", t);
+    }
+  }
+
+  /** Jieshuo: {@code service.timer(fn, ms)} calls fn once after ms milliseconds. */
+  public void timer(com.luajava.LuaFunction f, long ms) {
+    handler.postDelayed(f, ms);
+  }
+
+  public void timer(long ms, com.luajava.LuaFunction f) {
+    handler.postDelayed(f, ms);
+  }
+
+  /**
+   * Jieshuo: {@code service.task(fn)} runs fn in the background in its own Lua state, so a slow web
+   * request cannot block the screen reader. fn must not use variables from outside (same as AndroLua).
+   */
+  public void task(com.luajava.LuaFunction f) {
+    if (f == null || closed) {
+      return;
+    }
+    try {
+      new com.androlua.LuaThread(this, f).start();
+    } catch (Throwable t) {
+      log("task failed: " + t);
+      com.google.android.accessibility.talkback.MsErrorLog.log("Lua task", t);
+    }
+  }
+
+  /**
+   * Jieshuo: {@code service.regEvent("onTimer", fn)}. The timer event is called every interval (set with
+   * setTimerInterval, default 1 second) until setTimerMode(false) or regEvent("onTimer", nil). Other
+   * event names are accepted and ignored here (written to the script log).
+   */
+  public void regEvent(String name, com.luajava.LuaFunction f) {
+    if (name == null || closed) {
+      return;
+    }
+    if (f == null) {
+      events.remove(name);
+      if (events.isEmpty()) {
+        stopEventTimer();
+      }
+      closeIfIdle();
+      return;
+    }
+    if (!"onTimer".equals(name)) {
+      log("regEvent: event \"" + name + "\" is not supported in MS Screen Reader");
+      return;
+    }
+    String key = scriptDir.getAbsolutePath();
+    LuaServiceApi older;
+    synchronized (EVENT_OWNERS) {
+      older = EVENT_OWNERS.put(key, this);
+    }
+    if (older != null && older != this) {
+      older.events.clear(); // the same extension started again: only the new copy keeps running
+      older.stopEventTimer();
+      older.closeIfIdle();
+    }
+    events.put(name, f);
+    startEventTimer();
+  }
+
+  private synchronized void startEventTimer() {
+    if (timerFuture != null) {
+      return;
+    }
+    int interval = 1000;
+    try {
+      interval = jxCompatPrefs().getInt("api.setTimerInterval", 1000);
+    } catch (Throwable ignored) {
+    }
+    final long ms = Math.max(200, Math.min(interval, 60000));
+    timerErrors = 0;
+    timerFuture =
+        TASKS.scheduleWithFixedDelay(
+            new Runnable() {
+              @Override
+              public void run() {
+                fireTimer();
+              }
+            },
+            ms,
+            ms,
+            java.util.concurrent.TimeUnit.MILLISECONDS);
+  }
+
+  private synchronized void stopEventTimer() {
+    if (timerFuture != null) {
+      timerFuture.cancel(false);
+      timerFuture = null;
+    }
+  }
+
+  private void fireTimer() {
+    com.luajava.LuaFunction f = events.get("onTimer");
+    if (f == null || closed) {
+      stopEventTimer();
+      return;
+    }
+    if (Boolean.FALSE.equals(timerFlag)) {
+      return;
+    }
+    try {
+      synchronized (L) {
+        if (closed) {
+          return;
+        }
+        f.call();
+      }
+      timerErrors = 0;
+    } catch (Throwable t) {
+      timerErrors++;
+      log("Error in onTimer: " + t);
+      if (timerErrors >= 20) { // the same error again and again: stop it, never loop forever
+        com.google.android.accessibility.talkback.MsErrorLog.log("Lua onTimer stopped after 20 errors", t);
+        events.clear();
+        stopEventTimer();
+        closeIfIdle();
+      }
+    }
+  }
+
+  /** Jieshuo: stops what is being spoken. */
+  public void stop() {
+    TalkBackService s = TalkBackService.getInstance();
+    if (s != null) {
+      s.interruptAllFeedback(true);
+    }
+  }
+
+  /** Jieshuo: all text of the window on screen, one line per element. */
+  public String getAllText() {
+    AccessibilityNodeInfo root = getRootNodeInfo();
+    if (root == null) {
+      return "";
+    }
+    StringBuilder sb = new StringBuilder();
+    collectText(root, sb, 0, new int[1]);
+    return sb.toString().trim();
+  }
+
+  public String getAllText(int ignored) {
+    return getAllText();
+  }
+
+  private static void collectText(AccessibilityNodeInfo n, StringBuilder sb, int depth, int[] count) {
+    if (n == null || depth > 40 || count[0] > 4000 || sb.length() > 200000) {
+      return;
+    }
+    count[0]++;
+    if (n.isVisibleToUser()) {
+      CharSequence t = n.getText();
+      if (t == null || t.length() == 0) {
+        t = n.getContentDescription();
+      }
+      if (t != null && t.length() > 0) {
+        if (sb.length() > 0) {
+          sb.append('\n');
+        }
+        sb.append(t);
+      }
+    }
+    for (int i = 0; i < n.getChildCount(); i++) {
+      collectText(n.getChild(i), sb, depth + 1, count);
+    }
+  }
+
+  /** Jieshuo: the element that has the focus (screen reader focus first, then input focus), or nil. */
+  public AccessibilityNodeInfo getFocusView() {
+    AccessibilityNodeInfo root = getRootNodeInfo();
+    if (root == null) {
+      return null;
+    }
+    AccessibilityNodeInfo f = root.findFocus(AccessibilityNodeInfo.FOCUS_ACCESSIBILITY);
+    return f != null ? f : root.findFocus(AccessibilityNodeInfo.FOCUS_INPUT);
+  }
+
+  /** Jieshuo: the label of an element: its text, else its description, else the labels of its children. */
+  public String getNodeInfoLabel(AccessibilityNodeInfo n) {
+    if (n == null) {
+      return "";
+    }
+    String own = getText(n);
+    if (own.length() > 0) {
+      return own;
+    }
+    StringBuilder sb = new StringBuilder();
+    labelOfChildren(n, sb, 0, new int[1]);
+    return sb.toString().trim();
+  }
+
+  private void labelOfChildren(AccessibilityNodeInfo n, StringBuilder sb, int depth, int[] count) {
+    if (n == null || depth > 3 || count[0] > 30) {
+      return;
+    }
+    for (int i = 0; i < n.getChildCount(); i++) {
+      AccessibilityNodeInfo c = n.getChild(i);
+      if (c == null) {
+        continue;
+      }
+      count[0]++;
+      String t = getText(c);
+      if (t.length() > 0) {
+        if (sb.length() > 0) {
+          sb.append(' ');
+        }
+        sb.append(t);
+      } else {
+        labelOfChildren(c, sb, depth + 1, count);
+      }
+    }
+  }
+
+  /**
+   * Jieshuo: the first element on screen with this text, or nil. (Returning one element, not a list,
+   * lets scripts write {@code if service.findAccessibilityNodeInfoByText("Skip") then}.)
+   */
+  public AccessibilityNodeInfo findAccessibilityNodeInfoByText(String text) {
+    return findAccessibilityNodeInfoByText(text, 0);
+  }
+
+  public AccessibilityNodeInfo findAccessibilityNodeInfoByText(String text, int index) {
+    AccessibilityNodeInfo root = getRootNodeInfo();
+    if (root == null || text == null || text.length() == 0) {
+      return null;
+    }
+    List<AccessibilityNodeInfo> found = root.findAccessibilityNodeInfosByText(text);
+    if (found == null || index < 0 || index >= found.size()) {
+      return null;
+    }
+    return found.get(index);
+  }
+
+  /** Jieshuo: asks Android to uninstall the app with this package name. */
+  public boolean deleteApp(String packageName) {
+    if (packageName == null || packageName.trim().length() == 0) {
+      return false;
+    }
+    try {
+      Intent i =
+          new Intent(Intent.ACTION_DELETE, android.net.Uri.parse("package:" + packageName.trim()));
+      i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      ctx.startActivity(i);
+      return true;
+    } catch (Throwable t) {
+      log("deleteApp failed: " + t);
+      return false;
+    }
+  }
+
+  /** Jieshuo: opens the Android installer for the APK file at this path. */
+  public boolean installApp(String path) {
+    if (path == null || path.trim().length() == 0) {
+      return false;
+    }
+    try {
+      File apk = new File(path.trim());
+      if (!apk.isFile()) {
+        return false;
+      }
+      android.net.Uri uri =
+          androidx.core.content.FileProvider.getUriForFile(
+              ctx, ctx.getPackageName() + ".providers.FileProvider", apk);
+      Intent i = new Intent(Intent.ACTION_VIEW);
+      i.setDataAndType(uri, "application/vnd.android.package-archive");
+      i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+      ctx.startActivity(i);
+      return true;
+    } catch (Throwable t) {
+      log("installApp failed: " + t);
+      return false;
     }
   }
 
@@ -840,7 +1179,9 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
   }
 
   public void setTimerMode(boolean on) {
-    JxCommandTable.timerSet(this, on);
+    // Step 48: scripts (my, sinema, ded and time) use this as the on/off switch of regEvent("onTimer").
+    // It no longer starts the stopwatch and says "Timer started"; the stopwatch stays on its own commands.
+    timerFlag = on;
   }
 
   /** Reading mode: true starts reading from the top, false stops. */

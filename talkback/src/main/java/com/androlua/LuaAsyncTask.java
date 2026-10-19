@@ -184,6 +184,10 @@ public class LuaAsyncTask extends AsyncTaskX implements LuaGcable {
 		catch (LuaException e) {
 			mLuaContext.sendError("doInBackground", e);
 		}
+		catch (Throwable t) {
+			// Step 48: only a Lua error is expected here; anything else must not end the screen reader.
+			mLuaContext.sendError("doInBackground", t instanceof Exception ? (Exception) t : new RuntimeException(t));
+		}
 
 
 		return null;
