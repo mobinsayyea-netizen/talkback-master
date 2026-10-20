@@ -131,6 +131,9 @@ public class LuaState {
      * Closes state and removes the object from the LuaStateFactory
      */
     public synchronized void close() {
+        if (luaState == 0) {
+            return;
+        }
         LuaStateFactory.removeLuaState(luaState);
         _close(luaState);
         this.luaState = 0;

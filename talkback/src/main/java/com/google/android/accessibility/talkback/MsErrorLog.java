@@ -41,6 +41,7 @@ public final class MsErrorLog {
   private static final int MAX_SET = 30_000;
   private static final int MAX_ENTRY = 3000;
   private static final Object LOCK = new Object();
+  private static final java.util.HashMap<String, String> LAST_SET = new java.util.HashMap<>();
   private static final Handler MAIN = new Handler(Looper.getMainLooper());
 
   private static Context app;
@@ -139,6 +140,12 @@ public final class MsErrorLog {
                   if (v.length() > 80) {
                     v = v.substring(0, 80) + "...";
                   }
+                }
+                synchronized (LAST_SET) {
+                  if (v.equals(LAST_SET.get(key))) {
+                    return;
+                  }
+                  LAST_SET.put(key, v);
                 }
                 append(SET_FILE, MAX_SET, stamp() + "  " + key + " = " + v + "\n");
               } catch (Throwable ignored) {

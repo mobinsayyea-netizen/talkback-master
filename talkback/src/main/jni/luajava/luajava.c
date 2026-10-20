@@ -1742,6 +1742,9 @@ Java_com_luajava_LuaState__1openLibs(JNIEnv *env, jobject jobj, jlong cptr) {
 
 JNIEXPORT void JNICALL
 Java_com_luajava_LuaState__1close(JNIEnv *env, jobject jobj, jlong cptr) {
+    if (cptr == 0) {
+        return;
+    }
     lua_State *L = getStateFromCPtr(env, cptr);
 
     lua_close(L);
