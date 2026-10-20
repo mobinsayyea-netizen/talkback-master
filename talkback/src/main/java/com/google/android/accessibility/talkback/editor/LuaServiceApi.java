@@ -85,6 +85,7 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
   public static boolean executeStatic(Context ctx, String name) {
     LuaServiceApi api = null;
     try {
+      com.google.android.accessibility.talkback.MsErrorLog.crumb("command " + name);
       api = new LuaServiceApi(ctx.getApplicationContext(), LuaPaths.base(ctx));
       return name != null && JxCommands.run(api, api.ctx, name, null);
     } catch (Throwable t) {
@@ -112,6 +113,8 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
     depth++;
     LuaServiceApi api = null;
     try {
+      com.google.android.accessibility.talkback.MsErrorLog.crumb(
+          "script " + script.getParentFile().getName());
       api = new LuaServiceApi(ctx.getApplicationContext(), script.getParentFile());
       if (extras != null) {
         for (java.util.Map.Entry<String, String> e : extras.entrySet()) {
@@ -149,6 +152,8 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
     depth++;
     LuaServiceApi api = null;
     try {
+      com.google.android.accessibility.talkback.MsErrorLog.crumb(
+          "hook " + hook + " in " + script.getParentFile().getName() + " (" + pkg + ")");
       api = new LuaServiceApi(ctx.getApplicationContext(), script.getParentFile());
       api.L.pushString(hook);
       api.L.setGlobal("service_hook");
@@ -181,6 +186,8 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
     depth++;
     LuaServiceApi api = null;
     try {
+      com.google.android.accessibility.talkback.MsErrorLog.crumb(
+          "hook " + hook + " in " + script.getParentFile().getName());
       api = new LuaServiceApi(ctx.getApplicationContext(), script.getParentFile());
       api.L.pushString(hook);
       api.L.setGlobal("service_hook");

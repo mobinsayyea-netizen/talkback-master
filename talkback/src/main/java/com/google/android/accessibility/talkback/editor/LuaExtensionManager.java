@@ -254,12 +254,29 @@ public final class LuaExtensionManager {
     try { all = cached(context.getApplicationContext()); } catch (Throwable t) { return false; }
     for (Extension ext : all) {
       if (!ext.hooks.contains("onGestureDetected")) continue;
+      // Step 49: the script runs on its own thread; the service waits at most 400 ms, so a slow or
+      // stuck script can never freeze the screen reader (it just does not consume the gesture).
+      final Extension e = ext;
       try {
-        if (LuaServiceApi.runHookBoolean(context, ext.main, "onGestureDetected", gestureId)) return true;
+        java.util.concurrent.Future<Boolean> f =
+            GESTURE_POOL.submit(
+                () -> LuaServiceApi.runHookBoolean(context, e.main, "onGestureDetected", gestureId));
+        if (f.get(400, java.util.concurrent.TimeUnit.MILLISECONDS)) return true;
+      } catch (java.util.concurrent.TimeoutException te) {
+        com.google.android.accessibility.talkback.MsErrorLog.log(
+            "Extension " + ext.title + " gesture hook took over 400 ms; gesture not consumed", te);
       } catch (Throwable ignored) { com.google.android.accessibility.talkback.MsErrorLog.log("Extension hook", ignored); }
     }
     return false;
   }
+
+  private static final ExecutorService GESTURE_POOL =
+      Executors.newCachedThreadPool(
+          r -> {
+            Thread t = new Thread(r, "ms-gesture-hook");
+            t.setDaemon(true);
+            return t;
+          });
 
   private static void dispatchHook(
       Context context, final String hook, final String pkg, final String text) {

@@ -4168,12 +4168,10 @@ public class TalkBackService extends AccessibilityServiceCompat
 
   @Override
   public void uncaughtException(Thread thread, Throwable ex) {
-    // Step 48: a failure on a background thread of an extension/tool (Lua, its timers, tasks and
-    // threads) is written to the error log and does NOT end the screen reader. Jieshuo works the same
-    // way. Any other crash, and anything on the main thread, still goes to the system as before.
-    if (thread != null
-        && thread != android.os.Looper.getMainLooper().getThread()
-        && isExtensionFailure(ex)) {
+    // Step 49: ANY failure on a background thread is written to the error log and does NOT end the
+    // screen reader (Jieshuo's handler never passes errors on to the system either). Only a failure
+    // on the main thread still goes to the system as before.
+    if (thread != null && thread != android.os.Looper.getMainLooper().getThread()) {
       try {
         MsErrorLog.log("Extension thread " + thread.getName(), ex);
       } catch (Throwable ignored) {

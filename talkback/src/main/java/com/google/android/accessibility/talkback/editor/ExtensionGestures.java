@@ -145,6 +145,8 @@ public final class ExtensionGestures {
     if (t == null) {
       return false;
     }
+    com.google.android.accessibility.talkback.MsErrorLog.crumb(
+        "gesture " + nameOf(gestureId) + " -> " + t.kind + " " + t.name);
     CustomVoiceCommands.run(c, new CustomVoiceCommands.Entry("", t.kind, t.name));
     return true;
   }

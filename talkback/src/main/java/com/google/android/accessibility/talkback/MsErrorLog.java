@@ -49,13 +49,62 @@ public final class MsErrorLog {
   private static long lastKeyTime;
   private static long lastToast;
 
+  private static final String CRUMB_FILE = "ms_crumbs.txt";
+  private static final String CRUMB_PREV_FILE = "ms_crumbs_prev.txt";
+  private static final int MAX_CRUMBS = 30;
+  private static final java.util.ArrayDeque<String> CRUMBS = new java.util.ArrayDeque<>();
+
   private MsErrorLog() {}
+
+  /**
+   * Notes what the app is about to do (script, hook, command, gesture). The last 30 notes are kept
+   * in a small file, written at once, so a native crash that kills the process still leaves them.
+   * Cheap and never throws; does nothing before {@link #init}.
+   */
+  public static void crumb(String what) {
+    try {
+      if (app == null || what == null) {
+        return;
+      }
+      String line =
+          new SimpleDateFormat("HH:mm:ss.SSS", Locale.US).format(new Date())
+              + " ["
+              + Thread.currentThread().getName()
+              + "] "
+              + (what.length() > 160 ? what.substring(0, 160) : what);
+      synchronized (CRUMBS) {
+        CRUMBS.addLast(line);
+        while (CRUMBS.size() > MAX_CRUMBS) {
+          CRUMBS.removeFirst();
+        }
+        File f = file(CRUMB_FILE);
+        if (f == null) {
+          return;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String l : CRUMBS) {
+          sb.append(l).append('\n');
+        }
+        try (FileOutputStream out = new FileOutputStream(f)) {
+          out.write(sb.toString().getBytes(StandardCharsets.UTF_8));
+        }
+      }
+    } catch (Throwable ignored) {
+    }
+  }
 
   public static void init(Context c) {
     try {
       if (c != null && app == null) {
         Context a = c.getApplicationContext();
         app = a != null ? a : c;
+        // Keep the last actions of the previous run: they are attached to its crash report.
+        File cur = file(CRUMB_FILE);
+        File prev = file(CRUMB_PREV_FILE);
+        if (cur != null && prev != null && cur.exists()) {
+          prev.delete();
+          cur.renameTo(prev);
+        }
       }
     } catch (Throwable ignored) {
     }
@@ -103,6 +152,10 @@ public final class MsErrorLog {
   }
 
   public static void log(String where, Object err) {
+    logMax(where, err, MAX_ENTRY);
+  }
+
+  private static void logMax(String where, Object err, int maxEntry) {
     try {
       String msg;
       if (err instanceof Throwable) {
@@ -112,8 +165,8 @@ public final class MsErrorLog {
       } else {
         msg = String.valueOf(err);
       }
-      if (msg.length() > MAX_ENTRY) {
-        msg = msg.substring(0, MAX_ENTRY) + "\n...(cut)";
+      if (msg.length() > maxEntry) {
+        msg = msg.substring(0, maxEntry) + "\n...(cut)";
       }
       String key = where + "|" + (msg.length() > 120 ? msg.substring(0, 120) : msg);
       long now = System.currentTimeMillis();
@@ -211,27 +264,58 @@ public final class MsErrorLog {
       if (r == ApplicationExitInfo.REASON_CRASH_NATIVE || r == ApplicationExitInfo.REASON_ANR) {
         try (InputStream in = i.getTraceInputStream()) {
           if (in != null) {
-            byte[] b = new byte[8000];
-            int n = in.read(b);
-            StringBuilder t = new StringBuilder();
-            for (int k = 0; k < Math.max(n, 0); k++) {
-              char ch = (char) (b[k] & 0xff);
-              if (ch == '\n' || (ch >= 32 && ch < 127)) {
-                t.append(ch);
+            java.io.ByteArrayOutputStream all = new java.io.ByteArrayOutputStream();
+            byte[] buf = new byte[8192];
+            int n;
+            while ((n = in.read(buf)) > 0 && all.size() < 2_000_000) {
+              all.write(buf, 0, n);
+            }
+            byte[] raw = all.toByteArray();
+            String nice = r == ApplicationExitInfo.REASON_CRASH_NATIVE
+                ? TombstoneSummary.summarize(raw, 9000)
+                : null;
+            if (nice != null) {
+              sb.append("\ntrace (crashed thread first):\n").append(nice);
+            } else {
+              // ANR text, or a tombstone in a format we do not know: keep the readable characters.
+              StringBuilder t = new StringBuilder();
+              for (int k = 0; k < Math.min(raw.length, 8000); k++) {
+                char ch = (char) (raw[k] & 0xff);
+                if (ch == '\n' || (ch >= 32 && ch < 127)) {
+                  t.append(ch);
+                }
               }
+              String ts2 = t.toString();
+              if (ts2.length() > 2500) {
+                ts2 = ts2.substring(0, 2500);
+              }
+              sb.append("\ntrace:\n").append(ts2);
             }
-            String ts2 = t.toString();
-            if (ts2.length() > 2500) {
-              ts2 = ts2.substring(0, 2500);
-            }
-            sb.append("\ntrace:\n").append(ts2);
           }
         } catch (Throwable ignored) {
         }
       }
-      log("Process ended (" + reasonName(r) + ")", sb.toString());
+      if (r == ApplicationExitInfo.REASON_CRASH_NATIVE
+          || r == ApplicationExitInfo.REASON_CRASH
+          || r == ApplicationExitInfo.REASON_ANR) {
+        sb.append(lastActionsNear(ts));
+      }
+      logMax("Process ended (" + reasonName(r) + ")", sb.toString(), 14000);
     }
     p.edit().putLong("last_exit_ts", max).apply();
+  }
+
+  /** The last actions of the previous run, if they end within 30 s of this process end. */
+  private static String lastActionsNear(long endTime) {
+    try {
+      File f = file(CRUMB_PREV_FILE);
+      if (f == null || !f.exists() || Math.abs(endTime - f.lastModified()) > 30_000L) {
+        return "";
+      }
+      return "\nLast actions before it ended (oldest first):\n" + read(f);
+    } catch (Throwable t) {
+      return "";
+    }
   }
 
   private static String reasonName(int r) {
