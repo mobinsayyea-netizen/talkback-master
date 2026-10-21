@@ -197,15 +197,20 @@ public class LuaObject implements Serializable {
 
 	@Override
 	protected void finalize() {
-		Log.i("luaObject", "finalize: "+ref+";"+toString());
+		// Step 51: never call toString()/push() here. By the time the garbage collector runs this,
+		// the Lua state is often already closed (pointer 0); touching it in native code crashes the
+		// whole app (SIGSEGV null pointer in luaS_new). Only release the reference if the state lives.
 		try {
+			if (L == null) {
+				return;
+			}
 			synchronized (L) {
-				if (L.getPointer() != 0)
+				if (!L.isClosed() && L.getPointer() != 0)
 					L.LunRef(LuaState.LUA_REGISTRYINDEX, ref);
 			}
 		}
-		catch (Exception e) {
-			System.err.println("Unable to release object " + ref);
+		catch (Throwable e) {
+			// ignore: the state is gone, nothing left to release
 		}
 	}
 

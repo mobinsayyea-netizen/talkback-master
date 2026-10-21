@@ -108,6 +108,9 @@ public class LuaState {
 
     private long luaState;
 
+    // Step 51: false for wrappers made by getExistingState(); only the owner may close the state.
+    private boolean owner = true;
+
     //private long stateId;
 
     protected LuaState() {
@@ -123,6 +126,7 @@ public class LuaState {
      */
     protected LuaState(long luaState) {
         this.luaState = luaState;
+        this.owner = false; // wraps a state created elsewhere: closing it is not our job
         LuaStateFactory.insertLuaState(this);
         //openLuajava(stateId);
     }
@@ -131,22 +135,28 @@ public class LuaState {
      * Closes state and removes the object from the LuaStateFactory
      */
     public synchronized void close() {
+        // Step 51: a second close (explicit close, then finalize) used to call _close(0) and crash
+        // in native code. Now it does nothing when the state is already closed.
         if (luaState == 0) {
             return;
         }
-        LuaStateFactory.removeLuaState(luaState);
-        _close(luaState);
-        this.luaState = 0;
+        if (!owner) {
+            luaState = 0;
+            return;
+        }
+        long ptr = luaState;
+        luaState = 0;
+        LuaStateFactory.removeLuaState(ptr);
+        _close(ptr);
     }
 
     @Override
     protected void finalize() {
-        Log.i("luaState", "finalize: "+luaState);
         try {
            close();
         }
-        catch (Exception e) {
-            System.err.println("Unable to release luaState " + luaState);
+        catch (Throwable e) {
+            System.err.println("Unable to release luaState");
         }
     }
 

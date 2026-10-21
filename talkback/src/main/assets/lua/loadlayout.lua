@@ -17,11 +17,15 @@ local Gravity=bindClass("android.view.Gravity")
 local OnClickListener=bindClass("android.view.View$OnClickListener")
 local TypedValue=luajava.bindClass("android.util.TypedValue")
 local BitmapDrawable=luajava.bindClass("android.graphics.drawable.BitmapDrawable")
-local LuaDrawable=luajava.bindClass "com.androlua.LuaDrawable"
-local LuaBitmapDrawable=luajava.bindClass "com.androlua.LuaBitmapDrawable"
-local LuaAdapter=luajava.bindClass "com.androlua.LuaAdapter"
-local ArrayListAdapter=bindClass("android.widget.ArrayListAdapter")
-local ArrayPageAdapter=bindClass("android.widget.ArrayPageAdapter")
+-- Step 51: optional classes are bound safely. If one is missing, only the layouts that really use it
+-- fail; every other layout still loads (before, one missing class broke all of them).
+local function tryBind(n) local ok,c=pcall(bindClass,n) if ok then return c end end
+local LuaDrawable=tryBind("com.androlua.LuaDrawable")
+local LuaBitmapDrawable=tryBind("com.androlua.LuaBitmapDrawable")
+local NineBitmapDrawable=tryBind("com.androlua.NineBitmapDrawable")
+local LuaAdapter=tryBind("com.androlua.LuaAdapter")
+local ArrayListAdapter=tryBind("android.widget.ArrayListAdapter")
+local ArrayPageAdapter=tryBind("android.widget.ArrayPageAdapter")
 local AdapterView=bindClass("android.widget.AdapterView")
 local ScaleType=bindClass("android.widget.ImageView$ScaleType")
 local TruncateAt=bindClass("android.text.TextUtils$TruncateAt")
