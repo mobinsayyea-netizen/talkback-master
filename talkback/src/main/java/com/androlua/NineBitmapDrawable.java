@@ -108,7 +108,7 @@ public class NineBitmapDrawable extends Drawable implements LuaGcable {
         init(bitmap, i5, i6, i7, i8);
     }
 
-    public NineBitmapDrawable(String str) {
+    public NineBitmapDrawable(String str) throws java.io.IOException {
         this(LuaBitmap.getLocalBitmap(str));
     }
 

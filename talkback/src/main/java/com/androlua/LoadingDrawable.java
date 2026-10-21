@@ -61,6 +61,7 @@ public class LoadingDrawable extends Drawable {
         int i5;
         int i6;
         Rect bounds = getBounds();
+        float r2 = Math.min(bounds.right, bounds.bottom);
         float f5 = 0.15f * r2;
         float f6 = r2 * 0.85f;
         RectF rectF = new RectF(f5, f5, f6, f6);
