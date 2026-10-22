@@ -62,7 +62,10 @@ final class PluginCompiler {
       ByteArrayOutputStream dxOut = new ByteArrayOutputStream();
       DxContext dx = new DxContext(dxOut, dxOut);
       Main.Arguments a = new Main.Arguments(dx);
-      a.parse(new String[] {"--output=" + jar.getAbsolutePath(), classes.getAbsolutePath()});
+      // Arguments.parse is private in this dx version; Main.main calls it from inside, so do the same by reflection.
+      java.lang.reflect.Method parse = Main.Arguments.class.getDeclaredMethod("parse", String[].class);
+      parse.setAccessible(true);
+      parse.invoke(a, (Object) new String[] {"--output=" + jar.getAbsolutePath(), classes.getAbsolutePath()});
       int rc = new Main(dx).runDx(a);
       if (rc != 0 || !jar.isFile()) {
         return "Dex conversion failed (code " + rc + "). " + dxOut.toString().trim();
