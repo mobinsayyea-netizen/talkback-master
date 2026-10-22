@@ -25,6 +25,17 @@ jobs:
           echo "$TAG" > tag.txt
           gh release download "$TAG" --pattern MSScreenReader.apk
 
+      - name: Make a test copy without native libraries (the emulator is x86_64, the app is ARM only)
+        run: |
+          cp MSScreenReader.apk test.apk
+          zip -q -d test.apk 'lib/*' 'META-INF/*'
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$BT/zipalign" -f 4 test.apk aligned.apk
+          keytool -genkey -keystore t.jks -alias t -keyalg RSA -keysize 2048 -validity 10 -storepass android -keypass android -dname "CN=test" > /dev/null 2>&1
+          "$BT/apksigner" sign --ks t.jks --ks-pass pass:android --key-pass pass:android aligned.apk
+          mv aligned.apk MSScreenReader.apk
+          ls -l MSScreenReader.apk
+
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -42,7 +53,8 @@ jobs:
           adb logcat -c
           echo "== start"; adb shell am start -n com.mobeen.msscreenreader/com.google.android.accessibility.talkback.editor.AiSelfTestActivity
           for i in $(seq 1 80); do adb logcat -d -s MsSelfTest | grep -q "RESULT:" && break; sleep 3; done
-          echo "== log"; adb logcat -d -s MsSelfTest AndroidRuntime
+          echo "== log"; adb logcat -d -s MsSelfTest AndroidRuntime | grep -v "VM exiting"
+          grep -q "RESULT: PASS" selftest.log
           EOF
 
       - name: Run self test on emulator
@@ -63,3 +75,7 @@ jobs:
           [ -f selftest.log ] || echo "No log: the emulator did not start the script (outcome: ${{ steps.emu.outcome }})" > selftest.log
           echo "emulator step outcome: ${{ steps.emu.outcome }}" >> selftest.log
           gh release create "selftest-${{ github.run_number }}" selftest.log --title "Self test ${{ github.run_number }}" --notes "AI Create emulator self test of $(cat tag.txt)" --prerelease --latest=false
+
+      - name: Fail if the self test failed
+        if: steps.emu.outcome != 'success'
+        run: exit 1
