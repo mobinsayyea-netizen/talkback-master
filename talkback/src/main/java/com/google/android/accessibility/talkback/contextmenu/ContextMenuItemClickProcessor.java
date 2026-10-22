@@ -113,6 +113,7 @@ public class ContextMenuItemClickProcessor {
         || (itemId == R.id.ms_menu_translate)
         || (itemId == R.id.ms_menu_ocr)
         || (itemId == R.id.ms_menu_ocr_translate)
+        || (itemId == R.id.lua_ai_create)
         || (itemId == R.id.lua_create_extension)
         || (itemId == R.id.lua_create_tool)
         || (itemId == R.id.lua_create_autoclick)
@@ -213,6 +214,8 @@ public class ContextMenuItemClickProcessor {
       service.msRunTextAction(3);
     } else if (itemId == R.id.ms_menu_ocr_translate) {
       service.msRunTextAction(4);
+    } else if (itemId == R.id.lua_ai_create) {
+      com.google.android.accessibility.talkback.editor.AiCreateActivity.show(service);
     } else if (itemId == R.id.lua_create_extension) {
       com.google.android.accessibility.talkback.editor.ProjectCreateDialog.show(service, true);
     } else if (itemId == R.id.lua_create_tool) {

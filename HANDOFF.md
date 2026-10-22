@@ -141,3 +141,11 @@ After a phone security update, APKs named `com.android.talkback` stopped install
 - Removed from menu: Braille keyboard, Braille display, Play Store, TalkBack tutorial, Terms of Service, both duplicate "Advanced settings", survey. Braille code/module itself is untouched.
 - Not built: Language (main voice), Screen button (Android blocks power key), Register commands, OpenAI/OpenRouter assistants, caller-ID voice choice. "Share feedback" opens the GitHub issues page. "Own volume level" is greyed out (not hidden) while "follow accessibility volume" is on.
 - Same function in two places was resolved: audio ducking = "Use audio focus" (TTS group); time format = `ms_rd_time_format`; single tap/lift/direct click = `ms_op_*` versions; custom labels = `ms_rd_labels_manage`.
+
+## 10. Step 54: AI Create (Java extensions/tools by AI) — DONE, UNVERIFIED (see STEP54_NOTES.md)
+- Menu item "AI Create" (id `lua_ai_create`, above Create Extension) opens `AiCreateActivity`: Create Extension, Create Tool, Create Android APK.
+- Extension/Tool = `AiChatActivity`: talk first; "बनाओ"/build makes Gemini write one `Main.java` (extends `ms.api.MsPlugin`), `PluginCompiler` compiles on the phone (ECJ + dx), compile errors go back to Gemini (4 tries). "ठीक करो"/fix uses `last_error.txt`.
+- A Java plugin folder = `main.lua` (header only, with `-- java: Main`) + `Main.java` + `plugin.jar`. `LuaServiceApi.run/runHook/runHookBoolean` send such folders to `JavaPluginRunner` (DexClassLoader, parent-first). Listing/menu/events/hooks code is unchanged.
+- API for plugins: `ms.api.MsApi` is GENERATED from the public non-Lua methods of `LuaServiceApi` (326 methods) + a few Java extras; `MsApiImpl` delegates to `LuaServiceApi` (created lazily). If LuaServiceApi gets new public methods, regenerate (script idea in STEP54_NOTES.md). The workflow copies `ms/api/*.java` and a trimmed `android.jar` into `assets/ms_compiler/` before building.
+- Create Android APK = `ApkBuilderActivity`: his APK Builder page (`assets/apk_builder.html`, OpenRouter hidden); Gemini key handed over by `MsHost`.
+- Not compiled/tested on a phone. Biggest risks: dx/ECJ API names (`DxContext`, `Main.Arguments`, `BatchCompiler`), running dx/ECJ on ART, APK size (+ about 15-25 MB).

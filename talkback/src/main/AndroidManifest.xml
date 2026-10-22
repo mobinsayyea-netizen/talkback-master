@@ -113,6 +113,20 @@
             android:label="TalkBackIpcService" />
 
         <activity
+            android:name="com.google.android.accessibility.talkback.editor.AiCreateActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.AiChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.editor.ApkBuilderActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
             android:name="com.google.android.accessibility.talkback.editor.LuaEditorActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"

@@ -107,6 +107,9 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
       File script,
       AccessibilityNodeInfo node,
       java.util.Map<String, String> extras) {
+    if (JavaPluginRunner.isJava(script)) {
+      return JavaPluginRunner.run(ctx, script, node, extras);
+    }
     if (depth >= MAX_DEPTH) {
       return "Too many nested scripts";
     }
@@ -146,6 +149,9 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
    * The global service_hook holds the hook name while the script runs. Worker thread only.
    */
   public static String runHook(Context ctx, File script, String hook, String pkg, String text) {
+    if (JavaPluginRunner.isJava(script)) {
+      return JavaPluginRunner.runHook(ctx, script, hook, pkg, text);
+    }
     if (depth >= MAX_DEPTH) {
       return "Too many nested scripts";
     }
@@ -182,6 +188,9 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
 
   /** Runs an opt-in hook and returns true only when its Lua function explicitly returns true. */
   public static boolean runHookBoolean(Context ctx, File script, String hook, Object... args) {
+    if (JavaPluginRunner.isJava(script)) {
+      return JavaPluginRunner.runHookBoolean(ctx, script, hook, args);
+    }
     if (depth >= MAX_DEPTH || script == null || !script.isFile() || hook == null) return false;
     depth++;
     LuaServiceApi api = null;
@@ -232,7 +241,7 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
     return null;
   }
 
-  private LuaServiceApi(Context c, File dir) throws Exception {
+  LuaServiceApi(Context c, File dir) throws Exception {
     // Step 42: the Lua `service` is now a real Context (wrapping the accessibility service), so scripts can
     // pass it where Android needs a Context: LinearLayout(service), AlertDialog.Builder(service), ArrayAdapter(service, ...).
     super(c);
@@ -379,7 +388,7 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
   }
 
   /** Main script ended: close only after scheduled tasks and registered Lua objects finish. */
-  private void finishMain() {
+  void finishMain() {
     mainDone = true;
     closeIfIdle();
   }

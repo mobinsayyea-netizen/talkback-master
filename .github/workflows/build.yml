@@ -30,6 +30,27 @@ jobs:
           yes | sdkmanager --licenses > /dev/null || true
           sdkmanager "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" || true
 
+      - name: Prepare AI Create compiler files
+        run: |
+          A=talkback/src/main/assets/ms_compiler
+          mkdir -p "$A"
+          cp talkback/src/main/java/ms/api/MsApi.java talkback/src/main/java/ms/api/MsPlugin.java "$A"/
+          JAR=$(ls "$ANDROID_HOME"/platforms/android-*/android.jar | sort -V | tail -1)
+          echo "Using $JAR"
+          python3 - "$JAR" "$A/android.jar" <<'PY'
+          import sys, zipfile
+          src, dst = sys.argv[1], sys.argv[2]
+          drop = ("android/icu/", "android/renderscript/", "android/test/", "android/testing/", "android/companion/", "android/health/", "android/nfc/", "android/print/", "android/mtp/", "android/gesture/", "META-INF/", "res/", "junit/", "org/apache/", "org/junit/")
+          with zipfile.ZipFile(src) as zi, zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as zo:
+              for i in zi.infolist():
+                  n = i.filename
+                  if i.is_dir() or n.startswith(drop) or not n.endswith(".class"):
+                      continue
+                      
+                  zo.writestr(n, zi.read(n))
+          PY
+          ls -l "$A"
+
       - name: Prepare signing key
         env:
           KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}

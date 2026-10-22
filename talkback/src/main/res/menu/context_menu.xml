@@ -62,6 +62,10 @@
       android:orderInCategory="25"
       android:title="@string/title_show_braille_display_settings" />
   <item
+      android:id="@+id/lua_ai_create"
+      android:orderInCategory="22"
+      android:title="@string/menu_ai_create" />
+  <item
       android:id="@+id/lua_create_extension"
       android:orderInCategory="23"
       android:title="@string/menu_create_extension" />

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="menu_ai_create">AI Create</string>
     <string name="menu_create_extension">Create Extension</string>
     <string name="menu_create_tool">Create Tool</string>
     <string name="dialog_enter_name">Enter keyword</string>
