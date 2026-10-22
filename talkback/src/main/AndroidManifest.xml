@@ -113,6 +113,11 @@
             android:label="TalkBackIpcService" />
 
         <activity
+            android:name="com.google.android.accessibility.talkback.editor.AiSelfTestActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
             android:name="com.google.android.accessibility.talkback.editor.AiCreateActivity"
             android:exported="false"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
