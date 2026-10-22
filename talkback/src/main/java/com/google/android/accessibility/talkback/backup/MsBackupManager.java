@@ -32,7 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * MS Screen Reader: full backup and restore. One zip file holds EVERYTHING the app keeps:
+ * Advanced Screen Reader: full backup and restore. One zip file holds EVERYTHING the app keeps:
  *
  * <ul>
  *   <li>every settings file (main settings, Gemini key and model, translate, sound theme choice,
@@ -113,7 +113,7 @@ public final class MsBackupManager {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     try (ZipOutputStream zip = new ZipOutputStream(bytes)) {
       JSONObject manifest = new JSONObject();
-      manifest.put("app", "MS Screen Reader");
+      manifest.put("app", "Advanced Screen Reader");
       manifest.put("version", 2);
       manifest.put("time", System.currentTimeMillis());
       putText(zip, ENTRY_MANIFEST, manifest.toString());
@@ -299,8 +299,8 @@ public final class MsBackupManager {
         byte[] data = readAll(zip);
         if (name.equals(ENTRY_MANIFEST)) {
           JSONObject m = new JSONObject(new String(data, StandardCharsets.UTF_8));
-          if (!"MS Screen Reader".equals(m.optString("app"))) {
-            throw new IOException("not an MS Screen Reader backup");
+          if (!"Advanced Screen Reader".equals(m.optString("app"))) {
+            throw new IOException("not an Advanced Screen Reader backup");
           }
           valid = true;
         } else if (name.startsWith(DIR_PREFS) && name.endsWith(".json")) {
@@ -337,7 +337,7 @@ public final class MsBackupManager {
       }
     }
     if (!valid) {
-      throw new IOException("not an MS Screen Reader backup");
+      throw new IOException("not an Advanced Screen Reader backup");
     }
     return prefFilesCount
         + " settings files ("

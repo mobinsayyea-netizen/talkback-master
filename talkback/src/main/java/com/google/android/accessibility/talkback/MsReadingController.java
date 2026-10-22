@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -24,7 +24,7 @@ import com.google.android.accessibility.utils.AccessibilityEventUtils;
 import com.google.android.accessibility.utils.SharedPreferencesUtils;
 
 /**
- * MS Screen Reader: makes the "Reading settings" that have no TalkBack equivalent work: volume
+ * Advanced Screen Reader: makes the "Reading settings" that have no TalkBack equivalent work: volume
  * reading, reading the whole window, window-name and focused-item-change switches.
  */
 public final class MsReadingController {

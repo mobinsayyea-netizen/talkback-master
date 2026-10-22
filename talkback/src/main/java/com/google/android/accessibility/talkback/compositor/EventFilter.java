@@ -84,7 +84,7 @@ public class EventFilter {
     // Update persistent state.
     globalVariables.updateStateFromEvent(event);
 
-    // MS Screen Reader: Reading settings switches.
+    // Advanced Screen Reader: Reading settings switches.
     if (com.google.android.accessibility.talkback.MsReadingController.shouldDropEvent(context, event)) {
       return;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * MS Screen Reader: user dictionary. Each line is "word=spoken text". Applied to spoken text just
+ * Advanced Screen Reader: user dictionary. Each line is "word=spoken text". Applied to spoken text just
  * before it reaches the voice.
  */
 public final class MsDictionary {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback.editor;
 
@@ -11,7 +11,7 @@ import android.os.Looper;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/** MS Screen Reader: touch gestures for the Lua API (tap, long press, swipe). */
+/** Advanced Screen Reader: touch gestures for the Lua API (tap, long press, swipe). */
 final class JxGesture {
   private JxGesture() {}
 

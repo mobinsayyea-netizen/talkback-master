@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -21,7 +21,7 @@ import android.view.ViewConfiguration;
 import com.google.android.accessibility.utils.SharedPreferencesUtils;
 
 /**
- * MS Screen Reader: makes the "Operation settings" work. Handles volume-key actions (long press,
+ * Advanced Screen Reader: makes the "Operation settings" work. Handles volume-key actions (long press,
  * both keys, locked screen), the volume panel option, shake actions and wrap navigation.
  */
 public final class MsOperationController {

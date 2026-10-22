@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Step 46: dialog class for Lua extensions and tools, written for MS Screen Reader.
+ * Step 46: dialog class for Lua extensions and tools, written for Advanced Screen Reader.
  *
  * <p>Same public names that Jieshuo scripts use: {@code LuaDialog(this)}, {@code dlg.View = ...},
  * {@code setTitle}, {@code setMessage}, {@code setButton(text)}, {@code setItems}, {@code setAdapter},

@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 
 package com.google.android.accessibility.talkback.preference.base;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import androidx.preference.ListPreference;
 import com.google.android.accessibility.talkback.R;
 
-/** MS Screen Reader: main TTS settings (engine, speed, pitch, volume, audio focus, proximity). */
+/** Advanced Screen Reader: main TTS settings (engine, speed, pitch, volume, audio focus, proximity). */
 public class MsTtsFragment extends TalkbackBaseFragment {
   public MsTtsFragment() {
     super(R.xml.ms_tts_preferences);

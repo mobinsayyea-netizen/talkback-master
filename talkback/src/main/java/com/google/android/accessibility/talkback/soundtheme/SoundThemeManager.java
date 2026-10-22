@@ -155,8 +155,8 @@ public final class SoundThemeManager implements FeedbackController.SoundOverride
     slots.add(new SoundSlot("inputmethod_hide", "Keyboard hidden", 0));
     slots.add(new SoundSlot("feedback_paused", "Feedback paused", 0));
     slots.add(new SoundSlot("feedback_resume", "Feedback resumed", 0));
-    slots.add(new SoundSlot("talkman_start", "MS Screen Reader turned on", 0));
-    slots.add(new SoundSlot("talkman_stop", "MS Screen Reader turned off", 0));
+    slots.add(new SoundSlot("talkman_start", "Advanced Screen Reader turned on", 0));
+    slots.add(new SoundSlot("talkman_stop", "Advanced Screen Reader turned off", 0));
     return slots;
   }
 

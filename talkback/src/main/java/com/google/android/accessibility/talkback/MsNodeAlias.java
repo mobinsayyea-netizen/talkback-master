@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * MS Screen Reader: custom node aliases. Each line is "key=alias". The key is either a view id
+ * Advanced Screen Reader: custom node aliases. Each line is "key=alias". The key is either a view id
  * (for example com.whatsapp:id/send) or the exact text / description of the element (ignoring
  * case). When an element matches, the alias is spoken as its name.
  */

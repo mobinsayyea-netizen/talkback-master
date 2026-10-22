@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * MS Screen Reader: runs Lua extensions (folders Extensions/NAME/main.lua) from the main menu and
+ * Advanced Screen Reader: runs Lua extensions (folders Extensions/NAME/main.lua) from the main menu and
  * from events.
  *
  * <p>Header lines at the top of main.lua (first 20 lines) control an extension:

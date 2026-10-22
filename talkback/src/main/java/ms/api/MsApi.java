@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Everything a Java extension or tool can ask MS Screen Reader to do. It mirrors the Lua
+ * Everything a Java extension or tool can ask Advanced Screen Reader to do. It mirrors the Lua
  * `service` object of Jieshuo: same function names, same arguments. Methods return false, 0, ""
  * or null when the screen reader cannot do the thing.
  */

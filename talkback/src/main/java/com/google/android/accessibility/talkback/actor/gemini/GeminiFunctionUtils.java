@@ -624,7 +624,7 @@ public class GeminiFunctionUtils {
   public static Feedback.Part.Builder getPreferredImageDescriptionFeedback(
       Context context, ActorState actorState, @Nullable AccessibilityNodeInfoCompat node) {
 
-    // MS Screen Reader: the user's own Gemini key is always used, so there are no opt-in dialogs.
+    // Advanced Screen Reader: the user's own Gemini key is always used, so there are no opt-in dialogs.
     if (node != null) {
       return Feedback.performDetailedImageCaption(node);
     }
@@ -685,7 +685,7 @@ public class GeminiFunctionUtils {
     if (node == null) {
       return null;
     }
-    // MS Screen Reader: no opt-in dialog, the user's own key is used.
+    // Advanced Screen Reader: no opt-in dialog, the user's own key is used.
     if (true
         || SharedPreferencesUtils.getBooleanPref(
         prefs,

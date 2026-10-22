@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -18,7 +18,7 @@ import android.speech.tts.UtteranceProgressListener;
 import android.text.TextUtils;
 import com.google.android.accessibility.utils.SharedPreferencesUtils;
 
-/** MS Screen Reader: a second, independent TTS voice that follows "Secondary TTS settings". */
+/** Advanced Screen Reader: a second, independent TTS voice that follows "Secondary TTS settings". */
 public final class MsSecondaryTts {
   private static final String P = "ms_async_tts_";
 

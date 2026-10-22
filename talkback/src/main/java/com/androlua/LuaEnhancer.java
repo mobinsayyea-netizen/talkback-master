@@ -11,7 +11,7 @@ import com.android.cglib.proxy.MethodInterceptor;
 
 public class LuaEnhancer {
 
-    // Set once by the MS Screen Reader Lua manager (replaces AndroLua's LuaApplication).
+    // Set once by the Advanced Screen Reader Lua manager (replaces AndroLua's LuaApplication).
     public static android.content.Context sContext;
 
     private Enhancer mEnhancer;

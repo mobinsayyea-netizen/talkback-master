@@ -1,4 +1,4 @@
-name: Build MS Screen Reader APK
+name: Build Advanced Screen Reader APK
 
 on:
   workflow_dispatch:
@@ -133,6 +133,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "build-${{ github.run_number }}" MSScreenReader.apk MSScreenReader-64bit.apk \
-            --title "MS Screen Reader build ${{ github.run_number }}" \
+            --title "Advanced Screen Reader build ${{ github.run_number }}" \
             --notes "Automatic build from commit ${{ github.sha }}" \
             --latest

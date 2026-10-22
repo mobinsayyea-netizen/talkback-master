@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -17,7 +17,7 @@ import com.google.android.accessibility.utils.SharedPreferencesUtils;
 import java.util.Calendar;
 import java.util.Locale;
 
-/** MS Screen Reader: speaks time, date, year and battery after unlock and at an interval. */
+/** Advanced Screen Reader: speaks time, date, year and battery after unlock and at an interval. */
 public final class MsTimerController {
   private static final String P = "ms_adv_";
 

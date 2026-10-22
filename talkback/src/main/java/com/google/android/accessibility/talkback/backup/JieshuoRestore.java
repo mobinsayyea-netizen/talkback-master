@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 import org.json.JSONObject;
 
 /**
- * Restores a Jieshuo backup folder (zipped) into MS Screen Reader. This step covers sound packages
+ * Restores a Jieshuo backup folder (zipped) into Advanced Screen Reader. This step covers sound packages
  * (each becomes a sound theme with the same file for the same occasion) and the clipboard history.
  *
  * <p>The zip is read from the place the person picks; nothing from it is bundled in the app. Keys,
@@ -77,7 +77,7 @@ public final class JieshuoRestore {
   private static final Pattern SECRET_WORDS =
       Pattern.compile("(?i)apikey|api_key|authdomain|password|passwd|secret|token|bearer ");
 
-  /** Jieshuo sound names that have a different name in MS Screen Reader. */
+  /** Jieshuo sound names that have a different name in Advanced Screen Reader. */
   private static final Map<String, String> SLOT_RENAMES = new HashMap<>();
 
   static {
@@ -389,7 +389,7 @@ public final class JieshuoRestore {
     }
     if (!noSlot.isEmpty()) {
       result.notes.add(
-          "\"" + themeName + "\": no matching event in MS Screen Reader for: " + String.join(", ", noSlot));
+          "\"" + themeName + "\": no matching event in Advanced Screen Reader for: " + String.join(", ", noSlot));
     }
     if (!missing.isEmpty()) {
       result.notes.add(
@@ -602,7 +602,7 @@ public final class JieshuoRestore {
 
   // ------------------------------------------------------------------------------------------
   // Labels: Jieshuo keeps one file per app (named by the app's name) with "view id -> spoken
-  // name". MS Screen Reader has one list of "full view id = spoken name", so the app name is
+  // name". Advanced Screen Reader has one list of "full view id = spoken name", so the app name is
   // turned into the package name of the installed app with that name.
 
   private static void restoreLabels(Context context, File labelsDir, File aliasesDir, Result result) {
@@ -812,7 +812,7 @@ public final class JieshuoRestore {
   }
 
   /** Copies each sub-folder of {@code from} into {@code to}. A folder that already exists in
-   *  MS Screen Reader is kept as it is. Folder names lose spaces at the start and end. */
+   *  Advanced Screen Reader is kept as it is. Folder names lose spaces at the start and end. */
   private static int copyFolders(File from, File to, Result result) {
     File[] kids = from.listFiles();
     if (kids == null) {
@@ -833,7 +833,7 @@ public final class JieshuoRestore {
       }
       File dest = new File(to, name);
       if (dest.exists() && !madeNow.contains(name)) {
-        result.alreadyThere++; // was in MS Screen Reader before this restore: keep it
+        result.alreadyThere++; // was in Advanced Screen Reader before this restore: keep it
         continue;
       }
       // Two Jieshuo folders can have the same name once spaces are removed: keep both.

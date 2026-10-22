@@ -24,7 +24,7 @@ import java.io.OutputStream;
 import java.util.Date;
 
 /**
- * Backup and restore of ALL MS Screen Reader data: settings (including the Gemini key), sound
+ * Backup and restore of ALL Advanced Screen Reader data: settings (including the Gemini key), sound
  * themes, clipboard history, labels and Lua files. Works with a folder (Google Drive or any other
  * folder picked with the system picker), automatically or by hand, and with a single local file.
  */

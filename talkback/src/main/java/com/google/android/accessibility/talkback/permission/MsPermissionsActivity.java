@@ -71,13 +71,13 @@ public class MsPermissionsActivity extends Activity {
 
   private LinearLayout rows;
   private TextView summary;
+  private Button next;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     fromSettings = getIntent() != null && getIntent().hasExtra(EXTRA_FROM_SETTINGS);
-    if (!fromSettings && (isDone() || allSatisfied())) {
-      markDone();
+    if (!fromSettings && isDone() && allSatisfied()) {
       openSettingsAndFinish();
       return;
     }
@@ -89,13 +89,6 @@ public class MsPermissionsActivity extends Activity {
     super.onResume();
     if (rows == null) {
       return;
-    }
-    if (allSatisfied()) {
-      markDone();
-      if (!fromSettings) {
-        openSettingsAndFinish();
-        return;
-      }
     }
     refresh();
     if (waitingReturn) {
@@ -167,6 +160,18 @@ public class MsPermissionsActivity extends Activity {
     rows.setOrientation(LinearLayout.VERTICAL);
     root.addView(rows);
 
+    next = button(getString(R.string.ms_perm_continue));
+    next.setVisibility(View.GONE);
+    next.setOnClickListener(v -> {
+      markDone();
+      if (fromSettings) {
+        finish();
+      } else {
+        openSettingsAndFinish();
+      }
+    });
+    root.addView(next);
+
     root.addView(text(getString(R.string.ms_perm_restricted_help), 14));
     Button restricted = button(getString(R.string.ms_perm_restricted));
     restricted.setOnClickListener(v -> openAppInfo());
@@ -210,6 +215,9 @@ public class MsPermissionsActivity extends Activity {
       if (!ok) {
         missing++;
       }
+    }
+    if (next != null) {
+      next.setVisibility(missing == 0 ? View.VISIBLE : View.GONE);
     }
     if (missing == 0) {
       summary.setText(R.string.ms_perm_summary_all);
@@ -367,13 +375,8 @@ public class MsPermissionsActivity extends Activity {
       return;
     }
     if (allSatisfied()) {
-      markDone();
-      if (!fromSettings) {
-        openSettingsAndFinish();
-      } else {
-        autoRunning = false;
-        refresh();
-      }
+      autoRunning = false;
+      refresh();
       return;
     }
     List<String> miss = missingRuntime();

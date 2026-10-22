@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback.editor;
 
@@ -210,7 +210,7 @@ public final class MsExtras {
   private static void copyText(Context c, String text) {
     ClipboardManager cm = (ClipboardManager) c.getSystemService(Context.CLIPBOARD_SERVICE);
     if (cm != null) {
-      cm.setPrimaryClip(ClipData.newPlainText("MS Screen Reader", text));
+      cm.setPrimaryClip(ClipData.newPlainText("Advanced Screen Reader", text));
     }
   }
 

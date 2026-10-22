@@ -34,7 +34,7 @@ public class ErrorLogActivity extends Activity {
     addButton(root, "Copy to clipboard", () -> {
       ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
       if (cm != null) {
-        cm.setPrimaryClip(ClipData.newPlainText("MS Screen Reader report", MsErrorLog.readAll(this)));
+        cm.setPrimaryClip(ClipData.newPlainText("Advanced Screen Reader report", MsErrorLog.readAll(this)));
         status.setText("Copied. Paste it in the chat.");
       }
     });

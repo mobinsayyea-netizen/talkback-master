@@ -242,7 +242,7 @@ public class ProcessorPhoneticLetters implements AccessibilityEventListener {
         globalVariables.getSpeakPhoneticLettersEnabled()
             ? getPhoneticLetter(localeString, letter)
             : null;
-    // MS Screen Reader: "read text first" and "read index of a latin letter" options.
+    // Advanced Screen Reader: "read text first" and "read index of a latin letter" options.
     android.content.SharedPreferences msPrefs =
         com.google.android.accessibility.utils.SharedPreferencesUtils.getSharedPreferences(service);
     StringBuilder msExtra = new StringBuilder();

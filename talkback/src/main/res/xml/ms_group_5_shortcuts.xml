@@ -31,7 +31,7 @@
     <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g5_keyboard_link" android:title="Key combinations (physical keyboard)" android:fragment="com.google.android.accessibility.talkback.preference.base.TalkBackKeyboardShortcutPreferenceFragment"/>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g5_custom" android:title="Custom Commands">
-    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g5_menus_link" android:title="Customize MS Screen Reader menu and reading controls" android:fragment="com.google.android.accessibility.talkback.preference.base.CustomizeMenusFragment"/>
+    <com.google.android.accessibility.material.preference.AccessibilitySuitePreference android:key="ms_g5_menus_link" android:title="Customize Advanced Screen Reader menu and reading controls" android:fragment="com.google.android.accessibility.talkback.preference.base.CustomizeMenusFragment"/>
   </com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory>
   <com.google.android.accessibility.material.preference.AccessibilitySuitePreferenceCategory android:key="ms_g5_tap" android:title="Touch &amp; Navigation Behavior: Tapping">
     <com.google.android.accessibility.material.preference.AccessibilitySuiteSwitchPreference android:key="ms_op_single_tap" android:title="Single tap to activate" android:defaultValue="false"/>

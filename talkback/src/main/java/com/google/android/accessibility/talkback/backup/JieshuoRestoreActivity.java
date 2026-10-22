@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 /**
  * Advanced settings > Backup and restore > Restore from Jieshuo backup. The person picks the zip
- * of their Jieshuo folder; sounds and clipboard are brought into MS Screen Reader. The zip is only
+ * of their Jieshuo folder; sounds and clipboard are brought into Advanced Screen Reader. The zip is only
  * read, never copied into the app.
  */
 public class JieshuoRestoreActivity extends Activity {
@@ -36,7 +36,7 @@ public class JieshuoRestoreActivity extends Activity {
         "Zip your Jieshuo folder and pick the zip here. This brings in your sound themes "
             + "(the same sound for the same event), clipboard history and favorites, labels and "
             + "aliases for the apps installed on this phone, and your extensions, tools and "
-            + "resources. It also brings in your settings and gestures where MS Screen Reader "
+            + "resources. It also brings in your settings and gestures where Advanced Screen Reader "
             + "has the same setting; a setting you already changed in MS is replaced by the "
             + "Jieshuo value, and a full list of what was left out is saved as a text file. "
             + "Passwords, API keys and tokens are never read, and favorites that look like keys "

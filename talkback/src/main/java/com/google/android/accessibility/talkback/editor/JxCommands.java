@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback.editor;
 
@@ -204,7 +204,7 @@ final class JxCommands {
       {"voice_input_mode", "continuous voice dictation", "听写模式"},
       {"command_pause_gesture", "Suspend screen reader gestures", "暂停读屏手势"},
       {"command_grid_mode", "Screen Grid mode", "网格模式"},
-      // MS Screen Reader own command (not in Jieshuo): the Chinese column repeats the English name.
+      // Advanced Screen Reader own command (not in Jieshuo): the Chinese column repeats the English name.
       {"ms_edit_app_gestures", "Edit gesture scheme of current app", "Edit gesture scheme of current app"}
   };
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback.actor.voicecommands;
 
@@ -13,7 +13,7 @@ import java.util.Locale;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
- * MS Screen Reader: "open <app name>" voice command. Understands English ("open play store") and
+ * Advanced Screen Reader: "open <app name>" voice command. Understands English ("open play store") and
  * Hindi ("प्ले स्टोर खोलो", "ओपन व्हाट्सएप") and starts the best matching launcher app.
  */
 public final class MsAppLauncher {

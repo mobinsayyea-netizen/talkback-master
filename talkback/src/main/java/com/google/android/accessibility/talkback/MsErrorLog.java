@@ -224,7 +224,7 @@ public final class MsErrorLog {
           try {
             ClipboardManager cm = (ClipboardManager) c.getSystemService(Context.CLIPBOARD_SERVICE);
             if (cm != null) {
-              cm.setPrimaryClip(ClipData.newPlainText("MS Screen Reader error", entry));
+              cm.setPrimaryClip(ClipData.newPlainText("Advanced Screen Reader error", entry));
             }
             long now = System.currentTimeMillis();
             if (now - lastToast > 3000) {
@@ -393,7 +393,7 @@ public final class MsErrorLog {
   public static String readAll(Context c) {
     init(c);
     StringBuilder sb = new StringBuilder();
-    sb.append("MS Screen Reader report, ").append(stamp()).append('\n');
+    sb.append("Advanced Screen Reader report, ").append(stamp()).append('\n');
     sb.append("Android ").append(Build.VERSION.RELEASE).append(" (SDK ").append(Build.VERSION.SDK_INT)
         .append("), ").append(Build.MANUFACTURER).append(' ').append(Build.MODEL).append('\n');
     try {
@@ -429,7 +429,7 @@ public final class MsErrorLog {
   public static String saveToDownloads(Context c) {
     try {
       String name =
-          "MS Screen Reader error log "
+          "Advanced Screen Reader error log "
               + new SimpleDateFormat("yyyy-MM-dd HH-mm-ss", Locale.US).format(new Date())
               + ".txt";
       byte[] bytes = readAll(c).getBytes(StandardCharsets.UTF_8);

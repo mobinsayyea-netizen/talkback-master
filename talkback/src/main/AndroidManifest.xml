@@ -354,9 +354,13 @@
             android:exported="false"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
             android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name="com.google.android.accessibility.talkback.permission.MsWelcomeActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
         <activity-alias
             android:name="com.android.talkback.MsLauncherEntry"
-            android:targetActivity="com.google.android.accessibility.talkback.permission.MsPermissionsActivity"
+            android:targetActivity="com.google.android.accessibility.talkback.permission.MsWelcomeActivity"
             android:exported="true"
             android:label="@string/talkback_title"
             android:icon="@drawable/icon">

@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ms_perm_title">अनुमतियाँ</string>
-    <string name="ms_perm_intro">ऐप को ठीक से चलाने के लिए नीचे की सारी अनुमतियाँ चाहिए। \"सभी अनुमतियाँ दें\" दबाइए। हर अनुमति के लिए जो स्क्रीन खुले, उसमें अनुमति दीजिए और वापस आइए। बाक़ी स्क्रीनें अपने आप खुलती जाएँगी। सब मिलने के बाद ऐप दोबारा कोई अनुमति नहीं माँगेगा।</string>
-    <string name="ms_perm_grant_all">सभी अनुमतियाँ दें</string>
-    <string name="ms_perm_check">अनुमतियाँ जाँचें</string>
-    <string name="ms_perm_restricted">प्रतिबंधित सेटिंग्स की अनुमति दें (ऐप की जानकारी खोलें)</string>
-    <string name="ms_perm_restricted_help">अगर Accessibility का स्विच धूसर है या बंद नहीं होता: ऐप की जानकारी में ऊपर तीन बिंदु वाले मेन्यू में \"प्रतिबंधित सेटिंग्स की अनुमति दें\" चुनिए। यह Android 13 और उससे ऊपर में सिर्फ़ APK से इंस्टॉल किए ऐप के लिए एक बार करना पड़ता है।</string>
-    <string name="ms_perm_granted">मिल गई</string>
-    <string name="ms_perm_missing">बाकी है</string>
+    <string name="ms_perm_title">Permissions</string>
+    <string name="ms_perm_intro">The app needs all the permissions below to work properly. Press \"Grant all permissions\". On every screen that opens, allow the permission and come back. The remaining screens open one after another. When everything is granted, press Next.</string>
+    <string name="ms_perm_grant_all">Grant all permissions</string>
+    <string name="ms_perm_check">Check permissions</string>
+    <string name="ms_perm_restricted">Allow restricted settings (open App info)</string>
+    <string name="ms_perm_restricted_help">If the Accessibility switch is grey or will not turn on: in App info, open the three-dot menu at the top and choose \"Allow restricted settings\". On Android 13 and above this is needed once for apps installed from an APK.</string>
+    <string name="ms_perm_granted">granted</string>
+    <string name="ms_perm_missing">still needed</string>
     <string name="ms_perm_row">%1$s: %2$s</string>
-    <string name="ms_perm_summary_missing">%1$d अनुमतियाँ बाकी हैं। %2$s</string>
-    <string name="ms_perm_summary_all">सारी अनुमतियाँ मिल गई हैं।</string>
-    <string name="ms_perm_continue">आगे बढ़ें</string>
-    <string name="ms_perm_after_app_info">ऐप की जानकारी में \"अनुमतियाँ\" खोलकर बाक़ी सब को \"अनुमति दें\" कीजिए, फिर वापस आइए।</string>
-    <string name="ms_perm_open_failed">यह सेटिंग्स स्क्रीन नहीं खुल सकी।</string>
-    <string name="ms_perm_phone_state">फ़ोन की स्थिति</string>
-    <string name="ms_perm_answer_calls">कॉल का जवाब देना</string>
-    <string name="ms_perm_call_log">कॉल लॉग</string>
-    <string name="ms_perm_contacts">संपर्क</string>
-    <string name="ms_perm_mic">माइक्रोफ़ोन</string>
-    <string name="ms_perm_notifications">सूचनाएँ</string>
-    <string name="ms_perm_storage">स्टोरेज</string>
-    <string name="ms_perm_all_files">सभी फ़ाइलों की पहुँच</string>
-    <string name="ms_perm_battery">बैटरी की पाबंदी से छूट</string>
-    <string name="ms_perm_accessibility">Accessibility सेवा चालू</string>
-    <string name="ms_perm_give">दें</string>
-    <string name="ms_perm_give_desc">%1$s की अनुमति दें</string>
-    <string name="ms_perm_exit">बाहर निकलें</string>
-    <string name="ms_perm_why_phone_state">कॉल आने पर नाम बोलने और कॉल की स्थिति जानने के लिए।</string>
-    <string name="ms_perm_why_answer_calls">वॉल्यूम बटन से कॉल उठाने या काटने के लिए।</string>
-    <string name="ms_perm_why_call_log">कॉल खत्म होने पर उसकी अवधि बोलने के लिए।</string>
-    <string name="ms_perm_why_contacts">आने वाली कॉल पर नंबर की जगह संपर्क का नाम बोलने के लिए।</string>
-    <string name="ms_perm_why_mic">आवाज़ वाले कमांड और वॉइस इनपुट के लिए।</string>
-    <string name="ms_perm_why_notifications">ऐप की अपनी सूचना दिखाने के लिए।</string>
-    <string name="ms_perm_why_storage">एक्सटेंशन, ध्वनि-थीम और बैकअप फ़ाइलें पढ़ने और सहेजने के लिए।</string>
-    <string name="ms_perm_why_battery">ताकि स्क्रीन रीडर अचानक बंद न हो जाए।</string>
-    <string name="ms_perm_why_accessibility">स्क्रीन रीडर चलाने के लिए। यह सेवा चालू होना ज़रूरी है।</string>
+    <string name="ms_perm_summary_missing">%1$d permissions still needed. %2$s</string>
+    <string name="ms_perm_summary_all">All permissions are granted. Press Next.</string>
+    <string name="ms_perm_continue">Next</string>
+    <string name="ms_perm_after_app_info">In App info, open \"Permissions\" and allow all the rest, then come back.</string>
+    <string name="ms_perm_open_failed">This settings screen could not be opened.</string>
+    <string name="ms_perm_phone_state">Phone state</string>
+    <string name="ms_perm_answer_calls">Answer calls</string>
+    <string name="ms_perm_call_log">Call log</string>
+    <string name="ms_perm_contacts">Contacts</string>
+    <string name="ms_perm_mic">Microphone</string>
+    <string name="ms_perm_notifications">Notifications</string>
+    <string name="ms_perm_storage">Storage</string>
+    <string name="ms_perm_all_files">All files access</string>
+    <string name="ms_perm_battery">Battery optimization exemption</string>
+    <string name="ms_perm_accessibility">Accessibility service turned on</string>
+    <string name="ms_perm_give">Grant</string>
+    <string name="ms_perm_give_desc">Grant %1$s permission</string>
+    <string name="ms_perm_exit">Exit</string>
+    <string name="ms_perm_why_phone_state">To speak the caller name and know the call state when a call comes.</string>
+    <string name="ms_perm_why_answer_calls">To answer or end calls with the volume buttons.</string>
+    <string name="ms_perm_why_call_log">To speak the call duration when a call ends.</string>
+    <string name="ms_perm_why_contacts">To speak the contact name instead of the number on incoming calls.</string>
+    <string name="ms_perm_why_mic">For voice commands and voice input.</string>
+    <string name="ms_perm_why_notifications">To show the app\u2019s own notification.</string>
+    <string name="ms_perm_why_storage">To read and save extensions, sound themes and backup files.</string>
+    <string name="ms_perm_why_battery">So the screen reader does not stop suddenly.</string>
+    <string name="ms_perm_why_accessibility">To run the screen reader. This service must be on.</string>
+    <string name="ms_welcome_title" translatable="false">Advanced Screen Reader</string>
+    <string name="ms_welcome_by" translatable="false">Developed by Mobeen Sayyed</string>
+    <string name="ms_welcome_close" translatable="false">Close</string>
 </resources>

@@ -752,7 +752,7 @@ public class TalkBackService extends AccessibilityServiceCompat
   private MsTimerController msTimer;
   private MsClickController msClick;
 
-  /** MS Screen Reader: text actions of the main menu (copy, append, translate, OCR). */
+  /** Advanced Screen Reader: text actions of the main menu (copy, append, translate, OCR). */
   public void msRunTextAction(int action) {
     if (selectorController != null) {
       selectorController.msRunTextAction(action);
@@ -760,7 +760,7 @@ public class TalkBackService extends AccessibilityServiceCompat
   }
 
   /**
-   * MS Screen Reader: starts TalkBack's own voice commands (the same listener the "Voice commands"
+   * Advanced Screen Reader: starts TalkBack's own voice commands (the same listener the "Voice commands"
    * gesture uses). Returns false when the pipeline is not ready yet.
    */
   public boolean msStartVoiceCommands() {
@@ -778,7 +778,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     return true;
   }
 
-  /** MS Screen Reader: sends a question and a picture to Gemini (answer is spoken by TalkBack). */
+  /** Advanced Screen Reader: sends a question and a picture to Gemini (answer is spoken by TalkBack). */
   public boolean msGeminiAsk(String prompt, android.graphics.Bitmap image) {
     if (pipeline == null) {
       return false;
@@ -812,7 +812,7 @@ public class TalkBackService extends AccessibilityServiceCompat
         }
       };
 
-  /** MS Screen Reader: automatic backup to the chosen folder; checks every 15 minutes. */
+  /** Advanced Screen Reader: automatic backup to the chosen folder; checks every 15 minutes. */
   private void msStartAutoBackup() {
     msBackupRunning = true;
     msBackupHandler.removeCallbacks(msBackupTick);
@@ -824,7 +824,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     msBackupHandler.removeCallbacks(msBackupTick);
   }
 
-  /** MS Screen Reader: the item that has screen reader focus now (for Lua extensions), or null. */
+  /** Advanced Screen Reader: the item that has screen reader focus now (for Lua extensions), or null. */
   public android.view.accessibility.AccessibilityNodeInfo msFocusedNode() {
     try {
       android.view.accessibility.AccessibilityNodeInfo root = getRootInActiveWindow();
@@ -836,7 +836,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     }
   }
 
-  /** MS Screen Reader (Lua API): moves screen reader focus. Returns false when not ready. */
+  /** Advanced Screen Reader (Lua API): moves screen reader focus. Returns false when not ready. */
   public boolean msFocusFeedback(Feedback.FocusDirection.Builder direction) {
     if (pipeline == null || direction == null) {
       return false;
@@ -844,7 +844,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     return pipeline.getFeedbackReturner().returnFeedback(EVENT_ID_UNTRACKED, direction);
   }
 
-  /** MS Screen Reader (Lua API): sends a ready feedback part through the pipeline. */
+  /** Advanced Screen Reader (Lua API): sends a ready feedback part through the pipeline. */
   public boolean msPartFeedback(Feedback.Part.Builder part) {
     if (pipeline == null || part == null) {
       return false;
@@ -852,7 +852,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     return pipeline.getFeedbackReturner().returnFeedback(EVENT_ID_UNTRACKED, part);
   }
 
-  /** MS Screen Reader (Lua API): starts reading from the first item, or from the focus. */
+  /** Advanced Screen Reader (Lua API): starts reading from the first item, or from the focus. */
   public void msStartReading(boolean fromTop) {
     if (fullScreenReadActor == null) {
       return;
@@ -864,14 +864,14 @@ public class TalkBackService extends AccessibilityServiceCompat
     }
   }
 
-  /** MS Screen Reader (Lua API): stops continuous reading. */
+  /** Advanced Screen Reader (Lua API): stops continuous reading. */
   public void msStopReading() {
     if (fullScreenReadActor != null) {
       fullScreenReadActor.stopContinuousReadingMode();
     }
   }
 
-  /** MS Screen Reader (Lua API): makes speech faster or slower by one step. */
+  /** Advanced Screen Reader (Lua API): makes speech faster or slower by one step. */
   public boolean msChangeSpeechRate(boolean faster) {
     return speechRateAndPitchActor != null && speechRateAndPitchActor.changeSpeechRate(faster);
   }
@@ -885,7 +885,7 @@ public class TalkBackService extends AccessibilityServiceCompat
       };
 
   /**
-   * MS Screen Reader (Lua API, "Suspend browse by touch"): switches touch exploration off, or back
+   * Advanced Screen Reader (Lua API, "Suspend browse by touch"): switches touch exploration off, or back
    * on when it is already off. Safety: a suspended state is undone by itself after two minutes, so a
    * blind user cannot be locked out of the phone if no other command resumes it.
    */
@@ -954,7 +954,7 @@ public class TalkBackService extends AccessibilityServiceCompat
       };
 
   /**
-   * MS Screen Reader: "Suspend screen reader gestures". While suspended, TalkBack ignores its
+   * Advanced Screen Reader: "Suspend screen reader gestures". While suspended, TalkBack ignores its
    * gestures. Safety: they come back by themselves after five minutes.
    */
   public boolean msToggleGesturesPaused() {
@@ -973,7 +973,7 @@ public class TalkBackService extends AccessibilityServiceCompat
   }
 
   /**
-   * MS Screen Reader: "Suspend main TTS engine". The main voice is muted (other voices such as the
+   * Advanced Screen Reader: "Suspend main TTS engine". The main voice is muted (other voices such as the
    * second TTS are not). Back by itself after five minutes.
    */
   public boolean msToggleMainTts() {
@@ -993,7 +993,7 @@ public class TalkBackService extends AccessibilityServiceCompat
   }
 
   /**
-   * MS Screen Reader: "Suspend speech feedback and browse by touch": speech muted and touch
+   * Advanced Screen Reader: "Suspend speech feedback and browse by touch": speech muted and touch
    * exploration off together. Back by itself after five minutes.
    */
   public boolean msToggleFeedbackSuspend() {
@@ -1015,7 +1015,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     return true;
   }
 
-  /** MS Screen Reader (Lua API): turns the curtain (dim screen) on. */
+  /** Advanced Screen Reader (Lua API): turns the curtain (dim screen) on. */
   public boolean msDimScreen() {
     if (dimScreenController == null || !DimScreenActor.isSupported(this)) {
       return false;
@@ -1024,7 +1024,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     return true;
   }
 
-  /** MS Screen Reader (Lua API): shows TalkBack's menu (the actions menu when actions is true). */
+  /** Advanced Screen Reader (Lua API): shows TalkBack's menu (the actions menu when actions is true). */
   public boolean msShowMenu(boolean actions) {
     if (menuManager == null) {
       return false;
@@ -1034,7 +1034,7 @@ public class TalkBackService extends AccessibilityServiceCompat
         com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED);
   }
 
-  /** MS Screen Reader (Lua API): opens the settings, directly on one fragment when a name is given. */
+  /** Advanced Screen Reader (Lua API): opens the settings, directly on one fragment when a name is given. */
   public boolean msOpenSettings(@Nullable String fragmentClassName) {
     try {
       android.content.Intent i =
@@ -1054,7 +1054,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     }
   }
 
-  /** MS Screen Reader (Lua API): Gemini description of the focused item or of the whole screen. */
+  /** Advanced Screen Reader (Lua API): Gemini description of the focused item or of the whole screen. */
   public boolean msDescribe(boolean wholeScreen) {
     if (pipeline == null) {
       return false;
@@ -1088,7 +1088,7 @@ public class TalkBackService extends AccessibilityServiceCompat
     }
   }
 
-  /** MS Screen Reader (Lua API): lets the next touches go straight to the app (pass-through). */
+  /** Advanced Screen Reader (Lua API): lets the next touches go straight to the app (pass-through). */
   public boolean msPassThrough() {
     if (pipeline == null) {
       return false;
@@ -1100,7 +1100,7 @@ public class TalkBackService extends AccessibilityServiceCompat
             Feedback.passThroughMode(Feedback.PassThroughMode.Action.ENABLE_PASSTHROUGH));
   }
 
-  /** MS Screen Reader (Lua API): text selection mode on the focused item (on) or off. */
+  /** Advanced Screen Reader (Lua API): text selection mode on the focused item (on) or off. */
   public boolean msSelectionMode(boolean on) {
     if (pipeline == null) {
       return false;
@@ -1123,13 +1123,13 @@ public class TalkBackService extends AccessibilityServiceCompat
         .returnFeedback(com.google.android.accessibility.utils.Performance.EVENT_ID_UNTRACKED, fb);
   }
 
-  /** MS Screen Reader (Lua API): sets the reading unit (character, word, line, paragraph, default). */
+  /** Advanced Screen Reader (Lua API): sets the reading unit (character, word, line, paragraph, default). */
   public boolean msSetGranularity(
       com.google.android.accessibility.utils.input.CursorGranularity granularity) {
     return msFocusFeedback(Feedback.granularity(granularity));
   }
 
-  /** MS Screen Reader (Lua API): starts video description. */
+  /** Advanced Screen Reader (Lua API): starts video description. */
   public boolean msStartVideoDescription() {
     if (pipeline == null) {
       return false;
@@ -1139,24 +1139,24 @@ public class TalkBackService extends AccessibilityServiceCompat
     return true;
   }
 
-  /** MS Screen Reader: the time/date/year/battery sentence built from Advanced settings, or null. */
+  /** Advanced Screen Reader: the time/date/year/battery sentence built from Advanced settings, or null. */
   public @Nullable String msComposeWakeAnnouncement() {
     return msTimer == null ? null : msTimer.composeForWake();
   }
 
-  /** MS Screen Reader: true when the Advanced settings voice is the secondary voice. */
+  /** Advanced Screen Reader: true when the Advanced settings voice is the secondary voice. */
   public boolean msAnnouncementUsesSecondary() {
     return msTimer != null && msTimer.usesSecondaryVoice();
   }
 
-  /** MS Screen Reader: speaks an announcement with the voice chosen in Advanced settings. */
+  /** Advanced Screen Reader: speaks an announcement with the voice chosen in Advanced settings. */
   public void msSpeakAnnouncement(String text) {
     if (msTimer != null) {
       msTimer.speakAnnouncement(text);
     }
   }
 
-  /** MS Screen Reader: speaks text with the main TTS voice through the normal pipeline. */
+  /** Advanced Screen Reader: speaks text with the main TTS voice through the normal pipeline. */
   public void msSpeakMain(CharSequence text, boolean queue) {
     if (pipeline == null) {
       return;

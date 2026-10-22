@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * MS Screen Reader: content filtering. Drops speech that matches the user's blacklist, and
+ * Advanced Screen Reader: content filtering. Drops speech that matches the user's blacklist, and
  * (optionally) speech made only of symbols.
  *
  * <p>Blacklist lines: plain text = the whole spoken text must be equal (ignoring case);

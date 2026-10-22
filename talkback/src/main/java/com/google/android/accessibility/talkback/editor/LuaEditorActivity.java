@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Built-in Lua code editor with the Insert engine, for MS Screen Reader extensions and tools. */
+/** Built-in Lua code editor with the Insert engine, for Advanced Screen Reader extensions and tools. */
 public class LuaEditorActivity extends Activity {
   public static final String EXTRA_CREATE_TYPE = "create_type";
   public static final String EXTRA_FILE_PATH = "file_path";

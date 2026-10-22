@@ -8,7 +8,7 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Step 46: list adapter for Lua scripts, one line per item (written for MS Screen Reader).
+ * Step 46: list adapter for Lua scripts, one line per item (written for Advanced Screen Reader).
  *
  * <p>Used like {@code SingleLineAdapter(service, String(items))}. Items longer than 5000
  * characters are cut so a huge text cannot freeze the list.

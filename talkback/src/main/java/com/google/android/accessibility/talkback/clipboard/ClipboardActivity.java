@@ -207,7 +207,7 @@ public class ClipboardActivity extends Activity {
   /** Copies the item, and pastes it when the screen was opened from an edit box. */
   private void choose(ClipboardStore.Entry entry) {
     ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-    clipboard.setPrimaryClip(ClipData.newPlainText("MS Screen Reader", entry.text));
+    clipboard.setPrimaryClip(ClipData.newPlainText("Advanced Screen Reader", entry.text));
     ClipboardBridge.PasteTarget target = pasteTarget;
     pasteTarget = null;
     finish();

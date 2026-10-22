@@ -351,7 +351,7 @@ public class RingerModeAndScreenMonitor extends SameThreadBroadcastReceiver
           != 0) {
         String msText = enabledTellingTime ? service.msComposeWakeAnnouncement() : null;
         if (msText != null) {
-          // MS Screen Reader: time, date, year and battery from Advanced settings.
+          // Advanced Screen Reader: time, date, year and battery from Advanced settings.
           if (service.msAnnouncementUsesSecondary()) {
             pipeline.returnFeedback(
                 eventId,

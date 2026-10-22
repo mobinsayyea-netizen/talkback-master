@@ -545,7 +545,7 @@ public class LuaServiceApi extends android.content.ContextWrapper implements Lua
       return;
     }
     if (!"onTimer".equals(name)) {
-      log("regEvent: event \"" + name + "\" is not supported in MS Screen Reader");
+      log("regEvent: event \"" + name + "\" is not supported in Advanced Screen Reader");
       return;
     }
     String key = scriptDir.getAbsolutePath();

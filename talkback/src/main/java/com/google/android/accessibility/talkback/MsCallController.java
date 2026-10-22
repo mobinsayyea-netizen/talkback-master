@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -23,7 +23,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.accessibility.utils.SharedPreferencesUtils;
 
 /**
- * MS Screen Reader: caller announcement. Says who is calling (name from contacts if allowed, else
+ * Advanced Screen Reader: caller announcement. Says who is calling (name from contacts if allowed, else
  * the number digit by digit), can repeat it, can use the ringtone volume, and says the call length
  * when a call ends.
  */

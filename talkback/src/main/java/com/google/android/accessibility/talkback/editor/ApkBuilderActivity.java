@@ -16,7 +16,7 @@ import com.google.android.accessibility.talkback.actor.gemini.GeminiKeyStore;
 /**
  * "Create Android APK": the user's own APK Builder (chat first: the AI makes the repo, files and
  * workflow, builds and gives the direct APK link). The page is assets/apk_builder.html. The Gemini
- * key saved in MS Screen Reader is handed to the page, so it does not have to be typed again.
+ * key saved in Advanced Screen Reader is handed to the page, so it does not have to be typed again.
  */
 public class ApkBuilderActivity extends Activity {
   private static final int FILE_CHOOSER_REQ = 77;

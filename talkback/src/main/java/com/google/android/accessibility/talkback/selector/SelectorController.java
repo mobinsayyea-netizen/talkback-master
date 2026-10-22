@@ -2293,7 +2293,7 @@ public class SelectorController implements UserInputEventListener {
   }
 
   /**
-   * MS Screen Reader: runs a text action from the main menu. 0 = copy, 1 = append, 2 = translate,
+   * Advanced Screen Reader: runs a text action from the main menu. 0 = copy, 1 = append, 2 = translate,
    * 3 = read text from screen (OCR), 4 = OCR then translate.
    */
   public void msRunTextAction(int action) {
@@ -2328,7 +2328,7 @@ public class SelectorController implements UserInputEventListener {
         result = existing + "\n" + text;
       }
     }
-    clipboard.setPrimaryClip(ClipData.newPlainText("MS Screen Reader", result));
+    clipboard.setPrimaryClip(ClipData.newPlainText("Advanced Screen Reader", result));
     lastCopiedText = result;
     ClipboardStore.replace(context, existingText, result);
     ExtraSounds.play(context, R.raw.clipboard);

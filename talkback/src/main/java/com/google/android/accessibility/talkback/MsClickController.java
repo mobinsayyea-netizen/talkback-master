@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback;
 
@@ -12,7 +12,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import com.google.android.accessibility.utils.SharedPreferencesUtils;
 
 /**
- * MS Screen Reader: "Clicking settings". Single tap to activate, lift to activate and hold to long
+ * Advanced Screen Reader: "Clicking settings". Single tap to activate, lift to activate and hold to long
  * press, built on touch-interaction events.
  */
 public final class MsClickController {

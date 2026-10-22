@@ -30,7 +30,7 @@ public final class CrashReporter {
       StringWriter sw = new StringWriter();
       error.printStackTrace(new PrintWriter(sw));
       String text =
-          "MS Screen Reader crash\n"
+          "Advanced Screen Reader crash\n"
               + "Time: "
               + new java.util.Date()
               + "\nAndroid "
@@ -73,7 +73,7 @@ public final class CrashReporter {
         String text = new String(bytes, 0, n, StandardCharsets.UTF_8);
         ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         if (cm != null && !text.isEmpty()) {
-          cm.setPrimaryClip(ClipData.newPlainText("MS Screen Reader crash report", text));
+          cm.setPrimaryClip(ClipData.newPlainText("Advanced Screen Reader crash report", text));
           Toast.makeText(
                   context,
                   "The screen reader crashed earlier. The crash report is copied. Paste it in the chat.",

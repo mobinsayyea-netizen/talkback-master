@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 MS Screen Reader. Licensed under the Apache License, Version 2.0.
+ * Copyright 2026 Advanced Screen Reader. Licensed under the Apache License, Version 2.0.
  */
 package com.google.android.accessibility.talkback.preference.base;
 
@@ -11,7 +11,7 @@ import androidx.preference.Preference;
 import com.google.android.accessibility.talkback.training.OnboardingInitiator;
 import com.google.android.accessibility.talkback.R;
 
-/** MS Screen Reader settings group: Other Settings. */
+/** Advanced Screen Reader settings group: Other Settings. */
 public class MsGroupOtherFragment extends TalkbackBaseFragment {
   public MsGroupOtherFragment() {
     super(R.xml.ms_group_9_other);

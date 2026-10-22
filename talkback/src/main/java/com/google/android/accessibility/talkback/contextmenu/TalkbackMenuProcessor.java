@@ -201,7 +201,7 @@ public class TalkbackMenuProcessor {
   private static final int ORDER_MS_EXTENSIONS = 9;
 
   /**
-   * MS Screen Reader: groups the menu into Recognition, Navigation and Functions menus (like the
+   * Advanced Screen Reader: groups the menu into Recognition, Navigation and Functions menus (like the
    * Jieshuo main menu). Items that are not present are skipped; empty groups are not shown.
    */
   private void addMsGroupMenus(ContextMenu menu) {
