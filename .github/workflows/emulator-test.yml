@@ -1,0 +1,65 @@
+name: AI Create emulator self test
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Build Advanced Screen Reader APK"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  emulator-test:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Download the latest built APK
+        run: |
+          TAG=$(gh release list --limit 20 --json tagName,isLatest -q '.[] | select(.isLatest) | .tagName')
+          echo "Testing release $TAG"
+          echo "$TAG" > tag.txt
+          gh release download "$TAG" --pattern MSScreenReader.apk
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Write the test script
+        run: |
+          cat > selftest.sh <<'EOF'
+          exec > selftest.log 2>&1
+          echo "== devices"; adb devices
+          echo "== abis"; adb shell getprop ro.product.cpu.abilist
+          echo "== apk abis"; unzip -l MSScreenReader.apk | grep -o "lib/[a-z0-9_-]*/" | sort | uniq -c
+          echo "== install"; adb install -r MSScreenReader.apk
+          adb logcat -c
+          echo "== start"; adb shell am start -n com.mobeen.msscreenreader/com.google.android.accessibility.talkback.editor.AiSelfTestActivity
+          for i in $(seq 1 80); do adb logcat -d -s MsSelfTest | grep -q "RESULT:" && break; sleep 3; done
+          echo "== log"; adb logcat -d -s MsSelfTest AndroidRuntime
+          EOF
+
+      - name: Run self test on emulator
+        id: emu
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          arch: x86_64
+          target: google_apis
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          disable-animations: true
+          script: bash selftest.sh
+
+      - name: Publish the test log
+        if: always()
+        run: |
+          [ -f selftest.log ] || echo "No log: the emulator did not start the script (outcome: ${{ steps.emu.outcome }})" > selftest.log
+          echo "emulator step outcome: ${{ steps.emu.outcome }}" >> selftest.log
+          gh release create "selftest-${{ github.run_number }}" selftest.log --title "Self test ${{ github.run_number }}" --notes "AI Create emulator self test of $(cat tag.txt)" --prerelease --latest=false
