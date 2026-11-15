@@ -72,6 +72,81 @@ public final class SoundThemeManager implements FeedbackController.SoundOverride
       slotsByKey.put(slot.key, slot);
     }
     ensureDefaultThemeExists();
+    seedCsrDefaultOnce();
+  }
+
+  private static final String CSR_ASSET_DIR = "csr_default_sounds";
+  private static final String PREF_CSR_SEEDED = "csr_default_seeded_v1";
+
+  /**
+   * First run only: fills the Default theme with the "CSR with MK" sounds bundled in assets. A slot
+   * the user has already assigned is left alone, gestures are not touched, and it never runs again
+   * (so later changes by the user are kept).
+   */
+  private void seedCsrDefaultOnce() {
+    SharedPreferences p = prefs();
+    if (p.getBoolean(PREF_CSR_SEEDED, false)) {
+      return;
+    }
+    try {
+      JSONObject map = new JSONObject(readAssetText(CSR_ASSET_DIR + "/mapping.json"));
+      Map<String, String> assignments = readAssignments(DEFAULT_THEME_ID);
+      File pool = poolDir(DEFAULT_THEME_ID);
+      if (!pool.mkdirs() && !pool.isDirectory()) {
+        return;
+      }
+      Map<String, String> copied = new LinkedHashMap<>();
+      java.util.Iterator<String> keys = map.keys();
+      while (keys.hasNext()) {
+        String slotKey = keys.next();
+        String fileName = map.getString(slotKey);
+        if (!slotsByKey.containsKey(slotKey) || assignments.containsKey(slotKey)) {
+          continue;
+        }
+        String poolName = copied.get(fileName);
+        if (poolName == null) {
+          File dest = uniqueFile(pool, sanitizeFileName(fileName));
+          if (copyAssetToFile(CSR_ASSET_DIR + "/" + fileName, dest)) {
+            poolName = dest.getName();
+            copied.put(fileName, poolName);
+          }
+        }
+        if (poolName != null) {
+          assignments.put(slotKey, poolName);
+        }
+      }
+      saveAssignments(DEFAULT_THEME_ID, assignments);
+      p.edit().putBoolean(PREF_CSR_SEEDED, true).apply();
+    } catch (Exception e) {
+      Log.w(TAG, "Could not set up the CSR with MK default sounds", e);
+    }
+  }
+
+  private String readAssetText(String path) throws IOException {
+    try (InputStream in = appContext.getAssets().open(path)) {
+      java.io.ByteArrayOutputStream buffer = new java.io.ByteArrayOutputStream();
+      byte[] chunk = new byte[8192];
+      int n;
+      while ((n = in.read(chunk)) > 0) {
+        buffer.write(chunk, 0, n);
+      }
+      return new String(buffer.toByteArray(), StandardCharsets.UTF_8);
+    }
+  }
+
+  private boolean copyAssetToFile(String path, File dest) {
+    try (InputStream in = appContext.getAssets().open(path);
+        OutputStream out = new FileOutputStream(dest)) {
+      byte[] chunk = new byte[8192];
+      int n;
+      while ((n = in.read(chunk)) > 0) {
+        out.write(chunk, 0, n);
+      }
+      return true;
+    } catch (IOException e) {
+      Log.w(TAG, "Could not copy sound file", e);
+      return false;
+    }
   }
 
   private static List<SoundSlot> buildSlots() {
